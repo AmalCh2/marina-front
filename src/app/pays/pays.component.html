@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-md-11" style="margin-left: 20px">
+    <h3 style="margin-top: 20px">List Pays </h3>
+    <hr>
+    <button class="btn btn-round btn-sm btn-success" (click)="open(mymodal1,null)">Add new Pays</button>
+    <br><br>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nationalite</th>
+        <th>pavillon</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor='let p of listPays'>
+        <td>{{p.id_pays}}</td>
+        <td>{{p.nationnalite}}</td>
+        <td>{{p.pavillon}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-primary"
+                  (click)="open(mymodal1,p)">Edit
+          </button>
+          &nbsp;
+          <button type="button" class="btn btn-outline-danger"
+                  (click)="deletePays(p.id_pays)">Delete
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<ng-template #mymodal1 let-modal1>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add new pays</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="lib">nationnalite</label>
+        <div class="input-group">
+          <input id="lib" class="form-control" type="text" placeholder="nationnalite"
+                 [(ngModel)]="Pays.nationnalite"
+                 [ngModelOptions]="{standalone : true}"></div>
+      </div>
+      <div class="mb-3">
+        <label for="qte">pavillon</label>
+        <div class="input-group">
+          <input id="qte" class="form-control" type="number" placeholder="pavillon"
+                 [(ngModel)]="Pays.pavillon"
+                 [ngModelOptions]="{standalone : true}"></div>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="addPays(Pays)"
+            (click)="modal1.close('Save click')">Add</button>
+    <button type="button" class="btn btn-danger" (click)="modal1.close('Save click')">Cancel</button>
+  </div>
+</ng-template>
+
+
