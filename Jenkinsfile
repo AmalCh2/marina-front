@@ -15,6 +15,22 @@ pipeline{
         }
 
 
+        stage('Cleaning the project') {
+            steps{
+                sh "npm install"
+            }
+        }
+
+
+
+
+
+        stage('Artifact Construction') {
+            steps{
+                sh "ng build  "
+            }
+        }
+
 stage('Build Docker Image') {
                       steps {
                           script {
