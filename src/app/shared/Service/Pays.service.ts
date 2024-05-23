@@ -7,7 +7,7 @@ import { HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class PaysService {
-  readonly API_URL = 'http://172.10.0.140:8080/pays';
+  readonly API_URL = 'http://localhost:8080/pays';
 
   constructor(private httpClient: HttpClient) { }
 

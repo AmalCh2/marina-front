@@ -27,9 +27,11 @@ pipeline{
 
         stage('Artifact Construction') {
             steps{
-                sh "ng build  "
+                sh "ng build "
             }
         }
+
+
 
 stage('Build Docker Image') {
                       steps {
