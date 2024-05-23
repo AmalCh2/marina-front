@@ -34,7 +34,7 @@ pipeline{
 stage('Build Docker Image') {
                       steps {
                           script {
-                            sh 'docker build -t malchnitir/marina-front:latest .'
+                            sh 'docker build -t amalchnitir/marina-front:latest .'
                           }
                       }
                   }
