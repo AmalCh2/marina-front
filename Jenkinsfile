@@ -8,9 +8,9 @@ pipeline{
 
  stage('Getting project from Git') {
             steps{
-      			checkout([$class: 'GitSCM', branches: [[name: '*/aziz']],
+      			checkout([$class: 'GitSCM', branches: [[name: '*/main']],
 			extensions: [],
-			userRemoteConfigs: [[url: 'https://github.com/med-aziz-ben-haha/cicdfront.git']]])
+			userRemoteConfigs: [[url: 'https://github.com/AmalCh2/marina-front.git']]])
             }
         }
 
@@ -27,7 +27,7 @@ pipeline{
 
         stage('Artifact Construction') {
             steps{
-                sh "ng build  "
+                sh "ng build "
             }
         }
 
@@ -36,7 +36,7 @@ pipeline{
 stage('Build Docker Image') {
                       steps {
                           script {
-                            sh 'docker build -t azizbenhaha/angular-app:latest .'
+                            sh 'docker build -t malchnitir/marina-front:latest .'
                           }
                       }
                   }
@@ -46,7 +46,7 @@ stage('Build Docker Image') {
 
                   stage('login dockerhub') {
                                         steps {
-                                      sh 'echo dckr_pat_-SnwrdC_ELsL6it2JT6cgIcAlrs | docker login -u azizbenhaha --password-stdin'
+                                      sh 'echo dckr_pat_ir-lMzVJrOrmvNtywS8YwZGdPdg | docker login -u amalchnitir --password-stdin'
                                             }
 		  }
 
@@ -56,7 +56,7 @@ stage('Build Docker Image') {
 
 	                      stage('Push Docker Image') {
                                         steps {
-                                   sh 'docker push azizbenhaha/angular-app:latest'
+                                   sh 'docker push amalchnitir/marina-front:latest'
                                             }
 		  }
 
