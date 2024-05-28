@@ -1,0 +1,222 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+      <router-outlet></router-outlet>
+  
+      <section class="content">
+        <div class="left-content">
+          <div class="main">
+            <div class="BigTitle">
+              <h1><i class="fal fa-file-alt faa2x"></i> Modifier Une Fiche Bateau</h1>
+            </div>
+            <div class="big-container">
+              <div class="formulaire-boxes">
+                <!-- Formulaire 1 -->
+                <div  *ngIf="currentPage === 1">
+                  
+                  <section class="container container-1">
+                        <form>
+                            <h1 class="form-section-title">Détails bateau :</h1>
+                            <div class="first-form">
+                                <div class="details personal">
+                                    <div class="first-form-details">
+                                        <div class="first-form-details-inputs">
+                                            <label>Nº bateau</label>
+                                            <input type="number" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nom bateau</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Autre nom bateau </label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nº propriétaire</label>
+                                            <input type="number" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nom propriétaire</label>
+                                            <input type="number" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Immatriculation</label>
+                                            <input type="number" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nº port</label>
+                                            <input type="number" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nom port</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Adresse </label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Pavillon</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Marque</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Email </label>
+                                            <input type="email" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Ville</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Pays</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Code Postal </label>
+                                            <input type="email" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nº téléphone</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nº fax</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nº mobile</label>
+                                            <input type="email" required>
+                                        </div>
+                                        <div class="column dimens-col">
+                                            <h1 class="form-section-title">Dimensions et tonnage :</h1>
+                                            <div class="first-form-details-inputs">
+                                                <label>Largeur</label>
+                                                <input type="number" required>
+                                            </div>
+                                            <div class="first-form-details-inputs">
+                                                <label>Longueur</label>
+                                                <input type="number" required>
+                                            </div>
+                                            <div class="first-form-details-inputs">
+                                                <label>Tirant d'eau</label>
+                                                <input type="number" required>
+                                            </div>
+                                            <div class="first-form-details-inputs">
+                                                <label>Tonnage</label>
+                                                <input type="number" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                  </section>
+                </div>
+
+                <!-- Formulaire 2 -->
+                <div *ngIf="currentPage === 2">
+                  <section class="container container-2">
+                    <form>
+                      <h1 class="form-section-title">Détails type bateau :</h1>
+
+                      <div class="section-details">
+                        <div class="input-box">
+                          <span class="details">Nº type bateau</span>
+                          <input type="text">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Nom type</span>
+                          <input type="text">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Désignation</span>
+                          <input type="text">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Majoration</span>
+                          <input type="number">
+                        </div>
+                      </div>
+                      <div class="multicoque-details">
+                        <input type="radio" name="multicoque" id="dot-1">
+                        <input type="radio" name="multicoque" id="dot-2">
+                        <span class="details">Multicoque</span>
+                        <div class="category">
+                          <label for="dot-1">
+                          <span class="dot one"></span>
+                          <span class="multicoque">Oui</span>
+                        </label>
+                        <label for="dot-2">
+                          <span class="dot two"></span>
+                          <span class="multicoque">Non</span>
+                        </label>
+                        </div>
+                      </div>
+                      <h1 class="form-section-title assurance-title ">Détails assurance :</h1>
+
+                      <div class="section-details">
+                        <div class="input-box">
+                          <span class="details">Nº assurance</span>
+                          <input type="text">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Nom assurance</span>
+                          <input type="text">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Date d'expiration</span>
+                          <input type="date">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Observation</span>
+                          <input type="text">
+                        </div>
+                      </div>
+                      <div class="submit-box">
+                        <div class="button-group button">
+                          <button class="button button-primary" [routerLink]="['/rechercher_bateau']" routerbuttonActive="active" >Annuler</button>
+                          <button onclick="message()" id="send" class="button button-secondary" >Enregistrer</button>
+                        </div>
+                      </div>
+                    </form>
+        
+              </section>
+                </div>
+                
+              </div>
+    
+              <!-- Boutons de pagination -->
+              <div class="pagination">
+                <ul class="pagination">
+                  <!-- Bouton Précédent -->
+                    <li class="btn prev" (click)="changePage(currentPage - 1)" [hidden]="currentPage === 1">
+                      <span><i class="fas fa-angle-left"></i> Précédent</span>
+                    </li>
+    
+                  <!-- Affichage des numéros de page -->
+                    <ng-container *ngFor="let plength of getPages()">
+                      <li class="numb" [class.active]="currentPage === plength" (click)="changePage(plength)">
+                        <span>{{ plength }}</span>
+                      </li>
+                    </ng-container>
+    
+                  <!-- Bouton Suivant -->
+                    <li class="btn next" (click)="changePage(currentPage + 1)" [hidden]="currentPage === totalPages">
+                      <span>Suivant <i class="fas fa-angle-right"></i></span>
+                    </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    </div>
+  </div>
+  

@@ -1,0 +1,63 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+        <router-outlet></router-outlet>
+
+        <section class="content">
+            <div class="left-content">
+                <div class="main">
+                    <div class="Header">
+                        <h1><i class="fal fa-archive faa2x"></i> Archive des Réservations</h1>
+                    </div>                  
+                    <div class="big-container">
+                    
+                    <!-- ================ boats List ================= -->
+                    <div class="details">
+                        <!--<div class="details"(scroll)="onTableScroll($event)">-->
+                        <div class="Boats">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Poste</td>
+                                        <td>Bateau</td>
+                                        <td>Client</td>
+                                        <td>Séjour</td>
+                                        <td>Début</td>
+                                        <td>Fin</td>
+                                        <td>Acompte</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let reservation of reservations">
+                                        <td>{{ reservation.number }}</td>
+                                        <td>{{ reservation.boatName }}</td>
+                                        <td>{{ reservation.clientName }}</td>
+                                        <td>{{ reservation.startDate }}</td>
+                                        <td>{{ reservation.stayDetails }}</td>
+                                        <td>{{ reservation.endDate }}</td>
+                                        <td>{{ reservation.deposit }}</td>
+                                    </tr>
+<!--
+                                <tbody>
+                                    <ng-container *ngFor="let reservation of displayedReservations">
+                                        <tr>
+                                        <td>{{ reservation.number }}</td>
+                                        <td>{{ reservation.boatName }}</td>
+                                        <td>{{ reservation.clientName }}</td>
+                                        <td>{{ reservation.stayDetails }}</td>
+                                        <td>{{ reservation.startDate }}</td>
+                                        <td>{{ reservation.endDate }}</td>
+                                        <td>{{ reservation.deposit }}</td>
+                                        </tr>
+                                    </ng-container>
+                                -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

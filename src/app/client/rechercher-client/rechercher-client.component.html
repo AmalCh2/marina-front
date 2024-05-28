@@ -1,0 +1,160 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+        <router-outlet></router-outlet>
+
+        <section class="content">
+            <div class="left-content">
+                <div class="main">
+                    <div class="Header">
+                        <h1><i class="fal fa-search faa2x"></i> Rechercher un Client</h1>
+                        <div class="buttons">
+                            <div class="submit-box">
+                                <div class="button-group button">
+                                    <!--<button class="button button-primary" for="check" routerLink="" routerLinkActive="active" >Supprimer</button>-->
+                                    <input type="checkbox" id="check">
+                                    <label class="button button-primary" for="check">Supprimer</label>
+                                    <div class="background"></div>
+                                    <div class="alert_box">
+                                        <div class="icon">
+                                            <i class="fas fa-exclamation"></i>
+                                        </div>
+                                        <header>Confirmer</header>
+                                        <p>Etes-vous sûr de vouloir retirer définitivement ce client?</p>
+                                        <div class="btns">
+                                            <label for="check">Oui, Supprimer!!</label>
+                                            <label for="check">Annuler</label>
+                                        </div>
+                                    </div>
+                                    <button class="button button-third" routerLink="/modifier_fiche_client" routerLinkActive="active" >Modifier</button>
+                                    <button class="button button-secondary" routerLink="/fiche_client" routerLinkActive="active">Imprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>                  
+                    <div class="big-container">
+                        <!-- ======================= Filters ================== -->
+                        <div class="filterBox">
+                            <div class="filter">
+                                <div>
+                                    <div class="filterName">Critère</div>
+                                    <div class="Menu-options">
+                                        <ul class="Drop-down-menu">
+                                            <li class="Menu options">
+                                                <select class="select-box">
+                                                    <option hidden>Sélectionner une option:</option>
+                                                    <option>Numéro Client</option>
+                                                    <option>Nom </option>
+                                                    <option>Prénom</option>
+                                                    <option>Etat Civil</option>
+                                                    <option>Adresse</option>
+                                                    <option>Code Postal</option>
+                                                    <option>Ville</option>
+                                                    <option>Pays</option>
+                                                    <option>Nationnalité</option>
+                                                    <option>Pavillon</option>
+                                                    <option>Numéro téléphone</option>
+                                                    <option>Mobile</option>
+                                                    <option>Fax</option>
+                                                    <option>Exonération</option>
+                                                    <option>Email</option>
+                                                </select>
+                                                <!--
+                                                <div class="icon-container">
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                                -->
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="iconFltr">
+                                    <i class="fal fa-check-circle faa2x"></i>
+                                </div>
+                            </div>
+                            <div class="filter filter-2">
+                                <div>
+                                    <div class="filterName">Rechercher</div>
+                                    <div class="recherche-option">
+                                    <div class="option-recherche-details">
+                                        <input type="radio" name="option-recherche" id="dot-1">
+                                        <input type="radio" name="option-recherche" id="dot-2">
+                                        <input type="radio" name="option-recherche" id="dot-3">
+                                        <div class="category">
+                                            <label for="dot-1">
+                                            <span class="dot one"></span>
+                                            <span class="option-recherche">Commencant par :</span>
+                                        </label>
+                                        <label for="dot-2">
+                                            <span class="dot two"></span>
+                                            <span class="option-recherche">Contenant :</span>
+                                        </label>
+                                        <label for="dot-3">
+                                            <span class="dot three"></span>
+                                            <span class="option-recherche">Finissant par :</span>
+                                        </label>
+                                        </div>
+                                    </div>
+                                        <div class="input-box">
+                                            <input type="text" placeholder="Faire une recherche" />
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="iconFltr">
+                                    <i class="fal fa-search faa2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- ================ clients List ================= -->
+                    <div class="details">
+                        <div class="clients">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Numéro Client</td>
+                                        <td>Nom</td>
+                                        <td>Prénom</td>
+                                        <td>Etat Civil</td>
+                                        <td>Adresse</td>
+                                        <td>Code postal</td>
+                                        <td>Ville</td>
+                                        <td>Pays</td>
+                                        <td>Nationnalité</td>
+                                        <td>Pavillon</td>
+                                        <td>Num. tél.</td>
+                                        <td>Mobile</td>
+                                        <td>Fax</td>
+                                        <td>Exonération</td>
+                                        <td>Email</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let client of clientsData">
+                                        <td>{{ client.clientNumber }}</td>
+                                        <td>{{ client.lastName }}</td>
+                                        <td>{{ client.firstName }}</td>
+                                        <td>{{ client.civilStatus }}</td>
+                                        <td>{{ client.address }}</td>
+                                        <td>{{ client.postalCode }}</td>
+                                        <td>{{ client.city }}</td>
+                                        <td>{{ client.country }}</td>
+                                        <td>{{ client.nationality }}</td>
+                                        <td>{{ client.pavilion }}</td>
+                                        <td>{{ client.phoneNumber }}</td>
+                                        <td>{{ client.mobile }}</td>
+                                        <td>{{ client.fax }}</td>
+                                        <td>{{ client.exemption }}</td>
+                                        <td>{{ client.email }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

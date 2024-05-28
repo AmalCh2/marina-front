@@ -1,0 +1,299 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+      <router-outlet></router-outlet>
+  
+      <section class="content">
+        <div class="left-content">
+          <div class="main">
+            <div class="BigTitle">
+              <h1><i class="fal fa-ship faa2x"></i> Ajouter un Bateau</h1>
+            </div>
+            <div class="big-container">
+              <div class="formulaire-boxes">
+                <!-- Formulaire Etape 1 -->
+                <div  *ngIf="currentPage === 1">
+                  <section class="container container-1">
+                    <form action="#" class="form">
+                      <h1 class="form-title">Informations sur le bateau :</h1>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nom du bateau :</label>
+                          <input type="text" placeholder="Entrer le nom du bateau" required id="nom_bat"
+                          [(ngModel)]="Bateau.nom_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Nº du bateau :</label>
+                          <input type="number" placeholder="Entrer le numéro du bateau" id="num_bat"
+                          [(ngModel)]="Bateau.id_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nom du propriétaire :</label>
+                          <input type="text" placeholder="Entrer le nom du propriétaire"  id="nom_prop"/><!---->
+                        </div>
+                        <div class="input-box">
+                          <label>Nº du propriétaire :</label>
+                          <input type="number" placeholder="Entrer le numero du propriétaire" id="num_prop" /><!---->
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nom du port :</label>
+                          <input type="text" placeholder="Entrer le nom du port"  id="nom_port"/><!---->
+                        </div>
+                        <div class="input-box">
+                          <label>Nº du port :</label>
+                          <input type="number" placeholder="Entrer le numero du port"  id="num_port"/><!---->
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Immatriculation du bateau :</label>
+                          <input type="text" placeholder="Entrer l'immatriculation du bateau" required id="immat_bat" 
+                          [(ngModel)]="Bateau.immatriculation_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Autre nom :</label>
+                          <input type="text" placeholder="Entrer un autre nom du bateau" id="autre_nom"
+                          [(ngModel)]="Bateau.autre_ident_nom_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Pavillon :</label>
+                          <input type="text" placeholder="Entrer le pavillon du bateau" required id="pavillon"
+                          [(ngModel)]="Bateau.pavillon_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Marque :</label>
+                          <input type="text" placeholder="Entrer la marque du bateau" required id="marque"
+                          [(ngModel)]="Bateau.marque_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Adresse :</label>
+                          <input type="text" placeholder="Entrer l'adresse du bateau" required id="adresse" 
+                          [(ngModel)]="Bateau.adresse_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Email :</label>
+                          <input type="email" placeholder="Entrer l'email du bateau" required id="email"
+                          [(ngModel)]="Bateau.adresse_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Ville :</label>
+                          <input type="text" placeholder="Entrer la ville du bateau" required id="ville" 
+                          [(ngModel)]="Bateau.ville_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Pays :</label>
+                          <input type="text" placeholder="Entrer le pays du bateau" required  id="pays"
+                          [(ngModel)]="Bateau.pays"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Code Postale :</label>
+                          <input type="text" placeholder="Entrer le code postale" required id="code_postale"
+                          [(ngModel)]="Bateau.code_postal_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                      </div>
+                    </form>
+                  </section>
+                </div>
+                <!-- Formulaire Etape 2 -->
+                <div *ngIf="currentPage === 2">
+                  <section class="container container-2">
+                    <form action="#" class="form">
+                      <label>Dimensions et tonnage :</label>
+                      <div class="column">
+                        <div class="input-box">
+                          <input type="number" placeholder="Entrer la longueur du bateau" required id="longueur" 
+                          [(ngModel)]="Bateau.longueur_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <input type="number" placeholder="Entrer la largeur du bateau" required  id="largeur"
+                          [(ngModel)]="Bateau.largeur_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <input type="number" placeholder="Entrer le tirant d'eau du bateau" required id="tirant_eau"
+                          [(ngModel)]="Bateau.tirant_eau_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <input type="number" placeholder="Entrer le tonnage du bateau" required id="tonnage"
+                          [(ngModel)]="Bateau.tonnage_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº du téléphone :</label>
+                          <input type="text" placeholder="Entrer le numéro du téléphone" required id="num_tel"
+                          [(ngModel)]="Bateau.tel_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Nº fax :</label>
+                          <input type="number" placeholder="Entrer le numéro fax" required id="fax" 
+                          [(ngModel)]="Bateau.fax_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Nº mobile :</label>
+                          <input type="number" placeholder="Entrer le numéro mobile"  id="mobile" 
+                          [(ngModel)]="Bateau.mobile_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                      </div>
+                      <h1 class="form-title">Informations sur le type bateau :</h1>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº du type :</label>
+                          <input type="number" placeholder="Entrer le numéro du type du bateau"   id="num_type"
+                          [(ngModel)]="TypeBateau.id_type_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Type :</label>
+                          <div class="select-box" >
+                            <select required>
+                              <option hidden>Types :</option>
+                              <option>Voiliers</option>
+                              <option>Bateaux à moteur</option>
+                              <option>Catamarans</option>
+                              <option>Trimarans</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="input-box">
+                        <label>Designation :</label>
+                        <input type="text" placeholder="Entrer la désignation du bateau"  id="designation"
+                        [(ngModel)]="TypeBateau.designation_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                      </div>
+                      <div class="input-box">
+                        <label>Majoration :</label>
+                        <input type="text" placeholder="Entrer la majoration du bateau" id="majoration" 
+                        [(ngModel)]="TypeBateau.majoration_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                      </div>
+                      <div class="multicoque-box">
+                        <label>Multicoque :</label>
+                        <div class="multicoque-option">
+                          <div class="multicoque">
+                            <input type="radio" id="check-yes" name="multicoque" checked />
+                            <label for="check-yes">Oui</label>
+                          </div>
+                          <div class="multicoque">
+                            <input type="radio" class="check-no" id="check-no" name="multicoque" />
+                            <label for="check-no">Non</label>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </section>
+                </div>
+                <!-- Formulaire Etape 3 -->
+                <div *ngIf="currentPage === 3">
+                  <section class="container container-3">
+                    <form action="#" class="form">
+                      <h1 class="form-title">Informations sur l'assurance :</h1>
+                      <div class="input-box">
+                        <label>Nº d'assurance :</label>
+                        <input type="number" placeholder="Entrer le numéro d'assurance" required id="num_assur"
+                        [(ngModel)]="Bateau.num_assur"
+                          [ngModelOptions]="{standalone : true}"/>
+                      </div>
+                      <div class="input-box">
+                        <label>Nom d'assurance :</label>
+                        <input type="text" placeholder="Entrer le nom d'assurance" required id="nom_assur" 
+                        [(ngModel)]="Bateau.nom_assur"
+                          [ngModelOptions]="{standalone : true}"/>
+                      </div>
+                      <div class="input-box">
+                        <label>Date d'expération :</label>
+                        <input type="date" placeholder="Entrer la date d'expiration d'assurance" required 
+                        [(ngModel)]="Bateau.date_exp"
+                        [ngModelOptions]="{standalone : true}"/>
+                      </div>
+                      <div class="input-box">
+                        <label>Observation :</label>
+                        <input type="textarea" placeholder="Ecrire une note" required 
+                        [(ngModel)]="Bateau.observation"
+                          [ngModelOptions]="{standalone : true}"/>
+                      </div>
+                    </form>
+                    <div class="submit-box">
+                      <div class="button-group button">
+                        <button class="button button-primary" routerLink="/rechercher_bateau"  routerLinkActive="active" >Annuler</button>
+                        <button type="button" class="btn btn-success" (click)="addBateau(Bateau)"
+                        class="button button-secondary">Ajouter</button>
+                      </div>
+                    </div>
+
+
+
+
+
+
+
+
+  
+                  <div class="message">
+                      <div class="success" id="success">Bateau ajouté avec succès! </div>
+                      <div class="danger" id="danger">Vérifier les champs obligatoires! </div>
+                  </div>
+  
+                  </section>
+                </div>
+              </div>
+    
+              <!-- Boutons de pagination -->
+              <div class="pagination">
+                <ul class="pagination">
+                  <!-- Bouton Précédent -->
+                    <li class="btn prev" (click)="changePage(currentPage - 1)" [hidden]="currentPage === 1">
+                      <span><i class="fas fa-angle-left"></i> Précédent</span>
+                    </li>
+    
+                  <!-- Affichage des numéros de page -->
+                    <ng-container *ngFor="let plength of getPages()">
+                      <li class="numb" [class.active]="currentPage === plength" (click)="changePage(plength)">
+                        <span>{{ plength }}</span>
+                      </li>
+                    </ng-container>
+    
+                  <!-- Bouton Suivant -->
+                    <li class="btn next" (click)="changePage(currentPage + 1)" [hidden]="currentPage === totalPages">
+                      <span>Suivant <i class="fas fa-angle-right"></i></span>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    </div>
+  </div>
+  

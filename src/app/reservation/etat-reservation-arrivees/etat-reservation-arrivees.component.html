@@ -1,0 +1,118 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+        <router-outlet></router-outlet>
+
+        <section class="content">
+            <div class="left-content">
+                <div class="main">
+                    <div class="Header">
+                        <h1><i class="fal fa-file-check"></i> Etat Des Réservations (Arrivées)</h1>
+                        <div class="buttons">
+                            <div class="submit-box">
+                                <div class="button-group button">
+                                    <!--<button class="button button-secondary">Imprimer</button>-->
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>                  
+                    <div class="big-container">
+                    <!-- ======================= Filters ================== -->
+                        <div class="filterBox">
+                            <div class="filter filter-2">
+                                <div>
+                                    <div class="filterName">Rechercher</div>
+                                    <div class="recherche-option">
+                                        <div class="input-box">
+                                            <label>Du :</label>
+                                            <input type="date" placeholder="Entrer la date du début" />
+                                        </div>
+                                        <div class="input-box">
+                                            <label>A : </label>
+                                            <input type="date" placeholder="Entrer la date du fin" />
+                                        </div>
+                                        <div class="Menu-options">
+                                            <ul class="Drop-down-menu">
+                                                <li class="Menu options">
+                                                    <select class="select-box">
+                                                        <option hidden>Etat de la réservation :</option>
+                                                        <option>Tous</option>
+                                                        <option>Annullée</option>
+                                                        <option>Affectée</option>
+                                                        <option>Non Affectée</option>
+                                                    </select>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="iconFltr">
+                                    <i class="fal fa-search faa2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- ================ boats List ================= -->
+                    <div class="details">
+                        <!--<div class="details"(scroll)="onTableScroll($event)">-->
+                        <div class="Boats">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        
+                                            <td>Nº Résa.</td>
+                                            <td>Poste.</td>
+                                            <td>Type</td>
+                                            <td>Nº Client</td>
+                                            <td>Nom Client</td>
+                                            <td>Nom Bat.</td>
+                                            <td>Long</td>
+                                            <td>Début</td>
+                                            <td>Fin.</td>
+                                            <td>Accompte</td>
+                                            <td>Etat</td>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--
+                                    <tr *ngFor="let reservation of reservationsData" [ngClass]="{'cancelled': reservation.etat === 'En cours'}">
+                                        -->
+                                    <tr *ngFor="let reservation of reservationsData">
+                                      <td>{{ reservation.numeroReservation }}</td>
+                                      <td>{{ reservation.poste }}</td>
+                                      <td>{{ reservation.type }}</td>
+                                      <td>{{ reservation.numeroClient }}</td>
+                                      <td>{{ reservation.nomClient }}</td>
+                                      <td>{{ reservation.nomBateau }}</td>
+                                      <td>{{ reservation.longueur }}</td>
+                                      <td>{{ reservation.debut }}</td>
+                                      <td>{{ reservation.fin }}</td>
+                                      <td>{{ reservation.accompte }}</td>
+                                      
+                                      <td>{{ reservation.etat }}</td>
+                                      <!--
+                                      <td><span class="status annulée"></span></td>
+                                        <td><span class="status non-affectée"></span></td>
+                                        <td><span class="status affectée"></span></td>
+                                      
+                                      <td><span class="status" [ngClass]="{'status annulée': reservation.etat === 'En cours'}"></span></td>
+                                      -->
+                                    </tr>
+                                  </tbody>
+                            </table>
+                            <div class="filterFooter">
+                                <h2></h2>
+                                <h2><span class="status affectée">Affectée</span></h2>
+                                <h2><span class="status non-affectée">Non Affectée</span></h2>
+                                <h2><span class="status annulée">Annulée</span></h2>
+                                <h2></h2>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

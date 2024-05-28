@@ -1,0 +1,71 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+      <router-outlet></router-outlet>
+      
+      <section class="content">
+        <div class="left-content">
+          <div class="main">
+            <div class="BigTitle">
+              <h1><i class="fal fa-arrows-alt faa2x"></i> Ajouter un Mouvement du Bateau</h1>
+            </div>
+            <div class="big-container">
+              <div class="formulaire-boxes">
+                <!-- Formulaire Etape 1 -->
+                <div>
+                  <section class="container container-1">
+                    <form action="#" class="form">
+                        <br>
+                      <h1 class="form-title">Informations du mouvement du bateau :</h1>
+                      <br>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>MVT au :</label>
+                          <input type="date"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Emplacement :</label>
+                          <input type="text" placeholder="Entrer le numéro d'emplaceement" required/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Bateau :</label>
+                          <input type="text" placeholder="Entrer le nom du bateau" required/>
+                        </div>
+                        <div class="input-box">
+                          <label>Commentaire :</label>
+                          <input type="text" placeholder="Entrer une note" required />
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Arrivéé :</label>
+                          <input type="date" />
+                        </div>
+                        <div class="input-box">
+                          <label>Départ :</label>
+                          <input type="date" />
+                        </div>
+                      </div>
+                    </form>
+                    <div class="submit-box">
+                        <div class="button-group button">
+                          <button class="button button-primary" [routerLink]="['/afficher_mvt_bateaux']" routerbuttonActive="active" >Annuler</button>
+                          <button onclick="message()" id="send" class="button button-secondary">Ajouter</button>
+                        </div>
+                      </div>
+                      <div class="message">
+                          <div class="success" id="success">Mouvement ajouté avec succès!</div>
+                          <div class="danger" id="danger">Vérifier les champs obligatoires!</div>
+                      </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  

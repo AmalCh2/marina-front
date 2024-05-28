@@ -1,0 +1,275 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+        <router-outlet></router-outlet>
+    
+        <section class="content">
+            <div class="left-content">
+                <div class="main">
+                    <div class="BigTitle">
+                        <div class="BigTitle">
+                            <h1><i class="fal fa-water faa2x"></i> Plan D'eau</h1>                
+                        </div>
+                    </div>
+
+            <!-- ======================= Filters ================== -->
+            <div class="filterBox">
+                <div class="filter">
+                    <div>
+                        <div class="filterName">Secteur</div>
+                        <div class="Menu-options">
+                            <ul class="Drop-down-menu">
+                                <li class="Menu options">
+                                    <select class="select-box">
+                                        <option>Sélectionner un secteur:</option>
+                                        <option>Publique</option>
+                                        <option>Amodié</option>
+                                        <option>Tous</option>
+                                    </select>
+                                    <!--
+                                    <div class="icon-container">
+                                        <i class="fa fa-caret-down"></i>
+                                    </div>
+                                    -->
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="iconFltr">
+                        <i class="fal fa-universal-access faa2x"></i>
+                    </div>
+                </div>
+
+                <div class="filter">
+                    <div>
+                        <div class="filterName">Dimensions</div>
+                        <div class="Menu-options">
+                            <ul class="Drop-down-menu">
+                                <li class="Menu options">
+                                    <select class="select-box">
+                                        <option>Sélectionner une dimension:</option>
+                                        <option>dim1</option>
+                                        <option>dim2</option>
+                                        <option>dim3</option>
+                                    </select>
+                                    <!--
+                                    <div class="icon-container">
+                                        <i class="fa fa-caret-down"></i>
+                                    </div>
+                                    -->
+                                </li>
+                            </ul>
+                        </div>      
+                    </div>
+
+                    <div class="iconFltr">
+                        <i class="fal fa-chart-bar faa2x"></i>
+                    </div>
+                </div>
+
+                <div class="filter">
+                    <div>
+                        <div class="filterName">Critère</div>
+                        <div class="Menu-options">
+                            <ul class="Drop-down-menu">
+                                <li class="Menu options">
+                                    <select class="select-box">
+                                        <option hidden>Sélectionner un critère:</option>
+                                        <option>Emplacements occupés</option>
+                                        <option>Emplacements non occupés</option>
+                                        <option>...</option>
+                                    </select>
+                                    <!--
+                                    <div class="icon-container">
+                                        <i class="fa fa-caret-down"></i>
+                                    </div>
+                                    -->
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="iconFltr">
+                        <i class="fal fa-check-circle faa2x"></i>
+                    </div>
+                </div>
+
+                <div class="filter">
+                    <div>
+                        <div class="filterName" routerLink="/fiche_bateau" routerLinkActive="active">Imprimer</div>
+                    </div> 
+
+                    <div class="iconFltr">
+                        <i class="fal fa-file-export"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================ boats List ================= -->
+            <div class="details">
+                <div class="Boats">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Poste</td>
+                                <td>Bateau</td>
+                                <td>Propriétaire</td>
+                                <td>Début Séjour</td>
+                                <td>Fin Séjour</td>
+                                <td>Arrivée</td>
+                                <td>Départ</td>
+                                <td>Dimensions Poste</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of dataRows">
+                              <td>{{ row.number }}</td>
+                              <td>{{ row.value1 }}</td>
+                              <td>{{ row.value2 }}</td>
+                              <td>{{ row.date1 }}</td>
+                              <td>{{ row.date2 }}</td>
+                              <td>{{ row.date3 }}</td>
+                              <td>{{ row.date4 }}</td>
+                              <td>{{ row.dimensions }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="filterFooter">
+                            <div *ngFor="let info of filterFooterInfo">
+                              <h6>{{ info }}</h6>
+                            </div>
+                      </div>
+                     
+<!--
+                        <tbody>
+                            <tr>
+                                <td>number</td>
+                                <td>String</td>
+                                <td>String</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Dimensions</td>
+                            </tr>
+
+                            <tr>
+                                <td>number</td>
+                                <td>String</td>
+                                <td>String</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Dimensions</td>
+                            </tr>
+
+                            <tr>
+                                <td>number</td>
+                                <td>String</td>
+                                <td>String</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Dimensions</td>
+                            </tr>
+
+                            <tr>
+                                <td>number</td>
+                                <td>String</td>
+                                <td>String</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Dimensions</td>
+                            </tr>
+
+                            <tr>
+                                <td>number</td>
+                                <td>String</td>
+                                <td>String</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Dimensions</td>
+                            </tr>
+
+                            <tr>
+                                <td>number</td>
+                                <td>String</td>
+                                <td>String</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Dimensions</td>
+                            </tr>
+
+                            <tr>
+                                <td>number</td>
+                                <td>String</td>
+                                <td>String</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Dimensions</td>
+                            </tr>
+
+                            <tr>
+                                <td>number</td>
+                                <td>String</td>
+                                <td>String</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Dimensions</td>
+                            </tr>
+
+                            <tr>
+                                <td>number</td>
+                                <td>String</td>
+                                <td>String</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Dimensions</td>
+                            </tr>
+
+                            <tr>
+                                <td>number</td>
+                                <td>String</td>
+                                <td>String</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Date</td>
+                                <td>Dimensions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="filterFooter">
+                        <h2>infos</h2>
+                        <h2>infos</h2>
+                        <h2>infos</h2>
+                    </div>
+-->
+                </div>
+
+            </div>
+
+                </div>
+
+            </div>
+        </section>
+    
+    </div>
+</div>

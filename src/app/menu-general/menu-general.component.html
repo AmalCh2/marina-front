@@ -1,0 +1,156 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+  
+    <div class="body" [ngClass]="getBodyClass()">
+        <router-outlet></router-outlet>
+    
+    
+    
+        <section class="content">
+          <div class="left-content">
+          <div class="mediatheque">
+              <h1><i class="fa fa-image faa2x"></i> Médiathèque</h1>
+              <div class="mediatheque-container">
+              <div class="image-container img-one">
+                  <img src="../../assets/images/image port 1.png"/>
+                  <div class="overlay">
+                  </div>
+              </div>
+    
+              <div class="image-container img-two">
+                  <img src="../../assets/images/image port 5.png"/>
+                  <div class="overlay">
+                  </div>
+              </div>
+    
+              <div class="image-container img-three">
+                  <img src="../../assets/images/map.png"/>
+                  <div class="overlay">
+                  </div>
+              </div>
+    
+              <div class="image-container img-four">
+                  <img src="../../assets/images/image port 2.png"/>
+                  <div class="overlay">
+                  </div>
+              </div>
+    
+              <div class="image-container img-five">
+                  <img src="../../assets/images/image port 3.png"/>
+                  <div class="overlay">
+                  </div>
+              </div>
+    
+              <div class="image-container img-six">
+                  <img src="../../assets/images/image port 4.png"/>
+                  <div class="overlay">
+                  </div>
+              </div>
+              </div>
+          </div>
+    
+            <div class="botomr-section">
+              <div class="calendrier_">
+    
+                <h1><i class="fa fa-calendar faa2x"></i> Calendrier</h1>
+    
+                <div class="calendrier__container">
+                  
+                  <app-calendrier></app-calendrier>
+                  
+                </div>
+              </div>
+              <!--
+              <div class="message">
+                <h1><i class="fa fa-envelope faa2x"></i> Ecrire un message</h1>
+                <div class="message-container">
+                    <div class="msg-item box-one">
+                        <label for="recipient">Choisir le destinataire :</label>
+                        <select id="recipient" [(ngModel)]="selectedRecipient">
+                            <option *ngFor="let user of users" [value]="user">{{ user }}</option>
+                        </select>
+                        <label for="message">Message :</label>
+                        <textarea id="message" [(ngModel)]="messageContent" placeholder="Ecrire votre message ici..."></textarea>
+                        <button (click)="sendMessage()">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+          -->
+          <div class="message">
+            <h1><i class="fa fa-envelope faa2x"></i> Ecrire un message</h1>
+            <div class="message-container">
+                <form (submit)="sendMessage($event)">
+                  <div class="form-group">
+                      <label for="recipient">Choisir le destinataire :</label>
+                      <select  class="select-box" id="recipient" [(ngModel)]="selectedRecipient" name="recipient" required>
+                          <option *ngFor="let user of users" [value]="user">{{ user }}</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="message">Message :</label>
+                      <textarea id="message" [(ngModel)]="messageContent" name="message" placeholder="Ecrire votre message ici..." required></textarea>
+                  </div>
+                  <button type="submit">Envoyer le message</button>
+              </form>
+                
+            </div>
+        </div>
+            
+          <!--
+              <div class="message">
+                  <h1><i class="fa fa-envelope faa2x"></i> Ecrire un message</h1>
+                <div class="message-container">
+                  <div class="msg-item box-one">
+                    <form (submit)="sendMessage($event)">
+                      <div class="form-group">
+                          <label for="recipient">Choisir le destinataire :</label>
+                          <select id="recipient" [(ngModel)]="selectedRecipient" name="recipient" required>
+                              <option *ngFor="let user of users" [value]="user">{{ user }}</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="message">Message :</label>
+                          <textarea id="message" [(ngModel)]="messageContent" name="message" placeholder="Ecrire votre message ici..." required></textarea>
+                      </div>
+                      <button type="submit">Envoyer le message</button>
+                  </form>
+                    
+                  </div>
+                </div>
+              </div>
+          -->
+        </div>
+      </div>
+    
+    
+    <!--
+      <div class="right-content">
+        <div class="calcul-info">
+          <div class="icon-container">
+            <h1><i class="fa fa-calculator faa2x"></i> Calculatrice</h1> 
+          </div>
+          
+        </div>
+    
+        <div class="active-calcul">
+          
+    
+    <p>asgher taille fl ecran : nsagher f toul zone gris li wra lcalcul </p>
+    
+    
+    
+    
+    
+        </div>
+    
+      </div>
+    -->
+      </section>
+    
+    </div>
+  
+  </div>
+  
+  
+  
+  

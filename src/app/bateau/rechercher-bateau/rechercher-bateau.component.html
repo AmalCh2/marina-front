@@ -1,0 +1,184 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+        <router-outlet></router-outlet>
+
+        <section class="content">
+            <div class="left-content">
+                <div class="main">
+                    <div class="Header">
+                        <h1><i class="fal fa-search faa2x"></i> Rechercher un Bateau</h1>
+                        <div class="buttons">
+                            <div class="submit-box">
+                                <div class="button-group button">
+                                    <!--<button class="button button-primary" for="check" routerLink="" routerLinkActive="active" >Supprimer</button>-->
+                                    <input type="checkbox" id="check">
+                                    <label class="button button-primary" for="check">Supprimer</label>
+                                    <div class="background"></div>
+                                    <div class="alert_box">
+                                        <div class="icon">
+                                            <i class="fas fa-exclamation"></i>
+                                        </div>
+                                        <header>Confirmer</header>
+                                        <p>Etes-vous sûr de vouloir retirer définitivement ce bateau?</p>
+                                        <div class="btns">
+                                            <label for="check">Oui, Supprimer!!</label>
+                                            <label for="check">Annuler</label>
+                                        </div>
+                                    </div>
+                                    <button class="button button-third" routerLink="/modifier_fiche_bateau" routerLinkActive="active" >Modifier</button>
+                                    <button class="button button-secondary" routerLink="/fiche_bateau" routerLinkActive="active">Imprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>                  
+                    <div class="big-container">
+                    <!-- ======================= Filters ================== -->
+                        <div class="filterBox">
+                            <div class="filter">
+                                <div>
+                                    <div class="filterName">Critère</div>
+                                    <div class="Menu-options">
+                                        <ul class="Drop-down-menu">
+                                            <li class="Menu options">
+                                                <select class="select-box">
+                                                    <option hidden>Sélectionner une option:</option>
+                                                    <option>Nom</option>
+                                                    <option>Immatriculation</option>
+                                                    <option>Pavillon</option>
+                                                    <option>Marque</option>
+                                                    <option>Adresse</option>
+                                                    <option>Code Postal</option>
+                                                    <option>Numéro Assurance</option>
+                                                    <option>Nom Assurance</option>
+                                                    <option>Date d'éxpiration</option>
+                                                    <option>Numéro téléphone</option>
+                                                    <option>Mobile</option>
+                                                    <option>Fax</option>
+                                                    <option>Longueur</option>
+                                                    <option>Largueur</option>
+                                                    <option>Tirant d'eau</option>
+                                                    <option>Tonnage</option>
+                                                    <option>Email</option>
+                                                    <option>Autre nom</option>
+                                                </select>
+                                                <!--
+                                                <div class="icon-container">
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                                -->
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="iconFltr">
+                                    <i class="fal fa-check-circle faa2x"></i>
+                                </div>
+                            </div>
+                            <div class="filter filter-2">
+                                <div>
+                                    <div class="filterName">Rechercher</div>
+                                    <div class="recherche-option">
+                                    <!--
+                                        <div class="recherche">
+                                            <input type="radio" id="recherche-debut" name="recherche" checked />
+                                            <label for="recherche-debut">Commencant par :</label>
+                                        </div>
+                                        <div class="recherche">
+                                            <input type="radio" class="recherche-milieu" id="recherche-milieu" name="recherche" />
+                                            <label for="recherche-milieu">Contenant :</label>
+                                        </div>
+                                        <div class="recherche">
+                                            <input type="radio" class="recherche-fin" id="recherche-fin" name="recherche" />
+                                            <label for="recherche-fin">Finissant par :</label>
+                                        </div>
+                                    -->
+                                    <div class="option-recherche-details">
+                                        <input type="radio" name="option-recherche" id="dot-1">
+                                        <input type="radio" name="option-recherche" id="dot-2">
+                                        <input type="radio" name="option-recherche" id="dot-3">
+                                        <div class="category">
+                                            <label for="dot-1">
+                                            <span class="dot one"></span>
+                                            <span class="option-recherche">Commencant par :</span>
+                                        </label>
+                                        <label for="dot-2">
+                                            <span class="dot two"></span>
+                                            <span class="option-recherche">Contenant :</span>
+                                        </label>
+                                        <label for="dot-3">
+                                            <span class="dot three"></span>
+                                            <span class="option-recherche">Finissant par :</span>
+                                        </label>
+                                        </div>
+                                    </div>
+                                        <div class="input-box">
+                                            <input type="text" placeholder="Faire une recherche" />
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="iconFltr">
+                                    <i class="fal fa-search faa2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- ================ boats List ================= -->
+                    <div class="details">
+                        <div class="Boats">
+                            <!--<app-liste-des-bateaux></app-liste-des-bateaux>-->
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Nom</td>
+                                        <td>Prop.</td>
+                                        <td>Immat.</td>
+                                        <td>Types</td>
+                                        <td>Pavillon</td>
+                                        <td>Marque</td>
+                                        <td>Adresse</td>
+                                        <td>Code postal</td>
+                                        <td>Ville</td>
+                                        <td>Pays</td>
+                                        <td>Longueur</td>
+                                        <td>Largeur</td>
+                                        <td>Tirant d'eau</td>
+                                        <td>Tonnage</td>
+                                        <td>Email</td>
+                                        <td>Autre Nom</td>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr *ngFor="let boat of boatsData">
+                                        <td>{{ boat.nom }}</td>
+                                        <td>{{ boat.proprietaire }}</td>
+                                        <td>{{ boat.immatriculation }}</td>
+                                        <td>{{ boat.type }}</td>
+                                        <td>{{ boat.pavillon }}</td>
+                                        <td>{{ boat.marque }}</td>
+                                        <td>{{ boat.adresse }}</td>
+                                        <td>{{ boat.codePostal }}</td>
+                                        <td>{{ boat.ville }}</td>
+                                        <td>{{ boat.pays }}</td>
+                                        <td>{{ boat.longueur }}</td>
+                                        <td>{{ boat.largeur }}</td>
+                                        <td>{{ boat.tirantEau }}</td>
+                                        <td>{{ boat.tonnage }}</td>
+                                        <td>{{ boat.email }}</td>
+                                        <td>{{ boat.autreNom }}</td>
+                                      </tr>
+                                  </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

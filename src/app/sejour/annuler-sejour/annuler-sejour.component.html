@@ -1,0 +1,98 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+        <router-outlet></router-outlet>
+
+        <section class="content">
+            <div class="left-content">
+                <div class="main">
+                    <div class="Header">
+                        <h1><i class="fal fa-file-check"></i> Annuler Un Séjour </h1>
+                        <div class="buttons">
+                            <div class="submit-box">
+                                <div class="button-group button">
+                                    <button class="button button-secondary">Annuler</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>                  
+                    <div class="big-container">
+                    <!-- ======================= Filters ================== -->
+                    <div class="filterBox">
+                        <div class="filter filter-2">
+                            <div>
+                                <div class="filterName">Rechercher</div>
+                                <div class="recherche-option">
+                                    <div class="input-box">
+                                        <label>Nº d'emplacment :</label>
+                                        <input type="number" placeholder="Entrer le nº d'emplacment" />
+                                    </div>
+                                    <div class="input-box">
+                                        <label>Nom bateau :</label>
+                                        <input type="text" placeholder="Entrer le nom du bateau" />
+                                    </div>
+                                    <div class="input-box">
+                                        <label>Nº du client : </label>
+                                        <input class="num_client" type="number" placeholder="Entrer le  nº du client" />
+                                    </div>
+                                    <div class="input-box">
+                                        <label>Nom du client : </label>
+                                        <input type="text" placeholder="Entrer le nom du client" />
+                                    </div>
+                                    <div class="input-box">
+                                        <label>Début séjour :</label>
+                                        <input type="date" placeholder="Entrer la date du début" />
+                                    </div>
+                                    <div class="input-box">
+                                        <label>Fin séjour : </label>
+                                        <input type="date" placeholder="Entrer la date du fin" />
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="iconFltr">
+                                <i class="fal fa-search faa2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ================ boats List ================= -->
+                    <div class="details">
+                        <!--<div class="details"(scroll)="onTableScroll($event)">-->
+                        <div class="Boats">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        
+                                            <td>Poste</td>
+                                            <td>Nº Client</td>
+                                            <td>Nom Client</td>
+                                            <td>Nº Bat.</td>
+                                            <td>Nom Bat.</td>
+                                            <td>Séjour</td>
+                                            <td>Début</td>
+                                            <td>Fin.</td>
+                                            <td>Solde</td>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of reservationsData">
+                                      <td>{{ item.poste }}</td>
+                                      <td>{{ item.numeroClient }}</td>
+                                      <td>{{ item.nomClient }}</td>
+                                      <td>{{ item.numeroBat }}</td>
+                                      <td>{{ item.nomBat }}</td>
+                                      <td>{{ item.sejour }}</td>
+                                      <td>{{ item.debut }}</td>
+                                      <td>{{ item.fin }}</td>
+                                      <td>{{ item.solde }}</td>
+                                    </tr>
+                                  </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

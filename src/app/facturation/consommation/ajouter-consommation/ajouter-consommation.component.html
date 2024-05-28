@@ -1,0 +1,89 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+      <router-outlet></router-outlet>
+      
+      <section class="content">
+        <div class="left-content">
+          <div class="main">
+            <div class="BigTitle">
+              <h1><i class="fal fa-tasks faa2x"></i> Ajouter une Consommation</h1>
+            </div>
+            <div class="big-container">
+              <div class="formulaire-boxes">
+                <!-- Formulaire Etape 1 -->
+                <div>
+                  <section class="container container-1">
+                    <form action="#" class="form">
+                      <h1 class="form-title">Informations de consommation :</h1>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº Consommation :</label>
+                          <input type="number" placeholder="Entrer le numéro du client" required/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Période du :</label>
+                          <input type="date" required />
+                        </div>
+                        <div class="input-box">
+                          <label>Au :</label>
+                          <input type="date"  required />
+                        </div>
+                        <div class="input-box">
+                          <label>Date système :</label>
+                          <input type="date"  required />
+                        </div>
+                      </div>
+                        <div class="column">
+                          <div class="input-box">
+                            <label>Prix Unitaire :</label>
+                            <input type="number" placeholder="Entrer le prix unitaire du consommation" required />
+                          </div>
+                          <div class="input-box">
+                            <label>Quantité :</label>
+                            <input type="number" placeholder="Entrer la quantité" required />
+                          </div>
+                        </div>
+                        <div class="column">
+                          <div class="input-box">
+                            <label>Offre :</label>
+                            <input type="text" placeholder="Entrer l'offre de la consommation"/>
+                          </div>
+                          <div class="input-box">
+                            <label>Nº Prestation :</label>
+                            <input type="number" placeholder="Entrer le numéro de prestation"/>
+                          </div>
+                        </div>
+                        <div class="column">
+                          <div class="input-box">
+                            <label>Nº Facture :</label>
+                            <input type="number" placeholder="Entrer le numéro de la Facture"/>
+                          </div>
+                          <div class="input-box">
+                            <label>Nº Séjour :</label>
+                            <input type="number" placeholder="Entrer le numéro du séjour"/>
+                          </div>
+                        </div>
+                    </form>
+                    <div class="submit-box">
+                      <div class="button-group button">
+                        <button class="button button-primary" [routerLink]="['/rechercher_consommation']" routerbuttonActive="active" >Annuler</button>
+                        <button onclick="message()" id="send" class="button button-secondary">Ajouter</button>
+                      </div>
+                    </div>
+                    <div class="message">
+                        <div class="success" id="success">Consommation ajouté avec succès!</div>
+                        <div class="danger" id="danger">Vérifier les champs obligatoires!</div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  

@@ -1,0 +1,24 @@
+export class Bateau {
+     id_bat:any;
+     immatriculation_bat:any;
+     autre_ident_nom_bat:any;
+     nom_bat:any;
+     largeur_bat:any;
+     longueur_bat:any;
+     tirant_eau_bat:any;
+     tonnage_bat:any;
+     pavillon_bat:any;
+     marque_bat:any;
+     num_assur:any;
+     nom_assur:any;
+     date_exp:any;
+     adresse_bat:any;
+     code_postal_bat:any;
+     ville_bat:any;
+     pays:any;
+     tel_bat:any;
+     fax_bat:any;
+     mobile_bat:any;
+     email_bat:any;
+     observation:any;
+}

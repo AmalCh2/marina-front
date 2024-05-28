@@ -1,0 +1,146 @@
+.body{
+    width: calc(100vw - 8.5rem);
+    max-height: 100vh;
+    background: #f4f7fa;/*#8709ca;/////////////////////////////////////////////////*/
+    z-index: 0;
+    position:relative;
+    top: 0;
+    transition: all .5s ease;
+  }
+  
+  .body-trimmed{
+    width: calc(100vw - 20rem);
+  }
+  
+  .body-md-screen{
+    width: calc(100vw - 20rem);
+  }
+  
+  /* ===================== Content ===================== */
+  .content {
+    display: block;
+    width: 100%;
+  }
+  
+  /* LEFT CONTENT */
+  .left-content {
+    display: flex;
+    width: 98.5%;
+    background: rgba(33, 26, 61, 0.1);
+    margin: 15px;
+    padding: 20px;
+    border-radius: 15px;
+    height: 97vh;
+    position: relative;
+    /*background-image: url('../../../../../assets/images/background\ finale.png'); /* Chemin vers votre image */
+    /*background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone */
+    /*background-position: center; /* Centre l'image horizontalement et verticalement */
+  }
+  
+  /* ===================== Main ===================== */
+  .main {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    transition: 0.5s;
+  }
+  
+  .Header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem;
+    height: 60px;
+    cursor: pointer;
+    justify-content: space-between;
+  }
+  
+  .Header h1 {
+    margin: 0 0 10px;
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #001A1F;/**********************************************************/
+  }
+  
+      /* ================== boats List ============== */
+        .details {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        display: block;
+      }
+        
+        .details .Boats {
+        position: relative;
+        display: grid;
+        max-height: 780px;
+        overflow-y: scroll;
+        padding: 20px;
+        box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+        background-color:#f4f7fa;/************************************/
+      }
+      
+      .details table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .details table thead td {
+        font-weight: 600;
+      }
+      
+      .details .Boats table tr {
+        color: #001A1F;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      
+      .details .Boats table tr:last-child {
+        border-bottom: none;
+      }
+      
+      .details .Boats table tbody tr:hover {
+        background: rgba(33, 26, 61,0.15);
+        color: white;
+      }
+      
+      .details .Boats table tr td {
+        padding: 10px;
+      }
+      
+      .details .Boats table tr td:last-child {
+        text-align: end;
+      }
+      
+      .details .Boats table tr td:nth-child(2) {
+        text-align: end;
+      }
+      
+      .details .Boats table tr td:nth-child(3) {
+        text-align: center;
+      }
+      .status.affectée {
+        padding: 2px 4px;
+        background: #8de02c;
+        color: white;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .status.non-affectée {
+        padding: 2px 4px;
+        background: #e9b10a;
+        color: white;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .status.annulée {
+        padding: 2px 4px;
+        background: #f00;
+        color: white;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+      }

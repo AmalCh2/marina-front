@@ -1,0 +1,9 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+        <router-outlet></router-outlet>
+    
+    <h1>hello bateau</h1>
+    </div>
+
+</div>

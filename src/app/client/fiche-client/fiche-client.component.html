@@ -1,0 +1,180 @@
+<div class="all-page flex items-center">
+  <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+  <div class="body" [ngClass]="getBodyClass()">
+    <router-outlet></router-outlet>
+      
+      <section class="content">
+        <div class="left-content">
+          <div class="main">
+            <div class="BigTitle">
+              <h1><i class="fas fa-print faa2x"></i> Imprimer Une Fiche Client</h1>
+            </div>
+            <div class="big-container">
+              <div class="formulaire-boxes">
+                <!-- Formulaire 1 -->
+                <div  *ngIf="currentPage === 1">
+                  
+                  <section class="container container-1">
+                        <form>
+                            <h1 class="form-section-title">Détails client :</h1>
+                            <div class="first-form">
+                                <div class="details personal">
+                                    <div class="first-form-details">
+                                        <div class="first-form-details-inputs">
+                                            <label>Nº client</label>
+                                            <input type="number" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nom client</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Prénom client </label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Adresse</label>
+                                            <input type="number" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Pavillon</label>
+                                            <input type="number" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nationnalité</label>
+                                            <input type="number" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Ville</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Pays</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Code Postal </label>
+                                            <input type="email" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nº téléphone</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nº fax</label>
+                                            <input type="text" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                            <label>Nº mobile</label>
+                                            <input type="email" required>
+                                        </div>
+                                        <div class="first-form-details-inputs">
+                                          <label>Email </label>
+                                          <input type="email" required>
+                                        </div>
+                                        <div class="option-check-details">
+                                          <label class="civil-label">Etat civil :</label>
+                                          <input type="radio" name="option-check" id="dot-1">
+                                          <input type="radio" name="option-check" id="dot-2">
+                                          <div class="category">
+                                              <label for="dot-1">
+                                              <span class="dot one"></span>
+                                              <span class="option-check">Marié(e):</span>
+                                          </label>
+                                          <label for="dot-2">
+                                              <span class="dot two"></span>
+                                              <span class="option-check">Non</span>
+                                          </label>
+                                          </div>
+                                        </div>
+                                        <div class="option-check-details exo">
+                                          <label class="exo-label">Exonération :</label>
+                                          <input type="radio" name="option-check" id="dot-3">
+                                          <input type="radio" name="option-check" id="dot-4">
+                                          <div class="category exo">
+                                              <label for="dot-3">
+                                              <span class="dot three"></span>
+                                              <span class="option-check">Exonéré(e)</span>
+                                          </label>
+                                          <label for="dot-4">
+                                              <span class="dot four"></span>
+                                              <span class="option-check">Non</span>
+                                          </label>
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                  </section>
+                </div>
+
+                <!-- Formulaire 2 -->
+                <div *ngIf="currentPage === 2">
+                  <section class="container container-2">
+                    <form>
+                      <h1 class="form-section-title">Coordonnées de facturation :</h1>
+
+                      <div class="section-details">
+                        <div class="input-box">
+                          <span class="details">Nº du carte</span>
+                          <input type="number">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Année d'expiration</span>
+                          <input type="number">
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Mois d'expiration</span>
+                          <input type="number">
+                        </div>
+                      <!--
+                        <div class="input-box">
+                          <span class="details">Pichtogramme</span>
+                          <input type="number">
+                        </div>
+                      -->
+                      </div>
+                      <div class="submit-box">
+                        <div class="button-group button">
+                          <button class="button button-primary" [routerLink]="['/rechercher_client']" routerbuttonActive="active" >Annuler</button>
+                          <button class="button button-secondary" >Imprimer</button>
+                        </div>
+                      </div>
+                    </form>
+        
+              </section>
+                </div>
+                
+              </div>
+    
+              <!-- Boutons de pagination -->
+              <div class="pagination">
+                <ul class="pagination">
+                  <!-- Bouton Précédent -->
+                    <li class="btn prev" (click)="changePage(currentPage - 1)" [hidden]="currentPage === 1">
+                      <span><i class="fas fa-angle-left"></i> Précédent</span>
+                    </li>
+    
+                  <!-- Affichage des numéros de page -->
+                    <ng-container *ngFor="let plength of getPages()">
+                      <li class="numb" [class.active]="currentPage === plength" (click)="changePage(plength)">
+                        <span>{{ plength }}</span>
+                      </li>
+                    </ng-container>
+    
+                  <!-- Bouton Suivant -->
+                    <li class="btn next" (click)="changePage(currentPage + 1)" [hidden]="currentPage === totalPages">
+                      <span>Suivant <i class="fas fa-angle-right"></i></span>
+                    </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    </div>
+  </div>
+  
