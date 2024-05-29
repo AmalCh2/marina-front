@@ -4,6 +4,8 @@ import { AxiosService } from 'src/app/axios.service';
 
 import { Utilisateur } from 'src/app/shared/Model/Utilisateurs';
 import { UtilisateurService } from 'src/app/shared/Service/Utilisateur.service';
+import { Role } from 'src/app/shared/Model/Role';
+import { RoleService } from 'src/app/shared/Service/Role.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -25,7 +27,10 @@ export class AjouterCompteUtilisateurComponent implements OnInit {
   Utilisateur!: Utilisateur;
   closeResult!: string;
 
-  constructor(private axiosService: AxiosService ,private UtilisateurService: UtilisateurService, private modalService: NgbModal) {}
+  listRoles: any;
+  role!: Role;
+
+  constructor(private axiosService: AxiosService ,private UtilisateurService: UtilisateurService, private modalService: NgbModal, private roleService: RoleService) {}
 
   ngOnInit(): void {
     this.axiosService.request(
@@ -42,35 +47,61 @@ export class AjouterCompteUtilisateurComponent implements OnInit {
     nom_utilisateur: null,
     mot_de_passe: null,
     id_port: null,
-  }
+  };
+  this.getAllRoles();
+
+    this.role = {
+      id_role: null,
+    lib_role: null,
+    id_utilisateur: null,
+    }
 }
 
 getAllUtilisateurs() {
   this.UtilisateurService.getAllUtilisateurs().subscribe(res => this.listUtilisateur = res)
 }
 
+getAllRoles() {
+  this.roleService.getAllRoles().subscribe(res => this.listRoles = res)
+}
 
-addUtilisateur(p: any) {
-  this.UtilisateurService.addUtilisateur(p).subscribe(() => {
+addRoleAndUtilisateur() {
+  this.roleService.addRole(this.role).subscribe(() => {
+    this.getAllRoles();
+  });
+  this.UtilisateurService.addUtilisateur(this.Utilisateur).subscribe(() => {
     this.getAllUtilisateurs();
-    this.form = false;
   });
 }
 
-editUtilisateur(Utilisateur: Utilisateur) {
-  this.UtilisateurService.editUtilisateur(Utilisateur).subscribe();
+editRoleAndUtilisateur() {
+  this.roleService.editRole(this.role).subscribe(() => {
+    this.getAllRoles();
+  });
+  this.UtilisateurService.editUtilisateur(this.Utilisateur).subscribe(() => {
+    this.getAllUtilisateurs();
+  });
 }
 
-deleteUtilisateur(idUtilisateur: any) {
-  this.UtilisateurService.deleteUtilisateur(idUtilisateur).subscribe(() => this.getAllUtilisateurs())
+deleteRoleAndUtilisateur(idRole: any, idUtilisateur: any) {
+  this.roleService.deleteRole(idRole).subscribe(() => {
+    this.getAllRoles();
+  });
+  this.UtilisateurService.deleteUtilisateur(idUtilisateur).subscribe(() => {
+    this.getAllUtilisateurs();
+  });
 }
 
-open(content: any, action: any) {
-  if (action != null)
-    this.Utilisateur = action
-  else
+open(content: any, action: {role: Role, utilisateur: Utilisateur} | null) {
+  if (action != null) {
+    this.role = action.role;
+    this.Utilisateur = action.utilisateur;
+  } else {
+    this.role = new Role();
     this.Utilisateur = new Utilisateur();
-  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  }
+
+  this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
     this.closeResult = `Closed with: ${result}`;
   }, (reason) => {
     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -90,6 +121,12 @@ private getDismissReason(reason: any): string {
 cancel() {
   this.form = false;
 }
+
+
+
+
+
+
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;

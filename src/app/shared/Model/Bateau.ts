@@ -21,4 +21,12 @@ export class Bateau {
      mobile_bat:any;
      email_bat:any;
      observation:any;
+     date_mvt:any;
+     depart_mvt:any;
+     arrivee_mvt:any;
+     commentaire_mvt:any;
+     id_emp:any;
+     id_type_bat:any;
+     id_cli:any;
+     id_port:any;
 }

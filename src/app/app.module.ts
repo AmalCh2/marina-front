@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
 import { SublevelMenuComponent } from './navbar/sublevel-menu.component';
 import { BodyComponent } from './body/body.component';
 import { MenuGeneralComponent } from './menu-general/menu-general.component';
-import { BateauComponent } from './bateau/bateau.component';
 import { AjouterBateauComponent } from './bateau/ajouter-bateau/ajouter-bateau.component';
 import { FicheBateauChoisitComponent } from './bateau/fiche-bateau-choisit/fiche-bateau-choisit.component';
 import { FicheBateauModifierComponent } from './bateau/fiche-bateau-modifier/fiche-bateau-modifier.component';
@@ -81,7 +80,6 @@ import { ModifierCompteUtilisateurComponent } from './admin/compte-utilisateurs/
     SublevelMenuComponent,
     BodyComponent,
     MenuGeneralComponent,
-    BateauComponent,
     AjouterBateauComponent,
     FicheBateauChoisitComponent,
     FicheBateauModifierComponent,

@@ -19,8 +19,9 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Libelle de la prestation :</label>
-                          <input type="text" placeholder="Entrer la libelle de la prestation" required id="nom_bat"
-                          />
+                          <input type="text" placeholder="Entrer la libelle de la prestation" required 
+                          [(ngModel)]="prestation.lib_prest"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Prix unitaire de la prestation :</label>
@@ -95,7 +96,7 @@
                     <div class="submit-box">
                         <div class="button-group button">
                           <button class="button button-primary" routerLink="/afficher_tarif_prestation"  routerLinkActive="active" >Annuler</button>
-                          <button type="button" class="btn btn-success" 
+                          <button type="button" class="btn btn-success" (click)="addPrestationAndOthers()"
                           class="button button-secondary">Ajouter</button>
                         </div>
                       </div>

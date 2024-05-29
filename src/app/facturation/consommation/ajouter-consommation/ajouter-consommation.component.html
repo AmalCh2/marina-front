@@ -19,58 +19,78 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Nº Consommation :</label>
-                          <input type="number" placeholder="Entrer le numéro du client" required/>
+                          <input type="number" placeholder="Entrer le numéro du client" required
+                          [(ngModel)]="consommation.id_cons"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Période du :</label>
-                          <input type="date" required />
+                          <input type="date" required
+                          [(ngModel)]="consommation.deb_cons"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Au :</label>
-                          <input type="date"  required />
+                          <input type="date" required
+                          [(ngModel)]="consommation.fin_cons"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Date système :</label>
-                          <input type="date"  required />
+                          <input type="date"  required
+                          [(ngModel)]="consommation.date_sys"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                         <div class="column">
                           <div class="input-box">
                             <label>Prix Unitaire :</label>
-                            <input type="number" placeholder="Entrer le prix unitaire du consommation" required />
+                            <input type="number" placeholder="Entrer le prix unitaire du consommation" required
+                            [(ngModel)]="consommation.prix_unit"
+                            [ngModelOptions]="{standalone : true}"/>
                           </div>
                           <div class="input-box">
                             <label>Quantité :</label>
-                            <input type="number" placeholder="Entrer la quantité" required />
+                            <input type="number" placeholder="Entrer la quantité" required
+                            [(ngModel)]="consommation.qte"
+                            [ngModelOptions]="{standalone : true}"/>
                           </div>
                         </div>
                         <div class="column">
                           <div class="input-box">
                             <label>Offre :</label>
-                            <input type="text" placeholder="Entrer l'offre de la consommation"/>
+                            <input type="text" placeholder="Entrer l'offre de la consommation"required
+                            [(ngModel)]="consommation.offre"
+                            [ngModelOptions]="{standalone : true}"/>
                           </div>
                           <div class="input-box">
                             <label>Nº Prestation :</label>
-                            <input type="number" placeholder="Entrer le numéro de prestation"/>
+                            <input type="number" placeholder="Entrer le numéro de prestation"required
+                            [(ngModel)]="consommation.id_prest"
+                            [ngModelOptions]="{standalone : true}"/>
                           </div>
                         </div>
                         <div class="column">
                           <div class="input-box">
                             <label>Nº Facture :</label>
-                            <input type="number" placeholder="Entrer le numéro de la Facture"/>
+                            <input type="number" placeholder="Entrer le numéro de la Facture" required
+                            [(ngModel)]="consommation.id_fact"
+                            [ngModelOptions]="{standalone : true}"/>
                           </div>
                           <div class="input-box">
                             <label>Nº Séjour :</label>
-                            <input type="number" placeholder="Entrer le numéro du séjour"/>
+                            <input type="number" placeholder="Entrer le numéro du séjour"required
+                            [(ngModel)]="consommation.id_sej"
+                            [ngModelOptions]="{standalone : true}"/>
                           </div>
                         </div>
                     </form>
                     <div class="submit-box">
                       <div class="button-group button">
                         <button class="button button-primary" [routerLink]="['/rechercher_consommation']" routerbuttonActive="active" >Annuler</button>
-                        <button onclick="message()" id="send" class="button button-secondary">Ajouter</button>
+                        <button (click)="addConsommation(consommation)"  id="send" class="button button-secondary">Ajouter</button>
                       </div>
                     </div>
                     <div class="message">

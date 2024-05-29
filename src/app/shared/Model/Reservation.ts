@@ -1,5 +1,4 @@
-export class Sejour {
-    id_sej: any;
+export class Reservation {
     deb_sej: any;
     fin_sej: any;
     num_jours: any;

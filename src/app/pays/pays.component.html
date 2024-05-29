@@ -15,7 +15,7 @@
       </thead>
       <tbody>
       <tr *ngFor='let p of listPays'>
-        <td>{{p.id_pays}}</td>
+        <td>{{p.nom_pays}}</td>
         <td>{{p.nationnalite}}</td>
         <td>{{p.pavillon}}</td>
         <td>
@@ -24,7 +24,7 @@
           </button>
           &nbsp;
           <button type="button" class="btn btn-outline-danger"
-                  (click)="deletePays(p.id_pays)">Delete
+                  (click)="deletePays(p.nom_pays)">Delete
           </button>
         </td>
       </tr>

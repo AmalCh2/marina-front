@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SideNavToggle } from '../SideNavToggle.interface';
 import { AxiosService } from 'src/app/axios.service';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Bateau } from '../../shared/Model/Bateau';
 import { BateauService } from '../../shared/Service/Bateau.service';
 import { TypeBateau } from 'src/app/shared/Model/TypeBateau';
@@ -70,10 +70,19 @@ export class AjouterBateauComponent implements OnInit {
      fax_bat:null,
      mobile_bat:null,
      email_bat:null,
-     observation:null
+     observation:null,
+     id_type_bat:null,
+     id_cli:null,
+     id_port:null, 
+     
+     date_mvt:null,
+     depart_mvt:null,
+     arrivee_mvt:null,
+     commentaire_mvt:null,
+     id_emp:null,
     }
 
-    this.getAllTypesBateaux();
+    this.getAllTypeBateau();
 
     this.TypeBateau = {
         id_type_bat: null,
@@ -161,7 +170,7 @@ export class AjouterBateauComponent implements OnInit {
 
   changePage(page: number): void {
     this.currentPage = page;
-    this.generatePagination(); // Appel pour régénérer la pagination
+    this.generatePagination();
   }
 
   getBodyClass(): string {
@@ -180,38 +189,51 @@ export class AjouterBateauComponent implements OnInit {
     this.BateauService.getAllBateaux().subscribe(res => this.listBateau = res)
   }
 
-  addBateau(p: any) {
-    this.BateauService.addBateau(p).subscribe(() => {
-      this.getAllBateaux();
-      this.form = false;
-    });
-  }
-
-  editBateau(Bateau: Bateau) {
-    this.BateauService.editBateau(Bateau).subscribe();
-  }
-
-  deleteBateau(idBateau: any) {
-    this.BateauService.deleteBateau(idBateau).subscribe(() => this.getAllBateaux())
-  }
-
-  getAllTypesBateaux() {
+  getAllTypeBateau() {
     this.TypeBateauService.getAllTypeBateau().subscribe(res => this.listTypeBateau = res)
   }
 
-  addTypeBateau(p: any) {
-    this.TypeBateauService.addTypeBateau(p).subscribe(() => {
-      this.getAllTypesBateaux();
-      this.form = false;
+  addTypeBateauAndBateau() {
+    this.TypeBateauService.addTypeBateau(this.TypeBateau).subscribe(() => {
+      this.getAllTypeBateau();
+    });
+    this.BateauService.addBateau(this.Bateau).subscribe(() => {
+      this.getAllBateaux();
     });
   }
 
-  editTypeBateau(TypeBateau: TypeBateau) {
-    this.TypeBateauService.editTypeBateau(TypeBateau).subscribe();
+  editTypeBateauAndBateau() {
+    this.TypeBateauService.editTypeBateau(this.TypeBateau).subscribe(() => {
+      this.getAllTypeBateau();
+    });
+    this.BateauService.editBateau(this.Bateau).subscribe(() => {
+      this.getAllBateaux();
+    });
   }
 
-  deleteTypeBateau(idTypeBateau: any) {
-    this.TypeBateauService.deleteTypeBateau(idTypeBateau).subscribe(() => this.getAllTypesBateaux())
+  deleteTypeBateauAndBateau(idTypeBateau: any, idBateau: any) {
+    this.TypeBateauService.deleteTypeBateau(idTypeBateau).subscribe(() => {
+      this.getAllTypeBateau();
+    });
+    this.BateauService.deleteBateau(idBateau).subscribe(() => {
+      this.getAllBateaux();
+    });
+  }
+
+  open(content: any, action: { typeBateau: TypeBateau, bateau: Bateau } | null) {
+    if (action != null) {
+      this.TypeBateau = action.typeBateau;
+      this.Bateau = action.bateau;
+    } else {
+      this.TypeBateau = new TypeBateau();
+      this.Bateau = new Bateau();
+    }
+
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
   private getDismissReason(reason: any): string {

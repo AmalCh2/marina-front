@@ -22,7 +22,7 @@ export class PaysComponent implements OnInit {
     this.getAllPays();
 
     this.Pays = {
-      id_pays: null,
+      nom_pays: null,
       nationnalite:null,
       pavillon:null
         }

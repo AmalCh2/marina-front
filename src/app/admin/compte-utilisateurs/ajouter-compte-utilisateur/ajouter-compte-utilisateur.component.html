@@ -43,11 +43,28 @@
                   [ngModelOptions]="{standalone : true}" />
                         </div>
                       </div>
+
+
+                      <h1 class="form-title">Informations du role :</h1>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº du role :</label>
+                          <input type="number"laceholder="Entrer le numéro du compte" required [(ngModel)]="role.id_role"
+                          [ngModelOptions]="{standalone : true}" />
+                        </div>
+                        <div class="input-box">
+                          <label>Libelle du role :</label>
+                          <input type="text" placeholder="Entrer la libelle du role" required [(ngModel)]="role.lib_role"
+                          [ngModelOptions]="{standalone : true}" />
+                        </div>
+                      </div>
+                      <input type="hidden" [(ngModel)]="role.id_utilisateur"
+                          [ngModelOptions]="{standalone : true}" />
                     </form>
                     <div class="submit-box">
                         <div class="button-group button">
                           <button class="button button-primary" [routerLink]="['/rechercher_utilisateur']" routerbuttonActive="active" >Annuler</button>
-                          <button (click)="addUtilisateur(Utilisateur)" id="send" class="button button-secondary">Ajouter</button>
+                          <button (click)="addRoleAndUtilisateur()" id="send" class="button button-secondary">Ajouter</button>
                         </div>
                       </div>
                       <div class="message">

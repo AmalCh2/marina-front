@@ -19,39 +19,55 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Nº Client :</label>
-                          <input type="number" placeholder="Entrer le numéro du client" required id="id_cli"/>
+                          <input type="number" placeholder="Entrer le numéro du client" required id="id_cli"
+                          [(ngModel)]="Client.id_cli"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Nom Client :</label>
-                          <input type="text" placeholder="Entrer le nom du client" required id="nom_cli"/>
+                          <input type="text" placeholder="Entrer le nom du client" required id="nom_cli"
+                          [(ngModel)]="Client.nom_cli"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Prenom Client :</label>
-                          <input type="text" placeholder="Entrer le prénom du client" required id="pre_cli"/>
+                          <input type="text" placeholder="Entrer le prénom du client" required id="pre_cli"
+                          [(ngModel)]="Client.prenom_cli"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Nationnalité :</label>
-                          <input type="text" placeholder="Entrer la nationnalité du client" required id="natio_cli"/>
+                          <input type="text" placeholder="Entrer la nationnalité du client" required id="natio_cli"
+                          [(ngModel)]="Pays.nationnalite"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <br>
                       <h1 class="form-title">Contact du client :</h1>
                         <div class="column">
                           <div class="input-box">
-                            <input type="text" placeholder="Entrer l'email" required id="id_cli"/>
+                            <input type="email" placeholder="Entrer l'email" required 
+                            [(ngModel)]="Client.email_cli"
+                          [ngModelOptions]="{standalone : true}"/>
                           </div>
                           <div class="input-box">
-                            <input type="number" placeholder="Entrer le numéro du téléphone" required  id="largeur"/>
+                            <input type="number" placeholder="Entrer le numéro du téléphone" required
+                            [(ngModel)]="Client.tel_cli"
+                          [ngModelOptions]="{standalone : true}"/>
                           </div>
                         </div>
                         <div class="column">
                           <div class="input-box">
-                            <input type="number" placeholder="Entrer le numéro mobile" required id="tirant_eau"/>
+                            <input type="number" placeholder="Entrer le numéro mobile" required 
+                            [(ngModel)]="Client.mobile_cli"
+                          [ngModelOptions]="{standalone : true}"/>
                           </div>
                           <div class="input-box">
-                            <input type="number" placeholder="Entrer le numéro fax" required id="tonnage"/>
+                            <input type="number" placeholder="Entrer le numéro fax" required
+                            [(ngModel)]="Client.fax_cli"
+                          [ngModelOptions]="{standalone : true}"/>
                           </div>
                         </div>
                       <div class="column">
@@ -96,33 +112,44 @@
                       <h1 class="form-title">Informations sur l'addresse client :</h1>
                       <div class="input-box">
                         <label>Adresse :</label>
-                        <input type="text" placeholder="Entrer l'adresse du client" required  id="designation"/>
+                        <input type="text" placeholder="Entrer l'adresse du client" required  
+                        [(ngModel)]="Client.adresse_cli"
+                          [ngModelOptions]="{standalone : true}"/>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Pavillon :</label>
-                          <input type="text" placeholder="Entrer le nom du pavillon" required  id="designation"/>
+                          <input type="text" placeholder="Entrer le nom du pavillon" required  
+                          [(ngModel)]="Pays.pavillon"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Ville :</label>
-                          <input type="text" placeholder="Entrer la ville du client" required  id="designation"/>
+                          <input type="text" placeholder="Entrer la ville du client" required  
+                          [(ngModel)]="Client.ville_cli"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Pays :</label>
-                          <input type="text" placeholder="Entrer le pays du client" required  id="designation"/>
+                          <input type="text" placeholder="Entrer le pays du client" required  
+                          [(ngModel)]="Pays.nom_pays"
+                          [(ngModel)]="Client.nom_pays"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Code postale :</label>
-                          <input type="number" placeholder="Entrer le code postale du client" required  id="designation"/>
+                          <input type="number" placeholder="Entrer le code postale du client" required  
+                          [(ngModel)]="Client.code_postal_cli"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                     </form>
                     <div class="submit-box">
                       <div class="button-group button">
                         <button class="button button-primary" [routerLink]="['/rechercher_client']" routerbuttonActive="active" >Annuler</button>
-                        <button onclick="message()" id="send" class="button button-secondary">Ajouter</button>
+                        <button (click)="addPaysAndClient()" id="send" class="button button-secondary">Ajouter</button>
                       </div>
                     </div>
                     <div class="message">

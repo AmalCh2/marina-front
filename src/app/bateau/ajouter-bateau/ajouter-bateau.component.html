@@ -25,7 +25,7 @@
                         </div>
                         <div class="input-box">
                           <label>Nº du bateau :</label>
-                          <input type="number" placeholder="Entrer le numéro du bateau" id="num_bat"
+                          <input type="number" placeholder="Entrer le numéro du bateau" required id="num_bat"
                           [(ngModel)]="Bateau.id_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -33,21 +33,21 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Nom du propriétaire :</label>
-                          <input type="text" placeholder="Entrer le nom du propriétaire"  id="nom_prop"/><!---->
+                          <input type="text" placeholder="Entrer le nom du propriétaire"required   id="nom_prop"/><!---->
                         </div>
                         <div class="input-box">
                           <label>Nº du propriétaire :</label>
-                          <input type="number" placeholder="Entrer le numero du propriétaire" id="num_prop" /><!---->
+                          <input type="number" placeholder="Entrer le numero du propriétaire"required id="num_prop" /><!---->
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Nom du port :</label>
-                          <input type="text" placeholder="Entrer le nom du port"  id="nom_port"/><!---->
+                          <input type="text" placeholder="Entrer le nom du port" required id="nom_port"/><!---->
                         </div>
                         <div class="input-box">
                           <label>Nº du port :</label>
-                          <input type="number" placeholder="Entrer le numero du port"  id="num_port"/><!---->
+                          <input type="number" placeholder="Entrer le numero du port" required id="num_port"/><!---->
                         </div>
                       </div>
                       <div class="column">
@@ -59,7 +59,7 @@
                         </div>
                         <div class="input-box">
                           <label>Autre nom :</label>
-                          <input type="text" placeholder="Entrer un autre nom du bateau" id="autre_nom"
+                          <input type="text" placeholder="Entrer un autre nom du bateau" required id="autre_nom"
                           [(ngModel)]="Bateau.autre_ident_nom_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -88,7 +88,7 @@
                         <div class="input-box">
                           <label>Email :</label>
                           <input type="email" placeholder="Entrer l'email du bateau" required id="email"
-                          [(ngModel)]="Bateau.adresse_bat"
+                          [(ngModel)]="Bateau.email_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
@@ -107,7 +107,7 @@
                         </div>
                         <div class="input-box">
                           <label>Code Postale :</label>
-                          <input type="text" placeholder="Entrer le code postale" required id="code_postale"
+                          <input type="number" placeholder="Entrer le code postale" required id="code_postale"
                           [(ngModel)]="Bateau.code_postal_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -159,7 +159,7 @@
                         </div>
                         <div class="input-box">
                           <label>Nº mobile :</label>
-                          <input type="number" placeholder="Entrer le numéro mobile"  id="mobile" 
+                          <input type="number" placeholder="Entrer le numéro mobile" required  id="mobile" 
                           [(ngModel)]="Bateau.mobile_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -168,7 +168,7 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Nº du type :</label>
-                          <input type="number" placeholder="Entrer le numéro du type du bateau"   id="num_type"
+                          <input type="number" placeholder="Entrer le numéro du type du bateau" required  id="num_type"
                           [(ngModel)]="TypeBateau.id_type_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -187,13 +187,13 @@
                       </div>
                       <div class="input-box">
                         <label>Designation :</label>
-                        <input type="text" placeholder="Entrer la désignation du bateau"  id="designation"
+                        <input type="text" placeholder="Entrer la désignation du bateau" required id="designation"
                         [(ngModel)]="TypeBateau.designation_bat"
                           [ngModelOptions]="{standalone : true}"/>
                       </div>
                       <div class="input-box">
                         <label>Majoration :</label>
-                        <input type="text" placeholder="Entrer la majoration du bateau" id="majoration" 
+                        <input type="number" placeholder="Entrer la majoration du bateau" required id="majoration" 
                         [(ngModel)]="TypeBateau.majoration_bat"
                           [ngModelOptions]="{standalone : true}"/>
                       </div>
@@ -246,19 +246,11 @@
                     <div class="submit-box">
                       <div class="button-group button">
                         <button class="button button-primary" routerLink="/rechercher_bateau"  routerLinkActive="active" >Annuler</button>
-                        <button type="button" class="btn btn-success" (click)="addBateau(Bateau)"
+                        <button type="button" class="btn btn-success" (click)="addTypeBateauAndBateau()"
                         class="button button-secondary">Ajouter</button>
                       </div>
                     </div>
-
-
-
-
-
-
-
-
-  
+                    
                   <div class="message">
                       <div class="success" id="success">Bateau ajouté avec succès! </div>
                       <div class="danger" id="danger">Vérifier les champs obligatoires! </div>

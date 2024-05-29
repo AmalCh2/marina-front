@@ -12,5 +12,8 @@ export class Emplacement {
     direction_emp: any;
     id_pelectrique: any;
     id_quai: any;
+    desig_quai:any;
+    rang_quai:any;
+
   }
   

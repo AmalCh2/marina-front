@@ -12,46 +12,103 @@
                 <div class="big-container">
                     <div class="formulaire-boxes">
                         <!-- Formulaire Etape 1 -->
-                        <div  *ngIf="currentPage === 1">
+                        <div>
                             <section class="container container-1">
                             <form action="#" class="form">
-                                <h1 class="form-title">Séjour :</h1>
+                                <br>
+                                <h1 class="form-title">Information du séjour :</h1>
                                 <div class="column">
                                     <div class="input-box">
-                                        <label>Nº du séjour :</label>
-                                        <input type="text" placeholder="Entrer le numéro du séjour" required  />
+                                        <label>Nº séjour :</label>
+                                        <input type="number" placeholder="Entrer le numéro du séjour" required  
+                                        [(ngModel)]="sejour.id_sej"
+                                        [ngModelOptions]="{standalone : true}"/>
                                     </div>
                                     <div class="input-box">
-                                        <label>Nº de la réservation :</label>
-                                        <input type="text" placeholder="Entrer le nom du bateau" required />
+                                        <label>Nº du réservation :</label>
+                                        <input type="number" placeholder="Entrer le numéro de la réservation" required  
+                                        [(ngModel)]="sejour.id_reservation"
+                                        [ngModelOptions]="{standalone : true}"/>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="input-box">
+                                        <label>Nº tarif :</label>
+                                        <input type="number" placeholder="Entrer le numéro du tarif" required  
+                                        [(ngModel)]="sejour.id_tarif"
+                                        [ngModelOptions]="{standalone : true}"/>
                                     </div>
                                     <div class="input-box">
-                                        <label>Nº d'emplacement :</label>
-                                        <input type="number" placeholder="Entrer le numéro du bateau"  />
+                                        <label>Nº emplacement :</label>
+                                        <input type="number" placeholder="Entrer le numero d'emplacement'" required  
+                                        [(ngModel)]="sejour.id_emp"
+                                        [ngModelOptions]="{standalone : true}"/>
                                     </div>
                                 </div>
                                 <div class="column">
                                     <div class="input-box">
                                         <label>Nº du bateau :</label>
-                                        <input type="number" placeholder="Entrer le nom du bateau" required  />
+                                        <input type="number" placeholder="Entrer le nom du bateau" required  
+                                        [(ngModel)]="sejour.id_bat"
+                                        [ngModelOptions]="{standalone : true}"/>
                                     </div>
                                     <div class="input-box">
                                         <label>Nom du bateau :</label>
-                                        <input type="text" placeholder="Entrer le numéro du bateau"  />
+                                        <input type="text" placeholder="Entrer le numéro du bateau" required  
+                                        [(ngModel)]="sejour.nom_bat"
+                                        [ngModelOptions]="{standalone : true}"/>
                                     </div>
                                 </div>
                                 <div class="column">
                                     <div class="input-box">
                                         <label>Nº du propriétaire :</label>
-                                        <input type="number" placeholder="Entrer le nom du propriétaire" required  />
+                                        <input type="number" placeholder="Entrer le nom du propriétaire" required  
+                                        [(ngModel)]="sejour.id_cli"
+                                        [ngModelOptions]="{standalone : true}"/>
                                     </div>
                                     <div class="input-box">
                                         <label>Nom du propriétaire :</label>
-                                        <input type="text" placeholder="Entrer le numero du propriétaire"  />
+                                        <input type="text" placeholder="Entrer le numero du propriétaire"  required  
+                                        [(ngModel)]="sejour.nom_cli"
+                                        [ngModelOptions]="{standalone : true}"/>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="input-box">
+                                        <label>Début :</label>
+                                        <input type="date" placeholder="Entrer l'immatriculation du bateau" required required  
+                                        [(ngModel)]="sejour.deb_sej"
+                                        [ngModelOptions]="{standalone : true}"/>
+                                    </div>
+                                    <div class="input-box">
+                                        <label>Fin :</label>
+                                        <input type="date" placeholder="Entrer un autre nom du bateau"required  
+                                        [(ngModel)]="sejour.fin_sej"
+                                        [ngModelOptions]="{standalone : true}"/>
+                                    </div>
+                                    <div class="input-box">
+                                        <label>Nº des jours :</label>
+                                        <input type="number" placeholder="Entrer le numero des jours" required  
+                                        [(ngModel)]="sejour.num_jours"
+                                        [ngModelOptions]="{standalone : true}"/>
                                     </div>
                                 </div>
                                 <br>
-                                <h1 class="form-title">Informations du séjour :</h1>
+                                <div class="column">
+                                    <div class="input-box">
+                                        <label>Nº du type séjours :</label>
+                                        <input type="number" placeholder="Entrer le numéro du type séjour" required required  
+                                        [(ngModel)]="typeSejour.id_type_sej"
+                                        [(ngModel)]="sejour.id_type_sej"
+                                        [ngModelOptions]="{standalone : true}"/>
+                                    </div>
+                                    <div class="input-box">
+                                        <label>Majoration :</label>
+                                        <input type="number" placeholder="Entrer la majoration" required  
+                                        [(ngModel)]="typeSejour.sej_majoration"
+                                        [ngModelOptions]="{standalone : true}"/>
+                                    </div>
+                                </div>
                                 <div class="column">
                                     <div class="input-box">
                                         <div class="input-box">
@@ -71,601 +128,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="column">
-                                    <div class="input-box">
-                                        <label>Nº des jours :</label>
-                                        <input type="number" placeholder="Entrer le numero du port" />
-                                    </div>
-                                    <div class="input-box">
-                                        <label>Début :</label>
-                                        <input type="date" placeholder="Entrer l'immatriculation du bateau" required />
-                                    </div>
-                                    <div class="input-box">
-                                        <label>Fin :</label>
-                                        <input type="date" placeholder="Entrer un autre nom du bateau"/>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="input-box">
-                                        <label>Ammarage :</label>
-                                        <input type="text" placeholder="Entrer le pavillon du bateau" required />
-                                    </div>
-                                    <div class="input-box">
-                                        <label>Forfait :</label>
-                                        <input type="text" placeholder="Entrer la marque du bateau" required />
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="input-box">
-                                        <label>Majoration :</label>
-                                        <input type="number" placeholder="Entrer le pavillon du bateau" required/>
-                                    </div>
-                                    <div class="input-box">
-                                        <label>Autres tarifs :</label>
-                                        <div class="select-box" >
-                                            <select required>
-                                                <option hidden>Tarifs :</option>
-                                                <option>Autres tarifs</option>
-                                                <option>...</option>
-                                            </select>
+                                <br>
+                                <div>
+                                    <div class="submit-box">
+                                        <div class="button-group button">
+                                            <button class="button button-primary" [routerLink]="['/rechercher_séjour']" routerbuttonActive="active"  >Annuler</button>
+                                            <button (click)="addSejourAndTypeSejour()" id="send" class="button button-secondary">Ajouter</button>
                                         </div>
                                     </div>
+                                    <div class="message">
+                                        <div class="success" id="success">Séjour ajouté avec succès! </div>
+                                        <div class="danger" id="danger">Vérifier les champs obligatoires! </div>
+                                    </div>
                                 </div>
+                                
                             </form>
+                            
                             </section>
+                            
                         </div>
-                        <!-- Formulaire Etape 2 -->
-                        <div *ngIf="currentPage === 2">
-                            <section class="container container-2">
-                                <h1 class="form-title">Information d'amarrage :</h1>
-                                <div class="details">
-                                    <div class="Boats boats1">
-                                        <!--<app-liste-des-bateaux></app-liste-des-bateaux>-->
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <td>Tarif Ammarage</td>
-                                                    <td>Prix</td>
-                                                    <td>Réel</td>
-                                                    <td>Fact</td>
-                                                    <td>Total</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="span">Journée Ht Saison</td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="span">Mois Ht Saison</td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="span">Journée Moy Saison</td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="span">Mois Moy Saison</td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="span">Journée Bas Saison</td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="span">Mois Bas Saison</td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="span">Annuel</td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="span">Hivernage</td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="span">Total Ammarage</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                        <!-- Formulaire Etape 3 -->
-                        <div *ngIf="currentPage === 3">
-                            <section class="container container-2">
-                                <h1 class="form-title">Forfaits :</h1>
-                                <div class="option-check-details exo">
-                                    <label class="check-label">Facturation forfait :</label>
-                                    <input type="radio" name="option-check" id="dot-1">
-                                    <input type="radio" name="option-check" id="dot-2">
-                                    <div class="category exo">
-                                        <label for="dot-1">
-                                            <span class="dot one"></span>
-                                            <span class="option-check">Oui</span>
-                                        </label>
-                                        <label for="dot-2">
-                                            <span class="dot two"></span>
-                                            <span class="option-check">Non</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <div class="Boats boats2">
-                                    <!--<app-liste-des-bateaux></app-liste-des-bateaux>-->
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <td></td>
-                                                    <td colspan="2">Jours</td> 
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td colspan="2">Mois</td> 
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td colspan="2">Année</td> 
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Article</td>
-                                                    <td></td>
-                                                    <td>Nombre</td>
-                                                    <td>Tarif</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>Nombre</td>
-                                                    <td>Tarif</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>Nombre</td>
-                                                    <td>Tarif</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td contenteditable="true" onblur="validateText(this)" ></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
-                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <form  class="form">
-                                        <div class="column">
-                                            <div class="input-box total-sej">
-                                                <label>Total séjour:</label>
-                                                <input type="number"  required />
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="submit-box">
-                                    <div class="button-group button">
-                                        <button class="button button-primary" [routerLink]="['/rechercher_séjour']" routerbuttonActive="active"  >Annuler</button>
-                                        <button onclick="message()" id="send" class="button button-secondary">Ajouter</button>
-                                    </div>
-                                </div>
-                                <div class="message">
-                                    <div class="success" id="success">Séjour ajouté avec succès! </div>
-                                    <div class="danger" id="danger">Vérifier les champs obligatoires! </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                    <!-- Boutons de pagination -->
-                    <div class="pagination">
-                        <ul class="pagination">
-                            <!-- Bouton Précédent -->
-                            <li class="btn prev" (click)="changePage(currentPage - 1)" [hidden]="currentPage === 1">
-                                <span><i class="fas fa-angle-left"></i> Précédent</span>
-                            </li>
-                            <!-- Affichage des numéros de page -->
-                            <ng-container *ngFor="let plength of getPages()">
-                                <li class="numb" [class.active]="currentPage === plength" (click)="changePage(plength)">
-                                    <span>{{ plength }}</span>
-                                </li>
-                            </ng-container>
-                            <!-- Bouton Suivant -->
-                            <li class="btn next" (click)="changePage(currentPage + 1)" [hidden]="currentPage === totalPages">
-                                <span>Suivant <i class="fas fa-angle-right"></i></span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

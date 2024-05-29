@@ -1,6 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SideNavToggle } from '../SideNavToggle.interface';
 import { AxiosService } from 'src/app/axios.service';
+import { Client } from 'src/app/shared/Model/Client';
+import { Pays } from 'src/app/shared/Model/Pays';
+import { ClientService } from 'src/app/shared/Service/Client.service';
+import { PaysService } from 'src/app/shared/Service/Pays.service';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-ajouter-client',
@@ -18,7 +24,18 @@ export class AjouterClientComponent implements OnInit {
   currentPage: number = 1;
   paginationHTML: string = '';
 
-  constructor(private axiosService: AxiosService) {}
+  listClient: any;
+  form: boolean = false;
+  Client!: Client;
+  closeResult!: string;
+
+  listPays: any;
+  Pays!: Pays;
+
+  constructor(private axiosService: AxiosService,
+    private ClientService: ClientService,
+    private modalService: NgbModal,
+    private PaysService: PaysService) { }
 
   ngOnInit(): void {
     this.axiosService.request(
@@ -29,7 +46,115 @@ export class AjouterClientComponent implements OnInit {
       (response) => this.data = response.data
     );
     this.generatePagination();
+    this.getAllClients();
+
+    this.Client = {
+      id_cli: null,
+    nom_cli: null,
+    prenom_cli: null,
+    etat_civil: null,
+    adresse_cli: null,
+    code_postal_cli: null,
+    ville_cli: null,
+    tel_cli: null,
+    fax_cli: null,
+    mobile_cli: null,
+    email_cli: null,
+    exo_cli: null,
+    nom_pays: null,
+    };
+    this.getAllPays();
+
+    this.Pays = {
+      nom_pays:null,
+    nationnalite : null,
+    pavillon : null,
+    }
   }
+
+
+  getAllClients() {
+    this.ClientService.getAllClients().subscribe(res => this.listClient = res)
+  }
+
+  getAllPays() {
+    this.PaysService.getAllPays().subscribe(res => this.listPays = res)
+  }
+
+  addPaysAndClient() {
+    this.PaysService.addPays(this.Pays).subscribe(() => {
+      this.getAllPays();
+    });
+    this.ClientService.addClient(this.Client).subscribe(() => {
+      this.getAllClients();
+    });
+  }
+
+  editPaysAndClient() {
+    this.PaysService.editPays(this.Pays).subscribe(() => {
+      this.getAllPays();
+    });
+    this.ClientService.editClient(this.Client).subscribe(() => {
+      this.getAllClients();
+    });
+  }
+
+  deletePaysAndClient(idPays: any, idClient: any) {
+    this.PaysService.deletePays(idPays).subscribe(() => {
+      this.getAllPays();
+    });
+    this.ClientService.deleteClient(idClient).subscribe(() => {
+      this.getAllClients();
+    });
+  }
+
+  open(content: any, action: { pays: Pays, client: Client } | null) {
+    if (action != null) {
+      this.Pays = action.pays;
+      this.Client = action.client;
+    } else {
+      this.Pays = new Pays();
+      this.Client = new Client();
+    }
+
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  cancel() {
+    this.form = false;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;

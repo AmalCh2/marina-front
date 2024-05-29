@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PaysComponent } from './pays/pays.component';
 import { MenuGeneralComponent } from './menu-general/menu-general.component';
-import { BateauComponent } from './bateau/bateau.component';
 import { AjouterBateauComponent } from './bateau/ajouter-bateau/ajouter-bateau.component';
 import { RechercherBateauComponent } from './bateau/rechercher-bateau/rechercher-bateau.component';
 import { FicheBateauModifierComponent } from './bateau/fiche-bateau-modifier/fiche-bateau-modifier.component';
@@ -61,9 +60,9 @@ const routes: Routes =[
 
 
   { path: '', redirectTo: '/Page_d_accueil', pathMatch: 'full' },
-    {data: { title: 'Marina Yasmine Hammamet | Accueil générale' },path:'Page_d_accueil', component: HomePageComponent},
-    {data: { title: 'Marina Yasmine Hammamet | A propos' },path:'A_Propos', component: AproposPageComponent},
-    {data: { title: 'Marina Yasmine Hammamet | Se connecter' }, path:'Se_connecter', component: ConnexionComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Accueil générale' },path:'Page_d_accueil', component: HomePageComponent},
+  {data: { title: 'Marina Yasmine Hammamet | A propos' },path:'A_Propos', component: AproposPageComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Se connecter' }, path:'Se_connecter', component: ConnexionComponent},
 
 
 
@@ -74,7 +73,6 @@ const routes: Routes =[
   { path: 'pays',  component: PaysComponent },
   {path:'menu_general', component: MenuGeneralComponent},
 
-  {path:'bateau', component: BateauComponent},
 
   {path:'ajouter_bateau', component: AjouterBateauComponent},
 
@@ -134,14 +132,14 @@ const routes: Routes =[
   {data: { title: 'Marina Yasmine Hammamet | Modifier un Tarif de Prestation' },path:'modifier_tarif_prestation', component: ModifierTarifPrestationComponent},
 
 
-      {/*title:"Marina Yasmine Hammamet | Ajouter une réservation",*/path:'ajouter_réservation', component: AjouterReservationComponent},
-    {/*title:"Marina Yasmine Hammamet | Rechercher une réservation",*/path:'rechercher_réservation', component: RechercherReservationComponent},
-    {/*title:"Marina Yasmine Hammamet | Imprimer fiche d'une réservation",*/path:'fiche_réservation', component: FicheReservationComponent},
-    {/*title:"Marina Yasmine Hammamet | Modifier une fiche d'une réservation",*/path:'modifier_fiche_réservation', component: FicheReservationModifierComponent},
-    {/*title:"Marina Yasmine Hammamet | Etat des réservations (Arrivées)",*/path:'etat_réservation_arrivées', component: EtatReservationArriveesComponent},
-    {/*title:"Marina Yasmine Hammamet | Archive des réservations",*/path:'archives_réservations', component: ArchiveReservationComponent},
+  {/*title:"Marina Yasmine Hammamet | Ajouter une réservation",*/path:'ajouter_réservation', component: AjouterReservationComponent},
+  {/*title:"Marina Yasmine Hammamet | Rechercher une réservation",*/path:'rechercher_réservation', component: RechercherReservationComponent},
+  {/*title:"Marina Yasmine Hammamet | Imprimer fiche d'une réservation",*/path:'fiche_réservation', component: FicheReservationComponent},
+  {/*title:"Marina Yasmine Hammamet | Modifier une fiche d'une réservation",*/path:'modifier_fiche_réservation', component: FicheReservationModifierComponent},
+  {/*title:"Marina Yasmine Hammamet | Etat des réservations (Arrivées)",*/path:'etat_réservation_arrivées', component: EtatReservationArriveesComponent},
+  {/*title:"Marina Yasmine Hammamet | Archive des réservations",*/path:'archives_réservations', component: ArchiveReservationComponent},
 
-        {/*title:"Marina Yasmine Hammamet | Plan d'eau",*/path:'plan_d_eau', component: PlanDEauComponent},
+  {/*title:"Marina Yasmine Hammamet | Plan d'eau",*/path:'plan_d_eau', component: PlanDEauComponent},
 
   {/*title:"Marina Yasmine Hammamet | Séjour",*/path:'séjour', component: SejourComponent},
   {/*title:"Marina Yasmine Hammamet | Rechercher un séjour",*/path:'rechercher_séjour', component: RechercherSejourComponent},

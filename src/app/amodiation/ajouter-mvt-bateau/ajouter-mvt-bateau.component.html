@@ -21,38 +21,50 @@
                       <div class="column">
                         <div class="input-box">
                           <label>MVT au :</label>
-                          <input type="date"/>
+                          <input type="date"required 
+                          [(ngModel)]="Bateau.date_mvt"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Emplacement :</label>
-                          <input type="text" placeholder="Entrer le numéro d'emplaceement" required/>
+                          <input type="text" placeholder="Entrer le numéro d'emplaceement" required 
+                          [(ngModel)]="Bateau.id_emp"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Bateau :</label>
-                          <input type="text" placeholder="Entrer le nom du bateau" required/>
+                          <input type="text" placeholder="Entrer le nom du bateau" required 
+                          [(ngModel)]="Bateau.nom_bat"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Commentaire :</label>
-                          <input type="text" placeholder="Entrer une note" required />
+                          <input type="text" placeholder="Entrer une note" required 
+                          [(ngModel)]="Bateau.commentaire_mvt"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Arrivéé :</label>
-                          <input type="date" />
+                          <input type="date" required 
+                          [(ngModel)]="Bateau.arrivee_mvt"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Départ :</label>
-                          <input type="date" />
+                          <input type="date" required 
+                          [(ngModel)]="Bateau.depart_mvt"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                     </form>
                     <div class="submit-box">
                         <div class="button-group button">
                           <button class="button button-primary" [routerLink]="['/afficher_mvt_bateaux']" routerbuttonActive="active" >Annuler</button>
-                          <button onclick="message()" id="send" class="button button-secondary">Ajouter</button>
+                          <button (click)="addBateau(Bateau)" id="send" class="button button-secondary">Ajouter</button>
                         </div>
                       </div>
                       <div class="message">

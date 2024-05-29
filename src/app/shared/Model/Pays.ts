@@ -1,5 +1,5 @@
 export class Pays {
-    id_pays:any;
+    nom_pays:any;
     nationnalite : any;
     pavillon : any;
 
