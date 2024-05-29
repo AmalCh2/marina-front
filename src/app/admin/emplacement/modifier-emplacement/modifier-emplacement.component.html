@@ -1,0 +1,129 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+      <router-outlet></router-outlet>
+  
+      <section class="content">
+        <div class="left-content">
+          <div class="main">
+            <div class="BigTitle">
+              <h1><i class="fal fa-ship faa2x"></i> Modifier un Emplacement</h1>
+            </div>
+            <div class="big-container">
+              <div class="formulaire-boxes">
+                <!-- Formulaire Etape 1 -->
+                <div>
+                  <section class="container container-1">
+                    <form action="#" class="form">
+                      <h1 class="form-title">Informations sur l'emplacement :</h1>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº d'emplacement :</label>
+                          <input type="number" />
+                        </div>
+                        <div class="input-box">
+                          <label>Largeur d'emplacement :</label>
+                          <input type="float"  required />
+                        </div>
+                        <div class="input-box">
+                          <label>Longueur d'emplacement :</label>
+                          <input type="float"   /><!---->
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Tirant d'eau :</label>
+                          <input type="number"/><!---->
+                        </div>
+                        <div class="input-box">
+                          <label>Téléphone du port :</label>
+                          <input type="text" /><!---->
+                        </div>
+                        <div class="input-box">
+                          <label>Nombre du mouillage :</label>
+                          <input type="number" /><!---->
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Type du corde :</label>
+                          <input type="text" />
+                        </div>
+                        <div class="input-box">
+                          <label>Direction :</label>
+                          <input type="text" required />
+                        </div>
+                        <div class="input-box">
+                          <label>Rang :</label>
+                          <input type="number" required/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Commentaire :</label>
+                          <input type="text" />
+                        </div>
+                        <div class="input-box">
+                          <label>Nº quai :</label>
+                          <input type="number" required />
+                        </div>
+                        <div class="input-box">
+                          <label>Désignation quai :</label>
+                          <input type="text"  required />
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Rang quai :</label>
+                          <input type="number" required />
+                        </div>
+                        <div class="input-box">
+                          <label>Nº P_électrique :</label>
+                          <input type="number"  required/>
+                        </div>
+                      </div>
+                      <div class="multicoque-box">
+                        <label>Blockage :</label>
+                        <div class="multicoque-option">
+                          <div class="multicoque">
+                            <input type="radio" id="check-yes" name="multicoque" checked />
+                            <label for="check-yes">Oui</label>
+                          </div>
+                          <div class="multicoque">
+                            <input type="radio" class="check-no" id="check-no" name="multicoque" />
+                            <label for="check-no">Non</label>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="submit-box">
+                      <div class="button-group button">
+                        <button class="button button-primary" routerLink="/rechercher_emplacement"  routerLinkActive="active" >Annuler</button>
+                        <button type="button" class="btn btn-success" 
+                        class="button button-secondary">Enregistrer</button>
+                      </div>
+                    </div>
+
+
+
+
+
+
+
+
+  
+                  <div class="message">
+                      <div class="success" id="success">Emplacement modifié avec succès! </div>
+                      <div class="danger" id="danger">Réessayer!!! </div>
+                  </div>
+                  </section>
+                </div>
+              </div>              
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    </div>
+  </div>
+  

@@ -81,6 +81,71 @@ export class RechercherConsommationComponent implements OnInit {
       sejour: 'Propriétaire 1', 
       facture: 'IMM-001', 
       prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
+    },{ 
+      num: 'Bateau 1', 
+      sejour: 'Propriétaire 1', 
+      facture: 'IMM-001', 
+      prestation: 'Type 1'
     },
   ];
 }

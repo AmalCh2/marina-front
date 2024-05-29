@@ -1,0 +1,117 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+      <router-outlet></router-outlet>
+  
+      <section class="content">
+        <div class="left-content">
+          <div class="main">
+            <div class="BigTitle">
+              <h1><i class="fal fa-ship faa2x"></i> Modifier un Tarif Ammarage</h1>
+            </div>
+            <div class="big-container">
+              <div class="formulaire-boxes">
+                <!-- Formulaire Etape 1 -->
+                <div>
+                  <section class="container container-1">
+                    <form action="#" class="form">
+                      <h1 class="form-title">Informations tarif ammarage :</h1>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº tarif ammarage :</label>
+                          <input type="number"  required 
+                          />
+                        </div>
+                        <div class="input-box">
+                          <label>Année :</label>
+                          <input type="number" 
+                          />
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Type tarif ammarage :</label>
+                          <input type="text"/><!---->
+                        </div>
+                        <div class="input-box">
+                          <label>Longueur bateau :</label>
+                          <input type="number" /><!---->
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Largeur bateau :</label>
+                          <input type="number"/><!---->
+                        </div>
+                        <div class="input-box">
+                          <label>Tarif hivernage:</label>
+                          <input type="float"   /><!---->
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Jour HS :</label>
+                          <input type="number" /><!---->
+                        </div>
+                        <div class="input-box">
+                            <label>Jour MS :</label>
+                            <input type="number"/><!---->
+                          </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Jour BS :</label>
+                          <input type="number" /><!---->
+                        </div>
+                        <div class="input-box">
+                            <label>Mois HS :</label>
+                            <input type="number"/><!---->
+                          </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                            <label>Mois MS :</label>
+                            <input type="number"/><!---->
+                          </div>
+                        <div class="input-box">
+                            <label>Mois BS :</label>
+                            <input type="number"/><!---->
+                          </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº période :</label>
+                          <input type="number" /><!---->
+                        </div>
+                        <div class="input-box">
+                          <label>Début :</label>
+                          <input type="date"  /><!---->
+                        </div>
+                        <div class="input-box">
+                            <label>Fin :</label>
+                            <input type="date"  /><!---->
+                          </div>
+                      </div>
+                    </form>
+                    <div class="submit-box">
+                        <div class="button-group button">
+                          <button class="button button-primary" routerLink="/afficher_tarif_ammarage"  routerLinkActive="active" >Annuler</button>
+                          <button type="button" class="btn btn-success" 
+                          class="button button-secondary">Enregistrer</button>
+                        </div>
+                      </div>
+                    <div class="message">
+                        <div class="success" id="success">Tarif ammarage enregistré avec succès! </div>
+                        <div class="danger" id="danger">Réessayer!!! </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    </div>
+  </div>
+  

@@ -1,0 +1,116 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+      <router-outlet></router-outlet>
+  
+      <section class="content">
+        <div class="left-content">
+          <div class="main">
+            <div class="BigTitle">
+              <h1><i class="fal fa-ship faa2x"></i> Ajouter un Tarif de Prestation</h1>
+            </div>
+            <div class="big-container">
+              <div class="formulaire-boxes">
+                <!-- Formulaire Etape 1 -->
+                <div>
+                  <section class="container container-1">
+                    <form action="#" class="form">
+                      <h1 class="form-title">Informations tarif prestation :</h1>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Libelle de la prestation :</label>
+                          <input type="text" placeholder="Entrer la libelle de la prestation" required id="nom_bat"
+                          />
+                        </div>
+                        <div class="input-box">
+                          <label>Prix unitaire de la prestation :</label>
+                          <input type="number" placeholder="Entrer le prix unitaire de la prestation" id="num_bat"
+                          />
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Secteur de la prestation :</label>
+                          <input type="text" placeholder="Entrer le secteur de la prestation"  id="nom_prop"/><!---->
+                        </div>
+                        <div class="input-box">
+                          <label>Rang de la prestation :</label>
+                          <input type="number" placeholder="Entrer le numero du propriétaire" id="num_prop" /><!---->
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº du type de la prestation :</label>
+                          <input type="number" placeholder="Entrer le numéro du type de la prestation"/><!---->
+                        </div>
+                        <div class="input-box">
+                          <label>Libelle du type de la prestation :</label>
+                          <input type="text" placeholder="Entrer la libelle du type de la prestation"  /><!---->
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Rang du type de la prestation :</label>
+                          <input type="number" placeholder="Entrer le rang du type de la prestation" required 
+                          />
+                        </div>
+                        <div class="input-box">
+                          <label>Nº TVA :</label>
+                          <input type="number" placeholder="Entrer le numéro du tva" 
+                          />
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Taux TVA :</label>
+                          <input type="float" placeholder="Entrer le taux tva" required id="pavillon"
+                          />
+                        </div>
+                        <div class="input-box">
+                          <label>Compte TVA :</label>
+                          <input type="text" placeholder="Entrer le compte du tva" required 
+                          />
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Date TVA :</label>
+                          <input type="date" required
+                          />
+                        </div>
+                        <div class="input-box">
+                          <label>Nº de nature de la prestation :</label>
+                          <input type="number" placeholder="Entrer le numéro de la nature de la prestation" required 
+                          />
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Libelle de la nature de prestation :</label>
+                          <input type="text" placeholder="Entrer la libelle de la nature de la prestation" required 
+                          />
+                        </div>
+                      </div>
+                    </form>
+                    <div class="submit-box">
+                        <div class="button-group button">
+                          <button class="button button-primary" routerLink="/afficher_tarif_prestation"  routerLinkActive="active" >Annuler</button>
+                          <button type="button" class="btn btn-success" 
+                          class="button button-secondary">Ajouter</button>
+                        </div>
+                      </div>
+                    <div class="message">
+                        <div class="success" id="success">Prestation ajouté avec succès! </div>
+                        <div class="danger" id="danger">Vérifier les champs obligatoires! </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    </div>
+  </div>
+  

@@ -32,9 +32,45 @@ import { AjouterConsommationComponent } from './facturation/consommation/ajouter
 import { RechercherConsommationComponent } from './facturation/consommation/rechercher-consommation/rechercher-consommation.component';
 import { ModifierConsommationComponent } from './facturation/consommation/modifier-consommation/modifier-consommation.component';
 import { CalendrierComponent } from './menu-general/calendrier/calendrier.component';
+import { HomePageComponent } from './accueil/home-page/home-page.component';
+import { AproposPageComponent } from './accueil/apropos-page/apropos-page.component';
+import { ConnexionComponent } from './accueil/connexion/connexion.component';
+import { AjouterFactureComponent } from './facturation/facture/ajouter-facture/ajouter-facture.component';
+import { ModifierFactureComponent } from './facturation/facture/modifier-facture/modifier-facture.component';
+import { ImprimerFactureComponent } from './facturation/facture/imprimer-facture/imprimer-facture.component';
+import { RechercherFacturesComponent } from './facturation/facture/rechercher-factures/rechercher-factures.component';
+import { AjouterTarifPrestationComponent } from './admin/tarif/ajouter-tarif/ajouter-tarif-prestation/ajouter-tarif-prestation.component';
+import { AjouterTarifForfaitComponent } from './admin/tarif/ajouter-tarif/ajouter-tarif-forfait/ajouter-tarif-forfait.component';
+import { AjouterTarifAmmarageComponent } from './admin/tarif/ajouter-tarif/ajouter-tarif-ammarage/ajouter-tarif-ammarage.component';
+import { AfficherTarifAmmarageComponent } from './admin/tarif/afficher-tarifs/afficher-tarif-ammarage/afficher-tarif-ammarage.component';
+import { AfficherTarifForfaitComponent } from './admin/tarif/afficher-tarifs/afficher-tarif-forfait/afficher-tarif-forfait.component';
+import { AfficherTarifPrestationComponent } from './admin/tarif/afficher-tarifs/afficher-tarif-prestation/afficher-tarif-prestation.component';
+import { ModifierTarifAmmarageComponent } from './admin/tarif/modifier-tarif/modifier-tarif-ammarage/modifier-tarif-ammarage.component';
+import { ModifierTarifForfaitComponent } from './admin/tarif/modifier-tarif/modifier-tarif-forfait/modifier-tarif-forfait.component';
+import { ModifierTarifPrestationComponent } from './admin/tarif/modifier-tarif/modifier-tarif-prestation/modifier-tarif-prestation.component';
+import { RechercherEmplacementComponent } from './admin/emplacement/rechercher-emplacement/rechercher-emplacement.component';
+import { ModifierEmplacementComponent } from './admin/emplacement/modifier-emplacement/modifier-emplacement.component';
+import { AjouterEmplacementComponent } from './admin/emplacement/ajouter-emplacement/ajouter-emplacement.component';
+import { AfficherComptesUtilisateursComponent } from './admin/compte-utilisateurs/afficher-comptes-utilisateurs/afficher-comptes-utilisateurs.component';
+import { AjouterCompteUtilisateurComponent } from './admin/compte-utilisateurs/ajouter-compte-utilisateur/ajouter-compte-utilisateur.component';
+import { ModifierCompteUtilisateurComponent } from './admin/compte-utilisateurs/modifier-compte-utilisateur/modifier-compte-utilisateur.component';
 
 
 const routes: Routes =[
+
+
+
+  { path: '', redirectTo: '/Page_d_accueil', pathMatch: 'full' },
+    {data: { title: 'Marina Yasmine Hammamet | Accueil générale' },path:'Page_d_accueil', component: HomePageComponent},
+    {data: { title: 'Marina Yasmine Hammamet | A propos' },path:'A_Propos', component: AproposPageComponent},
+    {data: { title: 'Marina Yasmine Hammamet | Se connecter' }, path:'Se_connecter', component: ConnexionComponent},
+
+
+
+
+
+
+
   { path: 'pays',  component: PaysComponent },
   {path:'menu_general', component: MenuGeneralComponent},
 
@@ -48,7 +84,6 @@ const routes: Routes =[
 
     {/*title:"Marina Yasmine Hammamet | Ajouter un client",*/path:'ajouter_client', component: AjouterClientComponent},
 
-  {path: '', redirectTo: 'ajouter_bateau', pathMatch: 'full'},
   {data: { title: 'Marina Yasmine Hammamet | Rechercher un bateau' },path:'rechercher_bateau', component: RechercherBateauComponent},
   {data: { title: 'Marina Yasmine Hammamet | Modifier une fiche du bateau' },path:'modifier_fiche_bateau', component: FicheBateauModifierComponent},
   {data: { title: 'Marina Yasmine Hammamet | Imrimer fiche du bateau' },path:'fiche_bateau', component: FicheBateauChoisitComponent},
@@ -57,6 +92,16 @@ const routes: Routes =[
   {data: { title: 'Marina Yasmine Hammamet | Rechercher un client' },path:'rechercher_client', component: RechercherClientComponent},
   {data: { title: 'Marina Yasmine Hammamet | Modifier une fiche client' },path:'modifier_fiche_client', component: FicheClientModifierComponent},
   {data: { title: 'Marina Yasmine Hammamet | Imprimer une fiche client' },path:'fiche_client', component: FicheClientComponent},
+
+
+  {data: { title: 'Marina Yasmine Hammamet | Rechercher un emplacement' },path:'rechercher_emplacement', component: RechercherEmplacementComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Modifier un emplacement' },path:'modifier_emplacement', component: ModifierEmplacementComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Ajouter un emplacement' },path:'ajouter_emplacement', component: AjouterEmplacementComponent},
+
+  {data: { title: 'Marina Yasmine Hammamet | Rechercher un Compte Utilisateur' },path:'rechercher_utilisateur', component: AfficherComptesUtilisateursComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Modifier un Compte Utilisateur' },path:'modifier_utilisateur', component: ModifierCompteUtilisateurComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Ajouter un Compte Utilisateur' },path:'ajouter_utilisateur', component: AjouterCompteUtilisateurComponent},
+
 
 
   {data: { title: 'Marina Yasmine Hammamet | Ajouter les mouvements du bateau' },path:'ajouter_mvt_bateau', component: AjouterMvtBateauComponent},
@@ -69,6 +114,25 @@ const routes: Routes =[
   {data: { title: 'Marina Yasmine Hammamet | Modifier une fiche consommation' },path:'modifier_fiche_consommation', component: ModifierConsommationComponent},
 
   {path:'calendrier', component: CalendrierComponent},
+
+  {data: { title: 'Marina Yasmine Hammamet | Ajouter une Facturation & Reglement' },path:'ajouter_facture', component: AjouterFactureComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Modifier une Facturation & Reglement' },path:'modifier_facture', component: ModifierFactureComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Imprimer une Facturation & Reglement' },path:'imprimer_facture', component: ImprimerFactureComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Rechercher une Facturation & Reglement' },path:'rechercher_facture', component: RechercherFacturesComponent},
+
+  {data: { title: 'Marina Yasmine Hammamet | Ajouter un Tarif de Prestation' },path:'ajouter_tarif_prestation', component: AjouterTarifPrestationComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Ajouter un Tarif Forfait' },path:'ajouter_tarif_forfait', component: AjouterTarifForfaitComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Ajouter un Tarif Ammarage' },path:'ajouter_tarif_ammarage', component: AjouterTarifAmmarageComponent},
+
+  {data: { title: 'Marina Yasmine Hammamet | Afficher un Tarif Ammarage' },path:'afficher_tarif_ammarage', component: AfficherTarifAmmarageComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Afficher un Tarif Forfait' },path:'afficher_tarif_forfait', component: AfficherTarifForfaitComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Afficher un Tarif de Prestation' },path:'afficher_tarif_prestation', component: AfficherTarifPrestationComponent},
+
+
+  {data: { title: 'Marina Yasmine Hammamet | Modifier un Tarif Ammarage' },path:'modifier_tarif_ammarage', component: ModifierTarifAmmarageComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Modifier un Tarif Forfait' },path:'modifier_tarif_forfait', component: ModifierTarifForfaitComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Modifier un Tarif de Prestation' },path:'modifier_tarif_prestation', component: ModifierTarifPrestationComponent},
+
 
       {/*title:"Marina Yasmine Hammamet | Ajouter une réservation",*/path:'ajouter_réservation', component: AjouterReservationComponent},
     {/*title:"Marina Yasmine Hammamet | Rechercher une réservation",*/path:'rechercher_réservation', component: RechercherReservationComponent},

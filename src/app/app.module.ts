@@ -17,7 +17,6 @@ import { AjouterBateauComponent } from './bateau/ajouter-bateau/ajouter-bateau.c
 import { FicheBateauChoisitComponent } from './bateau/fiche-bateau-choisit/fiche-bateau-choisit.component';
 import { FicheBateauModifierComponent } from './bateau/fiche-bateau-modifier/fiche-bateau-modifier.component';
 import { RechercherBateauComponent } from './bateau/rechercher-bateau/rechercher-bateau.component';
-import { AdminComponent } from './admin/admin.component';
 import { AmodiationComponent } from './amodiation/amodiation.component';
 import { ClientComponent } from './client/client.component';
 import { FacturationComponent } from './facturation/facturation.component';
@@ -49,16 +48,30 @@ import { AjouterFactureComponent } from './facturation/facture/ajouter-facture/a
 import { RechercherFacturesComponent } from './facturation/facture/rechercher-factures/rechercher-factures.component';
 import { AjouterCompteUtilisateurComponent } from './admin/compte-utilisateurs/ajouter-compte-utilisateur/ajouter-compte-utilisateur.component';
 import { AfficherComptesUtilisateursComponent } from './admin/compte-utilisateurs/afficher-comptes-utilisateurs/afficher-comptes-utilisateurs.component';
-import { AjouterTarifComponent } from './admin/tarif/ajouter-tarif/ajouter-tarif.component';
-import { AfficherTarifsComponent } from './admin/tarif/afficher-tarifs/afficher-tarifs.component';
-import { AjouterEmplacementComponent } from './admin/emplacement/ajouter-emplacement/ajouter-emplacement.component';
-import { AfficherEmplacementsComponent } from './admin/emplacement/afficher-emplacements/afficher-emplacements.component';
 import { ModifierDroitsDAccesComponent } from './admin/droit-d-acces/modifier-droits-d-acces/modifier-droits-d-acces.component';
 import { ModifierConsommationComponent } from './facturation/consommation/modifier-consommation/modifier-consommation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CalendrierComponent } from './menu-general/calendrier/calendrier.component';
-
+import { AproposPageComponent } from './accueil/apropos-page/apropos-page.component';
+import { HomePageComponent } from './accueil/home-page/home-page.component';
+import { HomePageHeaderComponent } from './accueil/home-page-header/home-page-header.component';
+import { ConnexionComponent } from './accueil/connexion/connexion.component';
+import { ModifierFactureComponent } from './facturation/facture/modifier-facture/modifier-facture.component';
+import { ImprimerFactureComponent } from './facturation/facture/imprimer-facture/imprimer-facture.component';
+import { AjouterTarifPrestationComponent } from './admin/tarif/ajouter-tarif/ajouter-tarif-prestation/ajouter-tarif-prestation.component';
+import { AjouterTarifAmmarageComponent } from './admin/tarif/ajouter-tarif/ajouter-tarif-ammarage/ajouter-tarif-ammarage.component';
+import { AjouterTarifForfaitComponent } from './admin/tarif/ajouter-tarif/ajouter-tarif-forfait/ajouter-tarif-forfait.component';
+import { AfficherTarifAmmarageComponent } from './admin/tarif/afficher-tarifs/afficher-tarif-ammarage/afficher-tarif-ammarage.component';
+import { AfficherTarifPrestationComponent } from './admin/tarif/afficher-tarifs/afficher-tarif-prestation/afficher-tarif-prestation.component';
+import { ModifierTarifAmmarageComponent } from './admin/tarif/modifier-tarif/modifier-tarif-ammarage/modifier-tarif-ammarage.component';
+import { ModifierTarifForfaitComponent } from './admin/tarif/modifier-tarif/modifier-tarif-forfait/modifier-tarif-forfait.component';
+import { ModifierTarifPrestationComponent } from './admin/tarif/modifier-tarif/modifier-tarif-prestation/modifier-tarif-prestation.component';
+import { AfficherTarifForfaitComponent } from './admin/tarif/afficher-tarifs/afficher-tarif-forfait/afficher-tarif-forfait.component';
+import { RechercherEmplacementComponent } from './admin/emplacement/rechercher-emplacement/rechercher-emplacement.component';
+import { ModifierEmplacementComponent } from './admin/emplacement/modifier-emplacement/modifier-emplacement.component';
+import { AjouterEmplacementComponent } from './admin/emplacement/ajouter-emplacement/ajouter-emplacement.component';
+import { ModifierCompteUtilisateurComponent } from './admin/compte-utilisateurs/modifier-compte-utilisateur/modifier-compte-utilisateur.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +86,6 @@ import { CalendrierComponent } from './menu-general/calendrier/calendrier.compon
     FicheBateauChoisitComponent,
     FicheBateauModifierComponent,
     RechercherBateauComponent,
-    AdminComponent,
     AmodiationComponent,
     ClientComponent,
     FacturationComponent,
@@ -105,13 +117,31 @@ import { CalendrierComponent } from './menu-general/calendrier/calendrier.compon
     RechercherFacturesComponent,
     AjouterCompteUtilisateurComponent,
     AfficherComptesUtilisateursComponent,
-    AjouterTarifComponent,
-    AfficherTarifsComponent,
-    AjouterEmplacementComponent,
-    AfficherEmplacementsComponent,
     ModifierDroitsDAccesComponent,
     ModifierConsommationComponent,
-    CalendrierComponent
+    CalendrierComponent,
+    AproposPageComponent,
+    HomePageComponent,
+    HomePageHeaderComponent,
+    ConnexionComponent,
+    ModifierFactureComponent,
+    ImprimerFactureComponent,
+    AjouterTarifPrestationComponent,
+    AjouterTarifAmmarageComponent,
+    AjouterTarifForfaitComponent,
+    AfficherTarifAmmarageComponent,
+    AfficherTarifPrestationComponent,
+    AfficherTarifPrestationComponent,
+    ModifierTarifAmmarageComponent,
+    ModifierTarifForfaitComponent,
+    ModifierTarifPrestationComponent,
+    AfficherTarifAmmarageComponent,
+    AfficherTarifPrestationComponent,
+    AfficherTarifForfaitComponent,
+    RechercherEmplacementComponent,
+    ModifierEmplacementComponent,
+    AjouterEmplacementComponent,
+    ModifierCompteUtilisateurComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,357 @@
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+    <router-outlet></router-outlet>
+
+    <section class="content">
+        <div class="left-content">
+            <div class="main">
+                <div class="BigTitle">
+                    <h1><i class="fal fa-file-invoice faa2x"></i> Imprimer une Facture & Reglement</h1>
+                </div>
+                <div class="big-container">
+                    <div class="formulaire-boxes">
+                        <!-- Formulaire Etape 2 -->
+                        <div *ngIf="currentPage === 1">
+                            <section class="container container-2">
+                                <form action="#" class="form">
+                                    <div class="column">
+                                        <div class="input-box">
+                                            <label>Facture nº :</label>
+                                            <input type="number" placeholder="Entrer le numéro de la facture" required />
+                                        </div>
+                                        <div class="input-box">
+                                            <label>Du :</label>
+                                            <input type="date" />
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="input-box">
+                                            <label>Nom du client :</label>
+                                            <input type="text" placeholder="Entrer le nom du client" required />
+                                        </div>
+                                        <div class="input-box">
+                                            <label>Nº du client :</label>
+                                            <input type="number" placeholder="Entrer le numéro du client"  />
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="input-box">
+                                            <label>Nom du bateau :</label>
+                                            <input type="text" placeholder="Entrer le numéro du bateau" />
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="input-box">
+                                        <label>Totale Facture :</label>
+                                        <input type="number" placeholder="Entrer le montant totale de la facture"/>
+                                    </div>
+                                </form>
+                                <div class="details">
+                                    <div class="Boats boats1">
+                                        
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Désignation</td>
+                                                    <td>Libelle</td>
+                                                    <td>Date Début</td>
+                                                    <td>Date Fin</td>
+                                                    <td>Fin</td>
+                                                    <td>Prix Unit.</td>
+                                                    <td>Dte</td>
+                                                    <td>Montant</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateSting(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateSting(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateSting(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateSting(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateSting(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateSting(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateSting(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateSting(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateSting(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <!-- Formulaire Etape 3 -->
+                        <div *ngIf="currentPage === 2">
+                            <section class="container container-2">
+                                <div class="details">
+                                    <div class="Boats boats2">
+                                    <!--<app-liste-des-bateaux></app-liste-des-bateaux>-->
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Paiement</td>
+                                                    <td>Carte</td>
+                                                    <td>Num. Pièce</td>
+                                                    <td>Date</td>
+                                                    <td>Heure</td>
+                                                    <td>Montant</td>
+                                                    <td>Num. Utilisateur</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <td contenteditable="true" onblur="validateString(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateDate(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateHour(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateFloat(this)" ></td>
+                                                    <td contenteditable="true" onblur="validateNumber(this)" ></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <form action="#" class="form">
+                                            
+                                        <div class="column">
+                                            <div class="input-box">
+                                                <label>Totale Reglement :</label>
+                                                <input type="number" placeholder="Entrer le montant totale du reglement"/>
+                                            </div>
+                                            <div class="input-box">
+                                                <label>Montant totale :</label>
+                                                <input type="float" placeholder="Entrer le montant"  />
+                                            </div>
+                                        </div>
+                                        <div class="column">
+                                            <div class="input-box">
+                                                <label>Nº du séjour :</label>
+                                                <input type="number" placeholder="Entrer le numéro du séjour" required />
+                                            </div>
+                                            <div class="input-box">
+                                                <label>Timbre fiscale :</label>
+                                                <input type="text" placeholder="Entrer le timbre fiscale" required id="nom_bat" />
+                                            </div>
+                                        </div>
+                                        <div class="option-check-details exo">
+                                            <label class="check-label">Exonération client :</label>
+                                            <input type="radio" name="option-check" id="dot-1">
+                                            <input type="radio" name="option-check" id="dot-2">
+                                            <div class="category exo">
+                                                <label for="dot-1">
+                                                    <span class="dot one"></span>
+                                                    <span class="option-check">Oui</span>
+                                                </label>
+                                                <label for="dot-2">
+                                                    <span class="dot two"></span>
+                                                    <span class="option-check">Non</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="submit-box">
+                                    <div class="button-group button">
+                                        <button class="button button-primary" [routerLink]="['/rechercher_facture']" routerbuttonActive="active">Annuler</button>
+                                        <button onclick="message()" id="send" class="button button-secondary">Imprimer</button>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <!-- Boutons de pagination -->
+                    <div class="pagination">
+                        <ul class="pagination">
+                            <!-- Bouton Précédent -->
+                            <li class="btn prev" (click)="changePage(currentPage - 1)" [hidden]="currentPage === 1">
+                                <span><i class="fas fa-angle-left"></i> Précédent</span>
+                            </li>
+                            <!-- Affichage des numéros de page -->
+                            <ng-container *ngFor="let plength of getPages()">
+                                <li class="numb" [class.active]="currentPage === plength" (click)="changePage(plength)">
+                                    <span>{{ plength }}</span>
+                                </li>
+                            </ng-container>
+                            <!-- Bouton Suivant -->
+                            <li class="btn next" (click)="changePage(currentPage + 1)" [hidden]="currentPage === totalPages">
+                                <span>Suivant <i class="fas fa-angle-right"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+</div>

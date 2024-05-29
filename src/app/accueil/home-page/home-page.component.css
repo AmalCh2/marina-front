@@ -1,0 +1,154 @@
+/*-----------------------------------*\
+* #RESET
+\*-----------------------------------*/
+
+*, 
+*::before, 
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+/*-----------------------------------*\
+ * #REUSED STYLE
+\*-----------------------------------*/
+
+/*links*/
+
+.link-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.link {
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    color: #f12626;
+    text-transform: uppercase; 
+    font-size: 14px;
+    padding: 12px 120px; 
+    border: 2px solid ; 
+    border-radius: 0px;
+    background: transparent;
+    transition: 0.25s ease-in-out;
+}
+
+.link-primary {
+    background:  hsl(214, 3%, 55%);
+    border-color:  hsl(214, 3%, 55%);
+    border-top-left-radius: 100px; 
+    border-bottom-left-radius: 100px;
+}
+
+.link-secondary { 
+    background: none;
+    cursor: pointer;
+    border-color: #fff;
+    border-top-right-radius: 100px; 
+    border-bottom-right-radius: 100px; 
+}
+
+
+.link-secondary:hover, 
+.link-secondary:focus { 
+    background: hsla(0, 0%, 35%, 0.5); 
+}
+
+.h1 {
+    font-weight: 800;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: calc(20px + 3.5vw);
+}
+
+
+/*-----------------------------------*\
+ * #HOMECONTENT
+\*-----------------------------------*/
+
+.HOMECONTENT {
+    background-image: url("../../../assets/images/Background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: hsla(0, 0%, 0%, 0.6);
+    background-blend-mode: overlay;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    min-height: 600px;
+    text-align: center;
+    padding-top: 125px;
+}
+
+.HOMECONTENT-title { 
+    margin-bottom: 20px; 
+}
+
+.HOMECONTENT-text {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+/*-----------------------------------*\
+ * #MEDIA QUERIES
+\*-----------------------------------*/
+
+/*responsive for larger than 580px screen*/
+
+@media (min-width: 580px) {
+    /*REUSED STYLE*/
+    .link {
+        --fs-5: 16px;
+        --padding: 12px 30px;
+    }
+    
+    /*HOMECONTENT*/
+    .HOMECONTENT {
+        min-height: 800px;
+        padding-top: 85px;
+    }
+    
+    .HOMECONTENT-text { 
+        --fs-5: 15px; 
+    }
+    
+    .link-group { 
+        gap: 20px; 
+    }
+}
+
+/*responsive for larger than 768px screen*/
+
+@media (min-width: 768px) {
+    /*CUSTOM PROPERTY*/
+    :root {
+        /*typography*/
+        --fs-5: 15px;
+    }
+}
+
+/*responsive for larger than 992px screen*/
+
+@media (min-width: 992px) {
+    /*HOMECONTENT*/
+    .HOMECONTENT .container { 
+        max-width: 740px; 
+    }
+}
+
+/*responsive for larger than 1200px screen*/
+
+@media (min-width: 1200px) {
+    /*CUSTOM PROPERTY*/
+    :root {
+    /*spacing*/
+    --section-padding: 100px;
+    }
+}

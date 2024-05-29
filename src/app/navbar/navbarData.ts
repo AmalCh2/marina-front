@@ -154,14 +154,14 @@ export const navbarData: INavbarData[] = [
             },
 
             {
-                routerLink: '/afficher_mvt_bateaux',
-                label: 'Afficher les mouvements des bateaux'
+                routerLink: '/Rechercher_mvt_bateaux',
+                label: 'Rechercher les mouvements des bateaux'
             },
         ]
     },
 
     {
-        routerLink: '/admin',
+        routerLink: '/adminn',
         icon: 'fal fa-user-shield',
         label: 'Admin',
         items: [
@@ -171,13 +171,13 @@ export const navbarData: INavbarData[] = [
                 label: 'Comptes Utilisateurs',
                 items: [
                     {
-                        routerLink: '/',
+                        routerLink: '/ajouter_utilisateur',
                         label: 'Ajouter un Compte'
                     },
         
                     {
                         routerLink: '/',
-                        label: 'Afficher les Comptes'
+                        label: 'Rechercher les Comptes'
                     },
                 ]
             },
@@ -188,12 +188,44 @@ export const navbarData: INavbarData[] = [
                 items: [
                     {
                         routerLink: '/',
-                        label: 'Ajouter une Tarif'
+                        label: 'Ajouter un Tarif',
+                        items: [
+                            {
+                                routerLink: '/ajouter_tarif_prestation',
+                                label: 'Tarif Prestation'
+                            },
+
+                            {
+                                routerLink: '/ajouter_tarif_ammarage',
+                                label: 'Tarif Ammarage'
+                            },
+
+                            {
+                                routerLink: '/ajouter_tarif_forfait',
+                                label: 'Tarif Forfait'
+                            },
+                        ]
                     },
         
                     {
                         routerLink: '/',
-                        label: 'Afficher les Tarifs'
+                        label: 'Rechercher les Tarifs',
+                        items: [
+                            {
+                                routerLink: '/',
+                                label: 'Tarif Prestation'
+                            },
+
+                            {
+                                routerLink: '/Rechercher_tarif_ammarage',
+                                label: 'Tarif Ammarage'
+                            },
+
+                            {
+                                routerLink: '/',
+                                label: 'Tarif Forfait'
+                            },
+                        ]
                     },
                 ]
             },
@@ -203,13 +235,13 @@ export const navbarData: INavbarData[] = [
                 label: 'Emplacements',
                 items: [
                     {
-                        routerLink: '/',
+                        routerLink: '/ajouter_emplacement',
                         label: 'Ajouter un Emplacement'
                     },
         
                     {
-                        routerLink: '/',
-                        label: 'Afficher les Emplacements'
+                        routerLink: '/rechercher_emplacement',
+                        label: 'Rechercher les Emplacements'
                     },
                 ]
             },

@@ -1,1 +1,85 @@
-<p>afficher-comptes-utilisateurs works!</p>
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+        <router-outlet></router-outlet>
+
+        <section class="content">
+            <div class="left-content">
+                <div class="main">
+                    <div class="Header">
+                        <h1><i class="fal fa-search faa2x"></i> Rechercher un Compte</h1>
+                        <div class="buttons">
+                            <div class="submit-box">
+                                <div class="button-group button">
+                                    <input type="checkbox" id="check">
+                                    <label class="button button-primary" for="check">Supprimer</label>
+                                    <div class="background"></div>
+                                    <div class="alert_box">
+                                        <div class="icon">
+                                            <i class="fas fa-exclamation"></i>
+                                        </div>
+                                        <header>Confirmer</header>
+                                        <p>Etes-vous sûr de vouloir retirer définitivement ce compte?</p>
+                                        <div class="btns">
+                                            <label for="check">Oui, Supprimer!!</label>
+                                            <label for="check">Annuler</label>
+                                        </div>
+                                    </div>
+                                    <button class="button button-secondary" routerLink="/modifier_utilisateur" routerLinkActive="active" >Modifier</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>                  
+                    <div class="big-container">
+                    <!-- ======================= Filters ================== -->
+                        <div class="filterBox">
+                            <div class="filter filter-2">
+                                <div>
+                                    <div class="filterName">Rechercher</div>
+                                    <div class="recherche-option">
+                                        <div class="input-box">
+                                            <label>Nom :</label>
+                                            <input type="text" placeholder="Entrer le nom d'utilisateur" />
+                                        </div>
+                                        <div class="input-box">
+                                            <label>Nº du compte :</label>
+                                            <input type="number" placeholder="Entrer le numéro du compte" />
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="iconFltr">
+                                    <i class="fal fa-search faa2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- ================ boats List ================= -->
+                    <div class="details">
+                        <!--<div class="details"(scroll)="onTableScroll($event)">-->
+                        <div class="Boats">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Nº du compte</td>
+                                        <td>Nom</td>
+                                        <td>Mot de passe</td>
+                                        <td>Nº du port</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let compte of comptes">
+                                        <td>{{ compte.num_compte }}</td>
+                                        <td>{{ compte.nom }}</td>
+                                        <td>{{ compte.mdp }}</td>
+                                        <td>{{ compte.num_port }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,1 +1,66 @@
-<p>ajouter-compte-utilisateur works!</p>
+<div class="all-page flex items-center">
+    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+    <div class="body" [ngClass]="getBodyClass()">
+      <router-outlet></router-outlet>
+      
+      <section class="content">
+        <div class="left-content">
+          <div class="main">
+            <div class="BigTitle">
+              <h1><i class="fal fa-arrows-alt faa2x"></i> Ajouter un Compte Utilisateur</h1>
+            </div>
+            <div class="big-container">
+              <div class="formulaire-boxes">
+                <!-- Formulaire Etape 1 -->
+                <div>
+                  <section class="container container-1">
+                    <form action="#" class="form">
+                        <br>
+                      <h1 class="form-title">Informations du compte utilisateur :</h1>
+                      <br>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº du compte utilisateur :</label>
+                          <input type="number"laceholder="Entrer le numéro du compte" required [(ngModel)]="Utilisateur.id_utilisateur"
+                          [ngModelOptions]="{standalone : true}" />
+                        </div>
+                        <div class="input-box">
+                          <label>Nº du port :</label>
+                          <input type="text" placeholder="Entrer le numéro du port"/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nom utilisateur :</label>
+                          <input type="text" placeholder="Entrer le nom d'utilisateur" required 
+                          [(ngModel)]="Utilisateur.nom_utilisateur"
+                  [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Mot de passe :</label>
+                          <input type="text" placeholder="Entrer le mot de passe" required
+                          [(ngModel)]="Utilisateur.mot_de_passe"
+                  [ngModelOptions]="{standalone : true}" />
+                        </div>
+                      </div>
+                    </form>
+                    <div class="submit-box">
+                        <div class="button-group button">
+                          <button class="button button-primary" [routerLink]="['/rechercher_utilisateur']" routerbuttonActive="active" >Annuler</button>
+                          <button (click)="addUtilisateur(Utilisateur)" id="send" class="button button-secondary">Ajouter</button>
+                        </div>
+                      </div>
+                      <div class="message">
+                          <div class="success" id="success">Compte ajouté avec succès!</div>
+                          <div class="danger" id="danger">Vérifier les champs obligatoires!</div>
+                      </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  
