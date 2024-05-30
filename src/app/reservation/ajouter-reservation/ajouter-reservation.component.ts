@@ -44,29 +44,8 @@ export class AjouterReservationComponent implements OnInit {
     ).then(
       (response) => this.data = response.data
     );
-    this.getAllReservations();
     
-    this.Reservation = {
-      deb_sej: null,
-      fin_sej: null,
-      num_jours: null,
-      id_reservation: null,
-      id_tarif: null,
-      id_type_sej: null,
-      id_emp: null,
-      id_bat: null,
-      nom_bat: null,
-      id_cli: null,
-      nom_cli: null,
-    };
-
-    this.getAllTypeSejours();
-
-    this.TypeSejour = {
-      id_type_sej: null,
-      lib_sej: null,
-      sej_majoration: null,
-    };
+    
   }
 
   
@@ -89,42 +68,6 @@ export class AjouterReservationComponent implements OnInit {
 
 
 
-
-  
-  getAllReservations() {
-    this.ReservationService.getAllReservations().subscribe(res => this.listReservation = res);
-  }
-
-  getAllTypeSejours() {
-    this.TypeSejourService.getAllTypeSejours().subscribe(res => this.listTypeSejour = res);
-  }
-
-  addReservationAndTypeSejour() {
-    this.ReservationService.addReservation(this.Reservation).subscribe(() => {
-      this.getAllReservations();
-    });
-    this.TypeSejourService.addTypeSejour(this.TypeSejour).subscribe(() => {
-      this.getAllTypeSejours();
-    });
-  }
-
-  editReservationAndTypeSejour(sejour: Reservation, typeSejour: TypeSejour) {
-    this.ReservationService.editReservation(Reservation).subscribe(() => {
-      this.getAllReservations();
-    });
-    this.TypeSejourService.editTypeSejour(typeSejour).subscribe(() => {
-      this.getAllTypeSejours();
-    });
-  }
-
-  deleteReservationAndTypeSejour(id_reservation: number, id_type_sejour: number) {
-    this.ReservationService.deleteReservation(id_reservation).subscribe(() => {
-      this.getAllReservations();
-    });
-    this.TypeSejourService.deleteTypeSejour(id_type_sejour).subscribe(() => {
-      this.getAllTypeSejours();
-    });
-  }
 
 
 

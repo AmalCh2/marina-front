@@ -4,6 +4,7 @@ import { SideNavToggle } from '../SideNavToggle.interface';
 import { ElementRef, ViewChild } from '@angular/core';
 import { Client } from 'src/app/shared/Model/Client';
 import { ClientService } from 'src/app/shared/Service/Client.service';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -25,10 +26,14 @@ export class RechercherClientComponent implements OnInit {
 
   listClient: any;
   Client!: Client;
+  form: boolean = false;
 
   listPays: any;
 
-  constructor(private axiosService: AxiosService, private ClientService: ClientService) {
+  closeResult!: string;
+
+
+  constructor(private axiosService: AxiosService, private ClientService: ClientService , private modalService: NgbModal) {
   }
 
 
@@ -58,6 +63,8 @@ export class RechercherClientComponent implements OnInit {
     exo_cli: null,
     nom_pays: null,
     };
+
+    
   }
 
 
@@ -66,10 +73,42 @@ export class RechercherClientComponent implements OnInit {
     this.ClientService.getAllClients().subscribe(res => this.listClient = res)
   }
 
+  deleteClient(id_cli: any) {
+    this.ClientService.deleteClient(id_cli).subscribe(() => this.getAllClients())
+  }
+
+  editClient(Client: Client) {
+    this.ClientService.editClient(Client).subscribe();
+  }
 
 
 
+  open(content: any, action: any) {
+    if (action != null)
+      this.Client = action
+    else
+      this.Client = new Client();
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  cancel() {
+    this.form = false;
+  }
 
 
 

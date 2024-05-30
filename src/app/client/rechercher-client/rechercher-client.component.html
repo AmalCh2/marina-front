@@ -130,6 +130,7 @@
                                         <td>Fax</td>
                                         <td>Exonération</td>
                                         <td>Email</td>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -151,6 +152,14 @@
                                         <td>{{ client.fax_cli }}</td>
                                         <td>{{ client.exo_cli }}</td>
                                         <td>{{ client.email_cli }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-primary"
+                                            (click)="open(mymodal1,client)">Edit
+                                    </button>
+                                            <button type="button" class="btn btn-outline-danger"
+                                                    (click)="deleteClient(client.id_cli)">Delete
+                                            </button>
+                                          </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -158,6 +167,212 @@
                     </div>
                     </div>
                 </div>
+            
+            
+            
+
+
+
+                <ng-template #mymodal1 let-modal1>
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">Modifier Fiche Client</h4>
+                      <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <div class="big-container">
+                    <div class="formulaire-boxes">
+                        <!-- Formulaire 1 -->
+                        <div  *ngIf="currentPage === 1">
+                            <section class="container container-1">
+                                <form>
+                                    <!--<h1 class="form-section-title">Détails client :</h1>-->
+                                    <div class="first-form">
+                                        <div class="details personal">
+                                            <div class="first-form-details">
+                                                <div class="first-form-details-inputs">
+                                                    <label>Nº client</label>
+                                                    <input type="number"[(ngModel)]="Client.id_cli"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Nom client</label>
+                                                    <input type="text" [(ngModel)]="Client.nom_cli"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Prénom client </label>
+                                                    <input type="text" [(ngModel)]="Client.prenom_cli"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Adresse</label>
+                                                    <input type="number" [(ngModel)]="Client.adresse_cli"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Pavillon</label>
+                                                    <input type="number" >
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Nationnalité</label>
+                                                    <input type="number" >
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Ville</label>
+                                                    <input type="text" [(ngModel)]="Client.ville_cli"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Pays</label>
+                                                    <input type="text" [(ngModel)]="Client.nom_pays"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Code Postal </label>
+                                                    <input type="email" [(ngModel)]="Client.code_postal_cli"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Nº téléphone</label>
+                                                    <input type="text" [(ngModel)]="Client.tel_cli"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Nº fax</label>
+                                                    <input type="text" [(ngModel)]="Client.fax_cli"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Nº mobile</label>
+                                                    <input type="email" [(ngModel)]="Client.mobile_cli"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="first-form-details-inputs">
+                                                    <label>Email </label>
+                                                    <input type="email" [(ngModel)]="Client.email_cli"
+                                                    [ngModelOptions]="{standalone : true}">
+                                                </div>
+                                                <div class="option-check-details">
+                                                    <label class="civil-label">Etat civil :</label>
+                                                    <input type="radio" name="option-check" id="dot-1">
+                                                    <input type="radio" name="option-check" id="dot-2">
+                                                    <div class="category">
+                                                        <label for="dot-1">
+                                                            <span class="dot one"></span>
+                                                            <span class="option-check">Marié(e):</span>
+                                                        </label>
+                                                        <label for="dot-2">
+                                                            <span class="dot two"></span>
+                                                            <span class="option-check">Non</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="option-check-details exo">
+                                                    <label class="exo-label">Exonération :</label>
+                                                    <input type="radio" name="option-check" id="dot-3">
+                                                    <input type="radio" name="option-check" id="dot-4">
+                                                    <div class="category exo">
+                                                        <label for="dot-3">
+                                                            <span class="dot three"></span>
+                                                            <span class="option-check">Exonéré(e)</span>
+                                                        </label>
+                                                        <label for="dot-4">
+                                                            <span class="dot four"></span>
+                                                            <span class="option-check">Non</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+
+                        <!-- Formulaire 2 -->
+                        <div *ngIf="currentPage === 2">
+                            <section class="container container-2">
+                                <form>
+                                    <h1 class="form-section-title">Coordonnées de facturation :</h1>
+                                    <div class="section-details">
+                                        <div class="input-box">
+                                            <span class="details">Nº du carte</span>
+                                            <input type="number">
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="details">Année d'expiration</span>
+                                            <input type="number">
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="details">Mois d'expiration</span>
+                                            <input type="number">
+                                        </div>
+                                    <!--
+                                        <div class="input-box">
+                                            <span class="details">Pichtogramme</span>
+                                            <input type="number">
+                                        </div>
+                                    -->
+                                    </div>
+                                    
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                    <!-- Boutons de pagination -->
+                    <div class="pagination">
+                        <ul class="pagination">
+                            <!-- Bouton Précédent -->
+                            <li class="btn prev" (click)="changePage(currentPage - 1)" [hidden]="currentPage === 1">
+                                <span><i class="fas fa-angle-left"></i> Précédent</span>
+                            </li>
+                            <!-- Affichage des numéros de page -->
+                            <ng-container *ngFor="let plength of getPages()">
+                                <li class="numb" [class.active]="currentPage === plength" (click)="changePage(plength)">
+                                    <span>{{ plength }}</span>
+                                </li>
+                            </ng-container>
+                            <!-- Bouton Suivant -->
+                            <li class="btn next" (click)="changePage(currentPage + 1)" [hidden]="currentPage === totalPages">
+                                <span>Suivant <i class="fas fa-angle-right"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success" (click)="editClient(Client)"
+                              (click)="modal1.close('Save click')">Add</button>
+                      <button type="button" class="btn btn-danger" (click)="modal1.close('Save click')">Cancel</button>
+                    </div>
+                  </ng-template>
+                  
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             </div>
         </section>
     </div>
