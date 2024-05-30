@@ -44,9 +44,9 @@
                                             <li class="Menu options">
                                                 <select class="select-box">
                                                     <option hidden>Sélectionner une option:</option>
-                                                    <option>Numéro Client</option>
-                                                    <option>Nom </option>
-                                                    <option>Prénom</option>
+                                                    <option >Numéro Client</option>
+                                                    <option value="nom_cli">Nom </option>
+                                                    <option value="prenom_cli">Prénom</option>
                                                     <option>Etat Civil</option>
                                                     <option>Adresse</option>
                                                     <option>Code Postal</option>
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
                                         <div class="input-box">
-                                            <input type="text" placeholder="Faire une recherche" />
+                                            <input type="text" placeholder="Faire une recherche" [(ngModel)]="searchTerm" >
                                         </div>
                                     </div>  
                                 </div>
@@ -134,7 +134,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let client of listClient">
+                                    <tr *ngFor="let client of filteredClients">
                                         <td>{{ client.id_cli }}</td>
                                         <td>{{ client.nom_cli }}</td>
                                         <td>{{ client.prenom_cli }}</td>
@@ -161,6 +161,8 @@
                                             </button>
 
                                             <button (click)="archiveClient(client.id_cli)">Archive</button>
+                                            <td>
+                                                <button (click)="printClient(client)">Print</button>
                                           </td>
                                     </tr>
                                 </tbody>

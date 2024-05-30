@@ -5,7 +5,11 @@ import { ElementRef, ViewChild } from '@angular/core';
 import { Client } from 'src/app/shared/Model/Client';
 import { ClientService } from 'src/app/shared/Service/Client.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import * as pdfMake from 'pdfmake/build/pdfMake'
+import * as pdfFonts from 'pdfmake/build/vfs_fonts'
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 
+( pdfMake as any ).vfs= pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-rechercher-client',
@@ -31,6 +35,11 @@ export class RechercherClientComponent implements OnInit {
   listPays: any;
 
   closeResult!: string;
+  searchTerm: string = '';
+  selectedColumn: string = 'nom_cli';
+
+  filteredClients: Client[] = [];
+
 
 
   constructor(private axiosService: AxiosService, private ClientService: ClientService , private modalService: NgbModal) {
@@ -121,8 +130,34 @@ export class RechercherClientComponent implements OnInit {
   }
 
 
+  printClient(client: any) {
+    let docDefinition: any = {
+      content: [
+        { text: 'My Client', style: 'title' }, // Title element
+        { text: '\n' }, // Add some space after the title
+        { text: 'Client ID: ', bold: true },
+        { text: client.id_cli + '\n', bold: true, color: 'blue' },
+        { text: 'Client Name: ', bold: true },
+        { text: client.nom_cli + '\n', bold: true, italic: true },
+      ],
+      styles: {
+        title: { // Define a custom style for the title
+          bold: true,
+          fontSize: 20, // Larger font size
+          alignment: 'center', // Center alignment
+          color: 'orange', // Orange color
+          margin: [0, 0, 0, 20] // Margin bottom to add space below the title
+        }
+      }
+    };
+  
+    pdfMake.createPdf(docDefinition).open();
+  }
+  
 
+  
 
+  
 
 
 

@@ -69,7 +69,7 @@ addRoleAndUtilisateur() {
   /*this.roleService.addRole(this.role).subscribe(() => {
     this.getAllRoles();
   });*/
-  console.log(this.Utilisateur);
+  console.log(this.Utilisateur.role);
   this.UtilisateurService.addUtilisateur(this.Utilisateur).subscribe(() => {
     this.getAllUtilisateurs();
   });
