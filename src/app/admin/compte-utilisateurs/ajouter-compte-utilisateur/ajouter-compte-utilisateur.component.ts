@@ -27,7 +27,9 @@ export class AjouterCompteUtilisateurComponent implements OnInit {
   Utilisateur!: Utilisateur;
   closeResult!: string;
 
-  listRoles: any;
+  listRoles: Role[] = [
+    {id_role: 1, lib_role: "admin"}
+  ];
   role!: Role;
 
   constructor(private axiosService: AxiosService ,private UtilisateurService: UtilisateurService, private modalService: NgbModal, private roleService: RoleService) {}
@@ -47,14 +49,10 @@ export class AjouterCompteUtilisateurComponent implements OnInit {
     nom_utilisateur: null,
     mot_de_passe: null,
     id_port: null,
+    role : null
   };
-  this.getAllRoles();
 
-    this.role = {
-      id_role: null,
-    lib_role: null,
-    id_utilisateur: null,
-    }
+this.getAllRoles();
 }
 
 getAllUtilisateurs() {
@@ -62,13 +60,16 @@ getAllUtilisateurs() {
 }
 
 getAllRoles() {
-  this.roleService.getAllRoles().subscribe(res => this.listRoles = res)
+  this.roleService.getAllRoles().subscribe((data: Role[]) => {
+    this.listRoles = data;
+  });
 }
 
 addRoleAndUtilisateur() {
-  this.roleService.addRole(this.role).subscribe(() => {
+  /*this.roleService.addRole(this.role).subscribe(() => {
     this.getAllRoles();
-  });
+  });*/
+  console.log(this.Utilisateur);
   this.UtilisateurService.addUtilisateur(this.Utilisateur).subscribe(() => {
     this.getAllUtilisateurs();
   });

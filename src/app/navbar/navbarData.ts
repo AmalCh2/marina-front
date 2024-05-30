@@ -176,7 +176,7 @@ export const navbarData: INavbarData[] = [
                     },
         
                     {
-                        routerLink: '/',
+                        routerLink: '/rechercher_utilisateur',
                         label: 'Rechercher les Comptes'
                     },
                 ]

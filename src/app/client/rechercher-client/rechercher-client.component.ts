@@ -111,7 +111,14 @@ export class RechercherClientComponent implements OnInit {
   }
 
 
-
+  archiveClient(id: number): void {
+    this.ClientService.archiveClient(id).subscribe(
+      () => {
+        console.log('Client archived');
+        this.getAllClients();
+      }
+    );
+  }
 
 
 

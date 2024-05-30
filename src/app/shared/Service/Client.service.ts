@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ClientService {
   constructor(private httpClient: HttpClient) { }
 
   getAllClients() {
-    return this.httpClient.get(`${this.API_URL}/get-all-clients`);
+    return this.httpClient.get(`${this.API_URL}/get-clients`);
   }
 
   addClient(client: any) {
@@ -23,5 +24,9 @@ export class ClientService {
 
   deleteClient(id: any) {
     return this.httpClient.delete(`${this.API_URL}/delete-client/${id}`);
+  }
+
+  archiveClient(id: number): Observable<void> {
+    return this.httpClient.put<void>(`${this.API_URL}/archive/${id}`, {});
   }
 }

@@ -43,6 +43,7 @@ export class AfficherComptesUtilisateursComponent implements OnInit {
     nom_utilisateur: null,
     mot_de_passe: null,
     id_port: null,
+    role: {id_role: 1, lib_role: "admin"}
   }
   }
 
