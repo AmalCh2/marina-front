@@ -397,3 +397,35 @@
         font-weight: 600;
         color: rgba(33, 26, 61,0.7);
       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      .status-annulee {
+        color: red; /* or whatever styles you need */
+      }
+      
+      .status-non-affectee {
+        color: orange; /* or whatever styles you need */
+      }

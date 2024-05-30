@@ -90,14 +90,13 @@
                                       <td>{{ reservation.fin }}</td>
                                       <td>{{ reservation.accompte }}</td>
                                       
-                                      <td>{{ reservation.etat }}</td>
-                                      <!--
-                                      <td><span class="status annulée"></span></td>
-                                        <td><span class="status non-affectée"></span></td>
-                                        <td><span class="status affectée"></span></td>
+                                      <td [ngClass]="{
+                                        'status-annulee': reservation.etat === 'Terminée',
+                                        'status-non-affectee': reservation.etat === 'En cours'
+                                      }">
+                                        {{ reservation.etat }}
+                                      </td>
                                       
-                                      <td><span class="status" [ngClass]="{'status annulée': reservation.etat === 'En cours'}"></span></td>
-                                      -->
                                     </tr>
                                   </tbody>
                             </table>
