@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AxiosService } from 'src/app/axios.service';
 import { SideNavToggle } from '../SideNavToggle.interface';
 import { ElementRef, ViewChild } from '@angular/core';
+import { Client } from 'src/app/shared/Model/Client';
+import { ClientService } from 'src/app/shared/Service/Client.service';
 
 
 @Component({
@@ -21,7 +23,14 @@ export class RechercherClientComponent implements OnInit {
   currentPage: number = 1;
   paginationHTML: string = '';
 
-  constructor(private axiosService: AxiosService) {}
+  listClient: any;
+  Client!: Client;
+
+  listPays: any;
+
+  constructor(private axiosService: AxiosService, private ClientService: ClientService) {
+  }
+
 
   ngOnInit(): void {
     this.axiosService.request(
@@ -32,7 +41,47 @@ export class RechercherClientComponent implements OnInit {
       (response) => this.data = response.data
     );
     this.generatePagination();
+    this.getAllClients();
+
+    this.Client = {
+      id_cli: null,
+    nom_cli: null,
+    prenom_cli: null,
+    etat_civil: null,
+    adresse_cli: null,
+    code_postal_cli: null,
+    ville_cli: null,
+    tel_cli: null,
+    fax_cli: null,
+    mobile_cli: null,
+    email_cli: null,
+    exo_cli: null,
+    nom_pays: null,
+    };
   }
+
+
+
+  getAllClients() {
+    this.ClientService.getAllClients().subscribe(res => this.listClient = res)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
@@ -159,227 +208,6 @@ export class RechercherClientComponent implements OnInit {
       fax: '123-456-7890', 
       exemption: true, 
       email: 'john.doe@example.com' 
-    },
-    { 
-      clientNumber: 2, 
-      lastName: 'Smith', 
-      firstName: 'Jane', 
-      civilStatus: 'Married', 
-      address: '456 Elm Street', 
-      postalCode: '54321', 
-      city: 'Town', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '987-654-3210', 
-      mobile: '987-654-3210', 
-      fax: '987-654-3210', 
-      exemption: false, 
-      email: 'jane.smith@example.com' 
-    },
-    { 
-      clientNumber: 2, 
-      lastName: 'Smith', 
-      firstName: 'Jane', 
-      civilStatus: 'Married', 
-      address: '456 Elm Street', 
-      postalCode: '54321', 
-      city: 'Town', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '987-654-3210', 
-      mobile: '987-654-3210', 
-      fax: '987-654-3210', 
-      exemption: false, 
-      email: 'jane.smith@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
-    },
-    { 
-      clientNumber: 3, 
-      lastName: 'Johnson', 
-      firstName: 'Robert', 
-      civilStatus: 'Single', 
-      address: '789 Oak Street', 
-      postalCode: '67890', 
-      city: 'Village', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '456-789-0123', 
-      mobile: '456-789-0123', 
-      fax: '456-789-0123', 
-      exemption: true, 
-      email: 'robert.johnson@example.com' 
     }
   ];
 

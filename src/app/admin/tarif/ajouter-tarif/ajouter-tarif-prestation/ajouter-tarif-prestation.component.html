@@ -25,71 +25,87 @@
                         </div>
                         <div class="input-box">
                           <label>Prix unitaire de la prestation :</label>
-                          <input type="number" placeholder="Entrer le prix unitaire de la prestation" id="num_bat"
-                          />
+                          <input type="number" placeholder="Entrer le prix unitaire de la prestation" required 
+                          [(ngModel)]="prestation.prix_unit_prest"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Secteur de la prestation :</label>
-                          <input type="text" placeholder="Entrer le secteur de la prestation"  id="nom_prop"/><!---->
+                          <input type="text" placeholder="Entrer le secteur de la prestation"  required 
+                          [(ngModel)]="prestation.secteur_prest"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Rang de la prestation :</label>
-                          <input type="number" placeholder="Entrer le numero du propriétaire" id="num_prop" /><!---->
+                          <input type="number" placeholder="Entrer le numero du propriétaire" required 
+                          [(ngModel)]="prestation.rang_prest"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Nº du type de la prestation :</label>
-                          <input type="number" placeholder="Entrer le numéro du type de la prestation"/><!---->
+                          <input type="number" placeholder="Entrer le numéro du type de la prestation"required 
+                          [(ngModel)]="prestation.id_type_prest"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Libelle du type de la prestation :</label>
-                          <input type="text" placeholder="Entrer la libelle du type de la prestation"  /><!---->
+                          <input type="text" placeholder="Entrer la libelle du type de la prestation"  required 
+                          [(ngModel)]="typePrestation.lib_type_prest"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Rang du type de la prestation :</label>
                           <input type="number" placeholder="Entrer le rang du type de la prestation" required 
-                          />
+                          [(ngModel)]="typePrestation.rang_type_prest"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Nº TVA :</label>
-                          <input type="number" placeholder="Entrer le numéro du tva" 
-                          />
+                          <input type="number" placeholder="Entrer le numéro du tva" required 
+                          [(ngModel)]="tva.id_tva"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Taux TVA :</label>
-                          <input type="float" placeholder="Entrer le taux tva" required id="pavillon"
-                          />
+                          <input type="float" placeholder="Entrer le taux tva" required 
+                          [(ngModel)]="tva.taux_tva"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Compte TVA :</label>
                           <input type="text" placeholder="Entrer le compte du tva" required 
-                          />
+                          [(ngModel)]="tva.cpt_tva"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Date TVA :</label>
-                          <input type="date" required
-                          />
+                          <input type="date"required 
+                          [(ngModel)]="tva.date_tva"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Nº de nature de la prestation :</label>
                           <input type="number" placeholder="Entrer le numéro de la nature de la prestation" required 
-                          />
+                          [(ngModel)]="nature.id_nature"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Libelle de la nature de prestation :</label>
                           <input type="text" placeholder="Entrer la libelle de la nature de la prestation" required 
-                          />
+                          [(ngModel)]="nature.lib_nature"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                     </form>

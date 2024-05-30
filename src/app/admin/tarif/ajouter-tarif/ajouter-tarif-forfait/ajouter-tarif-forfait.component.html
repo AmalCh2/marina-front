@@ -18,55 +18,125 @@
                       <h1 class="form-title">Informations tarif forfait :</h1>
                       <div class="column">
                         <div class="input-box">
-                          <label>Nº tarif forfait :</label>
-                          <input type="number" placeholder="Entrer le numéro du tarif forfait" required 
-                          />
+                          <label>Nº tarif ammarage :</label>
+                          <input type="number" placeholder="Entrer le numéro du tarif ammarage" required 
+                          [(ngModel)]="tarif.id_tarif"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Année :</label>
-                          <input type="number" placeholder="Entrer l'année du tarif forfait"
-                          />
+                          <input type="number" placeholder="Entrer l'année du tarif ammarage" required 
+                          [(ngModel)]="tarif.annee"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
-                        <div class="input-box">
-                          <label>Type tarif forfait :</label>
-                          <input type="text" placeholder="Entrer le type du tarif forfait"  id="nom_prop"/><!---->
-                        </div>
                         <div class="input-box">
                           <label>Longueur bateau :</label>
-                          <input type="number" placeholder="Entrer la longueur bateau" /><!---->
+                          <input type="number" placeholder="Entrer la longueur bateau"required 
+                          [(ngModel)]="tarif.longueur_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Largeur bateau :</label>
+                          <input type="number" placeholder="Entrer la largeur bateau"required 
+                          [(ngModel)]="tarif.largeur_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Tarif hivernage:</label>
+                          <input type="float" placeholder="Entrer le tarif hivernage" required 
+                          [(ngModel)]="tarif.tarif_hivernage"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
-                          <label>Largeur bateau :</label>
-                          <input type="number" placeholder="Entrer la largeur bateau"/><!---->
+                          <label>Jour HS :</label>
+                          <input type="number" placeholder="Entrer le jour hs"required 
+                          [(ngModel)]="tarif.jour_hs"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
+                            <label>Jour MS :</label>
+                            <input type="number" placeholder="Entrer le jour ms"required 
+                            [(ngModel)]="tarif.jour_ms"
+                            [ngModelOptions]="{standalone : true}"/>
+                          </div>
+                          <div class="input-box">
+                            <label>Jour BS :</label>
+                            <input type="number" placeholder="Entrer le jour bs"required 
+                            [(ngModel)]="tarif.jour_bs"
+                            [ngModelOptions]="{standalone : true}"/>
+                          </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Mois HS :</label>
+                          <input type="number" placeholder="Entrer le moins hs"required 
+                          [(ngModel)]="tarif.mois_hs"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                            <label>Mois MS :</label>
+                            <input type="number" placeholder="Entrer le mois ms"required 
+                            [(ngModel)]="tarif.mois_ms"
+                            [ngModelOptions]="{standalone : true}"/>
+                          </div>
+                        <div class="input-box">
+                            <label>Mois BS :</label>
+                            <input type="number" placeholder="Entrer le moins bs"required 
+                            [(ngModel)]="tarif.mois_bs"
+                            [ngModelOptions]="{standalone : true}"/>
+                          </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº tarif forfait :</label>
+                          <input type="number" placeholder="Entrer le numéro du tarif forfait" required 
+                          [(ngModel)]="tarifForfait.id_tarif_forfait"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Type tarif forfait :</label>
+                          <input type="text" placeholder="Entrer le type du tarif forfait" required 
+                          [(ngModel)]="tarifForfait.type"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="input-box">
                           <label>Nº prestation:</label>
-                          <input type="number" placeholder="Entrer le numéro de la prestation"  /><!---->
+                          <input type="number" placeholder="Entrer le numéro de la prestation"  required 
+                          [(ngModel)]="tarifForfait.id_prest"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Nº période :</label>
-                          <input type="number" placeholder="Entrer le numéro de la periode"/><!---->
+                          <input type="number" placeholder="Entrer le numéro de la periode"required 
+                          [(ngModel)]="periode.id_periode"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Début :</label>
-                          <input type="date"  /><!---->
+                          <input type="date" required 
+                          [(ngModel)]="periode.deb_periode"
+                          [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                             <label>Fin :</label>
-                            <input type="date"  /><!---->
+                            <input type="date" required 
+                            [(ngModel)]="periode.fin_periode"
+                            [ngModelOptions]="{standalone : true}"/>
                           </div>
                       </div>
                     </form>
                     <div class="submit-box">
                         <div class="button-group button">
                           <button class="button button-primary" routerLink="/afficher_tarif_forfait"  routerLinkActive="active" >Annuler</button>
-                          <button type="button" class="btn btn-success" 
+                          <button type="button" class="btn btn-success" (click)="addTarifAndOthers()"
                           class="button button-secondary">Ajouter</button>
                         </div>
                       </div>

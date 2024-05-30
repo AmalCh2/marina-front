@@ -6,6 +6,7 @@ import { ReservationService } from 'src/app/shared/Service/Reservation.service';
 import { TypeSejour } from 'src/app/shared/Model/TypeSejour';
 import { TypeSejourService } from 'src/app/shared/Service/TypeSejour.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Sejour } from 'src/app/shared/Model/Sejour';
 
 @Component({
   selector: 'app-ajouter-reservation',
@@ -21,13 +22,14 @@ export class AjouterReservationComponent implements OnInit {
   screenWidth = 0;
   data: string[] = [];
 
-  listReservation: any;
+  listReservations: any;
+  listSejours: any;
+  reservation!: Reservation;
+  sejour!: Sejour;
   form: boolean = false;
   Reservation!: Reservation;
   closeResult!: string;
 
-  listTypeSejour: any;
-  TypeSejour!: TypeSejour;
 
   constructor(private axiosService: AxiosService,
     private ReservationService: ReservationService,

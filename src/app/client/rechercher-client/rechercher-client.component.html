@@ -121,8 +121,10 @@
                                         <td>Code postal</td>
                                         <td>Ville</td>
                                         <td>Pays</td>
+                                        <!--
                                         <td>Nationnalité</td>
                                         <td>Pavillon</td>
+                                        -->
                                         <td>Num. tél.</td>
                                         <td>Mobile</td>
                                         <td>Fax</td>
@@ -131,22 +133,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let client of clientsData">
-                                        <td>{{ client.clientNumber }}</td>
-                                        <td>{{ client.lastName }}</td>
-                                        <td>{{ client.firstName }}</td>
-                                        <td>{{ client.civilStatus }}</td>
-                                        <td>{{ client.address }}</td>
-                                        <td>{{ client.postalCode }}</td>
-                                        <td>{{ client.city }}</td>
-                                        <td>{{ client.country }}</td>
+                                    <tr *ngFor="let client of listClient">
+                                        <td>{{ client.id_cli }}</td>
+                                        <td>{{ client.nom_cli }}</td>
+                                        <td>{{ client.prenom_cli }}</td>
+                                        <td>{{ client.etat_civil }}</td>
+                                        <td>{{ client.adresse_cli }}</td>
+                                        <td>{{ client.code_postal_cli }}</td>
+                                        <td>{{ client.ville_cli }}</td>
+                                        <td>{{ client.nom_pays }}</td>
+                                        <!--
                                         <td>{{ client.nationality }}</td>
                                         <td>{{ client.pavilion }}</td>
-                                        <td>{{ client.phoneNumber }}</td>
-                                        <td>{{ client.mobile }}</td>
-                                        <td>{{ client.fax }}</td>
-                                        <td>{{ client.exemption }}</td>
-                                        <td>{{ client.email }}</td>
+                                        -->
+                                        <td>{{ client.tel_cli }}</td>
+                                        <td>{{ client.mobile_cli }}</td>
+                                        <td>{{ client.fax_cli }}</td>
+                                        <td>{{ client.exo_cli }}</td>
+                                        <td>{{ client.email_cli }}</td>
                                     </tr>
                                 </tbody>
                             </table>
