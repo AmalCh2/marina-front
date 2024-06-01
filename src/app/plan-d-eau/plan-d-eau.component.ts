@@ -1,6 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { SideNavToggle } from './SideNavToggle.interface';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { AxiosService } from '../axios.service';
+import { SideNavToggle } from './SideNavToggle.interface';
+import { Client } from 'src/app/shared/Model/Client';
+import { TypeBateau } from 'src/app/shared/Model/TypeBateau';
+import { Bateau } from 'src/app/shared/Model/Bateau';
+import { BateauService } from 'src/app/shared/Service/Bateau.service';
+import { ClientService } from 'src/app/shared/Service/Client.service';
+import { TypeBateauService } from 'src/app/shared/Service/TypeBateau.service';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import * as pdfMake from 'pdfmake/build/pdfMake'
+import * as pdfFonts from 'pdfmake/build/vfs_fonts'
 
 @Component({
   selector: 'app-plan-d-eau',
@@ -21,8 +30,14 @@ export class PlanDEauComponent implements OnInit {
     return styleClass;
   }
 
+  listBateau: any;
+  bateau!: Bateau;
 
+  listClient: any;
+  Client!: Client;
 
+  listTypeBateau: any;
+  TypeBateau!: TypeBateau;
 
 
 
@@ -31,7 +46,14 @@ export class PlanDEauComponent implements OnInit {
   screenWidth = 0;
   data: string[] = [];
 
-  constructor(private axiosService: AxiosService) {}
+  constructor(private axiosService: AxiosService,
+    private BateauService: BateauService , 
+    private typeBateauService: TypeBateauService , 
+    private ClientService: ClientService
+    , private modalService: NgbModal 
+
+
+  ) {}
 
   ngOnInit(): void {
     this.axiosService.request(
@@ -41,6 +63,111 @@ export class PlanDEauComponent implements OnInit {
     ).then(
       (response) => this.data = response.data
     );
+    this.getAllClients();
+    this.Client = {
+      id_cli: null,
+    nom_cli: null,
+    prenom_cli: null,
+    etat_civil: null,
+    adresse_cli: null,
+    ville_cli: null,
+    tel_cli: null,
+    fax_cli: null,
+    mobile_cli: null,
+    email_cli: null,
+    exo_cli: null,
+    pays:null,
+    code_postal_cliii:null
+    
+    };
+
+    this.getAllTypeBateaus();
+
+    this.TypeBateau = {
+        id_type_bat: null,
+        type_bat:null,
+        designation_bat:null,
+        majoration_bat:null,
+        multicoque:null,
+    }
+
+    this.getAllBateaux();
+
+    this.bateau = {
+      id_bat:null,
+     immatriculation_bat:null,
+     autre_ident_nom_bat:null,
+     nom_bat:null,
+     largeur_bat:null,
+     longueur_bat:null,
+     tirant_eau_bat:null,
+     tonnage_bat:null,
+     pavillon_bat:null,
+     marque_bat:null,
+     num_assur:null,
+     nom_assur:null,
+     date_exp:null,
+     adresse_bat:null,
+     code_postal_bat:null,
+     ville_bat:null,
+     pays:null,
+     tel_bat:null,
+     fax_bat:null,
+     mobile_bat:null,
+     email_bat:null,
+     observation:null,
+     typeBateau:null,
+     client:null,
+     port:null, 
+     
+     date_mvt:null,
+     depart_mvt:null,
+     arrivee_mvt:null,
+     commentaire_mvt:null,
+     id_emp:null,
+    }
+
+  }
+
+  getAllTypeBateaus() {
+    this.typeBateauService.getAllTypeBateau().subscribe((data: TypeBateau[]) => {
+      this.listTypeBateau = data;
+    });
+  }
+
+  getAllClients() {
+    this.ClientService.getAllClients().subscribe(res => this.listClient = res)
+  }
+
+
+
+
+  getAllBateaux() {
+    this.BateauService.getAllBateaux().subscribe(res => this.listBateau = res)
+  }
+
+  printBateau(bateau: any) {
+    let docDefinition: any = {
+      content: [
+        { text: 'My Client', style: 'title' }, // Title element
+        { text: '\n' }, // Add some space after the title
+        { text: 'Bateau ID: ', bold: true },
+        { text: bateau.id_bat + '\n', bold: true, color: 'blue' },
+        { text: 'bateau Name: ', bold: true },
+        { text: bateau.nom_bat + '\n', bold: true, italic: true },
+      ],
+      styles: {
+        title: { // Define a custom style for the title
+          bold: true,
+          fontSize: 20, // Larger font size
+          alignment: 'center', // Center alignment
+          color: 'orange', // Orange color
+          margin: [0, 0, 0, 20] // Margin bottom to add space below the title
+        }
+      }
+    };
+
+    pdfMake.createPdf(docDefinition).open();
   }
 
   onToggleSideNav(data: SideNavToggle): void {
@@ -48,23 +175,6 @@ export class PlanDEauComponent implements OnInit {
     this.isSideNavCollapsed = data.collapsed;
   }
 
-  dataRows: any[] = [
-    { number: 1, value1: 'bat_1', value2: 'prop_1', date1: '2024-05-10', date2: '2024-05-15', date3: '2024-05-20', date4: '2024-05-25', dimensions: 'Dimensions' },
-    { number: 2, value1: 'bat_2', value2: 'prop_2', date1: '2024-05-11', date2: '2024-05-16', date3: '2024-05-21', date4: '2024-05-26', dimensions: 'Dimensions' },
-    { number: 3, value1: 'bat_3', value2: 'prop_3', date1: '2024-05-12', date2: '2024-05-17', date3: '2024-05-22', date4: '2024-05-27', dimensions: 'Dimensions' },
-    { number: 4, value1: 'bat_4', value2: 'prop_4', date1: '2024-05-13', date2: '2024-05-18', date3: '2024-05-23', date4: '2024-05-28', dimensions: 'Dimensions' },
-    { number: 5, value1: 'bat_5', value2: 'prop_5', date1: '2024-05-14', date2: '2024-05-19', date3: '2024-05-24', date4: '2024-05-29', dimensions: 'Dimensions' },
-    { number: 6, value1: 'bat_6', value2: 'prop_6', date1: '2024-05-10', date2: '2024-05-15', date3: '2024-05-20', date4: '2024-05-25', dimensions: 'Dimensions' },
-    { number: 7, value1: 'bat_7', value2: 'prop_7', date1: '2024-05-11', date2: '2024-05-16', date3: '2024-05-21', date4: '2024-05-26', dimensions: 'Dimensions' },
-    { number: 8, value1: 'bat_8', value2: 'prop_8', date1: '2024-05-12', date2: '2024-05-17', date3: '2024-05-22', date4: '2024-05-27', dimensions: 'Dimensions' },
-    { number: 9, value1: 'bat_9', value2: 'prop_9', date1: '2024-05-13', date2: '2024-05-18', date3: '2024-05-23', date4: '2024-05-28', dimensions: 'Dimensions' },
-    { number: 10, value1: 'bat_10', value2: 'prop_10', date1: '2024-05-14', date2: '2024-05-19', date3: '2024-05-24', date4: '2024-05-29', dimensions: 'Dimensions' },
-    { number: 7, value1: 'bat_7', value2: 'prop_7', date1: '2024-05-11', date2: '2024-05-16', date3: '2024-05-21', date4: '2024-05-26', dimensions: 'Dimensions' },
-    { number: 8, value1: 'bat_8', value2: 'prop_8', date1: '2024-05-12', date2: '2024-05-17', date3: '2024-05-22', date4: '2024-05-27', dimensions: 'Dimensions' },
-    { number: 9, value1: 'bat_9', value2: 'prop_9', date1: '2024-05-13', date2: '2024-05-18', date3: '2024-05-23', date4: '2024-05-28', dimensions: 'Dimensions' },
-    { number: 10, value1: 'bat_10', value2: 'prop_10', date1: '2024-05-14', date2: '2024-05-19', date3: '2024-05-24', date4: '2024-05-29', dimensions: 'Dimensions' },
-  ];
   
-  filterFooterInfo: string[] = ['infos 1', 'infos 2', 'infos 3']; // Tableau de chaînes pour les informations du footer
 }
 

@@ -130,6 +130,7 @@ export class AjouterBateauComponent implements OnInit {
     email_cli: null,
     exo_cli: null,
     pays:null,
+    code_postal_cliii:null,
    
   }
 

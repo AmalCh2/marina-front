@@ -75,7 +75,7 @@
     width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
     background-color: rgba(33, 26, 61, 0.1),/*#de8517;///////////////////////////////////////////*/
   }
@@ -249,149 +249,67 @@
     text-align: center;
   }
   
-  /* ====================== Responsive Design ========================== */
-  @media (max-width: 1500px) {
-    .body{
-      height: 135%;
-    }
-  
-    .left-content {
-      width: 98%;
-      height: 100%;
-    }
-  }
-  
-  @media (max-width: 1450px) {
-    .filterBox .filter .filterName {
-      position: relative;
-      font-weight: 500;
-      font-size: 1.75rem;
-    }
-  
-    .filterBox .filter .iconFltr {
-      font-size: 3rem;
-    }
-    
-    .filterBox {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  
-    .filterBox .filter .filterName {
-      position: relative;
-      font-weight: 500;
-      font-size: 1.5rem;
-    }
-  
-    .filterBox .filter .iconFltr {
-      font-size: 2.5rem;
-    }
-  
-  }
-  
-  @media (max-width: 1310px) {
-    .left-content {
-      width: 97.5%;
-    }
-  
-    .filterFooter h2 {
-      font-size: 20px;
-    }
-  
-    .BigTitle {
-      z-index: 10001;
-    }
-  
-    .BigTitle {
-      position: fixed;
-      right: 0;
-      left: initial;
-    }
-  
-  }
-  
-  @media (max-width: 1150px) {
-    .left-content {
-      width: 97%;
-      margin: 15px;
-      padding: 20px;
-    }
-  
-  }
-  
-    @media (max-width: 910px) {
-    .left-content {
-        width: 96.5%;
-        padding: 30px 20px 20px;
-    }
-  
-    }
-    
-    @media (max-width: 800px) {
-    .left-content {
-        width: 95.5%;
-        padding: 30px 20px 20px;
-      }
-    
-    }
-  
-  @media (max-width: 768px) {
-    .details {
-      grid-template-columns: 1fr;
-    }
-    .Boats {
-      overflow-x: auto;
-    }
-    .status.inProgress {
-      white-space: nowrap;
-    }
-  }
-  
-  @media (max-width: 750px) {
-    .filterBox {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-    
-  @media (max-width: 700px) {
-    .left-content {
-      width: 95%;
-      padding: 10px 20px 10px;
-    }
-  
-  }
-  @media (max-width: 480px) {
-    .filterBox {
-      grid-template-columns: repeat(1, 1fr);
-    }
-    .filterFooter h2 {
-      font-size: 20px;
-    }
-    .navigation {
-      width: 100%;
-      left: -100%;
-      z-index: 1000;
-    }
-    .navigation.active {
-      width: 100%;
-      left: 0;
-    }
-    .BigTitle {
-      z-index: 10001;
-    }
-    .main.active .BigTitle {
-      color: #fff;
-      position: fixed;
-      right: 0;
-      left: initial;
-    }
-  }
-  
-    @media (max-width: 459px) {
-    .filterBox .filter {
-      width: 95%;
-    }
-  
-    .Boats {
-      width: 102%;
-    }
-  }
+  /* ===================== Buttons ===================== */
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: 54px;
+}
+
+.button {
+  text-decoration: none;
+  color: #001A1F;
+  font-weight: 500;
+  text-transform: uppercase; 
+  font-size: 14px;
+  padding: 12px;
+  border: 2px solid ; 
+  border-radius: 0px;
+  background: transparent;
+  transition: 0.25s ease-in-out;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: 3px;
+}
+
+.button-primary {
+  z-index: 1;
+  background:  #ffffff;
+  border: 1px solid #c1c1c1;
+  border-top-left-radius: 100px; 
+  border-bottom-left-radius: 100px;
+  width: 200px;
+  justify-content: center;
+  transform: translateX(-15px);
+  cursor: pointer;
+}
+
+.button-secondary { 
+  background: #ffffff;
+  border: 1px solid #c1c1c1;
+  border-top-right-radius: 100px; 
+  border-bottom-right-radius: 100px; 
+  width: 200px;
+  transform: translateX(-15px);
+  cursor: pointer;
+}
+
+.button-third { 
+  background: #ffffff;
+  border: 1px solid #c1c1c1;
+  width: 200px;
+  transform: translateX(-15px);
+  cursor: pointer;
+}
+
+.button-primary:hover,
+.button-primary:focus,
+.button-secondary:hover, 
+.button-secondary:focus { 
+  background:  rgba(33, 26, 61, 0.2);
+}

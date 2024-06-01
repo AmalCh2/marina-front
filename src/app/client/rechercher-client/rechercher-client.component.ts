@@ -8,6 +8,8 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import * as pdfMake from 'pdfmake/build/pdfMake'
 import * as pdfFonts from 'pdfmake/build/vfs_fonts'
 import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { Pays } from 'src/app/shared/Model/Pays';
+import { PaysService } from 'src/app/shared/Service/Pays.service';
 
 ( pdfMake as any ).vfs= pdfFonts.pdfMake.vfs;
 @Component({
@@ -29,7 +31,24 @@ export class RechercherClientComponent implements OnInit {
   form: boolean = false;
   listPays: any;
   closeResult!: string;
-  constructor(private axiosService: AxiosService, private ClientService: ClientService , private modalService: NgbModal) {
+
+
+  Pays!: Pays;
+  nationnalites: string[] = [];
+
+  selectedPays: any;
+  onNomChange(event: any) {
+    if (this.selectedPays) {
+      this.Pays.nationnalite = this.selectedPays.nationnalite;
+      this.nationnalites = [this.selectedPays.nationnalite];
+    } else {
+      this.Pays.nationnalite = '';
+      this.nationnalites = [];
+    }
+  }
+
+
+  constructor(private axiosService: AxiosService, private ClientService: ClientService , private modalService: NgbModal,private PaysService: PaysService) {
   }
   ngOnInit(): void {
     this.axiosService.request(
@@ -54,10 +73,23 @@ export class RechercherClientComponent implements OnInit {
     email_cli: null,
     exo_cli: null,
     pays:null,
+    code_postal_cliii:null
     
     };
+    this.getAllPays();
+
+    this.Pays = {
+    nom_pays:null,
+    nationnalite : null,
+    pavillon : null,
+    }
     
   }
+
+  getAllPays() {
+    this.PaysService.getAllPays().subscribe(res => this.listPays = res)
+  }
+  
   getAllClients() {
     this.ClientService.getAllClients().subscribe(res => this.listClient = res)
   }
@@ -217,23 +249,5 @@ export class RechercherClientComponent implements OnInit {
   closeOverlay() {
     this.hideModal();
   }
-  clientsData: any[] = [
-    { 
-      clientNumber: 1, 
-      lastName: 'Doe', 
-      firstName: 'John', 
-      civilStatus: 'Single', 
-      address: '123 Main Street', 
-      postalCode: '12345', 
-      city: 'City', 
-      country: 'Country', 
-      nationality: 'Nationality', 
-      pavilion: 'Pavilion', 
-      phoneNumber: '123-456-7890', 
-      mobile: '123-456-7890', 
-      fax: '123-456-7890', 
-      exemption: true, 
-      email: 'john.doe@example.com' 
-    }
-  ];
+  
 }

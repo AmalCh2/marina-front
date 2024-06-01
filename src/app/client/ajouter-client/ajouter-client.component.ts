@@ -11,8 +11,10 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-ajouter-client',
   templateUrl: './ajouter-client.component.html',
-  styleUrls: ['./ajouter-client.component.css']
+  styleUrls: ['./ajouter-client.component.css'] ,
+  
 })
+
 export class AjouterClientComponent implements OnInit {
   @Input() screenWidthh = 0;
   @Input() collapsed = false;
@@ -70,6 +72,7 @@ export class AjouterClientComponent implements OnInit {
     email_cli: null,
     exo_cli: null,
     pays:null,
+    code_postal_cliii:null,
     
 
     };

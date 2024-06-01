@@ -94,16 +94,6 @@
                         <i class="fal fa-check-circle faa2x"></i>
                     </div>
                 </div>
-
-                <div class="filter">
-                    <div>
-                        <div class="filterName" routerLink="/fiche_bateau" routerLinkActive="active">Imprimer</div>
-                    </div> 
-
-                    <div class="iconFltr">
-                        <i class="fal fa-file-export"></i>
-                    </div>
-                </div>
             </div>
 
             <!-- ================ boats List ================= -->
@@ -113,155 +103,51 @@
                     <table>
                         <thead>
                             <tr>
-                                <td>Poste</td>
-                                <td>Bateau</td>
-                                <td>Propriétaire</td>
-                                <td>Début Séjour</td>
-                                <td>Fin Séjour</td>
-                                <td>Arrivée</td>
-                                <td>Départ</td>
-                                <td>Dimensions Poste</td>
+                                <td>ID</td>
+                                <td>Nom</td>
+                                <td>Prenom Client</td>
+                                <td>Nom Client</td>
+                                <td>Immat.</td>
+                                <td>Types</td>
+                                <td>Pavillon</td>
+                                <td>Marque</td>
+                                <td>Adresse</td>
+                                <td>Code postal</td>
+                                <td>Ville</td>
+                                <td>Pays</td>
+                                <td>Longueur</td>
+                                <td>Largeur</td>
+                                <td>Tirant d'eau</td>
+                                <td>Autre Nom</td>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr *ngFor="let row of dataRows">
-                              <td>{{ row.number }}</td>
-                              <td>{{ row.value1 }}</td>
-                              <td>{{ row.value2 }}</td>
-                              <td>{{ row.date1 }}</td>
-                              <td>{{ row.date2 }}</td>
-                              <td>{{ row.date3 }}</td>
-                              <td>{{ row.date4 }}</td>
-                              <td>{{ row.dimensions }}</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <div class="filterFooter">
-                            <div *ngFor="let info of filterFooterInfo">
-                              <h6>{{ info }}</h6>
-                            </div>
-                      </div>
-                     
-<!--
-                        <tbody>
-                            <tr>
-                                <td>number</td>
-                                <td>String</td>
-                                <td>String</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Dimensions</td>
-                            </tr>
-
-                            <tr>
-                                <td>number</td>
-                                <td>String</td>
-                                <td>String</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Dimensions</td>
-                            </tr>
-
-                            <tr>
-                                <td>number</td>
-                                <td>String</td>
-                                <td>String</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Dimensions</td>
-                            </tr>
-
-                            <tr>
-                                <td>number</td>
-                                <td>String</td>
-                                <td>String</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Dimensions</td>
-                            </tr>
-
-                            <tr>
-                                <td>number</td>
-                                <td>String</td>
-                                <td>String</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Dimensions</td>
-                            </tr>
-
-                            <tr>
-                                <td>number</td>
-                                <td>String</td>
-                                <td>String</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Dimensions</td>
-                            </tr>
-
-                            <tr>
-                                <td>number</td>
-                                <td>String</td>
-                                <td>String</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Dimensions</td>
-                            </tr>
-
-                            <tr>
-                                <td>number</td>
-                                <td>String</td>
-                                <td>String</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Dimensions</td>
-                            </tr>
-
-                            <tr>
-                                <td>number</td>
-                                <td>String</td>
-                                <td>String</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Dimensions</td>
-                            </tr>
-
-                            <tr>
-                                <td>number</td>
-                                <td>String</td>
-                                <td>String</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Date</td>
-                                <td>Dimensions</td>
+                            <tr *ngFor="let bateau of listBateau">
+                                <td>{{ bateau.id_bat }}</td>
+                                <td>{{ bateau.nom_bat }}</td>
+                                <td>{{ bateau.client.prenom_cli }}</td>
+                                <td>{{ bateau.client.nom_cli }}</td>
+                                <td>{{ bateau.immatriculation_bat }}</td>
+                                <td>{{ bateau.typeBateau.type_bat }}</td>
+                                <td>{{ bateau.pavillon_bat }}</td>
+                                <td>{{ bateau.marque_bat }}</td>
+                                <td>{{ bateau.adresse_bat }}</td>
+                                <td>{{ bateau.code_postal_bat }}</td>
+                                <td>{{ bateau.ville_bat }}</td>
+                                <td>{{ bateau.pays }}</td>
+                                <td>{{ bateau.largeur_bat }}</td>
+                                <td>{{ bateau.largeur_bat }}</td>
+                                <td>{{ bateau.tirant_eau_bat }}</td>
+                                <td>{{ bateau.autre_ident_nom_bat }}</td>
+                                <td>
+                                    <div class="button-group ">
+                                        <button class="button" (click)="printBateau(bateau)">Imprimer</button>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-
-                    <div class="filterFooter">
-                        <h2>infos</h2>
-                        <h2>infos</h2>
-                        <h2>infos</h2>
-                    </div>
--->
                 </div>
 
             </div>

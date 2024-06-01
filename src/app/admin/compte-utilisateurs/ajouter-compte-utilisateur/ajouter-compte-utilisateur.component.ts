@@ -7,6 +7,8 @@ import { UtilisateurService } from 'src/app/shared/Service/Utilisateur.service';
 import { Role } from 'src/app/shared/Model/Role';
 import { RoleService } from 'src/app/shared/Service/Role.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { Port } from 'src/app/shared/Model/Port';
+import { PortService } from 'src/app/shared/Service/Port.service';
 
 @Component({
   selector: 'app-ajouter-compte-utilisateur',
@@ -32,7 +34,10 @@ export class AjouterCompteUtilisateurComponent implements OnInit {
   ];
   role!: Role;
 
-  constructor(private axiosService: AxiosService ,private UtilisateurService: UtilisateurService, private modalService: NgbModal, private roleService: RoleService) {}
+  listPorts: Port[] = [];
+  port!: Port;
+
+  constructor(private axiosService: AxiosService ,private UtilisateurService: UtilisateurService, private modalService: NgbModal, private roleService: RoleService,private PortService: PortService) {}
 
   ngOnInit(): void {
     this.axiosService.request(
@@ -48,8 +53,23 @@ export class AjouterCompteUtilisateurComponent implements OnInit {
       id_utilisateur: null,
     nom_utilisateur: null,
     mot_de_passe: null,
-    id_port: null,
+    port: null,
     role : null
+  };
+
+
+  this.getAllPorts();
+
+    this.port = {
+      id_port: null,
+      nom_port: null,
+      adr1_port: null,
+      adr2_port: null,
+      adr3_port: null,
+      tel_port: null,
+      fax_port: null,
+      email_port: null,
+      sigle_port: null,
   };
 
 this.getAllRoles();
@@ -57,6 +77,10 @@ this.getAllRoles();
 
 getAllUtilisateurs() {
   this.UtilisateurService.getAllUtilisateurs().subscribe(res => this.listUtilisateur = res)
+}
+
+getAllPorts() {
+  this.PortService.getAllPorts().subscribe(res => this.listPorts = res)
 }
 
 getAllRoles() {

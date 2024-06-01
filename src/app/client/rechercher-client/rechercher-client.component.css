@@ -69,11 +69,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 0px;
   border: none;
-  margin-top: 0;
-  padding-top: 0;
-  height: 70px;
+  margin: 0;
+  padding: 0;
+  height: 54px;
 }
 
 .button {
@@ -88,8 +88,8 @@
   background: transparent;
   transition: 0.25s ease-in-out;
   text-align: center;
-  border: none;
-  margin-top: 0;
+  border-radius: 10px;
+  margin-left: 3px;
 }
 
 .button-primary {
@@ -505,4 +505,185 @@
 
 input[type="radio"]{
   display: none;
+}
+
+
+
+
+
+
+
+
+/* ================== form-containers ============== */
+.big-container{
+  height: 86%;
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
+.formulaire-boxes{
+  position: relative;
+  display: flex;  
+  width: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+  width: auto;
+  background: #f4f7fa;
+  padding: 10px 25px 35px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+}
+
+.container-1{
+  width: 900px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+
+.form-title {
+  color: #001A1F;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 5px 20px;
+}
+
+.form {
+  margin-top: 0px;
+  align-items: center;
+  justify-content: center;
+}
+
+.form .input-box {
+  width: 100%;
+  margin-top: 10px;
+}
+
+label {
+  color: #001A1F;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0 15px;
+}
+
+.form .input-box input {
+  position: relative;
+  height: 43px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: rgb(101, 100, 100);
+  margin-top: 0px;
+  border: 1px solid #c1c1c1;
+  border-radius: 8px;
+  padding: 0 15px;
+}
+
+.form .select-box {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: rgb(101, 100, 100);
+  margin-top: 0px;
+  border: 1px solid #c1c1c1;
+  border-radius: 8px;
+  padding: 0 15px;
+}
+
+.form .select-box {
+  color: rgb(101, 100, 100);
+}
+
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgb(158, 156, 156);
+}
+
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+
+.form .column input .nom_bat{
+  width: 20%;
+}
+
+.address :where(input, .select-box) {
+  margin-top: 0px;
+}
+
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: rgb(101, 100, 100);
+  font-size: 1rem;
+  border: none;
+}
+
+/* ====================== OPTION CHECK ========================== */
+.option-check-details{
+  margin-top: 10px;
+}
+
+.option-check-details .exo{
+  margin-left: 0px;
+}
+
+.category{
+  display: flex;
+  width: 80%;
+  margin-left: 40px ;
+  justify-content: space-between;
+}
+
+.category label{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 25px;
+  width: 200px;
+}
+
+.category label .dot{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#dot-1:checked ~ .category label .one,
+#dot-2:checked ~ .category label .two{
+  background: #001A1F;
+  border-color: #d9d9d9;
+}
+
+input[type="radio"]{
+  display: none;
+}
+
+.option-check-details .exo-label {
+  margin-left: -70px;
+}
+
+.red-background {
+  margin-top: -30px;
+  background-color:  white;
+  position: relative;
+  width: 700px;
+  padding: 10px 25px 35px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }

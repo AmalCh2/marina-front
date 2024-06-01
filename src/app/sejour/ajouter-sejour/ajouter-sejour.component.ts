@@ -12,6 +12,8 @@ import { Bateau } from 'src/app/shared/Model/Bateau';
 import { TarifService } from 'src/app/shared/Service/Tarif.service';
 import { EmplacementService } from 'src/app/shared/Service/Emplacement.service';
 import { BateauService } from 'src/app/shared/Service/Bateau.service';
+import { Client } from 'src/app/shared/Model/Client';
+import { ClientService } from 'src/app/shared/Service/Client.service';
 
 @Component({
   selector: 'app-ajouter-sejour',
@@ -44,7 +46,8 @@ export class AjouterSejourComponent implements OnInit {
   listBateau: any;
   bateau!: Bateau;
 
-  
+  listClient:any;
+  client!: Client;
   
 
   constructor(private axiosService: AxiosService,
@@ -53,7 +56,8 @@ export class AjouterSejourComponent implements OnInit {
     private emplacementService: EmplacementService,
     private bateauService: BateauService,
     private typeSejourService: TypeSejourService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private ClientService: ClientService
   ) {}
 
   ngOnInit(): void {
@@ -153,11 +157,32 @@ export class AjouterSejourComponent implements OnInit {
     mois_ms:null,
     mois_bs:null,
   };
-
+  this.getAllClients();
+  this.client = {
+    id_cli: null,
+  nom_cli: null,
+  prenom_cli: null,
+  etat_civil: null ,
+  adresse_cli: null,
+  ville_cli: null,
+  tel_cli: null,
+  fax_cli: null,
+  mobile_cli: null,
+  email_cli: null,
+  exo_cli: null,
+  pays:null,
+  code_postal_cliii:null,
+ 
+}
 
   }
 
- 
+  getAllClients() {
+    this.ClientService.getAllClients().subscribe((data: Client[]) => {
+      this.listClient = data;
+    });
+  }
+
   getAllTarif() {
     this.tarifService.getAllTarifs().subscribe(res => this.listTarif = res);
   }

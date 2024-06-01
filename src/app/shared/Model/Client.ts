@@ -11,6 +11,7 @@ export class Client {
     email_cli: any;
     exo_cli: any;
     pays:any;
+    code_postal_cliii:any;
     
    
   }

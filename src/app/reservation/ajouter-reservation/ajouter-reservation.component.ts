@@ -3,9 +3,8 @@ import { AxiosService } from 'src/app/axios.service';
 import { SideNavToggle } from '../SideNavToggle.interface';
 import { Reservation } from 'src/app/shared/Model/Reservation';
 import { ReservationService } from 'src/app/shared/Service/Reservation.service';
-import { TypeSejour } from 'src/app/shared/Model/TypeSejour';
 import { TypeSejourService } from 'src/app/shared/Service/TypeSejour.service';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Sejour } from 'src/app/shared/Model/Sejour';
 
 @Component({
@@ -13,6 +12,7 @@ import { Sejour } from 'src/app/shared/Model/Sejour';
   templateUrl: './ajouter-reservation.component.html',
   styleUrls: ['./ajouter-reservation.component.css']
 })
+
 export class AjouterReservationComponent implements OnInit {
 
   @Input() screenWidthh = 0;
@@ -99,7 +99,6 @@ export class AjouterReservationComponent implements OnInit {
   cancel() {
     this.form = false;
   }
-
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
@@ -107,11 +106,14 @@ export class AjouterReservationComponent implements OnInit {
 
   getBodyClass(): string {
     let styleClass = '';
-    if (this.collapsed && this.screenWidthh > 768) {
-      styleClass = 'body-trimmed';
-    } else if (this.collapsed && this.screenWidthh <= 768 && this.screenWidthh > 0) {
+    if (this.collapsed && this.screenWidthh > 768){
+      styleClass='body-trimmed';
+    } else if (this.collapsed && this.screenWidthh <= 768 && this.screenWidthh > 0){
       styleClass = 'body-md-screen';
     }
     return styleClass;
   }
+
+  
+
 }

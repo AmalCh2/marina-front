@@ -25,14 +25,9 @@ export class AjouterFactureComponent implements OnInit {
   currentPage: number = 1;
   paginationHTML: string = '';
 
-  listConsommation: any;
-  consommation!: Consommation;
-  listSejour: any;
-  sejour!: Sejour;
-  listBateau: any;
-  Bateau!: Bateau;
+  
 
-  constructor(private axiosService: AxiosService , private consommationService: ConsommationService,private SejourService: SejourService,private BateauService: BateauService) {}
+  constructor(private axiosService: AxiosService ) {}
 
   ngOnInit(): void {
     this.axiosService.request(
@@ -43,82 +38,9 @@ export class AjouterFactureComponent implements OnInit {
       (response) => this.data = response.data
     );
     this.generatePagination();
-    this.getAllConsommation();
 
-    this.consommation = {
-      id_cons: null,
-    prix_unit: null,
-    qte: null,
-    deb_cons: null,
-    fin_cons: null,
-    date_sys: null,
-    offre: null,
-    fact: null,
-    prest: null,
-    sej: Sejour,
   }
-
-  this.getAllSejours();
-
-    this.sejour = {
-      id_sej:null,
-      deb_sej:null,
-      fin_sej:null,
-      num_jours:null,
   
-      tarif:null,
-      type_sej:null,
-      emp:null,
-      bat:Bateau,
-  }
-
-  this.getAllBateaux();
-
-    this.Bateau = {
-      id_bat:null,
-     immatriculation_bat:null,
-     autre_ident_nom_bat:null,
-     nom_bat:null,
-     largeur_bat:null,
-     longueur_bat:null,
-     tirant_eau_bat:null,
-     tonnage_bat:null,
-     pavillon_bat:null,
-     marque_bat:null,
-     num_assur:null,
-     nom_assur:null,
-     date_exp:null,
-     adresse_bat:null,
-     code_postal_bat:null,
-     ville_bat:null,
-     pays:null,
-     tel_bat:null,
-     fax_bat:null,
-     mobile_bat:null,
-     email_bat:null,
-     observation:null,
-     typeBateau:null,
-     client:null,
-     port:null, 
-     
-     date_mvt:null,
-     depart_mvt:null,
-     arrivee_mvt:null,
-     commentaire_mvt:null,
-     id_emp:null,
-    }
-
-  }
-  getAllBateaux() {
-    this.BateauService.getAllBateaux().subscribe(res => this.listBateau = res)
-  }
-  getAllSejours() {
-    this.SejourService.getAllSejours().subscribe(res => this.listSejour = res)
-  }
-
-  getAllConsommation() {
-    this.consommationService.getAllConsommations().subscribe(res => this.listConsommation = res);
-  }
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;

@@ -24,10 +24,16 @@
                           <input type="number"laceholder="Entrer le numéro du compte" required [(ngModel)]="Utilisateur.id_utilisateur"
                           [ngModelOptions]="{standalone : true}" />
                         </div>
-                        <div class="input-box">
-                          <label>Nº du port :</label>
-                          <input type="text" placeholder="Entrer le numéro du port"/>
+                        
+
+                        <div>
+                          <label for="id_port">Port</label>
+                          <select id="id_port" [(ngModel)]="Utilisateur.port" name="id_port">
+                            <option *ngFor="let port of listPorts" [ngValue]="role">{{ port.id_port}}</option>
+                          </select>
                         </div>
+
+
                       </div>
                       <div class="column">
                         <div class="input-box">

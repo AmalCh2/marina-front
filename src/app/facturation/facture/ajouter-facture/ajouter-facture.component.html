@@ -26,21 +26,13 @@
                                         </div>
                                     </div>
                                     <div class="column">
-                                        <div class="input-box">
-                                            <label>Nom du client :</label>
-                                            <input type="text" placeholder="Entrer le nom du client" required />
-                                        </div>
+                                        
                                         <div class="input-box">
                                             <label>Nº du client :</label>
                                             <input type="number" placeholder="Entrer le numéro du client"  />
                                         </div>
                                     </div>
-                                    <div class="column">
-                                        <div class="input-box">
-                                            <label>Nom du bateau :</label>
-                                            <input type="text" placeholder="Entrer le numéro du bateau" />
-                                        </div>
-                                    </div>
+                                    
                                     <br>
                                     <div class="input-box">
                                         <label>Totale Facture :</label>
@@ -294,14 +286,7 @@
                                             </div>
                                         </div>
                                         <div class="column">
-                                            <div>
-                                                <label for="id_sej">n sejour</label>
-                                                <select id="id_sej" [(ngModel)]="consommation.sej.bat.id_bat" name="id_sej">
-                                                  <option *ngFor="let consommation of listConsommation" [ngValue]="consommation.sej.bat.id_bat">
-                                                    {{ consommation.sej.bat.nom_bat }}
-                                                  </option>
-                                                </select>
-                                              </div>
+                                           
                                             <div class="input-box">
                                                 <label>Timbre fiscale :</label>
                                                 <input type="text" placeholder="Entrer le timbre fiscale" required id="nom_bat" />

@@ -51,12 +51,21 @@
                     </div>
                     <br>
                     <h1 class="form-title">Informations sur l'Addresse du Client :</h1>
-                    <div class="input-box">
-                      <label>Adresse :</label>
-                      <input type="text" placeholder="Entrer l'adresse du client" required  
-                      [(ngModel)]="Client.adresse_cli"
-                        [ngModelOptions]="{standalone : true}"/>
+                    <div class="column">
+                      <div class="input-box">
+                        <label>Adresse :</label>
+                        <input type="text" placeholder="Entrer l'adresse du client" required  
+                        [(ngModel)]="Client.adresse_cli"
+                          [ngModelOptions]="{standalone : true}"/>
+                      </div>
+                      <div class="input-box">
+                        <label>Code Postale :</label>
+                        <input type="number" placeholder="Entrer le code postale" required  
+                        [(ngModel)]="Client.adresse_cli"
+                          [ngModelOptions]="{standalone : true}"/>
+                      </div>
                     </div>
+                    
                     <div class="column">
                       <div class="input-box">
                         <label>Pavillon :</label>

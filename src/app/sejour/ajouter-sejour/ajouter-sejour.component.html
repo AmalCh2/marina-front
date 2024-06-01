@@ -27,15 +27,7 @@
                                     
                                 </div>
                                 <div class="column">
-                                    <div>
-                                        <label for="tarif">type_tarif</label>
-                                        <select id="type_tarif" [(ngModel)]="tarif.type_tarif" name="id_tarif">
-                                          <option *ngFor="let tarif of listTarif" [ngValue]="tarif">{{ tarif.type_tarif}}</option>
-                                        </select>
-                                      </div>
-                                    
-
-
+                                  
                                       <div class="input-box">
                                         <div class="input-box">
                                             <label for="emplacement">emplacement</label>
@@ -78,16 +70,7 @@
                                     
                                 </div>
                                 <div class="column">
-                                    <div class="input-box">
-                                        <label>Nº du propriétaire :</label>
-                                        <input type="number" placeholder="Entrer le nom du propriétaire" required  
-                                        />
-                                    </div>
-                                    <div class="input-box">
-                                        <label>Nom du propriétaire :</label>
-                                        <input type="text" placeholder="Entrer le numero du propriétaire"  required  
-                                        />
-                                    </div>
+                                    
                                 </div>
                                 <div class="column">
                                     <div class="input-box">
@@ -109,40 +92,8 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="column">
-                                    <div class="input-box">
-                                        <label>Nº du type séjours :</label>
-                                        <input type="number" placeholder="Entrer le numéro du type séjour" required required  
-                                        />
-                                    </div>
-
-                                    
-                                    <div class="input-box">
-                                        <label>Majoration :</label>
-                                        <input type="number" placeholder="Entrer la majoration" required  
-                                        [(ngModel)]="typeSejour.sej_majoration"
-                                        [ngModelOptions]="{standalone : true}"/>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="input-box">
-                                        <div class="input-box">
-                                            <label>Type séjour :</label>
-                                            <div class="select-box" >
-                                                <select required>
-                                                    <option hidden>Types :</option>
-                                                    <option>Annuel</option>
-                                                    <option>Mensuel</option>
-                                                    <option>Passager</option>
-                                                    <option>Professionnel</option>
-                                                    <option>Hivernage</option>
-                                                    <option>Titulaire</option>
-                                                    <option>Autorisé</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
+                                
                                 <br>
                                 <div>
                                     <div class="submit-box">

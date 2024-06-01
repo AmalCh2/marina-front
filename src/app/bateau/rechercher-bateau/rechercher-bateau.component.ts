@@ -1,7 +1,15 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { AxiosService } from '../../axios.service';
 import { SideNavToggle } from '../SideNavToggle.interface';
-
+import { Client } from 'src/app/shared/Model/Client';
+import { TypeBateau } from 'src/app/shared/Model/TypeBateau';
+import { Bateau } from 'src/app/shared/Model/Bateau';
+import { BateauService } from 'src/app/shared/Service/Bateau.service';
+import { ClientService } from 'src/app/shared/Service/Client.service';
+import { TypeBateauService } from 'src/app/shared/Service/TypeBateau.service';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import * as pdfMake from 'pdfmake/build/pdfMake'
+import * as pdfFonts from 'pdfmake/build/vfs_fonts'
 
 @Component({
   selector: 'app-rechercher-bateau',
@@ -17,256 +25,284 @@ export class RechercherBateauComponent implements OnInit {
   isSideNavCollapsed = false;
   screenWidth = 0;
   data: string[] = [];
+  totalPages: number = 3;
+  currentPage: number = 1;
+  paginationHTML: string = '';
+  listBateau: any;
+  bateau!: Bateau;
+  closeResult!: string;
 
-  constructor(private axiosService: AxiosService) {}
+  listClient: any;
+  Client!: Client;
+
+  listTypeBateau: any;
+  TypeBateau!: TypeBateau;
+  form: boolean = false;
+
+  prenoms: string[] = [];
+
+  selectedClient: any;
+  onNomChange(event: any) {
+    if (this.selectedClient) {
+      this.Client.prenom_cli = this.selectedClient.prenom_cli;
+      this.prenoms = [this.selectedClient.prenom_cli];
+    } else {
+      this.Client.prenom_cli = '';
+      this.prenoms = [];
+    }
+  }
+  constructor(private axiosService: AxiosService,
+    private BateauService: BateauService , 
+    private typeBateauService: TypeBateauService , 
+    private ClientService: ClientService
+    , private modalService: NgbModal 
+
+
+  ) {}
 
   ngOnInit(): void {
     this.axiosService.request('GET', '/messages', null).then(
       (response) => this.data = response.data
     );
+    this.getAllClients();
+    this.Client = {
+      id_cli: null,
+    nom_cli: null,
+    prenom_cli: null,
+    etat_civil: null,
+    adresse_cli: null,
+    ville_cli: null,
+    tel_cli: null,
+    fax_cli: null,
+    mobile_cli: null,
+    email_cli: null,
+    exo_cli: null,
+    pays:null,
+    code_postal_cliii:null
+    
+    };
+
+    this.getAllTypeBateaus();
+
+    this.TypeBateau = {
+        id_type_bat: null,
+        type_bat:null,
+        designation_bat:null,
+        majoration_bat:null,
+        multicoque:null,
+    }
+
+    this.getAllBateaux();
+
+    this.bateau = {
+      id_bat:null,
+     immatriculation_bat:null,
+     autre_ident_nom_bat:null,
+     nom_bat:null,
+     largeur_bat:null,
+     longueur_bat:null,
+     tirant_eau_bat:null,
+     tonnage_bat:null,
+     pavillon_bat:null,
+     marque_bat:null,
+     num_assur:null,
+     nom_assur:null,
+     date_exp:null,
+     adresse_bat:null,
+     code_postal_bat:null,
+     ville_bat:null,
+     pays:null,
+     tel_bat:null,
+     fax_bat:null,
+     mobile_bat:null,
+     email_bat:null,
+     observation:null,
+     typeBateau:null,
+     client:null,
+     port:null, 
+     
+     date_mvt:null,
+     depart_mvt:null,
+     arrivee_mvt:null,
+     commentaire_mvt:null,
+     id_emp:null,
+    }
+
   }
+
+  getAllTypeBateaus() {
+    this.typeBateauService.getAllTypeBateau().subscribe((data: TypeBateau[]) => {
+      this.listTypeBateau = data;
+    });
+  }
+
+  getAllClients() {
+    this.ClientService.getAllClients().subscribe(res => this.listClient = res)
+  }
+
+
+
+
+  getAllBateaux() {
+    this.BateauService.getAllBateaux().subscribe(res => this.listBateau = res)
+  }
+  
+  editBateau(bateau: Bateau) {
+    this.BateauService.editBateau(bateau).subscribe();
+  }
+  
+  deleteBateau(idBateau: any) {
+    this.BateauService.deleteBateau(idBateau).subscribe(() => this.getAllBateaux())
+  }
+
+  open(content: any, action: any) {
+    if (action != null)
+      this.bateau = action
+    else
+      this.bateau = new Bateau();
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  
+  cancel() {
+    this.form = false;
+  }
+
+
+  printBateau(bateau: any) {
+    let docDefinition: any = {
+      content: [
+        { text: 'My Client', style: 'title' }, // Title element
+        { text: '\n' }, // Add some space after the title
+        { text: 'Bateau ID: ', bold: true },
+        { text: bateau.id_bat + '\n', bold: true, color: 'blue' },
+        { text: 'bateau Name: ', bold: true },
+        { text: bateau.nom_bat + '\n', bold: true, italic: true },
+      ],
+      styles: {
+        title: { // Define a custom style for the title
+          bold: true,
+          fontSize: 20, // Larger font size
+          alignment: 'center', // Center alignment
+          color: 'orange', // Orange color
+          margin: [0, 0, 0, 20] // Margin bottom to add space below the title
+        }
+      }
+    };
+
+    pdfMake.createPdf(docDefinition).open();
+  }
+
+
+
+
+
+
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
   }
 
-  getBodyClass(): string {
-    if (this.collapsed && this.screenWidthh > 768) {
-      return 'body-trimmed';
-    } else if (this.collapsed && this.screenWidthh <= 768 && this.screenWidthh > 0) {
-      return 'body-md-screen';
+  generatePagination(): void {
+    this.paginationHTML = this.createPagination(this.totalPages, this.currentPage);
+  }
+
+  createPagination(totalPages: number, page: number): string {
+    let liTag = '';
+    let active: string;
+    let beforePage = page - 1;
+    let afterPage = page + 1;
+
+    if (page > 1) {
+      liTag += `<li class="btn prev" (click)="changePage(${page - 1})"><span><i class="fas fa-angle-left"></i> Prev</span></li>`;
     }
-    return '';
+
+    if (page > 2) {
+      liTag += `<li class="first numb" (click)="changePage(1)"><span>1</span></li>`;
+      if (page > 3) {
+        liTag += `<li class="dots"><span>...</span></li>`;
+      }
+    }
+
+    if (page === totalPages) {
+      beforePage = beforePage - 2;
+    } else if (page === totalPages - 1) {
+      beforePage = beforePage - 1;
+    }
+
+    if (page === 1) {
+      afterPage = afterPage + 2;
+    } else if (page === 2) {
+      afterPage = afterPage + 1;
+    }
+
+    for (let plength = beforePage; plength <= afterPage; plength++) {
+      if (plength > totalPages) {
+        continue;
+      }
+      if (plength === 0) {
+        plength = plength + 1;
+      }
+      if (page === plength) {
+        active = 'active';
+      } else {
+        active = '';
+      }
+      liTag += `<li class="numb ${active}" (click)="changePage(${plength})"><span>${plength}</span></li>`;
+    }
+
+    if (page < totalPages - 1) {
+      if (page < totalPages - 2) {
+        liTag += `<li class="dots"><span>...</span></li>`;
+      }
+      liTag += `<li class="last numb" (click)="changePage(${totalPages})"><span>${totalPages}</span></li>`;
+    }
+
+    if (page < totalPages) {
+      liTag += `<li class="btn next" (click)="changePage(${page + 1})"><span>Next <i class="fas fa-angle-right"></i></span></li>`;
+    }
+
+    return liTag;
   }
 
-  @ViewChild('section') section!: ElementRef;
-  @ViewChild('overlay') overlay!: ElementRef;
-
-  showModal(): void {
-    this.section.nativeElement.classList.add('active');
-    this.overlay.nativeElement.classList.add('active');
+  getPages(): number[] {
+    const pages = [];
+    for (let i = 1; i <= this.totalPages; i++) {
+      pages.push(i);
+    }
+    return pages;
   }
 
-  hideModal(): void {
-    this.section.nativeElement.classList.remove('active');
-    this.overlay.nativeElement.classList.remove('active');
+  changePage(page: number): void {
+    this.currentPage = page;
+    this.generatePagination();
   }
 
-  closeOverlay(): void {
-    this.hideModal();
+  getBodyClass(): string {
+    let styleClass = '';
+    if (this.collapsed && this.screenWidth > 768){
+      styleClass = 'body-trimmed';
+    } else if (this.collapsed && this.screenWidth <= 768 && this.screenWidth > 0){
+      styleClass = 'body-md-screen';
+    }
+    return styleClass;
   }
 
-  boatsData: any[] = [
-    { 
-      nom: 'Bateau 1', 
-      proprietaire: 'Propriétaire 1', 
-      immatriculation: 'IMM-001', 
-      type: 'Type 1', 
-      pavillon: 'Pavillon 1', 
-      marque: 'Marque 1', 
-      adresse: '123 Rue Principale', 
-      codePostal: '12345', 
-      ville: 'Ville 1', 
-      pays: 'Pays 1', 
-      longueur: '10m', 
-      largeur: '3m', 
-      tirantEau: '1.5m', 
-      tonnage: '5 tonnes', 
-      email: 'bateau1@example.com', 
-      autreNom: 'Autre Nom 1'
-    },
-    { 
-      nom: 'Bateau 2', 
-      proprietaire: 'Propriétaire 2', 
-      immatriculation: 'IMM-002', 
-      type: 'Type 2', 
-      pavillon: 'Pavillon 2', 
-      marque: 'Marque 2', 
-      adresse: '456 Rue Elm', 
-      codePostal: '54321', 
-      ville: 'Ville 2', 
-      pays: 'Pays 2', 
-      longueur: '15m', 
-      largeur: '4m', 
-      tirantEau: '2m', 
-      tonnage: '8 tonnes', 
-      email: 'bateau2@example.com', 
-      autreNom: 'Autre Nom 2'
-    },
-    { 
-      nom: 'Bateau 3', 
-      proprietaire: 'Propriétaire 3', 
-      immatriculation: 'IMM-003', 
-      type: 'Type 3', 
-      pavillon: 'Pavillon 3', 
-      marque: 'Marque 3', 
-      adresse: '789 Rue Oak', 
-      codePostal: '67890', 
-      ville: 'Ville 3', 
-      pays: 'Pays 3', 
-      longueur: '12m', 
-      largeur: '3.5m', 
-      tirantEau: '1.8m', 
-      tonnage: '6 tonnes', 
-      email: 'bateau3@example.com', 
-      autreNom: 'Autre Nom 3'
-    },
-    { 
-      nom: 'Bateau 4', 
-      proprietaire: 'Propriétaire 4', 
-      immatriculation: 'IMM-004', 
-      type: 'Type 4', 
-      pavillon: 'Pavillon 4', 
-      marque: 'Marque 4', 
-      adresse: '101 Rue Pine', 
-      codePostal: '13579', 
-      ville: 'Ville 4', 
-      pays: 'Pays 4', 
-      longueur: '8m', 
-      largeur: '2.5m', 
-      tirantEau: '1.2m', 
-      tonnage: '4 tonnes', 
-      email: 'bateau4@example.com', 
-      autreNom: 'Autre Nom 4'
-    },
-    { 
-      nom: 'Bateau 5', 
-      proprietaire: 'Propriétaire 5', 
-      immatriculation: 'IMM-005', 
-      type: 'Type 5', 
-      pavillon: 'Pavillon 5', 
-      marque: 'Marque 5', 
-      adresse: '202 Rue Maple', 
-      codePostal: '24680', 
-      ville: 'Ville 5', 
-      pays: 'Pays 5', 
-      longueur: '20m', 
-      largeur: '6m', 
-      tirantEau: '3m', 
-      tonnage: '15 tonnes', 
-      email: 'bateau5@example.com', 
-      autreNom: 'Autre Nom 5'
-    },
-    { 
-      nom: 'Bateau 5', 
-      proprietaire: 'Propriétaire 5', 
-      immatriculation: 'IMM-005', 
-      type: 'Type 5', 
-      pavillon: 'Pavillon 5', 
-      marque: 'Marque 5', 
-      adresse: '202 Rue Maple', 
-      codePostal: '24680', 
-      ville: 'Ville 5', 
-      pays: 'Pays 5', 
-      longueur: '20m', 
-      largeur: '6m', 
-      tirantEau: '3m', 
-      tonnage: '15 tonnes', 
-      email: 'bateau5@example.com', 
-      autreNom: 'Autre Nom 5'
-    },{ 
-      nom: 'Bateau 5', 
-      proprietaire: 'Propriétaire 5', 
-      immatriculation: 'IMM-005', 
-      type: 'Type 5', 
-      pavillon: 'Pavillon 5', 
-      marque: 'Marque 5', 
-      adresse: '202 Rue Maple', 
-      codePostal: '24680', 
-      ville: 'Ville 5', 
-      pays: 'Pays 5', 
-      longueur: '20m', 
-      largeur: '6m', 
-      tirantEau: '3m', 
-      tonnage: '15 tonnes', 
-      email: 'bateau5@example.com', 
-      autreNom: 'Autre Nom 5'
-    },{ 
-      nom: 'Bateau 5', 
-      proprietaire: 'Propriétaire 5', 
-      immatriculation: 'IMM-005', 
-      type: 'Type 5', 
-      pavillon: 'Pavillon 5', 
-      marque: 'Marque 5', 
-      adresse: '202 Rue Maple', 
-      codePostal: '24680', 
-      ville: 'Ville 5', 
-      pays: 'Pays 5', 
-      longueur: '20m', 
-      largeur: '6m', 
-      tirantEau: '3m', 
-      tonnage: '15 tonnes', 
-      email: 'bateau5@example.com', 
-      autreNom: 'Autre Nom 5'
-    },{ 
-      nom: 'Bateau 5', 
-      proprietaire: 'Propriétaire 5', 
-      immatriculation: 'IMM-005', 
-      type: 'Type 5', 
-      pavillon: 'Pavillon 5', 
-      marque: 'Marque 5', 
-      adresse: '202 Rue Maple', 
-      codePostal: '24680', 
-      ville: 'Ville 5', 
-      pays: 'Pays 5', 
-      longueur: '20m', 
-      largeur: '6m', 
-      tirantEau: '3m', 
-      tonnage: '15 tonnes', 
-      email: 'bateau5@example.com', 
-      autreNom: 'Autre Nom 5'
-    },{ 
-      nom: 'Bateau 5', 
-      proprietaire: 'Propriétaire 5', 
-      immatriculation: 'IMM-005', 
-      type: 'Type 5', 
-      pavillon: 'Pavillon 5', 
-      marque: 'Marque 5', 
-      adresse: '202 Rue Maple', 
-      codePostal: '24680', 
-      ville: 'Ville 5', 
-      pays: 'Pays 5', 
-      longueur: '20m', 
-      largeur: '6m', 
-      tirantEau: '3m', 
-      tonnage: '15 tonnes', 
-      email: 'bateau5@example.com', 
-      autreNom: 'Autre Nom 5'
-    },{ 
-      nom: 'Bateau 5', 
-      proprietaire: 'Propriétaire 5', 
-      immatriculation: 'IMM-005', 
-      type: 'Type 5', 
-      pavillon: 'Pavillon 5', 
-      marque: 'Marque 5', 
-      adresse: '202 Rue Maple', 
-      codePostal: '24680', 
-      ville: 'Ville 5', 
-      pays: 'Pays 5', 
-      longueur: '20m', 
-      largeur: '6m', 
-      tirantEau: '3m', 
-      tonnage: '15 tonnes', 
-      email: 'bateau5@example.com', 
-      autreNom: 'Autre Nom 5'
-    },{ 
-      nom: 'Bateau 5', 
-      proprietaire: 'Propriétaire 5', 
-      immatriculation: 'IMM-005', 
-      type: 'Type 5', 
-      pavillon: 'Pavillon 5', 
-      marque: 'Marque 5', 
-      adresse: '202 Rue Maple', 
-      codePostal: '24680', 
-      ville: 'Ville 5', 
-      pays: 'Pays 5', 
-      longueur: '20m', 
-      largeur: '6m', 
-      tirantEau: '3m', 
-      tonnage: '15 tonnes', 
-      email: 'bateau5@example.com', 
-      autreNom: 'Autre Nom 5'
-    },
-  ];
+
+  
+
 }

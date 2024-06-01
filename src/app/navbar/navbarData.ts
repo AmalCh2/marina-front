@@ -55,12 +55,12 @@ export const navbarData: INavbarData[] = [
                 routerLink: '/rechercher_réservation',
                 label: 'Rechercher une réservation'
             },
-
+/*
             {
                 routerLink: '/archives_réservations',
                 label: 'Archive des réservations'
             },
-
+*/
             {
                 routerLink: '/etat_réservation_arrivées',
                 label: 'Etat des réservations (Arrivées)'
