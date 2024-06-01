@@ -4,6 +4,10 @@ import { SideNavToggle } from '../SideNavToggle.interface';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Emplacement } from 'src/app/shared/Model/Emplacement';
 import { EmplacementService } from 'src/app/shared/Service/Emplacement.service';
+import { QuaiService } from 'src/app/shared/Service/Quai.service';
+import { PElectriqueService } from 'src/app/shared/Service/PElectrique.service';
+import { Quai } from 'src/app/shared/Model/Quai';
+import { PElectrique } from 'src/app/shared/Model/PElectrique';
 
 @Component({
   selector: 'app-ajouter-emplacement',
@@ -20,9 +24,27 @@ export class AjouterEmplacementComponent implements OnInit {
   listEmplacement: any;
   form: boolean = false;
   emplacement!: Emplacement;
+  closeResult!: string;
   
+  listQuai: any;
+  quai!: Quai;
 
-  constructor(private axiosService: AxiosService, private emplacementService: EmplacementService, private modalService: NgbModal) {
+  listPElectrique: any;
+  pElectrique!: PElectrique;
+
+  rangs: string[] = [];
+
+  selectedQuai: any;
+  onNomChange(event: any) {
+    if (this.selectedQuai) {
+      this.quai.rang_quai = this.selectedQuai.rang_quai;
+      this.rangs = [this.selectedQuai.rang_quai];
+    } else {
+      this.quai.rang_quai = '';
+      this.rangs = [];
+    }
+  }
+  constructor(private axiosService: AxiosService, private emplacementService: EmplacementService, private modalService: NgbModal , private quaiService: QuaiService, private p_electriqueService: PElectriqueService) {
   }
 
   ngOnInit(): void {
@@ -38,40 +60,82 @@ export class AjouterEmplacementComponent implements OnInit {
     largeur_emp: null,
     longueur_emp: null,
     tirant_eau_emp: null,
-    tel_port: null,
     nbr_mouillage_emp: null,
     type_cord_emp: null,
     commentaire: null,
     rang: null,
     blockage: null,
     direction_emp: null,
-    id_pelectrique: null,
-    id_quai: null,
-    desig_quai:null,
-    rang_quai:null,
+    pelectrique: null,
+    quai: null,
 
     }
-  }
+    this.getAllQuais();
+    this.quai = {
+      id_quai: null,
+      desig_quai: null,
+      rang_quai: null,
+      }
 
+      this.getAllPElectriques();
+
+    this.pElectrique = {
+      id_p_elec: null,
+      designation: null,
+    }
+  }
+  getAllPElectriques() {
+    this.p_electriqueService.getAllPElectriques().subscribe(res => this.listPElectrique = res)
+  }
+  
+  getAllQuais() {
+    this.quaiService.getAllQuais().subscribe(res => this.listQuai = res)
+  }
   getAllEmplacements() {
-    this.emplacementService.getAllEmplacements().subscribe(res => this.listEmplacement = res);
+    this.emplacementService.getAllEmplacements().subscribe(res => this.listEmplacement = res)
   }
-
+  
   addEmplacement(e: any) {
     this.emplacementService.addEmplacement(e).subscribe(() => {
       this.getAllEmplacements();
       this.form = false;
     });
   }
-
+  
   editEmplacement(emplacement: Emplacement) {
     this.emplacementService.editEmplacement(emplacement).subscribe();
   }
-
+  
   deleteEmplacement(idEmplacement: any) {
-    this.emplacementService.deleteEmplacement(idEmplacement).subscribe(() => this.getAllEmplacements());
+    this.emplacementService.deleteEmplacement(idEmplacement).subscribe(() => this.getAllEmplacements())
   }
-
+  
+  open(content: any, action: any) {
+    if (action != null)
+      this.emplacement = action
+    else
+      this.emplacement = new Emplacement();
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  
+  cancel() {
+    this.form = false;
+  }
+  
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;

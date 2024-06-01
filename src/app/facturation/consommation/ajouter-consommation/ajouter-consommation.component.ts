@@ -4,6 +4,13 @@ import { AxiosService } from 'src/app/axios.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Consommation } from 'src/app/shared/Model/Consommation';
 import { ConsommationService } from 'src/app/shared/Service/Consommation.service';
+import { FactureService } from 'src/app/shared/Service/Facture.service';
+import { SejourService } from 'src/app/shared/Service/Sejour.service';
+import { PrestationService } from 'src/app/shared/Service/Prestation.service';
+import { Facture } from 'src/app/shared/Model/Facture';
+import { Prestation } from 'src/app/shared/Model/Prestation';
+import { Sejour } from 'src/app/shared/Model/Sejour'; // Import the correct type
+
 
 @Component({
   selector: 'app-ajouter-consommation',
@@ -23,8 +30,21 @@ export class AjouterConsommationComponent implements OnInit {
   consommation!: Consommation;
   closeResult!: string;
 
+  listFacture: any;
+  facture!: Facture;
 
-  constructor(private axiosService: AxiosService, private consommationService: ConsommationService, private modalService: NgbModal) {
+  listSejour: any;
+  sejour!: Sejour;
+
+  listPrestation: any;
+  prestation!: Prestation;
+
+  constructor(private axiosService: AxiosService,
+    private consommationService: ConsommationService, 
+    private modalService: NgbModal, 
+    private FactureService: FactureService,
+    private SejourService: SejourService,
+    private PrestationService: PrestationService) {
   }
 
 
@@ -46,12 +66,65 @@ export class AjouterConsommationComponent implements OnInit {
     fin_cons: null,
     date_sys: null,
     offre: null,
-    id_fact: null,
-    id_prest: null,
-    id_sej: null,
-  }
+    fact: null,
+    prest: null,
+    sej: null,
   }
 
+  this.getAllFactures();
+
+  this.facture = {
+    id_fact: null,
+    date_fact: null,
+    etat_fact: null,
+    etat_paiement: null,
+    montant_ttl: null,
+    exo_cli: null,
+    lib_exo: null,
+    tbre_fiscale: null,
+}
+
+this.getAllPrestations();
+
+    this.prestation = {
+      id_prest: null,
+    lib_prest: null,
+    prix_unit_prest: null,
+    secteur_prest: null,
+    rang_prest: null,
+    tva: null,
+    type_prest: null,
+    nature:null,
+  }
+
+
+  this.getAllSejours();
+
+    this.sejour = {
+      id_sej:null,
+      deb_sej:null,
+      fin_sej:null,
+      num_jours:null,
+  
+      tarif:null,
+      type_sej:null,
+      emp:null,
+      bat:null,
+  }
+
+
+  }
+  getAllFactures() {
+    this.FactureService.getAllFactures().subscribe(res => this.listFacture = res);
+  }
+  getAllPrestations() {
+    this.PrestationService.getAllPrestations().subscribe(res => this.listPrestation = res)
+  }
+
+  getAllSejours() {
+    this.SejourService.getAllSejours().subscribe(res => this.listSejour = res)
+  }
+  
   getAllConsommation() {
     this.consommationService.getAllConsommations().subscribe(res => this.listConsommation = res);
   }

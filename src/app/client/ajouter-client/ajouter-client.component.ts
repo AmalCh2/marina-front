@@ -20,9 +20,6 @@ export class AjouterClientComponent implements OnInit {
   isSideNavCollapsed = false;
   screenWidth = 0;
   data: string[] = [];
-  totalPages: number = 2;
-  currentPage: number = 1;
-  paginationHTML: string = '';
 
   listClient: any;
   form: boolean = false;
@@ -31,6 +28,18 @@ export class AjouterClientComponent implements OnInit {
 
   listPays: any;
   Pays!: Pays;
+  nationnalites: string[] = [];
+
+  selectedPays: any;
+  onNomChange(event: any) {
+    if (this.selectedPays) {
+      this.Pays.nationnalite = this.selectedPays.nationnalite;
+      this.nationnalites = [this.selectedPays.nationnalite];
+    } else {
+      this.Pays.nationnalite = '';
+      this.nationnalites = [];
+    }
+  }
 
   constructor(private axiosService: AxiosService,
     private ClientService: ClientService,
@@ -45,7 +54,7 @@ export class AjouterClientComponent implements OnInit {
     ).then(
       (response) => this.data = response.data
     );
-    this.generatePagination();
+    
     this.getAllClients();
 
     this.Client = {
@@ -54,59 +63,72 @@ export class AjouterClientComponent implements OnInit {
     prenom_cli: null,
     etat_civil: null,
     adresse_cli: null,
-    code_postal_cli: null,
     ville_cli: null,
     tel_cli: null,
     fax_cli: null,
     mobile_cli: null,
     email_cli: null,
     exo_cli: null,
-    nom_pays: null,
+    pays:null,
+    
+
     };
     this.getAllPays();
 
     this.Pays = {
-      nom_pays:null,
+    nom_pays:null,
     nationnalite : null,
     pavillon : null,
     }
   }
-
-
-  getAllClients() {
-    this.ClientService.getAllClients().subscribe(res => this.listClient = res)
-  }
-
   getAllPays() {
     this.PaysService.getAllPays().subscribe(res => this.listPays = res)
   }
 
-  addPaysAndClient() {
-    this.PaysService.addPays(this.Pays).subscribe(() => {
-      this.getAllPays();
-    });
-    this.ClientService.addClient(this.Client).subscribe(() => {
-      this.getAllClients();
-    });
-  }
+getAllClients() {
+  this.ClientService.getAllClients().subscribe(res => this.listClient = res)
+}
 
-  editPaysAndClient() {
-    this.PaysService.editPays(this.Pays).subscribe(() => {
-      this.getAllPays();
-    });
-    this.ClientService.editClient(this.Client).subscribe(() => {
-      this.getAllClients();
-    });
-  }
+addClient(c: any) {
+  this.ClientService.addClient(c).subscribe(() => {
+    this.getAllClients();
+    this.form = false;
+  });
+}
 
-  deletePaysAndClient(idPays: any, idClient: any) {
-    this.PaysService.deletePays(idPays).subscribe(() => {
-      this.getAllPays();
-    });
-    this.ClientService.deleteClient(idClient).subscribe(() => {
-      this.getAllClients();
-    });
+editClient(client: Client) {
+  this.ClientService.editClient(client).subscribe();
+}
+
+deleteClient(idClient: any) {
+  this.ClientService.deleteClient(idClient).subscribe(() => this.getAllClients())
+}
+
+open(content: any, action: any) {
+  if (action != null)
+    this.Client = action
+  else
+    this.Client = new Client();
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
   }
+}
+
+cancel() {
+  this.form = false;
+}
 
 
 
@@ -129,81 +151,6 @@ export class AjouterClientComponent implements OnInit {
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
-  }
-
-  generatePagination(): void {
-    this.paginationHTML = this.createPagination(this.totalPages, this.currentPage);
-  }
-
-  createPagination(totalPages: number, page: number): string {
-    let liTag: string = '';
-    let active: string;
-    let beforePage: number = page - 1;
-    let afterPage: number = page + 1;
-
-    if (page > 1) {
-      liTag += `<li class="btn prev" (click)="changePage(${page - 1})"><span><i class="fas fa-angle-left"></i> Prev</span></li>`;
-    }
-
-    if (page > 2) {
-      liTag += `<li class="first numb" (click)="changePage(1)"><span>1</span></li>`;
-      if (page > 3) {
-        liTag += `<li class="dots"><span>...</span></li>`;
-      }
-    }
-
-    if (page === totalPages) {
-      beforePage = beforePage - 2;
-    } else if (page === totalPages - 1) {
-      beforePage = beforePage - 1;
-    }
-
-    if (page === 1) {
-      afterPage = afterPage + 2;
-    } else if (page === 2) {
-      afterPage = afterPage + 1;
-    }
-
-    for (let plength = beforePage; plength <= afterPage; plength++) {
-      if (plength > totalPages) {
-        continue;
-      }
-      if (plength === 0) {
-        plength = plength + 1;
-      }
-      if (page === plength) {
-        active = "active";
-      } else {
-        active = "";
-      }
-      liTag += `<li class="numb ${active}" (click)="changePage(${plength})"><span>${plength}</span></li>`;
-    }
-
-    if (page < totalPages - 1) {
-      if (page < totalPages - 2) {
-        liTag += `<li class="dots"><span>...</span></li>`;
-      }
-      liTag += `<li class="last numb" (click)="changePage(${totalPages})"><span>${totalPages}</span></li>`;
-    }
-
-    if (page < totalPages) {
-      liTag += `<li class="btn next" (click)="changePage(${page + 1})"><span>Next <i class="fas fa-angle-right"></i></span></li>`;
-    }
-
-    return liTag;
-  }
-
-  getPages(): number[] {
-    const pages = [];
-    for (let i = 1; i <= this.totalPages; i++) {
-      pages.push(i);
-    }
-    return pages;
-  }
-
-  changePage(page: number): void {
-    this.currentPage = page;
-    this.generatePagination(); // Appel pour régénérer la pagination
   }
 
   getBodyClass(): string {

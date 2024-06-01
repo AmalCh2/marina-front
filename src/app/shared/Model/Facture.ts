@@ -7,7 +7,6 @@ export class Facture {
     exo_cli: any;
     lib_exo: any;
     tbre_fiscale: any;
-    id_sej: any;
-    id_cli: any;
+    
   }
   

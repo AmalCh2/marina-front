@@ -4,8 +4,8 @@ export class Prestation {
     prix_unit_prest: any;
     secteur_prest: any;
     rang_prest: any;
-    id_tva: any;
-    id_type_prest: any;
-    id_nature: any;
+    tva: any;
+    type_prest: any;
+    nature: any;
   }
   

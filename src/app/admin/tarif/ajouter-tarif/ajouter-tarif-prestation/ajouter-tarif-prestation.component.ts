@@ -34,6 +34,19 @@ export class AjouterTarifPrestationComponent implements OnInit {
   typePrestation!: TypePrestation;
   closeResult!: string;
 
+  rangs: String[] = [];
+
+  selectedTypePrestation: any;
+  onNomChange(event: any) {
+    if (this.selectedTypePrestation) {
+      this.typePrestation.rang_type_prest = this.selectedTypePrestation.rang_type_prest;
+      this.rangs = [this.selectedTypePrestation.rang_type_prest];
+    } else {
+      this.typePrestation.rang_type_prest = '';
+      this.rangs = [];
+    }
+  }
+
   constructor(
     private prestationService: PrestationService,
     private tvaService: TvaService,
@@ -63,9 +76,9 @@ export class AjouterTarifPrestationComponent implements OnInit {
     prix_unit_prest:null,
     secteur_prest:null,
     rang_prest: null,
-    id_tva: null,
-    id_type_prest: null,
-    id_nature: null,
+    tva: null,
+    type_prest: null,
+    nature: null,
     };
 
     this.tva = {
@@ -90,13 +103,7 @@ export class AjouterTarifPrestationComponent implements OnInit {
 
 
 
-  getAllPrestations() {
-    this.prestationService.getAllPrestations().subscribe(res => this.listPrestations = res);
-  }
-
-  getAllTvas() {
-    this.tvaService.getAllTvas().subscribe(res => this.listTvas = res);
-  }
+ 
 
   getAllNatures() {
     this.natureService.getAllNatures().subscribe(res => this.listNatures = res);
@@ -106,48 +113,39 @@ export class AjouterTarifPrestationComponent implements OnInit {
     this.typePrestationService.getAllTypePrestations().subscribe(res => this.listTypePrestations = res);
   }
 
-  addPrestationAndOthers() {
+  
+  getAllPrestations() {
+    this.prestationService.getAllPrestations().subscribe(res => this.listPrestations = res);
+  }
+
+  getAllTvas() {
+    this.tvaService.getAllTvas().subscribe(res => this.listTvas = res);
+  }
+
+  addPrestationAndTva() {
     this.prestationService.addPrestation(this.prestation).subscribe(() => {
       this.getAllPrestations();
     });
     this.tvaService.addTva(this.tva).subscribe(() => {
       this.getAllTvas();
     });
-    this.natureService.addNature(this.nature).subscribe(() => {
-      this.getAllNatures();
-    });
-    this.typePrestationService.addTypePrestation(this.typePrestation).subscribe(() => {
-      this.getAllTypePrestations();
-    });
   }
 
-  editPrestationAndOthers(prestation: Prestation, tva: Tva, nature: Nature, typePrestation: TypePrestation) {
+  editPrestationAndTva(prestation: Prestation, tva: Tva) {
     this.prestationService.editPrestation(prestation).subscribe(() => {
       this.getAllPrestations();
     });
     this.tvaService.editTva(tva).subscribe(() => {
       this.getAllTvas();
     });
-    this.natureService.editNature(nature).subscribe(() => {
-      this.getAllNatures();
-    });
-    this.typePrestationService.editTypePrestation(typePrestation).subscribe(() => {
-      this.getAllTypePrestations();
-    });
   }
 
-  deletePrestationAndOthers(id_prestation: number, id_tva: number, id_nature: number, id_type_prestation: number) {
+  deletePrestationAndTva(id_prestation: number, id_tva: number) {
     this.prestationService.deletePrestation(id_prestation).subscribe(() => {
       this.getAllPrestations();
     });
     this.tvaService.deleteTva(id_tva).subscribe(() => {
       this.getAllTvas();
-    });
-    this.natureService.deleteNature(id_nature).subscribe(() => {
-      this.getAllNatures();
-    });
-    this.typePrestationService.deleteTypePrestation(id_type_prestation).subscribe(() => {
-      this.getAllTypePrestations();
     });
   }
 

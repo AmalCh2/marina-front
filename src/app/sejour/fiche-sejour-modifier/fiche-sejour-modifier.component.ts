@@ -3,7 +3,7 @@ import { SideNavToggle } from '../SideNavToggle.interface';
 import { AxiosService } from '../../axios.service';
 import { Sejour } from 'src/app/shared/Model/Sejour';
 import { TypeSejour } from 'src/app/shared/Model/TypeSejour';
-import { SejourService } from 'src/app/shared/Service/Sejour.servicz';
+import { SejourService } from 'src/app/shared/Service/Sejour.service';
 import { TypeSejourService } from 'src/app/shared/Service/TypeSejour.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -53,14 +53,11 @@ export class FicheSejourModifierComponent implements OnInit {
     deb_sej:  null,
     fin_sej:  null,
     num_jours:  null,
-    id_reservation:  null,
-    id_tarif:  null,
-    id_type_sej:  null,
-    id_emp:  null,
-    id_bat:  null,
-    nom_bat:  null,
-    id_cli:  null,
-    nom_cli:  null,
+    
+    tarif:  null,
+    type_sej:  null,
+    emp:  null,
+    bat:  null,
     };
 
     this.getAllTypeSejours();

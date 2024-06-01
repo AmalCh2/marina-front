@@ -25,20 +25,32 @@
                           [(ngModel)]="Bateau.date_mvt"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
+                        
                         <div class="input-box">
-                          <label>Emplacement :</label>
-                          <input type="text" placeholder="Entrer le numéro d'emplaceement" required 
-                          [(ngModel)]="Bateau.id_emp"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
+                          <label for="id_emp">emplacement :</label>
+                          <div class="select-box" >
+                              <select id="id_emp" [(ngModel)]="emplacement.id_emp" name="id_emp">
+                                  
+                                  <option *ngFor="let emplacement of listEmplacement" [ngValue]="emplacement">{{ emplacement.id_emp}}</option>
+                                </select>
+                              
+                          </div>
+                      </div>
+
                       </div>
                       <div class="column">
+                        
                         <div class="input-box">
-                          <label>Bateau :</label>
-                          <input type="text" placeholder="Entrer le nom du bateau" required 
-                          [(ngModel)]="Bateau.nom_bat"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
+                          <label for="nom_bat">nom bateau :</label>
+                          <div class="select-box" >
+                              <select id="nom_bat" [(ngModel)]="Bateau.nom_bat" name="id_bat">
+                                  
+                                  <option *ngFor="let Bateau of listBateau" [ngValue]="Bateau">{{ Bateau.nom_bat}}</option>
+                                </select>
+                              
+                          </div>
+                      </div>
+
                         <div class="input-box">
                           <label>Commentaire :</label>
                           <input type="text" placeholder="Entrer une note" required 

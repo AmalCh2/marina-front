@@ -43,12 +43,28 @@
                           [(ngModel)]="emplacement.tirant_eau_emp"
                           [ngModelOptions]="{standalone : true}">
                         </div>
-                        <div class="input-box">
-                          <label>Téléphone du port :</label>
-                          <input type="text" placeholder="Entrer le téléphone du port"  required 
-                          [(ngModel)]="emplacement.tel_port"
-                          [ngModelOptions]="{standalone : true}">
+                       
+                        <div>
+                          <label for="desig_quai">Desig</label>
+                          <select id="desig_quai" [(ngModel)]="selectedQuai" (change)="onNomChange($event)" name="id_quai">
+                            <option *ngFor="let Quai of listQuai" [ngValue]="Quai">{{ Quai.desig_quai }}</option>
+                          </select>
                         </div>
+                        
+                        <div>
+                          <label for="rang_quai">Rang quai</label>
+                          <select id="rang_quai" [(ngModel)]="quai.rang_quai" name="rang_quai">
+                            <option *ngFor="let rang of rangs">{{ rang }}</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label for="designation">Desig p electrique</label>
+                          <select id="designation" [(ngModel)]="pElectrique.designation" name="id_p_elec">
+                            <option *ngFor="let pElectrique of listPElectrique" [ngValue]="pElectrique">{{ pElectrique.designation}}</option>
+                          </select>
+                        </div>
+
                         <div class="input-box">
                           <label>Nombre du mouillage :</label>
                           <input type="number" placeholder="Entrer le nombre du mouillage" required 
@@ -83,33 +99,10 @@
                           [(ngModel)]="emplacement.commentaire"
                           [ngModelOptions]="{standalone : true}">
                         </div>
-                        <div class="input-box">
-                          <label>Nº quai :</label>
-                          <input type="number" placeholder="Entrer le numéro du quai" required 
-                          [(ngModel)]="emplacement.id_quai"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <div class="input-box">
-                          <label>Désignation quai :</label>
-                          <input type="text" placeholder="Entrer la désignation du quai" required 
-                          [(ngModel)]="emplacement.desig_quai"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
+                      
+                       
                       </div>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>Rang quai :</label>
-                          <input type="number" placeholder="Entrer le rang du quai" required 
-                          [(ngModel)]="emplacement.rang_quai"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <div class="input-box">
-                          <label>Nº P_électrique :</label>
-                          <input type="number" placeholder="Entrer le numéro du p_électrique d'emplacement" required 
-                          [(ngModel)]="emplacement.id_pelectrique"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                      </div>
+                      
                       <div class="multicoque-box">
                         <label>Blockage :</label>
                         <div class="multicoque-option">

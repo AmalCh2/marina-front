@@ -199,11 +199,11 @@ export const navbarData: INavbarData[] = [
                                 routerLink: '/ajouter_tarif_ammarage',
                                 label: 'Tarif Ammarage'
                             },
-
+/*
                             {
                                 routerLink: '/ajouter_tarif_forfait',
                                 label: 'Tarif Forfait'
-                            },
+                            },*/
                         ]
                     },
         

@@ -6,8 +6,8 @@ export class Consommation {
     fin_cons: any;
     date_sys: any;
     offre: any;
-    id_fact: any;
-    id_prest: any;
-    id_sej: any;
+    fact: any;
+    prest: any;
+    sej: any;
   }
   

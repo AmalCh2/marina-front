@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Client } from '../Model/Client';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,10 @@ export class ClientService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllClients() {
-    return this.httpClient.get(`${this.API_URL}/get-clients`);
+
+  
+  getAllClients() : Observable<Client[]>{
+    return this.httpClient.get<Client[]>(`${this.API_URL}/get-all-clients`);
   }
 
   addClient(client: any) {

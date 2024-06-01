@@ -4,13 +4,14 @@ export class Client {
     prenom_cli: any;
     etat_civil: any;
     adresse_cli: any;
-    code_postal_cli: any;
     ville_cli: any;
     tel_cli: any;
     fax_cli: any;
     mobile_cli: any;
     email_cli: any;
     exo_cli: any;
-    nom_pays: any;
+    pays:any;
+    
+   
   }
   

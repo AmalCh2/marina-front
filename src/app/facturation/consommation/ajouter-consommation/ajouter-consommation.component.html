@@ -23,6 +23,8 @@
                           [(ngModel)]="consommation.id_cons"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
+
+                        
                       </div>
                       <div class="column">
                         <div class="input-box">
@@ -58,6 +60,36 @@
                             [ngModelOptions]="{standalone : true}"/>
                           </div>
                         </div>
+                       <div>
+                          <label for="facture">N Facture</label>
+                          <select id="id_fact" [(ngModel)]="facture.id_fact" name="id_fact">
+                            <option *ngFor="let facture of listFacture" [ngValue]="facture">{{ facture.id_fact}}</option>
+                          </select>
+                        </div>
+                        
+                        <div>
+                          <label for="sejour">N sejour</label>
+                          <select id="id_sej" [(ngModel)]="sejour.id_sej" name="id_sej">
+                            <option *ngFor="let sejour of listSejour" [ngValue]="sejour">{{ sejour.id_sej}}</option>
+                          </select>
+                        </div>
+                        <!--
+                        
+                        <div>
+                          <label for="Consommation">NUM SEJOUR</label>
+                          <select id="id_cons" [(ngModel)]="consommation.sej.id_sej" name="id_cons">
+                            <option *ngFor="let consommation of listConsommation" [ngValue]="consommation">{{ consommation.sej.id_sej}}</option>
+                          </select>
+                        </div>
+                        -->
+
+                        <div>
+                          <label for="prestation">lib Prestation</label>
+                          <select id="lib_prest" [(ngModel)]="prestation.lib_prest" name="id_prest">
+                            <option *ngFor="let prestation of listPrestation" [ngValue]="prestation">{{ prestation.lib_prest}}</option>
+                          </select>
+                        </div>
+
                         <div class="column">
                           <div class="input-box">
                             <label>Offre :</label>
@@ -65,27 +97,10 @@
                             [(ngModel)]="consommation.offre"
                             [ngModelOptions]="{standalone : true}"/>
                           </div>
-                          <div class="input-box">
-                            <label>Nº Prestation :</label>
-                            <input type="number" placeholder="Entrer le numéro de prestation"required
-                            [(ngModel)]="consommation.id_prest"
-                            [ngModelOptions]="{standalone : true}"/>
-                          </div>
+                          
+                          
                         </div>
-                        <div class="column">
-                          <div class="input-box">
-                            <label>Nº Facture :</label>
-                            <input type="number" placeholder="Entrer le numéro de la Facture" required
-                            [(ngModel)]="consommation.id_fact"
-                            [ngModelOptions]="{standalone : true}"/>
-                          </div>
-                          <div class="input-box">
-                            <label>Nº Séjour :</label>
-                            <input type="number" placeholder="Entrer le numéro du séjour"required
-                            [(ngModel)]="consommation.id_sej"
-                            [ngModelOptions]="{standalone : true}"/>
-                          </div>
-                        </div>
+                        
                     </form>
                     <div class="submit-box">
                       <div class="button-group button">

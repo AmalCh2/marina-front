@@ -4,6 +4,8 @@ import { AxiosService } from 'src/app/axios.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Bateau } from '../../shared/Model/Bateau';
 import { BateauService } from '../../shared/Service/Bateau.service';
+import { EmplacementService } from 'src/app/shared/Service/Emplacement.service';
+import { Emplacement } from 'src/app/shared/Model/Emplacement';
 
 @Component({
   selector: 'app-ajouter-mvt-bateau',
@@ -22,7 +24,10 @@ export class AjouterMvtBateauComponent implements OnInit {
   form: boolean = false;
   Bateau!: Bateau;
 
-  constructor(private axiosService: AxiosService ,private BateauService: BateauService, private modalService: NgbModal) {}
+  listEmplacement: any;
+  emplacement!: Emplacement;
+
+  constructor(private axiosService: AxiosService ,private BateauService: BateauService, private modalService: NgbModal,private emplacementService: EmplacementService) {}
 
   ngOnInit(): void {
     this.axiosService.request(
@@ -58,9 +63,9 @@ export class AjouterMvtBateauComponent implements OnInit {
      mobile_bat:null,
      email_bat:null,
      observation:null,
-     id_type_bat:null,
-     id_cli:null,
-     id_port:null, 
+     typeBateau:null,
+     client:null,
+     port:null, 
      
      date_mvt:null,
      depart_mvt:null,
@@ -68,6 +73,26 @@ export class AjouterMvtBateauComponent implements OnInit {
      commentaire_mvt:null,
      id_emp:null,
     }
+
+    this.getAllEmplacement();
+    this.emplacement = {
+      id_emp: null,
+    largeur_emp: null,
+    longueur_emp: null,
+    tirant_eau_emp: null,
+    nbr_mouillage_emp: null,
+    type_cord_emp: null,
+    commentaire: null,
+    rang: null,
+    blockage: null,
+    direction_emp: null,
+    pelectrique:null,
+    quai: null,
+  };
+  }
+
+  getAllEmplacement() {
+    this.emplacementService.getAllEmplacements().subscribe(res => this.listEmplacement = res);
   }
 
   getAllBateaux() {

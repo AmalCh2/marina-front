@@ -32,22 +32,20 @@
                       </div>
                       <div class="column">
                         <div class="input-box">
-                          <label>Nom du propriétaire :</label>
-                          <input type="text" placeholder="Entrer le nom du propriétaire"required   id="nom_prop"/><!---->
+                          <label for="nom_cli">Nom du client :</label>
+                          <div class="select-box" >
+                            <select id="nom_cli" [(ngModel)]="selectedClient" (change)="onNomChange($event)" name="id_cli">
+                              <option *ngFor="let Client of listClient" [ngValue]="Client">{{ Client.nom_cli }}</option>
+                            </select>
+                          </div>
                         </div>
                         <div class="input-box">
-                          <label>Nº du propriétaire :</label>
-                          <input type="number" placeholder="Entrer le numero du propriétaire"required id="num_prop" /><!---->
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>Nom du port :</label>
-                          <input type="text" placeholder="Entrer le nom du port" required id="nom_port"/><!---->
-                        </div>
-                        <div class="input-box">
-                          <label>Nº du port :</label>
-                          <input type="number" placeholder="Entrer le numero du port" required id="num_port"/><!---->
+                          <label for="prenom_cli">Prenom du client :</label>
+                          <div class="select-box" >
+                            <select id="prenom_cli" [(ngModel)]="client.prenom_cli" name="prenom_cli">
+                              <option *ngFor="let prenom of prenoms">{{ prenom }}</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
                       <div class="column">
@@ -112,6 +110,26 @@
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº du téléphone :</label>
+                          <input type="text" placeholder="Entrer le numéro du téléphone" required id="num_tel"
+                          [(ngModel)]="Bateau.tel_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Nº fax :</label>
+                          <input type="number" placeholder="Entrer le numéro fax" required id="fax" 
+                          [(ngModel)]="Bateau.fax_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Nº mobile :</label>
+                          <input type="number" placeholder="Entrer le numéro mobile" required  id="mobile" 
+                          [(ngModel)]="Bateau.mobile_bat"
+                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                      </div>
                     </form>
                   </section>
                 </div>
@@ -144,118 +162,71 @@
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>Nº du téléphone :</label>
-                          <input type="text" placeholder="Entrer le numéro du téléphone" required id="num_tel"
-                          [(ngModel)]="Bateau.tel_bat"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
-                        <div class="input-box">
-                          <label>Nº fax :</label>
-                          <input type="number" placeholder="Entrer le numéro fax" required id="fax" 
-                          [(ngModel)]="Bateau.fax_bat"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
-                        <div class="input-box">
-                          <label>Nº mobile :</label>
-                          <input type="number" placeholder="Entrer le numéro mobile" required  id="mobile" 
-                          [(ngModel)]="Bateau.mobile_bat"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
-                      </div>
+                      <br>
                       <h1 class="form-title">Informations sur le type bateau :</h1>
                       <div class="column">
                         <div class="input-box">
-                          <label>Nº du type :</label>
-                          <input type="number" placeholder="Entrer le numéro du type du bateau" required  id="num_type"
-                          [(ngModel)]="TypeBateau.id_type_bat"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
-                        <div class="input-box">
-                          <label>Type :</label>
+                          <label for="type_bat">Type du bateau :</label>
                           <div class="select-box" >
-                            <select required>
-                              <option hidden>Types :</option>
-                              <option>Voiliers</option>
-                              <option>Bateaux à moteur</option>
-                              <option>Catamarans</option>
-                              <option>Trimarans</option>
+                            <select id="type_bat" [(ngModel)]="TypeBateau.type_bat" name="id_type_bat">
+                              <option *ngFor="let TypeBateau of listTypeBateau" [ngValue]="typeBateau">{{ TypeBateau.type_bat}}</option>
                             </select>
                           </div>
                         </div>
                       </div>
-                      <div class="input-box">
-                        <label>Designation :</label>
-                        <input type="text" placeholder="Entrer la désignation du bateau" required id="designation"
-                        [(ngModel)]="TypeBateau.designation_bat"
-                          [ngModelOptions]="{standalone : true}"/>
-                      </div>
-                      <div class="input-box">
-                        <label>Majoration :</label>
-                        <input type="number" placeholder="Entrer la majoration du bateau" required id="majoration" 
-                        [(ngModel)]="TypeBateau.majoration_bat"
-                          [ngModelOptions]="{standalone : true}"/>
-                      </div>
-                      <div class="multicoque-box">
+                      <div class="option-check-details">
                         <label>Multicoque :</label>
-                        <div class="multicoque-option">
-                          <div class="multicoque">
-                            <input type="radio" id="check-yes" name="multicoque" checked />
-                            <label for="check-yes">Oui</label>
-                          </div>
-                          <div class="multicoque">
-                            <input type="radio" class="check-no" id="check-no" name="multicoque" />
-                            <label for="check-no">Non</label>
-                          </div>
+                        <input type="radio" name="option-check" id="dot-1">
+                        <input type="radio" name="option-check" id="dot-2">
+                        <div class="category">
+                            <label for="dot-1">
+                            <span class="dot one"></span>
+                            <span class="option-check">Oui</span>
+                        </label>
+                        <label for="dot-2">
+                            <span class="dot two"></span>
+                            <span class="option-check">Non</span>
+                        </label>
+                        </div>
+                    </div>
+                    <br>
+                      <h1 class="form-title">Informations sur l'assurance :</h1>
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Nº d'assurance :</label>
+                          <input type="number" placeholder="Entrer le numéro d'assurance" required id="num_assur"
+                          [(ngModel)]="Bateau.num_assur"
+                            [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Nom d'assurance :</label>
+                          <input type="text" placeholder="Entrer le nom d'assurance" required id="nom_assur" 
+                          [(ngModel)]="Bateau.nom_assur"
+                            [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
-                    </form>
-                  </section>
-                </div>
-                <!-- Formulaire Etape 3 -->
-                <div *ngIf="currentPage === 3">
-                  <section class="container container-3">
-                    <form action="#" class="form">
-                      <h1 class="form-title">Informations sur l'assurance :</h1>
-                      <div class="input-box">
-                        <label>Nº d'assurance :</label>
-                        <input type="number" placeholder="Entrer le numéro d'assurance" required id="num_assur"
-                        [(ngModel)]="Bateau.num_assur"
+                      <div class="column">
+                        <div class="input-box">
+                          <label>Date d'expération :</label>
+                          <input type="date" placeholder="Entrer la date d'expiration d'assurance" required 
+                          [(ngModel)]="Bateau.date_exp"
                           [ngModelOptions]="{standalone : true}"/>
-                      </div>
-                      <div class="input-box">
-                        <label>Nom d'assurance :</label>
-                        <input type="text" placeholder="Entrer le nom d'assurance" required id="nom_assur" 
-                        [(ngModel)]="Bateau.nom_assur"
-                          [ngModelOptions]="{standalone : true}"/>
-                      </div>
-                      <div class="input-box">
-                        <label>Date d'expération :</label>
-                        <input type="date" placeholder="Entrer la date d'expiration d'assurance" required 
-                        [(ngModel)]="Bateau.date_exp"
-                        [ngModelOptions]="{standalone : true}"/>
-                      </div>
-                      <div class="input-box">
-                        <label>Observation :</label>
-                        <input type="textarea" placeholder="Ecrire une note" required 
-                        [(ngModel)]="Bateau.observation"
-                          [ngModelOptions]="{standalone : true}"/>
+                        </div>
+                        <div class="input-box">
+                          <label>Observation :</label>
+                          <input type="textarea" placeholder="Ecrire une note" required 
+                          [(ngModel)]="Bateau.observation"
+                            [ngModelOptions]="{standalone : true}"/>
+                        </div>
                       </div>
                     </form>
                     <div class="submit-box">
                       <div class="button-group button">
                         <button class="button button-primary" routerLink="/rechercher_bateau"  routerLinkActive="active" >Annuler</button>
-                        <button type="button" class="btn btn-success" (click)="addTypeBateauAndBateau()"
+                        <button type="button" class="btn btn-success" (click)="addBateau(Bateau)"
                         class="button button-secondary">Ajouter</button>
                       </div>
                     </div>
-                    
-                  <div class="message">
-                      <div class="success" id="success">Bateau ajouté avec succès! </div>
-                      <div class="danger" id="danger">Vérifier les champs obligatoires! </div>
-                  </div>
-  
                   </section>
                 </div>
               </div>

@@ -6,7 +6,10 @@ import { Bateau } from '../../shared/Model/Bateau';
 import { BateauService } from '../../shared/Service/Bateau.service';
 import { TypeBateau } from 'src/app/shared/Model/TypeBateau';
 import { TypeBateauService } from 'src/app/shared/Service/TypeBateau.service';
-
+import { Client } from 'src/app/shared/Model/Client';
+import { ClientService } from 'src/app/shared/Service/Client.service';
+import { Port } from 'src/app/shared/Model/Port';
+import { PortService } from 'src/app/shared/Service/Port.service';
 
 @Component({
   selector: 'app-ajouter-bateau',
@@ -20,19 +23,39 @@ export class AjouterBateauComponent implements OnInit {
 
   isSideNavCollapsed = false;
   data: string[] = [];
-  totalPages = 3;
+  totalPages = 2;
   currentPage = 1;
   paginationHTML = '';
 
   listBateau: any;
   form: boolean = false;
   Bateau!: Bateau;
-  listTypeBateau: any;
+  //listTypeBateau: any;
   TypeBateau!: TypeBateau;
   closeResult!: string;
 
+  listTypeBateau: any;
+  typeBateau!: TypeBateau;
 
-  constructor(private axiosService: AxiosService ,private BateauService: BateauService, private TypeBateauService: TypeBateauService, private modalService: NgbModal) {}
+  listClient:any;
+  client!: Client;
+
+  listPort: any;
+  port!: Port;
+  
+  prenoms: string[] = [];
+
+  selectedClient: any;
+  onNomChange(event: any) {
+    if (this.selectedClient) {
+      this.client.prenom_cli = this.selectedClient.prenom_cli;
+      this.prenoms = [this.selectedClient.prenom_cli];
+    } else {
+      this.client.prenom_cli = '';
+      this.prenoms = [];
+    }
+  }
+  constructor(private axiosService: AxiosService ,private BateauService: BateauService, private TypeBateauService: TypeBateauService, private modalService: NgbModal , private ClientService: ClientService, private PortService: PortService) {}
 
   ngOnInit(): void {
     this.axiosService.request(
@@ -71,9 +94,9 @@ export class AjouterBateauComponent implements OnInit {
      mobile_bat:null,
      email_bat:null,
      observation:null,
-     id_type_bat:null,
-     id_cli:null,
-     id_port:null, 
+     typeBateau:null,
+     client:null,
+     port:null, 
      
      date_mvt:null,
      depart_mvt:null,
@@ -81,8 +104,11 @@ export class AjouterBateauComponent implements OnInit {
      commentaire_mvt:null,
      id_emp:null,
     }
+    this.getAllClients();
+    this.getAllPorts();
 
-    this.getAllTypeBateau();
+
+    this.getAllTypeBateaus();
 
     this.TypeBateau = {
         id_type_bat: null,
@@ -91,7 +117,86 @@ export class AjouterBateauComponent implements OnInit {
         majoration_bat:null,
         multicoque:null,
     }
+    this.client = {
+      id_cli: null,
+    nom_cli: null,
+    prenom_cli: null,
+    etat_civil: null ,
+    adresse_cli: null,
+    ville_cli: null,
+    tel_cli: null,
+    fax_cli: null,
+    mobile_cli: null,
+    email_cli: null,
+    exo_cli: null,
+    pays:null,
+   
   }
+
+  }
+
+  
+  getAllPorts() {
+    this.PortService.getAllPorts().subscribe((data: Port[]) => {
+      this.listPort = data;
+    });
+  }
+  getAllClients() {
+    this.ClientService.getAllClients().subscribe((data: Client[]) => {
+      this.listClient = data;
+    });
+  }
+  getAllTypeBateaus() {
+    this.TypeBateauService.getAllTypeBateau().subscribe((data: TypeBateau[]) => {
+      this.listTypeBateau = data;
+    });
+  }
+
+  getAllBateaux() {
+    this.BateauService.getAllBateaux().subscribe(res => this.listBateau = res)
+  }
+  
+  addBateau(b: any) {
+    this.BateauService.addBateau(b).subscribe(() => {
+      this.getAllBateaux();
+      this.form = false;
+    });
+  }
+  
+  editBateau(bateau: Bateau) {
+    this.BateauService.editBateau(bateau).subscribe();
+  }
+  
+  deleteBateau(idBateau: any) {
+    this.BateauService.deleteBateau(idBateau).subscribe(() => this.getAllBateaux())
+  }
+  
+  open(content: any, action: any) {
+    if (action != null)
+      this.Bateau = action
+    else
+      this.Bateau = new Bateau();
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  
+  cancel() {
+    this.form = false;
+  }
+
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
@@ -185,71 +290,5 @@ export class AjouterBateauComponent implements OnInit {
 
 
   
-  getAllBateaux() {
-    this.BateauService.getAllBateaux().subscribe(res => this.listBateau = res)
-  }
-
-  getAllTypeBateau() {
-    this.TypeBateauService.getAllTypeBateau().subscribe(res => this.listTypeBateau = res)
-  }
-
-  addTypeBateauAndBateau() {
-    this.TypeBateauService.addTypeBateau(this.TypeBateau).subscribe(() => {
-      this.getAllTypeBateau();
-    });
-    this.BateauService.addBateau(this.Bateau).subscribe(() => {
-      this.getAllBateaux();
-    });
-  }
-
-  editTypeBateauAndBateau() {
-    this.TypeBateauService.editTypeBateau(this.TypeBateau).subscribe(() => {
-      this.getAllTypeBateau();
-    });
-    this.BateauService.editBateau(this.Bateau).subscribe(() => {
-      this.getAllBateaux();
-    });
-  }
-
-  deleteTypeBateauAndBateau(idTypeBateau: any, idBateau: any) {
-    this.TypeBateauService.deleteTypeBateau(idTypeBateau).subscribe(() => {
-      this.getAllTypeBateau();
-    });
-    this.BateauService.deleteBateau(idBateau).subscribe(() => {
-      this.getAllBateaux();
-    });
-  }
-
-  open(content: any, action: { typeBateau: TypeBateau, bateau: Bateau } | null) {
-    if (action != null) {
-      this.TypeBateau = action.typeBateau;
-      this.Bateau = action.bateau;
-    } else {
-      this.TypeBateau = new TypeBateau();
-      this.Bateau = new Bateau();
-    }
-
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-
-
-  cancel() {
-    this.form = false;
-  }
-
 
 }

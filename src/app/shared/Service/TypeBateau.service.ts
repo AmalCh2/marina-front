@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient} from '@angular/common/http';
+import { TypeBateau } from '../Model/TypeBateau';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -11,8 +13,9 @@ export class TypeBateauService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllTypeBateau() {
-    return this.httpClient.get(`${this.API_URL}/get-all-typesBateaux`)
+ 
+  getAllTypeBateau(): Observable<TypeBateau[]> {
+    return this.httpClient.get<TypeBateau[]>(`${this.API_URL}/get-all-typesBateaux`)
   }
   addTypeBateau(TypeBateau : any) {
     return this.httpClient.post(`${this.API_URL}/add-typeBateau`, TypeBateau)

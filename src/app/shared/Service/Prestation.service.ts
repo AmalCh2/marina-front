@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Prestation } from '../Model/Prestation';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,8 @@ export class PrestationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllPrestations() {
-    return this.httpClient.get(`${this.API_URL}/get-all-prestations`);
+  getAllPrestations()  : Observable<Prestation[]>{
+    return this.httpClient.get<Prestation[]>(`${this.API_URL}/get-all-prestations`);
   }
 
   addPrestation(prestation: any) {

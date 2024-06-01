@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Consommation } from '../Model/Consommation';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,8 @@ export class FactureService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllFactures() {
-    return this.httpClient.get(`${this.API_URL}/get-all-factures`);
+  getAllFactures()  : Observable<Consommation[]>{
+    return this.httpClient.get<Consommation[]>(`${this.API_URL}/get-all-factures`);
   }
 
   addFacture(facture: any) {

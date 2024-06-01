@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Port } from '../Model/Port';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,9 @@ export class PortService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllPorts() {
-    return this.httpClient.get(`${this.API_URL}/get-all-ports`);
+
+  getAllPorts() : Observable<Port[]>{
+    return this.httpClient.get<Port[]>(`${this.API_URL}/get-all-ports`);
   }
 
   addPort(port: any) {

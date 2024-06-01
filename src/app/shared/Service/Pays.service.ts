@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient} from '@angular/common/http';
+import { Pays } from '../Model/Pays';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -11,8 +13,9 @@ export class PaysService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllPays() {
-    return this.httpClient.get(`${this.API_URL}/get-all-pays`)
+ 
+  getAllPays() : Observable<Pays[]>{
+    return this.httpClient.get<Pays[]>(`${this.API_URL}/get-all-pays`)
   }
   addPays(Pays : any) {
     return this.httpClient.post(`${this.API_URL}/add-pays`, Pays)

@@ -114,7 +114,7 @@ a {
   width: 900px;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: -10px;
 }
 .container-3{
   width: 900px;
@@ -370,6 +370,59 @@ label {
   transition: .3s;
   animation: buttons .3s linear;
   display: none;
+}
+
+
+
+
+
+
+/* ====================== OPTION CHECK ========================== */
+.option-check-details{
+  margin-top: 10px;
+}
+
+.option-check-details .exo{
+  margin-left: 0px;
+}
+
+.category{
+  display: flex;
+  width: 80%;
+  margin-left: 40px ;
+  justify-content: space-between;
+}
+
+.category label{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 25px;
+  width: 200px;
+}
+
+.category label .dot{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#dot-1:checked ~ .category label .one,
+#dot-2:checked ~ .category label .two{
+  background: #001A1F;
+  border-color: #d9d9d9;
+}
+
+input[type="radio"]{
+  display: none;
+}
+
+.option-check-details .exo-label {
+  margin-left: -70px;
 }
 
 @keyframes buttons{

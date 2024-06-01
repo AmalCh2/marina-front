@@ -24,61 +24,76 @@
                                         [(ngModel)]="sejour.id_sej"
                                         [ngModelOptions]="{standalone : true}"/>
                                     </div>
-                                    <div class="input-box">
-                                        <label>Nº du réservation :</label>
-                                        <input type="number" placeholder="Entrer le numéro de la réservation" required  
-                                        [(ngModel)]="sejour.id_reservation"
-                                        [ngModelOptions]="{standalone : true}"/>
+                                    
+                                </div>
+                                <div class="column">
+                                    <div>
+                                        <label for="tarif">type_tarif</label>
+                                        <select id="type_tarif" [(ngModel)]="tarif.type_tarif" name="id_tarif">
+                                          <option *ngFor="let tarif of listTarif" [ngValue]="tarif">{{ tarif.type_tarif}}</option>
+                                        </select>
+                                      </div>
+                                    
+
+
+                                      <div class="input-box">
+                                        <div class="input-box">
+                                            <label for="emplacement">emplacement</label>
+                                            <div class="select-box" >
+                                                <select id="id_emp" [(ngModel)]="emplacement.id_emp" name="id_emp">
+                                                    <option hidden>Liste emplacement :</option>
+                                                    <option *ngFor="let emplacement of listEmplacement" [ngValue]="emplacement">{{ emplacement.id_emp}}</option>
+                                                  </select>
+                                                
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="column">
                                     <div class="input-box">
-                                        <label>Nº tarif :</label>
-                                        <input type="number" placeholder="Entrer le numéro du tarif" required  
-                                        [(ngModel)]="sejour.id_tarif"
-                                        [ngModelOptions]="{standalone : true}"/>
+                                        <div class="input-box">
+                                            <label for="nom_bat">Nom du bateau :</label>
+                                            <div class="select-box" >
+                                                <select id="nom_bat" [(ngModel)]="bateau.nom_bat" name="id_bat">
+                                                    
+                                                    <option *ngFor="let bateau of listBateau" [ngValue]="bateau">{{ bateau.nom_bat}}</option>
+                                                  </select>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <label for="lib_sej">type sejour :</label>
+                                            <div class="select-box" >
+                                                <select id="lib_sej" [(ngModel)]="typeSejour.lib_sej" name="id_type_sej">
+                                                    
+                                                    <option *ngFor="let typeSejour of listTypeSejour" [ngValue]="typeSejour">{{ typeSejour.lib_sej}}</option>
+                                                  </select>
+                                                
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="input-box">
-                                        <label>Nº emplacement :</label>
-                                        <input type="number" placeholder="Entrer le numero d'emplacement'" required  
-                                        [(ngModel)]="sejour.id_emp"
-                                        [ngModelOptions]="{standalone : true}"/>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="input-box">
-                                        <label>Nº du bateau :</label>
-                                        <input type="number" placeholder="Entrer le nom du bateau" required  
-                                        [(ngModel)]="sejour.id_bat"
-                                        [ngModelOptions]="{standalone : true}"/>
-                                    </div>
-                                    <div class="input-box">
-                                        <label>Nom du bateau :</label>
-                                        <input type="text" placeholder="Entrer le numéro du bateau" required  
-                                        [(ngModel)]="sejour.nom_bat"
-                                        [ngModelOptions]="{standalone : true}"/>
-                                    </div>
+                                    
+
+                                    
                                 </div>
                                 <div class="column">
                                     <div class="input-box">
                                         <label>Nº du propriétaire :</label>
                                         <input type="number" placeholder="Entrer le nom du propriétaire" required  
-                                        [(ngModel)]="sejour.id_cli"
-                                        [ngModelOptions]="{standalone : true}"/>
+                                        />
                                     </div>
                                     <div class="input-box">
                                         <label>Nom du propriétaire :</label>
                                         <input type="text" placeholder="Entrer le numero du propriétaire"  required  
-                                        [(ngModel)]="sejour.nom_cli"
-                                        [ngModelOptions]="{standalone : true}"/>
+                                        />
                                     </div>
                                 </div>
                                 <div class="column">
                                     <div class="input-box">
                                         <label>Début :</label>
                                         <input type="date" placeholder="Entrer l'immatriculation du bateau" required required  
-                                        [(ngModel)]="sejour.deb_sej"
-                                        [ngModelOptions]="{standalone : true}"/>
+                                        />
                                     </div>
                                     <div class="input-box">
                                         <label>Fin :</label>
@@ -98,10 +113,10 @@
                                     <div class="input-box">
                                         <label>Nº du type séjours :</label>
                                         <input type="number" placeholder="Entrer le numéro du type séjour" required required  
-                                        [(ngModel)]="typeSejour.id_type_sej"
-                                        [(ngModel)]="sejour.id_type_sej"
-                                        [ngModelOptions]="{standalone : true}"/>
+                                        />
                                     </div>
+
+                                    
                                     <div class="input-box">
                                         <label>Majoration :</label>
                                         <input type="number" placeholder="Entrer la majoration" required  
@@ -133,7 +148,7 @@
                                     <div class="submit-box">
                                         <div class="button-group button">
                                             <button class="button button-primary" [routerLink]="['/rechercher_séjour']" routerbuttonActive="active"  >Annuler</button>
-                                            <button (click)="addSejourAndTypeSejour()" id="send" class="button button-secondary">Ajouter</button>
+                                            <button (click)="addSejour(sejour)" id="send" class="button button-secondary">Ajouter</button>
                                         </div>
                                     </div>
                                     <div class="message">

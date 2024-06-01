@@ -3,7 +3,7 @@ export class Reglement {
     mnt_regle: any;
     type_regl: any;
     date_regl: any;
-    id_fact: any;
+    fact: any;
     id_carte: any;
   }
   

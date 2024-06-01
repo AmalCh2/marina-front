@@ -37,26 +37,16 @@
                           [(ngModel)]="prestation.secteur_prest"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
-                        <div class="input-box">
-                          <label>Rang de la prestation :</label>
-                          <input type="number" placeholder="Entrer le numero du propriétaire" required 
-                          [(ngModel)]="prestation.rang_prest"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
+                        
                       </div>
                       <div class="column">
                         <div class="input-box">
                           <label>Nº du type de la prestation :</label>
                           <input type="number" placeholder="Entrer le numéro du type de la prestation"required 
-                          [(ngModel)]="prestation.id_type_prest"
-                          [ngModelOptions]="{standalone : true}"/>
+                        
+                          />
                         </div>
-                        <div class="input-box">
-                          <label>Libelle du type de la prestation :</label>
-                          <input type="text" placeholder="Entrer la libelle du type de la prestation"  required 
-                          [(ngModel)]="typePrestation.lib_type_prest"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
+                       
                       </div>
                       <div class="column">
                         <div class="input-box">
@@ -93,26 +83,34 @@
                           [(ngModel)]="tva.date_tva"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
-                        <div class="input-box">
-                          <label>Nº de nature de la prestation :</label>
-                          <input type="number" placeholder="Entrer le numéro de la nature de la prestation" required 
-                          [(ngModel)]="nature.id_nature"
-                          [ngModelOptions]="{standalone : true}"/>
+                        <div>
+                          <label for="lib_type_prest">lib type prest</label>
+                          <select id="lib_type_prest" [(ngModel)]="selectedTypePrestation" (change)="onNomChange($event)" name="id_type_prest">
+                            <option *ngFor="let type_prestation of listTypePrestations" [ngValue]="type_prestation">{{ type_prestation.lib_type_prest }}</option>
+                          </select>
+                        </div>
+                        
+                        <div>
+                          <label for="rang_type_prest">rang_type_prest</label>
+                          <select id="rang_type_prest" [(ngModel)]="typePrestation.rang_type_prest" name="rang_type_prest">
+                            <option *ngFor="let rang of rangs">{{ rang }}</option>
+                          </select>
                         </div>
                       </div>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>Libelle de la nature de prestation :</label>
-                          <input type="text" placeholder="Entrer la libelle de la nature de la prestation" required 
-                          [(ngModel)]="nature.lib_nature"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
+                      <div>
+                        <label for="lib_nature">nature</label>
+                        <select id="lib_nature" [(ngModel)]="nature.lib_nature" name="id_nature">
+                          <option *ngFor="let nature of listNatures" [ngValue]="nature">{{ nature.lib_nature}}</option>
+                        </select>
                       </div>
+
+                      
+                     
                     </form>
                     <div class="submit-box">
                         <div class="button-group button">
                           <button class="button button-primary" routerLink="/afficher_tarif_prestation"  routerLinkActive="active" >Annuler</button>
-                          <button type="button" class="btn btn-success" (click)="addPrestationAndOthers()"
+                          <button type="button" class="btn btn-success" (click)="addPrestationAndTva()"
                           class="button button-secondary">Ajouter</button>
                         </div>
                       </div>

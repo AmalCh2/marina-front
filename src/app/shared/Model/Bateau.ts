@@ -26,7 +26,7 @@ export class Bateau {
      arrivee_mvt:any;
      commentaire_mvt:any;
      id_emp:any;
-     id_type_bat:any;
-     id_cli:any;
-     id_port:any;
+     typeBateau:any;
+     client:any;
+     port:any;
 }

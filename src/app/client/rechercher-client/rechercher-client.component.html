@@ -2,7 +2,6 @@
     <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
     <div class="body" [ngClass]="getBodyClass()">
         <router-outlet></router-outlet>
-
         <section class="content">
             <div class="left-content">
                 <div class="main">
@@ -44,9 +43,9 @@
                                             <li class="Menu options">
                                                 <select class="select-box">
                                                     <option hidden>Sélectionner une option:</option>
-                                                    <option >Numéro Client</option>
-                                                    <option value="nom_cli">Nom </option>
-                                                    <option value="prenom_cli">Prénom</option>
+                                                    <option>Numéro Client</option>
+                                                    <option>Nom </option>
+                                                    <option>Prénom</option>
                                                     <option>Etat Civil</option>
                                                     <option>Adresse</option>
                                                     <option>Code Postal</option>
@@ -69,7 +68,6 @@
                                         </ul>
                                     </div>
                                 </div>
-
                                 <div class="iconFltr">
                                     <i class="fal fa-check-circle faa2x"></i>
                                 </div>
@@ -98,7 +96,7 @@
                                         </div>
                                     </div>
                                         <div class="input-box">
-                                            <input type="text" placeholder="Faire une recherche" [(ngModel)]="searchTerm" >
+                                            <input type="text" placeholder="Faire une recherche" />
                                         </div>
                                     </div>  
                                 </div>
@@ -134,13 +132,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let client of filteredClients">
+                                    <tr *ngFor="let client of listClient">
                                         <td>{{ client.id_cli }}</td>
                                         <td>{{ client.nom_cli }}</td>
                                         <td>{{ client.prenom_cli }}</td>
                                         <td>{{ client.etat_civil }}</td>
                                         <td>{{ client.adresse_cli }}</td>
-                                        <td>{{ client.code_postal_cli }}</td>
                                         <td>{{ client.ville_cli }}</td>
                                         <td>{{ client.nom_pays }}</td>
                                         <!--
@@ -174,15 +171,11 @@
             
             
             
-
-
-
                 <ng-template #mymodal1 let-modal1>
                     <div class="modal-header">
                       <h4 class="modal-title" id="modal-basic-title">Modifier Fiche Client</h4>
                       <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
                     </div>
-
                     <div class="modal-body">
                       <div class="big-container">
                     <div class="formulaire-boxes">
@@ -229,14 +222,9 @@
                                                 </div>
                                                 <div class="first-form-details-inputs">
                                                     <label>Pays</label>
-                                                    <input type="text" [(ngModel)]="Client.nom_pays"
-                                                    [ngModelOptions]="{standalone : true}">
+                                                    <input type="text" >
                                                 </div>
-                                                <div class="first-form-details-inputs">
-                                                    <label>Code Postal </label>
-                                                    <input type="email" [(ngModel)]="Client.code_postal_cli"
-                                                    [ngModelOptions]="{standalone : true}">
-                                                </div>
+                                                
                                                 <div class="first-form-details-inputs">
                                                     <label>Nº téléphone</label>
                                                     <input type="text" [(ngModel)]="Client.tel_cli"
@@ -293,7 +281,6 @@
                                 </form>
                             </section>
                         </div>
-
                         <!-- Formulaire 2 -->
                         <div *ngIf="currentPage === 2">
                             <section class="container container-2">
@@ -344,18 +331,7 @@
                         </ul>
                     </div>
                 </div>
-
-
-
                     </div>
-
-
-
-
-
-
-
-
                     <div class="modal-footer">
                       <button type="button" class="btn btn-success" (click)="editClient(Client)"
                               (click)="modal1.close('Save click')">Add</button>
