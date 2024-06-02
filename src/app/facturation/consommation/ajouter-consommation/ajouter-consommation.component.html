@@ -62,9 +62,11 @@
                         </div>
                        <div>
                           <label for="facture">N Facture</label>
-                          <select id="id_fact" [(ngModel)]="facture.id_fact" name="id_fact">
-                            <option *ngFor="let facture of listFacture" [ngValue]="facture">{{ facture.id_fact}}</option>
-                          </select>
+                          <div class="select-box" >
+                            <select id="id_fact" [(ngModel)]="facture.id_fact" name="id_fact">
+                              <option *ngFor="let facture of listFacture" [ngValue]="facture">{{ facture.id_fact}}</option>
+                            </select>
+                          </div>
                         </div>
                         
                         <div>

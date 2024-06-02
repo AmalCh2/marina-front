@@ -63,71 +63,71 @@
     color: #001A1F;/**********************************************************/
   }
   
-  /*buttons*/
-  .button-group {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    border: none;
-    margin-top: 0;
-    padding-top: 0;
-    background-color: yellow;
-    height: 70px;
-  }
-  
-  .button {
-    text-decoration: none;
-    color: #001A1F;
-    font-weight: 500;
-    text-transform: uppercase; 
-    font-size: 14px;
-    padding: 12px;
-    border: 2px solid ; 
-    border-radius: 0px;
-    background: transparent;
-    transition: 0.25s ease-in-out;
-    text-align: center;
-    border: none;
-    margin-top: 0;
-  }
-  
-  .button-primary {
-    z-index: 1;
-    background:  #ffffff;
-    border: 1px solid #c1c1c1;
-    border-top-left-radius: 100px; 
-    border-bottom-left-radius: 100px;
-    width: 200px;
-    justify-content: center;
-    transform: translateX(-15px);
-    cursor: pointer;
-  }
-  
-  .button-secondary { 
-    background: #ffffff;
-    border: 1px solid #c1c1c1;
-    border-top-right-radius: 100px; 
-    border-bottom-right-radius: 100px; 
-    width: 200px;
-    transform: translateX(-15px);
-    cursor: pointer;
-  }
-  
-  .button-third { 
-    background: #ffffff;
-    border: 1px solid #c1c1c1;
-    width: 200px;
-    transform: translateX(-15px);
-    cursor: pointer;
-  }
-  
-  .button-primary:hover,
-  .button-primary:focus,
-  .button-secondary:hover, 
-  .button-secondary:focus { 
-    background:  rgba(33, 26, 61, 0.2);
-  }
+/* ===================== Buttons ===================== */
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: 54px;
+}
+
+.button {
+  text-decoration: none;
+  color: #001A1F;
+  font-weight: 500;
+  text-transform: uppercase; 
+  font-size: 14px;
+  padding: 12px;
+  border: 2px solid ; 
+  border-radius: 0px;
+  background: transparent;
+  transition: 0.25s ease-in-out;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: 3px;
+}
+
+.button-primary {
+  z-index: 1;
+  background:  #ffffff;
+  border: 1px solid #c1c1c1;
+  border-top-left-radius: 100px; 
+  border-bottom-left-radius: 100px;
+  width: 200px;
+  justify-content: center;
+  transform: translateX(-15px);
+  cursor: pointer;
+}
+
+.button-secondary { 
+  background: #ffffff;
+  border: 1px solid #c1c1c1;
+  border-top-right-radius: 100px; 
+  border-bottom-right-radius: 100px; 
+  width: 200px;
+  transform: translateX(-15px);
+  cursor: pointer;
+}
+
+.button-third { 
+  background: #ffffff;
+  border: 1px solid #c1c1c1;
+  width: 200px;
+  transform: translateX(-15px);
+  cursor: pointer;
+}
+
+.button-primary:hover,
+.button-primary:focus,
+.button-secondary:hover, 
+.button-secondary:focus { 
+  background:  rgba(33, 26, 61, 0.2);
+}
+
   
   
   
@@ -442,3 +442,26 @@
         display: none;
       }
     
+
+      .red-background {
+        margin-left: -120px;
+        background-color:  white;
+        position: relative;
+        width: 900px;
+        padding: 10px 25px 35px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+      
+      
+      
+      .container {
+        position: relative;
+        width: 800px;
+        background: #f4f7fa;
+        padding: 10px 25px 35px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+      
+      

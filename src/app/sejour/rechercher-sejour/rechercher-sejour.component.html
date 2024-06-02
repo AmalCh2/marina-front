@@ -8,10 +8,10 @@
                 <div class="main">
                     <div class="Header">
                         <h1><i class="fal fa-search faa2x"></i> Rechercher un Séjour</h1>
+                        <!----
                         <div class="buttons">
                             <div class="submit-box">
                                 <div class="button-group button">
-                                    <!--<button class="button button-primary" for="check" routerLink="" routerLinkActive="active" >Supprimer</button>-->
                                     <input type="checkbox" id="check">
                                     <label class="button button-primary" for="check">Annuler</label>
                                     <div class="background"></div>
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                    -->
                     </div>                  
                     <div class="big-container">
                     <!-- ======================= Filters ================== -->
@@ -78,24 +78,38 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <td>Poste</td>
-                                        <td>Bateau</td>
-                                        <td>Client</td>
-                                        <td>Séjour</td>
-                                        <td>Début</td>
+                                        <td>Num.</td>
+                                        <td>Bébut</td>
                                         <td>Fin</td>
-                                        <td>Solde</td>
+                                        <td>Nbr. Jour</td>
+                                        <td>Lib. Tarif</td>
+                                        <td>Lib. Type Séjour</td>
+                                        <td>Num. Emplacement</td>
+                                        <td>Nom Bateau</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let reservation of reservations">
-                                        <td>{{ reservation.number }}</td>
-                                        <td>{{ reservation.boatName }}</td>
-                                        <td>{{ reservation.clientName }}</td>
-                                        <td>{{ reservation.stayDetails }}</td>
-                                        <td>{{ reservation.startDate }}</td>
-                                        <td>{{ reservation.endDate }}</td>
-                                        <td>{{ reservation.solde }}</td>
+                                    <tr *ngFor="let sejour of listSejour">
+                                        <td>{{ sejour.id_sej }}</td>
+                                        <td>{{ sejour.deb_sej }}</td>
+                                        <td>{{ sejour.fin_sej }}</td>
+                                        <td>{{ sejour.num_jours }}</td>
+                                        <td>{{ sejour.tarif.type_tarif }}</td>
+                                        <td>{{ sejour.typeSejour.lib_sej }}</td>
+                                        <td>{{ sejour.emplacement.id_emp }}</td>
+                                        <td>{{ sejour.bateau.nom_bat }}</td>
+                                        <td>
+                                            <div class="button-group ">
+                                            <button type="button" class="button btn btn-outline-primary"
+                                                (click)="open(mymodal1,sejour)">Modifier
+                                            </button>
+                                            <button type="button" class="button btn btn-outline-danger"
+                                                (click)="deleteSejour(sejour.id_sej)">Supprimer
+                                            </button>
+                                            <button class="button" (click)="archiveSejour(sejour.id_sej)">Archiver</button>
+                                                <button class="button" (click)="printSejour(sejour)">Imprimer</button>
+                                            </div>
+                                          </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -103,6 +117,82 @@
                     </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <ng-template #mymodal1 let-modal1>
+                    <div class="modal-body p-4 red-background form-title">
+                      <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
+                      <div>
+                        <section class="container mx-auto">
+                          <form class="space-y-4">
+                            <div class="grid grid-cols-4 gap-4">
+                              <h1 class="col-span-4" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur le sejour :</h1>
+                              <div class="col-span-4">
+                                <label class="block text-gray-700">Nº séjour :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="sejour.id_sej"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Nº Emplacement</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="sejour.emp.id_emp" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Nom du bateau :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="sejour.bat.nom_bat" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Type sejour :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="sejour.type_sej.lib_sej" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Début :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="sejour.deb_sej"
+                                [ngModelOptions]="{standalone : true}"/>
+                            
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Fin :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="sejour.fin_sej"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Nbr des jours :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="sejour.num_jours"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                            </div>
+                          </form>
+                          <div class="mt-4">
+                            <button type="button" class="button transition" (click)="editSejour(sejour)" (click)="modal1.close('Save click')">Enregistrer</button>
+                            <button type="button" class="button transition" (click)="modal1.close('Save click')">Annuler</button>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </ng-template>
+
+
+
+
+
+
+
+
+
             </div>
         </section>
     </div>

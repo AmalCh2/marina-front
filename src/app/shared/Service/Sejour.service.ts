@@ -26,4 +26,8 @@ export class SejourService {
   deleteSejour(id: any) {
     return this.httpClient.delete(`${this.API_URL}/delete-sejour/${id}`);
   }
+
+  archiveSejour(id: number): Observable<void> {
+    return this.httpClient.put<void>(`${this.API_URL}/archive/${id}`, {});
+  }
 }
