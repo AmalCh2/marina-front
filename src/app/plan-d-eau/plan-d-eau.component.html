@@ -104,47 +104,36 @@
                         <thead>
                             <tr>
                                 <td>ID</td>
-                                <td>Nom</td>
-                                <td>Prenom Client</td>
-                                <td>Nom Client</td>
-                                <td>Immat.</td>
-                                <td>Types</td>
-                                <td>Pavillon</td>
-                                <td>Marque</td>
-                                <td>Adresse</td>
-                                <td>Code postal</td>
-                                <td>Ville</td>
-                                <td>Pays</td>
                                 <td>Longueur</td>
                                 <td>Largeur</td>
                                 <td>Tirant d'eau</td>
-                                <td>Autre Nom</td>
+
+                                <td>Nbr. Mouillage</td>
+                                <td>Type Corde</td>
+                                <td>Rang</td>
+                                <td>Blockages</td>
+                                <td>Direction</td>
+                                <td>Pelectrique</td>
+                                <td>Quai</td>
+                                <td>Rang Quai</td>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr *ngFor="let bateau of listBateau">
-                                <td>{{ bateau.id_bat }}</td>
-                                <td>{{ bateau.nom_bat }}</td>
-                                <td>{{ bateau.client.prenom_cli }}</td>
-                                <td>{{ bateau.client.nom_cli }}</td>
-                                <td>{{ bateau.immatriculation_bat }}</td>
-                                <td>{{ bateau.typeBateau.type_bat }}</td>
-                                <td>{{ bateau.pavillon_bat }}</td>
-                                <td>{{ bateau.marque_bat }}</td>
-                                <td>{{ bateau.adresse_bat }}</td>
-                                <td>{{ bateau.code_postal_bat }}</td>
-                                <td>{{ bateau.ville_bat }}</td>
-                                <td>{{ bateau.pays }}</td>
-                                <td>{{ bateau.largeur_bat }}</td>
-                                <td>{{ bateau.largeur_bat }}</td>
-                                <td>{{ bateau.tirant_eau_bat }}</td>
-                                <td>{{ bateau.autre_ident_nom_bat }}</td>
-                                <td>
-                                    <div class="button-group ">
-                                        <button class="button" (click)="printBateau(bateau)">Imprimer</button>
-                                    </div>
-                                </td>
+                            <tr *ngFor="let emplacement of listEmplacement">
+                                <td>{{ emplacement.id_emp }}</td>
+                                <td>{{ emplacement.longueur_emp }}</td>
+                                <td>{{ emplacement.largeur_emp }}</td>
+                                <td>{{ emplacement.tirant_eau_emp }}</td>
+                                <td>{{ emplacement.nbr_mouillage_emp }}</td>
+                                <td>{{ emplacement.type_cord_emp}}</td>
+                                <td>{{ emplacement.rang }}</td>
+                                <td>{{ emplacement.blockage }}</td>
+                                <td>{{ emplacement.direction_emp }}</td>
+                                <td>{{ emplacement.pelectrique.designation }}</td>
+                                <td>{{ emplacement.quai.desigquai }}</td>
+                                <td>{{ emplacement.quai.rang_quai }}</td>
+                                
                             </tr>
                         </tbody>
                     </table>
