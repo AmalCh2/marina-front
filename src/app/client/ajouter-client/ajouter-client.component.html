@@ -35,19 +35,12 @@
                       <div class="input-box">
                         <label for="nom_pays">Pays :</label>
                         <div class="select-box" >
-                          <select id="nom_pays" [(ngModel)]="selectedPays" (change)="onNomChange($event)" name="id_pays">
-                            <option *ngFor="let Pays of listPays" [ngValue]="Pays">{{ Pays.nom_pays }}</option>
+                          <select id="nom_pays" [(ngModel)]="Client.pays" (change)="onNomChange($event)" name="id_pays">
+                            <option *ngFor="let Pays of listPays" [ngValue]="Pays">{{ Pays.nom_pays }}{{ Pays.nationnalite }}</option>
                           </select>
                         </div>
                       </div>
-                      <div class="input-box">
-                        <label for="nationnalite">Nationnalité :</label>
-                        <div class="select-box" >
-                          <select id="nationnalite" [(ngModel)]="Pays.nationnalite" name="nationnalite">
-                            <option *ngFor="let nationnalite of nationnalites">{{ nationnalite }}</option>
-                          </select>
-                        </div>
-                      </div>
+                     
                     </div>
                     <br>
                     <h1 class="form-title">Informations sur l'Addresse du Client :</h1>
@@ -142,7 +135,7 @@
                   <div class="submit-box">
                     <div class="button-group button">
                       <button class="button button-primary" [routerLink]="['/rechercher_client']" routerbuttonActive="active" >Annuler</button>
-                      <button (click)="addClient(Client)" id="send" class="button button-secondary">Ajouter</button>
+                      <button (click)="addClient()" id="send" class="button button-secondary">Ajouter</button>
                     </div>
                   </div>
                 </section>

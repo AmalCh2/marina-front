@@ -86,26 +86,53 @@ export class RechercherFacturesComponent implements OnInit {
 
   }
 
-  getAllFactures() {
-    this.factureService.getAllFactures().subscribe(res => this.listFacture = res);
-  }
-
+  
   getAllCartes() {
     this.carteService.getAllCartes().subscribe(res => this.listCarte = res);
   }
 
+  getAllFactures() {
+    this.factureService.getAllFactures().subscribe(res => this.listFacture = res);
+  }
+  
   getAllReglements() {
     this.reglementService.getAllReglements().subscribe(res => this.listReglement = res);
   }
-
-
-
-  editFacture(facture: Facture) {
-    this.factureService.editFacture(facture).subscribe();
+  
+  addFactureAndReglement() {
+    this.factureService.addFacture(this.facture).subscribe(() => {
+      this.getAllFactures();
+    });
+    this.reglementService.addReglement(this.reglement).subscribe(() => {
+      this.getAllReglements();
+    });
+    this.carteService.addCarte(this.carte).subscribe(() => {
+      this.getAllCartes();
+    });
   }
-
-  deleteFacture(idFacture: any) {
-    this.factureService.deleteFacture(idFacture).subscribe(() => this.getAllFactures());
+  
+  editFactureAndReglement(facture: Facture, reglement: Reglement, carte: Carte) {
+    this.factureService.editFacture(facture).subscribe(() => {
+      this.getAllFactures();
+    });
+    this.reglementService.editReglement(reglement).subscribe(() => {
+      this.getAllReglements();
+    });
+    this.carteService.editCarte(carte).subscribe(() => {
+      this.getAllCartes();
+    });
+  }
+  
+  deleteFactureAndReglement(id_facture: number, id_reglement: number , id_carte:number) {
+    this.factureService.deleteFacture(id_facture).subscribe(() => {
+      this.getAllFactures();
+    });
+    this.reglementService.deleteReglement(id_reglement).subscribe(() => {
+      this.getAllReglements();
+    });
+    this.carteService.deleteCarte(id_carte).subscribe(() => {
+      this.getAllCartes();
+    });
   }
 
 

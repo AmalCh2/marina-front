@@ -20,7 +20,7 @@ export class ConsommationService {
   }
 
   editConsommation(consommation: any) {
-    return this.httpClient.put(`${this.API_URL}/update-consommation`, consommation);
+    return this.httpClient.put(`${this.API_URL}/update-consommation/${consommation.id_cons}`, consommation);
   }
 
   deleteConsommation(id: any) {

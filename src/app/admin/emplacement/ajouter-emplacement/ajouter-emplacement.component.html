@@ -1,154 +1,163 @@
 <div class="all-page flex items-center">
-    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
-    <div class="body" [ngClass]="getBodyClass()">
-      <router-outlet></router-outlet>
-  
-      <section class="content">
-        <div class="left-content">
-          <div class="main">
-            <div class="BigTitle">
-              <h1><i class="fal fa-ship faa2x"></i> Ajouter un Emplacement</h1>
-            </div>
-            <div class="big-container">
-              <div class="formulaire-boxes">
-                <!-- Formulaire Etape 1 -->
-                <div>
-                  <section class="container container-1">
-                    <form action="#" class="form">
-                      <h1 class="form-title">Informations sur l'emplacement :</h1>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>Nº d'emplacement :</label>
-                          <input type="number" placeholder="Entrer le numéro d'emplacement" required 
-                          [(ngModel)]="emplacement.id_emp"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <div class="input-box">
-                          <label>Largeur d'emplacement :</label>
-                          <input type="float" placeholder="Entrer la largeur d'emplacement" required 
-                          [(ngModel)]="emplacement.largeur_emp"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <div class="input-box">
-                          <label>Longueur d'emplacement :</label>
-                          <input type="float" placeholder="Entrer la longueur d'emplacement"  required 
-                          [(ngModel)]="emplacement.longueur_emp"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
+  <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+  <div class="body" [ngClass]="getBodyClass()">
+    <router-outlet></router-outlet>
+
+    <section class="content">
+      <div class="left-content">
+        <div class="main">
+          <div class="BigTitle">
+            <h1><i class="fal fa-ship faa2x"></i> Ajouter un Emplacement</h1>
+          </div>
+          <div class="big-container">
+            <div class="formulaire-boxes">
+              <!-- Formulaire Etape 1 -->
+              <div>
+                <section class="container container-1">
+                  <form action="#" class="form">
+                    <h1 class="form-title">Informations sur l'emplacement :</h1>
+                    <div class="column">
+                      <div class="input-box">
+                        <label>Nº d'emplacement :</label>
+                        <input type="number" placeholder="Entrer le numéro d'emplacement" required 
+                        [(ngModel)]="emplacement.id_emp"
+                        [ngModelOptions]="{standalone : true}">
                       </div>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>Tirant d'eau :</label>
-                          <input type="number" placeholder="Entrer le tirant d'eau"required 
-                          [(ngModel)]="emplacement.tirant_eau_emp"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                       
-                        <div>
-                          <label for="desig_quai">Desig</label>
+                      <div class="input-box">
+                        <label>Largeur d'emplacement :</label>
+                        <input type="float" placeholder="Entrer la largeur d'emplacement" required 
+                        [(ngModel)]="emplacement.largeur_emp"
+                        [ngModelOptions]="{standalone : true}">
+                      </div>
+                      <div class="input-box">
+                        <label>Longueur d'emplacement :</label>
+                        <input type="float" placeholder="Entrer la longueur d'emplacement"  required 
+                        [(ngModel)]="emplacement.longueur_emp"
+                        [ngModelOptions]="{standalone : true}">
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="input-box">
+                        <label>Tirant d'eau :</label>
+                        <input type="number" placeholder="Entrer le tirant d'eau"required 
+                        [(ngModel)]="emplacement.tirant_eau_emp"
+                        [ngModelOptions]="{standalone : true}">
+                      </div>
+                      <div class="input-box">
+                        <label>Nombre du mouillage :</label>
+                        <input type="number" placeholder="Entrer le nombre du mouillage" required 
+                        [(ngModel)]="emplacement.nbr_mouillage_emp"
+                        [ngModelOptions]="{standalone : true}">
+                      </div>
+                      <div class="input-box">
+                        <label>Type du corde :</label>
+                        <input type="text" placeholder="Entrer le type du corde d'emplacemant" required 
+                        [(ngModel)]="emplacement.type_cord_emp"
+                        [ngModelOptions]="{standalone : true}">
+                      </div>
+                     
+                      
+
+                      
+                    </div>
+                    <div class="column">
+                      
+                      <div class="input-box">
+                        <label>Direction :</label>
+                        <input type="text" placeholder="Entrer la direction d'emplacement" required required 
+                        [(ngModel)]="emplacement.direction_emp"
+                        [ngModelOptions]="{standalone : true}">
+                      </div>
+                      <div class="input-box">
+                        <label>Rang :</label>
+                        <input type="number" placeholder="Entrer le rang d'emplacement" required 
+                        [(ngModel)]="emplacement.rang"
+                        [ngModelOptions]="{standalone : true}">
+                      </div>
+                      <div class="input-box">
+                        <label>Commentaire :</label>
+                        <input type="text" placeholder="Entrer une note" required 
+                        [(ngModel)]="emplacement.commentaire"
+                        [ngModelOptions]="{standalone : true}">
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="input-box">
+                        <label for="desig_quai">Desig</label>
+                        <div class="select-box">
                           <select id="desig_quai" [(ngModel)]="selectedQuai" (change)="onNomChange($event)" name="id_quai">
                             <option *ngFor="let Quai of listQuai" [ngValue]="Quai">{{ Quai.desig_quai }}</option>
                           </select>
                         </div>
                         
-                        <div>
-                          <label for="rang_quai">Rang quai</label>
+                      </div>
+                      
+                      <div class="input-box">
+                        <label for="rang_quai">Rang quai</label>
+                        <div class="select-box">
                           <select id="rang_quai" [(ngModel)]="quai.rang_quai" name="rang_quai">
                             <option *ngFor="let rang of rangs">{{ rang }}</option>
                           </select>
                         </div>
+                        
+                      </div>
 
-                        <div>
-                          <label for="designation">Desig p electrique</label>
+                      <div class="input-box">
+                        <label for="designation">Desig p electrique</label>
+                        <div class="select-box">
                           <select id="designation" [(ngModel)]="pElectrique.designation" name="id_p_elec">
                             <option *ngFor="let pElectrique of listPElectrique" [ngValue]="pElectrique">{{ pElectrique.designation}}</option>
                           </select>
                         </div>
-
-                        <div class="input-box">
-                          <label>Nombre du mouillage :</label>
-                          <input type="number" placeholder="Entrer le nombre du mouillage" required 
-                          [(ngModel)]="emplacement.nbr_mouillage_emp"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>Type du corde :</label>
-                          <input type="text" placeholder="Entrer le type du corde d'emplacemant" required 
-                          [(ngModel)]="emplacement.type_cord_emp"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <div class="input-box">
-                          <label>Direction :</label>
-                          <input type="text" placeholder="Entrer la direction d'emplacement" required required 
-                          [(ngModel)]="emplacement.direction_emp"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <div class="input-box">
-                          <label>Rang :</label>
-                          <input type="number" placeholder="Entrer le rang d'emplacement" required 
-                          [(ngModel)]="emplacement.rang"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>Commentaire :</label>
-                          <input type="text" placeholder="Entrer une note" required 
-                          [(ngModel)]="emplacement.commentaire"
-                          [ngModelOptions]="{standalone : true}">
-                        </div>
-                      
-                       
+                        
                       </div>
                       
-                      <div class="multicoque-box">
-                        <label>Blockage :</label>
-                        <div class="multicoque-option">
-                          <div class="multicoque">
-                            <input type="radio" id="check-yes" name="multicoque" required 
-                            [(ngModel)]="emplacement.blockage"
-                            [ngModelOptions]="{standalone : true}">
-                            <label for="check-yes">Oui</label>
-                          </div>
-                          <div class="multicoque">
-                            <input type="radio" class="check-no" id="check-no" name="multicoque" required 
-                            [(ngModel)]="emplacement.blockage"
-                            [ngModelOptions]="{standalone : true}">
-                            <label for="check-no">Non</label>
-                          </div>
+                    
+                     
+                    </div>
+                    
+                    <div class="multicoque-box">
+                      <label>Blockage :</label>
+                      <div class="multicoque-option">
+                        <div class="multicoque">
+                          <input type="radio" id="check-yes" name="multicoque" required 
+                          [(ngModel)]="emplacement.blockage"
+                          [ngModelOptions]="{standalone : true}">
+                          <label for="check-yes">Oui</label>
                         </div>
-                      </div>
-                    </form>
-                    <div class="submit-box">
-                      <div class="button-group button">
-                        <button class="button button-primary" routerLink="/rechercher_emplacement"  routerLinkActive="active" >Annuler</button>
-                        <button type="button" class="btn btn-success" (click)="addEmplacement(emplacement)"
-                        class="button button-secondary">Ajouter</button>
+                        <div class="multicoque">
+                          <input type="radio" class="check-no" id="check-no" name="multicoque" required 
+                          [(ngModel)]="emplacement.blockage"
+                          [ngModelOptions]="{standalone : true}">
+                          <label for="check-no">Non</label>
+                        </div>
                       </div>
                     </div>
-
-
-
-
-
-
-
-
-  
-                  <div class="message">
-                      <div class="success" id="success">Emplacement ajouté avec succès! </div>
-                      <div class="danger" id="danger">Vérifier les champs obligatoires! </div>
+                  </form>
+                  <div class="submit-box">
+                    <div class="button-group button">
+                      <button class="button button-primary" routerLink="/rechercher_emplacement"  routerLinkActive="active" >Annuler</button>
+                      <button type="button" class="btn btn-success" (click)="addEmplacement(emplacement)"
+                      class="button button-secondary">Ajouter</button>
+                    </div>
                   </div>
-                  </section>
-                </div>
-              </div>              
-            </div>
+
+
+
+
+
+
+
+
+
+                
+                </section>
+              </div>
+            </div>              
           </div>
         </div>
-      </section>
-    
-    </div>
-  </div>
+      </div>
+    </section>
   
+  </div>
+</div>

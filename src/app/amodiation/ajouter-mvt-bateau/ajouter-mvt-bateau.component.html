@@ -27,11 +27,11 @@
                         </div>
                         
                         <div class="input-box">
-                          <label for="id_emp">emplacement :</label>
+                          <label for="id_cli">Client :</label>
                           <div class="select-box" >
-                              <select id="id_emp" [(ngModel)]="emplacement.id_emp" name="id_emp">
+                              <select id="id_cli" [(ngModel)]="Bateau.client" name="id_cli">
                                   
-                                  <option *ngFor="let emplacement of listEmplacement" [ngValue]="emplacement">{{ emplacement.id_emp}}</option>
+                                  <option *ngFor="let client of listClient" [ngValue]="client">{{ client.id_cli}}</option>
                                 </select>
                               
                           </div>
@@ -76,7 +76,7 @@
                     <div class="submit-box">
                         <div class="button-group button">
                           <button class="button button-primary" [routerLink]="['/afficher_mvt_bateaux']" routerbuttonActive="active" >Annuler</button>
-                          <button (click)="addBateau(Bateau)" id="send" class="button button-secondary">Ajouter</button>
+                          <button (click)="addBateau()" id="send" class="button button-secondary">Ajouter</button>
                         </div>
                       </div>
                       <div class="message">

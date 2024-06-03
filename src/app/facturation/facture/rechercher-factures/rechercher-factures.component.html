@@ -85,7 +85,7 @@
                                                 (click)="open(mymodal1,facture)">Modifier
                                             </button>
                                             <button type="button" class="button btn btn-outline-danger"
-                                                (click)="deleteFacture(facture.id_cons)">Supprimer
+                                                (click)="deleteFactureAndReglement(facture.id_fact,carte.id_carte,reglement.id_regle)">Supprimer
                                             </button>
                                             </div>
                                           </td>
@@ -148,9 +148,9 @@
                                 <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="facture.lib_exo"
                                 [ngModelOptions]="{standalone : true}"/>
                               </div>
-                              <div class="col-span-1">
+                            <div class="col-span-1">
                                 <label class="block text-gray-700">N Reglement</label>
-                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="reglement.fact.id_regle"
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="reglement.id_regle"
                                 [ngModelOptions]="{standalone : true}"/>
                               </div>
                               <div class="col-span-1">
@@ -166,7 +166,7 @@
                             </div>
                           </form>
                           <div class="mt-4">
-                            <button type="button" class="button transition" (click)="editFacture(facture)" (click)="modal1.close('Save click')">Enregistrer</button>
+                            <button type="button" class="button transition" (click)="editFactureAndReglement(facture,reglement,carte)" (click)="modal1.close('Save click')">Enregistrer</button>
                             <button type="button" class="button transition" (click)="modal1.close('Save click')">Annuler</button>
                           </div>
                         </section>

@@ -203,8 +203,9 @@ export class AjouterSejourComponent implements OnInit {
     this.sejourService.getAllSejours().subscribe(res => this.listSejour = res);
   }
 
-  addSejour(s: any) {
-    this.sejourService.addSejour(s).subscribe(() => {
+  addSejour() {
+    console.log(this.sejour);
+    this.sejourService.addSejour(this.sejour).subscribe(() => {
       this.getAllSejour();
       this.form = false;
     });

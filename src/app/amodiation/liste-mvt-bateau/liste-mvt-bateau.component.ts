@@ -1,7 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { AxiosService } from 'src/app/axios.service';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { AxiosService } from '../../axios.service';
 import { SideNavToggle } from '../SideNavToggle.interface';
-import { ElementRef, ViewChild } from '@angular/core';
+import { Client } from 'src/app/shared/Model/Client';
+import { TypeBateau } from 'src/app/shared/Model/TypeBateau';
+import { Bateau } from 'src/app/shared/Model/Bateau';
+import { BateauService } from 'src/app/shared/Service/Bateau.service';
+import { ClientService } from 'src/app/shared/Service/Client.service';
+import { TypeBateauService } from 'src/app/shared/Service/TypeBateau.service';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Port } from 'src/app/shared/Model/Port';
+import { PortService } from 'src/app/shared/Service/Port.service';
 
 @Component({
   selector: 'app-liste-mvt-bateau',
@@ -10,174 +18,279 @@ import { ElementRef, ViewChild } from '@angular/core';
 })
 export class ListeMvtBateauComponent implements OnInit {
 
-  @Input() screenWidthh = 0;
-  @Input() collapsed = false;
-
-  isSideNavCollapsed = false;
-  screenWidth = 0;
-  data: string[] = [];
-  totalPages: number = 3;
-  currentPage: number = 1;
-  paginationHTML: string = '';
-
-  constructor(private axiosService: AxiosService) {}
-
-  ngOnInit(): void {
-    this.axiosService.request(
-      "GET",
-      "/messages",
-      null
-    ).then(
-      (response) => this.data = response.data
-    );
-    this.generatePagination();
-    //this.displayedReservations = this.reservations.slice(0, 9);
-  }
-
-  onToggleSideNav(data: SideNavToggle): void {
-    this.screenWidth = data.screenWidth;
-    this.isSideNavCollapsed = data.collapsed;
-  }
-
-  generatePagination(): void {
-    this.paginationHTML = this.createPagination(this.totalPages, this.currentPage);
-  }
-
-  createPagination(totalPages: number, page: number): string {
-    let liTag: string = '';
-    let active: string;
-    let beforePage: number = page - 1;
-    let afterPage: number = page + 1;
-
-    if (page > 1) {
-      liTag += `<li class="btn prev" (click)="changePage(${page - 1})"><span><i class="fas fa-angle-left"></i> Prev</span></li>`;
-    }
-
-    if (page > 2) {
-      liTag += `<li class="first numb" (click)="changePage(1)"><span>1</span></li>`;
-      if (page > 3) {
-        liTag += `<li class="dots"><span>...</span></li>`;
-      }
-    }
-
-    if (page === totalPages) {
-      beforePage = beforePage - 2;
-    } else if (page === totalPages - 1) {
-      beforePage = beforePage - 1;
-    }
-
-    if (page === 1) {
-      afterPage = afterPage + 2;
-    } else if (page === 2) {
-      afterPage = afterPage + 1;
-    }
-
-    for (let plength = beforePage; plength <= afterPage; plength++) {
-      if (plength > totalPages) {
-        continue;
-      }
-      if (plength === 0) {
-        plength = plength + 1;
-      }
-      if (page === plength) {
-        active = "active";
+    @Input() screenWidth = 0;
+    @Input() collapsed = false;
+  
+    isSideNavCollapsed = false;
+    data: string[] = [];
+    totalPages = 2;
+    currentPage = 1;
+    paginationHTML = '';
+  
+    listBateau: any;
+    form: boolean = false;
+    Bateau!: Bateau;
+    //listTypeBateau: any;
+    TypeBateau!: TypeBateau;
+    closeResult!: string;
+  
+    listTypeBateau: any;
+    typeBateau!: TypeBateau;
+  
+    listClient:any;
+    client!: Client;
+  
+    listPort: any;
+    port!: Port;
+    
+    prenoms: string[] = [];
+  
+    selectedClient: any;
+    onNomChange(event: any) {
+      if (this.selectedClient) {
+        this.client.prenom_cli = this.selectedClient.prenom_cli;
+        this.prenoms = [this.selectedClient.prenom_cli];
       } else {
-        active = "";
+        this.client.prenom_cli = '';
+        this.prenoms = [];
       }
-      liTag += `<li class="numb ${active}" (click)="changePage(${plength})"><span>${plength}</span></li>`;
     }
-
-    if (page < totalPages - 1) {
-      if (page < totalPages - 2) {
-        liTag += `<li class="dots"><span>...</span></li>`;
+    constructor(private axiosService: AxiosService ,private BateauService: BateauService, private TypeBateauService: TypeBateauService, private modalService: NgbModal , private ClientService: ClientService, private PortService: PortService) {}
+  
+    ngOnInit(): void {
+      this.axiosService.request(
+        'GET',
+        '/messages',
+        null
+      ).then(
+        (response) => {
+          this.data = response.data;
+          this.generatePagination();
+        }
+      );
+  
+      this.getAllBateaux();
+  
+      this.Bateau = {
+        id_bat:null,
+       immatriculation_bat:null,
+       autre_ident_nom_bat:null,
+       nom_bat:null,
+       largeur_bat:null,
+       longueur_bat:null,
+       tirant_eau_bat:null,
+       tonnage_bat:null,
+       pavillon_bat:null,
+       marque_bat:null,
+       num_assur:null,
+       nom_assur:null,
+       date_exp:null,
+       adresse_bat:null,
+       code_postal_bat:null,
+       ville_bat:null,
+       pays:null,
+       tel_bat:null,
+       fax_bat:null,
+       mobile_bat:null,
+       email_bat:null,
+       observation:null,
+       typeBateau:null,
+       client:null,
+       port:null, 
+       
+       date_mvt:null,
+       depart_mvt:null,
+       arrivee_mvt:null,
+       commentaire_mvt:null,
+       id_emp:null,
       }
-      liTag += `<li class="last numb" (click)="changePage(${totalPages})"><span>${totalPages}</span></li>`;
+      this.getAllClients();
+      this.getAllPorts();
+  
+  
+      this.getAllTypeBateaus();
+  
+      this.TypeBateau = {
+          id_type_bat: null,
+          type_bat:null,
+          designation_bat:null,
+          majoration_bat:null,
+          multicoque:null,
+      }
+      this.client = {
+        id_cli: null,
+      nom_cli: null,
+      prenom_cli: null,
+      etat_civil: null ,
+      adresse_cli: null,
+      ville_cli: null,
+      tel_cli: null,
+      fax_cli: null,
+      mobile_cli: null,
+      email_cli: null,
+      exo_cli: null,
+      pays:null,
+      code_postal_cliii:null,
+     
     }
-
-    if (page < totalPages) {
-      liTag += `<li class="btn next" (click)="changePage(${page + 1})"><span>Next <i class="fas fa-angle-right"></i></span></li>`;
+  
     }
-
-    return liTag;
-  }
-
-  getPages(): number[] {
-    const pages = [];
-    for (let i = 1; i <= this.totalPages; i++) {
-      pages.push(i);
+  
+    
+    getAllPorts() {
+      this.PortService.getAllPorts().subscribe((data: Port[]) => {
+        this.listPort = data;
+      });
     }
-    return pages;
-  }
-
-  changePage(page: number): void {
-    this.currentPage = page;
-    this.generatePagination(); // Appel pour régénérer la pagination
-  }
-
-  getBodyClass(): string {
-    let styleClass = '';
-    if (this.collapsed && this.screenWidthh > 768){
-      styleClass='body-trimmed';
-    } else if (this.collapsed && this.screenWidthh <= 768 && this.screenWidthh > 0){
-      styleClass = 'body-md-screen';
+    getAllClients() {
+      this.ClientService.getAllClients().subscribe((data: Client[]) => {
+        this.listClient = data;
+      });
     }
-    return styleClass;
-  }
-
-
-  @ViewChild('section') section!: ElementRef;
-  @ViewChild('overlay') overlay!: ElementRef;
-
-  showModal() {
-    this.section.nativeElement.classList.add('active');
-    this.overlay.nativeElement.classList.add('active');
-  }
-
-  hideModal() {
-    this.section.nativeElement.classList.remove('active');
-    this.overlay.nativeElement.classList.remove('active');
-  }
-
-  closeOverlay() {
-    this.hideModal();
-  }
-
-  MVTDetail: any[] = [
-    { number: 1, boatName: 'Boat A', clientName: 'John Doe', startDate: '2024-05-10', endDate: '2024-05-15', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },{ number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-    { number: 2, boatName: 'Boat B', clientName: 'Jane Smith', startDate: '2024-05-12', endDate: '2024-05-17', observation: 'Deposit' },
-  ];
-  /*
-  showAll: boolean = false;
-  onTableScroll(event: any) {
-    if (event.target.scrollTop > event.target.offsetHeight / 2) {
-      this.showAll = true;
+    getAllTypeBateaus() {
+      this.TypeBateauService.getAllTypeBateau().subscribe((data: TypeBateau[]) => {
+        this.listTypeBateau = data;
+      });
     }
-  }
-  */
- /*
-  displayedReservations: any[] = [];
-
-  showAll: boolean = false;
-
-
-  onTableScroll(event: any) {
-    const element = event.target;
-    const atBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
-    if (atBottom) {
-      const startIndex = this.displayedReservations.length;
-      const endIndex = Math.min(startIndex + 10, this.reservations.length);
-      this.displayedReservations = this.displayedReservations.concat(this.reservations.slice(startIndex, endIndex));
+  
+    getAllBateaux() {
+      this.BateauService.getAllBateaux().subscribe(res => this.listBateau = res)
     }
-  }*/
-}
+    
+    addBateau() {
+      console.log(this.Bateau);
+      this.BateauService.addBateau(this.Bateau).subscribe(() => {
+        this.getAllBateaux();
+       // this.form = false;
+      });
+    }
+    
+    editBateau(bateau: Bateau) {
+      this.BateauService.editBateau(bateau).subscribe();
+    }
+    
+    deleteBateau(idBateau: any) {
+      this.BateauService.deleteBateau(idBateau).subscribe(() => this.getAllBateaux())
+    }
+    
+    open(content: any, action: any) {
+      if (action != null)
+        this.Bateau = action
+      else
+        this.Bateau = new Bateau();
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+    
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return `with: ${reason}`;
+      }
+    }
+    
+    cancel() {
+      this.form = false;
+    }
+  
+  
+    onToggleSideNav(data: SideNavToggle): void {
+      this.screenWidth = data.screenWidth;
+      this.isSideNavCollapsed = data.collapsed;
+    }
+  
+    generatePagination(): void {
+      this.paginationHTML = this.createPagination(this.totalPages, this.currentPage);
+    }
+  
+    createPagination(totalPages: number, page: number): string {
+      let liTag = '';
+      let active: string;
+      let beforePage = page - 1;
+      let afterPage = page + 1;
+  
+      if (page > 1) {
+        liTag += `<li class="btn prev" (click)="changePage(${page - 1})"><span><i class="fas fa-angle-left"></i> Prev</span></li>`;
+      }
+  
+      if (page > 2) {
+        liTag += `<li class="first numb" (click)="changePage(1)"><span>1</span></li>`;
+        if (page > 3) {
+          liTag += `<li class="dots"><span>...</span></li>`;
+        }
+      }
+  
+      if (page === totalPages) {
+        beforePage = beforePage - 2;
+      } else if (page === totalPages - 1) {
+        beforePage = beforePage - 1;
+      }
+  
+      if (page === 1) {
+        afterPage = afterPage + 2;
+      } else if (page === 2) {
+        afterPage = afterPage + 1;
+      }
+  
+      for (let plength = beforePage; plength <= afterPage; plength++) {
+        if (plength > totalPages) {
+          continue;
+        }
+        if (plength === 0) {
+          plength = plength + 1;
+        }
+        if (page === plength) {
+          active = 'active';
+        } else {
+          active = '';
+        }
+        liTag += `<li class="numb ${active}" (click)="changePage(${plength})"><span>${plength}</span></li>`;
+      }
+  
+      if (page < totalPages - 1) {
+        if (page < totalPages - 2) {
+          liTag += `<li class="dots"><span>...</span></li>`;
+        }
+        liTag += `<li class="last numb" (click)="changePage(${totalPages})"><span>${totalPages}</span></li>`;
+      }
+  
+      if (page < totalPages) {
+        liTag += `<li class="btn next" (click)="changePage(${page + 1})"><span>Next <i class="fas fa-angle-right"></i></span></li>`;
+      }
+  
+      return liTag;
+    }
+  
+    getPages(): number[] {
+      const pages = [];
+      for (let i = 1; i <= this.totalPages; i++) {
+        pages.push(i);
+      }
+      return pages;
+    }
+  
+    changePage(page: number): void {
+      this.currentPage = page;
+      this.generatePagination();
+    }
+  
+    getBodyClass(): string {
+      let styleClass = '';
+      if (this.collapsed && this.screenWidth > 768){
+        styleClass = 'body-trimmed';
+      } else if (this.collapsed && this.screenWidth <= 768 && this.screenWidth > 0){
+        styleClass = 'body-md-screen';
+      }
+      return styleClass;
+    }
+  
+  
+    
+  
+  }

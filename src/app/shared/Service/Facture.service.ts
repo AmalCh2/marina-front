@@ -20,7 +20,7 @@ export class FactureService {
   }
 
   editFacture(facture: any) {
-    return this.httpClient.put(`${this.API_URL}/update-facture`, facture);
+    return this.httpClient.put(`${this.API_URL}/update-facture/${facture.id_fact}`, facture);
   }
 
   deleteFacture(id: any) {

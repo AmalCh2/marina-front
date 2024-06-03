@@ -151,7 +151,7 @@ export const navbarData: INavbarData[] = [
             },
 
             {
-                routerLink: '/Rechercher_mvt_bateaux',
+                routerLink: '/afficher_mvt_bateaux',
                 label: 'Rechercher les mouvements des bateaux'
             },
         ]

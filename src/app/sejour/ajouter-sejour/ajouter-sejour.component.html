@@ -30,9 +30,9 @@
                                   
                                       <div class="input-box">
                                         <div class="input-box">
-                                            <label for="emplacement">emplacement</label>
+                                            <label for="id_emp">emplacement</label>
                                             <div class="select-box" >
-                                                <select id="id_emp" [(ngModel)]="emplacement.id_emp" name="id_emp">
+                                                <select id="id_emp" [(ngModel)]="sejour.emp" name="id_emp">
                                                     <option hidden>Liste emplacement :</option>
                                                     <option *ngFor="let emplacement of listEmplacement" [ngValue]="emplacement">{{ emplacement.id_emp}}</option>
                                                   </select>
@@ -47,7 +47,7 @@
                                         <div class="input-box">
                                             <label for="nom_bat">Nom du bateau :</label>
                                             <div class="select-box" >
-                                                <select id="nom_bat" [(ngModel)]="bateau.nom_bat" name="id_bat">
+                                                <select id="nom_bat" [(ngModel)]="sejour.bat" name="nom_bat">
                                                     
                                                     <option *ngFor="let bateau of listBateau" [ngValue]="bateau">{{ bateau.nom_bat}}</option>
                                                   </select>
@@ -57,9 +57,20 @@
                                         <div class="input-box">
                                             <label for="lib_sej">type sejour :</label>
                                             <div class="select-box" >
-                                                <select id="lib_sej" [(ngModel)]="typeSejour.lib_sej" name="id_type_sej">
+                                                <select id="lib_sej" [(ngModel)]="sejour.type_sej" name="id_type_sej">
                                                     
                                                     <option *ngFor="let typeSejour of listTypeSejour" [ngValue]="typeSejour">{{ typeSejour.lib_sej}}</option>
+                                                  </select>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <label for="id_tarif">Tarif  :</label>
+                                            <div class="select-box" >
+                                                <select id="id_tarif" [(ngModel)]="sejour.tarif" name="id_tarif">
+                                                    
+                                                    <option *ngFor="let tarif of listTarif" [ngValue]="tarif">{{ tarif.id_tarif}}</option>
                                                   </select>
                                                 
                                             </div>
@@ -99,7 +110,7 @@
                                     <div class="submit-box">
                                         <div class="button-group button">
                                             <button class="button button-primary" [routerLink]="['/rechercher_séjour']" routerbuttonActive="active"  >Annuler</button>
-                                            <button (click)="addSejour(sejour)" id="send" class="button button-secondary">Ajouter</button>
+                                            <button (click)="addSejour()" id="send" class="button button-secondary">Ajouter</button>
                                         </div>
                                     </div>
                                     <div class="message">

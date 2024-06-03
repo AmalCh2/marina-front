@@ -20,7 +20,7 @@ export class SejourService {
   }
 
   editSejour(sejour: any) {
-    return this.httpClient.put(`${this.API_URL}/update-sejour`, sejour);
+    return this.httpClient.put(`${this.API_URL}/update-sejour/${sejour.id_sej }`, sejour);
   }
 
   deleteSejour(id: any) {

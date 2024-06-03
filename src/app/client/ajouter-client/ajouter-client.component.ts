@@ -92,10 +92,11 @@ getAllClients() {
   this.ClientService.getAllClients().subscribe(res => this.listClient = res)
 }
 
-addClient(c: any) {
-  this.ClientService.addClient(c).subscribe(() => {
+addClient() {
+  console.log(this.Client);
+  this.ClientService.addClient(this.Client).subscribe(() => {
     this.getAllClients();
-    this.form = false;
+   // this.form = false;
   });
 }
 

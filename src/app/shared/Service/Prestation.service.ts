@@ -20,7 +20,7 @@ export class PrestationService {
   }
 
   editPrestation(prestation: any) {
-    return this.httpClient.put(`${this.API_URL}/update-prestation`, prestation);
+    return this.httpClient.put(`${this.API_URL}/update-prestation/${prestation.id_prest}`, prestation);
   }
 
   deletePrestation(id: any) {

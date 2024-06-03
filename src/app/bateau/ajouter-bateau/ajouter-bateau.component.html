@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="input-box">
-                          <label for="id_port">port</label>
+                          <label for="id_port">Port :</label>
                           <div class="select-box" >
                             <select id="id_port" [(ngModel)]="Bateau.port" name="id_port">
                               <option *ngFor="let port of listPort" [ngValue]="port">{{ port.id_port}}</option>
@@ -50,14 +50,7 @@
                           </div>
                         </div>
 
-                        <div class="input-box">
-                          <label for="prenom_cli">Prenom du client :</label>
-                          <div class="select-box" >
-                            <select id="prenom_cli"  name="prenom_cli">
-                              <option *ngFor="let prenom of prenoms">{{ prenom }}</option>
-                            </select>
-                          </div>
-                        </div>
+                        
                       </div>
                       <div class="column">
                         <div class="input-box">

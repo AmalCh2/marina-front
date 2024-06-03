@@ -14,7 +14,7 @@ export class ClientService {
 
   
   getAllClients() : Observable<Client[]>{
-    return this.httpClient.get<Client[]>(`${this.API_URL}/get-archieved-clients`);
+    return this.httpClient.get<Client[]>(`${this.API_URL}/get-all-clients`);
   }
 
   addClient(client: any) {
@@ -22,7 +22,7 @@ export class ClientService {
   }
 
   editClient(client: any) {
-    return this.httpClient.put(`${this.API_URL}/update-client`, client);
+    return this.httpClient.put(`${this.API_URL}/update-client/${client.id_cli }`, client);
   }
 
   deleteClient(id: any) {

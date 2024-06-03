@@ -19,7 +19,7 @@ export class UtilisateurService {
   }
 
   editUtilisateur(utilisateur: any) {
-    return this.httpClient.put(`${this.API_URL}/update-utilisateur`, utilisateur);
+    return this.httpClient.put(`${this.API_URL}/update-utilisateur/${utilisateur.id_utilisateur}`, utilisateur);
   }
 
   deleteUtilisateur(id: any) {

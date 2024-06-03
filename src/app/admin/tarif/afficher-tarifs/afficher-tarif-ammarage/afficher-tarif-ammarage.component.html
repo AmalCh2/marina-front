@@ -8,10 +8,10 @@
                 <div class="main">
                     <div class="Header">
                         <h1><i class="fal fa-search faa2x"></i> Rechercher Tarif Ammarage</h1>
+<!--
                         <div class="buttons">
                             <div class="submit-box">
                                 <div class="button-group button">
-                                    <!--<button class="button button-primary" for="check" routerLink="" routerLinkActive="active" >Supprimer</button>-->
                                     <input type="checkbox" id="check">
                                     <label class="button button-primary" for="check">Supprimer</label>
                                     <div class="background"></div>
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                    -->
                     </div>                  
                     <div class="big-container">
                     <!-- ======================= Filters ================== -->
@@ -40,12 +40,12 @@
                                     <div class="filterName">Rechercher</div>
                                     <div class="recherche-option">
                                         <div class="input-box">
-                                            <label>Nº tarif :</label>
-                                            <input type="number" placeholder="Entrer le nº du tarif" />
+                                            <label>Année :</label>
+                                            <input type="number" placeholder="Entrer l'année" />
                                         </div>
                                         <div class="input-box">
-                                            <label>Année :</label>
-                                            <input type="text" placeholder="Entrer l'année'" />
+                                            <label>Type :</label>
+                                            <input type="text" placeholder="Entrer le type" />
                                         </div>
                                         <div class="input-box">
                                             <label>Largeur bateau : </label>
@@ -54,14 +54,6 @@
                                         <div class="input-box">
                                             <label>Longueur bateau : </label>
                                             <input type="float" placeholder="Entrer le longueur du bateau" />
-                                        </div>
-                                        <div class="input-box">
-                                            <label>Début période :</label>
-                                            <input type="date" placeholder="Entrer la date du début" />
-                                        </div>
-                                        <div class="input-box">
-                                            <label>Fin période : </label>
-                                            <input type="date" placeholder="Entrer la date du fin" />
                                         </div>
                                     </div>  
                                 </div>
@@ -80,21 +72,30 @@
                                         <td>Nº</td>
                                         <td>Année</td>
                                         <td>Type tarif</td>
-                                        <td>Début</td>
-                                        <td>Fin</td>
                                         <td>Largueur</td>
                                         <td>Longueur</td>
+                                        <td></td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let tarif of tarifs">
-                                        <td>{{ tarif.num_tarif }}</td>
+                                    <tr *ngFor="let tarif of listTarif">
+                                        <td>{{ tarif.id_tarif }}</td>
                                         <td>{{ tarif.annee }}</td>
-                                        <td>{{ tarif.type }}</td>
-                                        <td>{{ tarif.debut }}</td>
-                                        <td>{{ tarif.fin }}</td>
-                                        <td>{{ tarif.largeur }}</td>
-                                        <td>{{ tarif.longueur }}</td>
+                                        <td>{{ tarif.type_tarif }}</td>
+                                        <td>{{ tarif.largeur_bat }}</td>
+                                        <td>{{ tarif.longueur_bat }}</td>
+                                        <td>
+                                            <div class="button-group ">
+                                            <button type="button" class="button btn btn-outline-primary"
+                                                (click)="open(mymodal1,tarif)">Modifier
+                                            </button>
+                                            <button type="button" class="button btn btn-outline-danger"
+                                                (click)="deleteTarif(tarif.id_tarif)">Supprimer
+                                            </button>
+                                            
+                                                
+                                            </div>
+                                          </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -102,6 +103,102 @@
                     </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <ng-template #mymodal1 let-modal1>
+                    <div class="modal-body p-4 red-background form-title">
+                      <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
+                      <div>
+                        <section class="container mx-auto">
+                          <form class="space-y-4">
+                            <div class="grid grid-cols-4 gap-4">
+                              <h1 class="col-span-4" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur le tarif d'ammarage :</h1>
+                              <div class="col-span-4">
+                                <label class="block text-gray-700">Année :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.annee" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Type tarif :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.type_tarif" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Largeur bateau :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.largeur_bat" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Longueur :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.longueur_bat" [ngModelOptions]="{standalone: true}" />
+                              </div>
+
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Tarif hivernage :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.tarif_hivernage" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Tarif annuel :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.tarif_annuel" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Jour HS :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.jour_hs" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Jour MS :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.jour_ms" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Jour BS :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.jour_bs" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Mois HS :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.mois_hs" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Mois MS :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.mois_ms" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Mois BS :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="tarif.mois_bs" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              
+                            </div>
+                          </form>
+                          <div class="mt-4">
+                            <button type="button" onclick="message()" id="send" class="button transition" (click)="editTarif(tarif)" (click)="modal1.close('Save click')">Enregistrer</button>
+                            <button type="button" class="button transition" (click)="modal1.close('Save click')">Annuler</button>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </section>
     </div>
