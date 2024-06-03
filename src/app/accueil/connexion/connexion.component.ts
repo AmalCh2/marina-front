@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UtilisateurService } from 'src/app/shared/Service/Utilisateur.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connexion',
@@ -9,15 +11,31 @@ export class ConnexionComponent implements OnInit {
 
   @Output() onSubmitLoginEvent = new EventEmitter();
 
-  login:string ="";
+  login:any;
   password:string ="";
 
-  onSubmitLogin():void{
-    this.onSubmitLoginEvent.emit({"login":this.login,"password":this.password});
-  }
-  constructor() { }
+  constructor(private UtilisateurService: UtilisateurService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  log_in(){
+    this.UtilisateurService.verifyuserPassword(this.login, this.password)
+      .subscribe(response => {
+        console.log('Verification result:', response);
+        if (response === 1) {
+          this.router.navigate(['/menu_general']);
+        } else {
+          console.error('Login failed: userID or Password incorrect');
+        }
+      });
+  }
+
+  resetpassword(username: string){
+    this.UtilisateurService.resetpwd(username).subscribe(response => {
+      console.log('Verification result:', response);
+    });
+
   }
 
 }

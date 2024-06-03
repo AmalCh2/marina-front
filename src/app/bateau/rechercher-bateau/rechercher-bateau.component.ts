@@ -183,30 +183,170 @@ export class RechercherBateauComponent implements OnInit {
 
 
   printBateau(bateau: any) {
+    // Mapping for attribute names
+    const attributeNames: { [key: string]: string } = {
+      id_bat: 'N° du bateau',
+      immatriculation_bat: 'Immatriculation du bateau',
+      autre_ident_nom_bat: 'Autre identification ou nom du bateau',
+      nom_bat: 'Nom du bateau',
+      largeur_bat: 'Largeur du bateau',
+      longueur_bat: 'Longueur du bateau',
+      tirant_eau_bat: 'Tirant d\'eau',
+      tonnage_bat: 'Tonnage',
+      pavillon_bat: 'Pavillon',
+      marque_bat: 'Marque du bateau',
+      num_assur: 'Numéro d\'assurance',
+      nom_assur: 'Nom de l\'assureur',
+      date_exp: 'Date d\'expiration de l\'assurance',
+      adresse_bat: 'Adresse',
+      code_postal_bat: 'Code Postal',
+      ville_bat: 'Ville',
+      'pays.nom_pays': 'Pays',
+      tel_bat: 'Téléphone',
+      fax_bat: 'Fax',
+      mobile_bat: 'Mobile',
+      email_bat: 'Email',
+      observation: 'Observation',
+      date_mvt: 'Date de mouvement',
+      depart_mvt: 'Départ',
+      arrivee_mvt: 'Arrivée',
+      commentaire_mvt: 'Commentaire du mouvement',
+      id_emp: 'N° de l\'employé',
+      'typeBateau.type_bat': 'Type de bateau',
+      'port.nom_port': 'Port',
+      'client.nom_cli': 'Nom du client',
+      'client.prenom_cli': 'Prénom du client'
+    };
+  
     let docDefinition: any = {
       content: [
-        { text: 'My Client', style: 'title' }, // Title element
-        { text: '\n' }, // Add some space after the title
-        { text: 'Bateau ID: ', bold: true },
-        { text: bateau.id_bat + '\n', bold: true, color: 'blue' },
-        { text: 'bateau Name: ', bold: true },
-        { text: bateau.nom_bat + '\n', bold: true, italic: true },
+        { text: 'Information du bateau', style: 'header' },
+        {
+          columns: [
+            {
+              width: 'auto',
+              text: attributeNames['id_bat'] + ':',
+              style: 'label'
+            },
+            {
+              width: '*',
+              text: bateau.id_bat,
+              style: 'value'
+            }
+          ]
+        },
+        {
+          columns: [
+            {
+              width: 'auto',
+              text: attributeNames['nom_bat'] + ':',
+              style: 'label'
+            },
+            {
+              width: '*',
+              text: bateau.nom_bat,
+              style: 'value'
+            }
+          ]
+        },
+  
+        { text: '\n' }, // Add some space before other attributes
+        {
+          table: {
+            headerRows: 1,
+            widths: ['*', '*'],
+            body: [
+              [
+                { text: 'Les autres coordonnées', style: 'tableHeader' },
+                { text: '', style: 'tableHeader' }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['port.nom_port'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: bateau.port?.nom_port,
+                  style: 'value'
+                }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['typeBateau.type_bat'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: bateau.typeBateau?.type_bat,
+                  style: 'value'
+                }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['client.nom_cli'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: bateau.client?.nom_cli,
+                  style: 'value'
+                }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['client.prenom_cli'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: bateau.client?.prenom_cli,
+                  style: 'value'
+                }
+              ],
+              // Dynamically add other attributes
+              ...Object.keys(bateau).filter(key => key !== 'id_bat' && key !== 'nom_bat' && key !== 'client'&& key !== 'port'&& key !== 'typeBateau').map(key => [
+                { text: (attributeNames[key] || key.replace('_', ' ').toUpperCase()), style: 'label' },
+                { text: bateau[key], style: 'value' }
+              ])
+            ]
+          },
+          layout: 'lightHorizontalLines'
+        }
       ],
       styles: {
-        title: { // Define a custom style for the title
+        header: {
+          fontSize: 24,
           bold: true,
-          fontSize: 20, // Larger font size
-          alignment: 'center', // Center alignment
-          color: 'orange', // Orange color
-          margin: [0, 0, 0, 20] // Margin bottom to add space below the title
+          margin: [0, 0, 0, 10],
+          alignment: 'center',
+          color: '#002155'
+        },
+        label: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 5, 0, 5],
+          color: '#333'
+        },
+        value: {
+          fontSize: 14,
+          margin: [0, 5, 0, 5],
+          color: '#002155'
+        },
+        tableHeader: {
+          bold: true,
+          fontSize: 15,
+          color: 'white',
+          fillColor: '#002155'
         }
+      },
+      defaultStyle: {
+        columnGap: 20
       }
     };
-
+  
     pdfMake.createPdf(docDefinition).open();
   }
-
-
 
 
 
@@ -217,80 +357,6 @@ export class RechercherBateauComponent implements OnInit {
     this.isSideNavCollapsed = data.collapsed;
   }
 
-  generatePagination(): void {
-    this.paginationHTML = this.createPagination(this.totalPages, this.currentPage);
-  }
-
-  createPagination(totalPages: number, page: number): string {
-    let liTag = '';
-    let active: string;
-    let beforePage = page - 1;
-    let afterPage = page + 1;
-
-    if (page > 1) {
-      liTag += `<li class="btn prev" (click)="changePage(${page - 1})"><span><i class="fas fa-angle-left"></i> Prev</span></li>`;
-    }
-
-    if (page > 2) {
-      liTag += `<li class="first numb" (click)="changePage(1)"><span>1</span></li>`;
-      if (page > 3) {
-        liTag += `<li class="dots"><span>...</span></li>`;
-      }
-    }
-
-    if (page === totalPages) {
-      beforePage = beforePage - 2;
-    } else if (page === totalPages - 1) {
-      beforePage = beforePage - 1;
-    }
-
-    if (page === 1) {
-      afterPage = afterPage + 2;
-    } else if (page === 2) {
-      afterPage = afterPage + 1;
-    }
-
-    for (let plength = beforePage; plength <= afterPage; plength++) {
-      if (plength > totalPages) {
-        continue;
-      }
-      if (plength === 0) {
-        plength = plength + 1;
-      }
-      if (page === plength) {
-        active = 'active';
-      } else {
-        active = '';
-      }
-      liTag += `<li class="numb ${active}" (click)="changePage(${plength})"><span>${plength}</span></li>`;
-    }
-
-    if (page < totalPages - 1) {
-      if (page < totalPages - 2) {
-        liTag += `<li class="dots"><span>...</span></li>`;
-      }
-      liTag += `<li class="last numb" (click)="changePage(${totalPages})"><span>${totalPages}</span></li>`;
-    }
-
-    if (page < totalPages) {
-      liTag += `<li class="btn next" (click)="changePage(${page + 1})"><span>Next <i class="fas fa-angle-right"></i></span></li>`;
-    }
-
-    return liTag;
-  }
-
-  getPages(): number[] {
-    const pages = [];
-    for (let i = 1; i <= this.totalPages; i++) {
-      pages.push(i);
-    }
-    return pages;
-  }
-
-  changePage(page: number): void {
-    this.currentPage = page;
-    this.generatePagination();
-  }
 
   getBodyClass(): string {
     let styleClass = '';

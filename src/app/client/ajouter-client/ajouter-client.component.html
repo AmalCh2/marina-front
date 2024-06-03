@@ -2,7 +2,7 @@
   <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
   <div class="body" [ngClass]="getBodyClass()">
     <router-outlet></router-outlet>
-    
+
     <section class="content">
       <div class="left-content">
         <div class="main">
@@ -54,28 +54,28 @@
                     <div class="column">
                       <div class="input-box">
                         <label>Adresse :</label>
-                        <input type="text" placeholder="Entrer l'adresse du client" required  
+                        <input type="text" placeholder="Entrer l'adresse du client" required
                         [(ngModel)]="Client.adresse_cli"
                           [ngModelOptions]="{standalone : true}"/>
                       </div>
                       <div class="input-box">
                         <label>Code Postale :</label>
-                        <input type="number" placeholder="Entrer le code postale" required  
+                        <input type="number" placeholder="Entrer le code postale" required
                         [(ngModel)]="Client.adresse_cli"
                           [ngModelOptions]="{standalone : true}"/>
                       </div>
                     </div>
-                    
+
                     <div class="column">
                       <div class="input-box">
                         <label>Pavillon :</label>
-                        <input type="text" placeholder="Entrer le nom du pavillon" required  
+                        <input type="text" placeholder="Entrer le nom du pavillon" required
                         [(ngModel)]="Pays.pavillon"
                         [ngModelOptions]="{standalone : true}"/>
                       </div>
                       <div class="input-box">
                         <label>Ville :</label>
-                        <input type="text" placeholder="Entrer la ville du client" required  
+                        <input type="text" placeholder="Entrer la ville du client" required
                         [(ngModel)]="Client.ville_cli"
                         [ngModelOptions]="{standalone : true}"/>
                       </div>
@@ -84,7 +84,7 @@
                     <h1 class="form-title">Contact du Client :</h1>
                       <div class="column">
                         <div class="input-box">
-                          <input type="email" placeholder="Entrer l'email" required 
+                          <input type="email" placeholder="Entrer l'email" required
                           [(ngModel)]="Client.email_cli"
                         [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -96,7 +96,7 @@
                       </div>
                       <div class="column">
                         <div class="input-box">
-                          <input type="text" placeholder="Entrer le numéro mobile" required 
+                          <input type="text" placeholder="Entrer le numéro mobile" required
                           [(ngModel)]="Client.mobile_cli"
                         [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -124,14 +124,14 @@
                     </div>
                     <div class="option-check-details exo">
                       <label class="exo-label">Exonération :</label>
-                      <input type="radio" name="option-check" id="dot-1">
-                      <input type="radio" name="option-check" id="dot-2">
+                      <input type="radio" name="option-check-exo" id="dot-3">
+                      <input type="radio" name="option-check-exo" id="dot-4">
                       <div class="category exo">
-                          <label for="dot-1">
+                          <label for="dot-3">
                           <span class="dot one"></span>
                           <span class="option-check">Exonéré(e)</span>
                       </label>
-                      <label for="dot-2">
+                      <label for="dot-4">
                           <span class="dot two"></span>
                           <span class="option-check">Non</span>
                       </label>

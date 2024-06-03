@@ -8,10 +8,10 @@
                 <div class="main">
                     <div class="Header">
                         <h1><i class="fal fa-search faa2x"></i> Rechercher une Consommation</h1>
+                        <!--
                         <div class="buttons">
                             <div class="submit-box">
                                 <div class="button-group button">
-                                    <!--<button class="button button-primary" for="check" routerLink="" routerLinkActive="active" >Supprimer</button>-->
                                     <input type="checkbox" id="check">
                                     <label class="button button-primary" for="check">Supprimer</label>
                                     <div class="background"></div>
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                    -->
                     </div>                  
                     <div class="big-container">
                     <!-- ======================= Filters ================== -->
@@ -71,18 +71,39 @@
                                 <thead>
                                     <tr>
                                         <td>Nº Consommation</td>
-                                        <td>Nº Séjour</td>
-                                        <td>Nº facture</td>
-                                        <td>Nº prestation</td>
+                                        <td>Prix Entité</td>
+                                        <td>Qte</td>
+                                        <td>Début</td>
+                                        <td>Fin</td>
+                                        <td>Offre</td>
+                                        <td>Num. Facture</td>
+                                        <td>Num. Sejour</td>
+                                        <td>Lib. Prestation</td>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr *ngFor="let consommation of consommationsData">
-                                        <td>{{ consommation.num }}</td>
-                                        <td>{{ consommation.sejour }}</td>
-                                        <td>{{ consommation.facture }}</td>
-                                        <td>{{ consommation.prestation }}</td>
+                                    <tr *ngFor="let facture of listConsommation">
+                                        <td>{{ facture.id_cons }}</td>
+                                        <td>{{ facture.prix_unit }}</td>
+                                        <td>{{ facture.qte }}</td>
+                                        <td>{{ facture.deb_cons }}</td>
+
+                                        <td>{{ facture.fin_cons }}</td>
+                                        <td>{{ facture.offre }}</td>
+                                        <td>{{ facture.facture.id_fact }}</td>
+                                        <td>{{ facture.sejour.id_sej }}</td>
+                                        <td>{{ facture.prestation.lib_prest }}</td>
+                                        <td>
+                                            <div class="button-group ">
+                                            <button type="button" class="button btn btn-outline-primary"
+                                                (click)="open(mymodal1,consommation)">Modifier
+                                            </button>
+                                            <button type="button" class="button btn btn-outline-danger"
+                                                (click)="deleteConsommation(consommation.id_cons)">Supprimer
+                                            </button>
+                                            </div>
+                                          </td>
                                       </tr>
                                   </tbody>
                             </table>
@@ -92,6 +113,91 @@
 
                     </div>
                 </div>
+
+
+
+
+
+
+                <ng-template #mymodal1 let-modal1>
+                    <div class="modal-body p-4 red-background form-title">
+                      <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
+                      <div>
+                        <section class="container mx-auto">
+                          <form class="space-y-4">
+                            <div class="grid grid-cols-4 gap-4">
+                              <h1 class="col-span-4" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur la Consommation :</h1>
+                              <div class="col-span-4">
+                                <label class="block text-gray-700">Nº Consommation :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="consommation.id_cons"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Période du :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="consommation.deb_cons"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Au :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="consommation.fin_cons"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Prix Unitaire :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="consommation.prix_unit"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Quantité :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="consommation.qte"
+                                [ngModelOptions]="{standalone : true}"/>
+                            
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">N Facture</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="consommation.fact.id_fact"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">N Sejour</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="consommation.sej.id_sej"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Libelle Prestation</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="consommation.prest.lib_prest"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Offre :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="consommation.offre"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                            </div>
+                          </form>
+                          <div class="mt-4">
+                            <button type="button" class="button transition" (click)="editConsommation(consommation)" (click)="modal1.close('Save click')">Enregistrer</button>
+                            <button type="button" class="button transition" (click)="modal1.close('Save click')">Annuler</button>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </section>
     </div>

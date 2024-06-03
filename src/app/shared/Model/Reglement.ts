@@ -4,6 +4,6 @@ export class Reglement {
     type_regl: any;
     date_regl: any;
     fact: any;
-    id_carte: any;
+    carte: any;
   }
   

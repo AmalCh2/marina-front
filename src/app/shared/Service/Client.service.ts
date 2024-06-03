@@ -14,7 +14,7 @@ export class ClientService {
 
   
   getAllClients() : Observable<Client[]>{
-    return this.httpClient.get<Client[]>(`${this.API_URL}/get-all-clients`);
+    return this.httpClient.get<Client[]>(`${this.API_URL}/get-archieved-clients`);
   }
 
   addClient(client: any) {

@@ -18,7 +18,7 @@ export class BateauService {
     return this.httpClient.post(`${this.API_URL}/add-bateau`, Bateau)
   }
   editBateau(Bateau : any){
-    return this.httpClient.put(`${this.API_URL}/update-bateau`, Bateau)
+    return this.httpClient.put(`${this.API_URL}/update-bateau/${Bateau.id_bat }`, Bateau)
   }
   deleteBateau(id : any){
     return  this.httpClient.delete(`${this.API_URL}/delete-bateau/${id}`)

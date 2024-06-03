@@ -136,26 +136,168 @@ export class RechercherClientComponent implements OnInit {
   }
 
   printClient(client: any) {
+    // Mapping for attribute names
+    const attributeNames: { [key: string]: string } = {
+      id_cli: 'N° du client',
+      nom_cli: 'Nom du client',
+      prenom_cli: 'Prénom du client',
+      etat_civil: 'État civil',
+      adresse_cli: 'Adresse',
+      ville_cli: 'Ville',
+      tel_cli: 'Téléphone',
+      fax_cli: 'Fax',
+      mobile_cli: 'Mobile',
+      email_cli: 'Email',
+      exo_cli: 'Exonération',
+      'pays.nom_pays': 'Pays',
+      'pays.pavillon': 'Pavillon',
+      'pays.nationnalite': 'Nationnalité',
+      code_postal_cliii: 'Code Postal'
+    };
+  
     let docDefinition: any = {
       content: [
-        { text: 'My Client', style: 'title' }, // Title element
-        { text: '\n' }, // Add some space after the title
-        { text: 'Client ID: ', bold: true },
-        { text: client.id_cli + '\n', bold: true, color: 'blue' },
-        { text: 'Client Name: ', bold: true },
-        { text: client.nom_cli + '\n', bold: true, italic: true },
+        { text: 'Information du client', style: 'header' },
+        {
+          columns: [
+            {
+              width: 'auto',
+              text: attributeNames['id_cli'] + ':',
+              style: 'label'
+            },
+            {
+              width: '*',
+              text: client.id_cli,
+              style: 'value'
+            }
+          ]
+        },
+        {
+          columns: [
+            {
+              width: 'auto',
+              text: attributeNames['nom_cli'] + ':',
+              style: 'label'
+            },
+            {
+              width: '*',
+              text: client.nom_cli,
+              style: 'value'
+            }
+          ]
+        },
+        {
+          columns: [
+            {
+              width: 'auto',
+              text: attributeNames['prenom_cli'] + ':',
+              style: 'label'
+            },
+            {
+              width: '*',
+              text: client.prenom_cli,
+              style: 'value'
+            }
+          ]
+        },
+        {
+          columns: [
+            {
+              width: 'auto',
+              text: attributeNames['etat_civil'] + ':',
+              style: 'label'
+            },
+            {
+              width: '*',
+              text: client.etat_civil,
+              style: 'value'
+            }
+          ]
+        },
+        { text: '\n' }, // Add some space before other attributes
+        {
+          table: {
+            headerRows: 1,
+            widths: ['*', '*'],
+            body: [
+              [
+                { text: 'Les autres coordonnées', style: 'tableHeader' },
+                { text: '', style: 'tableHeader' }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['pays.nom_pays'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: client.pays?.nom_pays,
+                  style: 'value'
+                }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['pays.pavillon'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: client.pays?.pavillon,
+                  style: 'value'
+                }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['pays.nationnalite'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: client.pays?.nationnalite,
+                  style: 'value'
+                }
+              ],
+              // Dynamically add other attributes
+              ...Object.keys(client).filter(key => key !== 'id_cli' && key !== 'nom_cli' && key !== 'prenom_cli' && key !== 'etat_civil' && key !== 'archived' && key !== 'pays').map(key => [
+                { text: (attributeNames[key] || key.replace('_', ' ').toUpperCase()), style: 'label' },
+                { text: client[key], style: 'value' }
+              ])
+            ]
+          },
+          layout: 'lightHorizontalLines'
+        }
       ],
       styles: {
-        title: { // Define a custom style for the title
+        header: {
+          fontSize: 24,
           bold: true,
-          fontSize: 20, // Larger font size
-          alignment: 'center', // Center alignment
-          color: 'orange', // Orange color
-          margin: [0, 0, 0, 20] // Margin bottom to add space below the title
+          margin: [0, 0, 0, 10],
+          alignment: 'center',
+          color: '#002155'
+        },
+        label: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 5, 0, 5],
+          color: '#333'
+        },
+        value: {
+          fontSize: 14,
+          margin: [0, 5, 0, 5],
+          color: '#002155'
+        },
+        tableHeader: {
+          bold: true,
+          fontSize: 15,
+          color: 'white',
+          fillColor: '#002155'
         }
+      },
+      defaultStyle: {
+        columnGap: 20
       }
     };
-
+  
     pdfMake.createPdf(docDefinition).open();
   }
 

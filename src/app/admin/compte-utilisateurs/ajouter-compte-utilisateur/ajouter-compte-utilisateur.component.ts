@@ -23,7 +23,7 @@ export class AjouterCompteUtilisateurComponent implements OnInit {
   isSideNavCollapsed = false;
   screenWidth = 0;
   data: string[] = [];
-  
+
   listUtilisateur: any;
   form: boolean = false;
   Utilisateur!: Utilisateur;
@@ -93,7 +93,7 @@ addRoleAndUtilisateur() {
   /*this.roleService.addRole(this.role).subscribe(() => {
     this.getAllRoles();
   });*/
-  console.log(this.Utilisateur.role);
+  console.log(this.Utilisateur);
   this.UtilisateurService.addUtilisateur(this.Utilisateur).subscribe(() => {
     this.getAllUtilisateurs();
   });

@@ -122,9 +122,9 @@ const routes: Routes =[
   {data: { title: 'Marina Yasmine Hammamet | Ajouter un Tarif Forfait' },path:'ajouter_tarif_forfait', component: AjouterTarifForfaitComponent},
   {data: { title: 'Marina Yasmine Hammamet | Ajouter un Tarif Ammarage' },path:'ajouter_tarif_ammarage', component: AjouterTarifAmmarageComponent},
 
-  {data: { title: 'Marina Yasmine Hammamet | Afficher un Tarif Ammarage' },path:'afficher_tarif_ammarage', component: AfficherTarifAmmarageComponent},
-  {data: { title: 'Marina Yasmine Hammamet | Afficher un Tarif Forfait' },path:'afficher_tarif_forfait', component: AfficherTarifForfaitComponent},
-  {data: { title: 'Marina Yasmine Hammamet | Afficher un Tarif de Prestation' },path:'afficher_tarif_prestation', component: AfficherTarifPrestationComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Rechercher un Tarif Ammarage' },path:'afficher_tarif_ammarage', component: AfficherTarifAmmarageComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Rechercher un Tarif Forfait' },path:'afficher_tarif_forfait', component: AfficherTarifForfaitComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Rechercher un Tarif de Prestation' },path:'afficher_tarif_prestation', component: AfficherTarifPrestationComponent},
 
 
   {data: { title: 'Marina Yasmine Hammamet | Modifier un Tarif Ammarage' },path:'modifier_tarif_ammarage', component: ModifierTarifAmmarageComponent},

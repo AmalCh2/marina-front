@@ -8,10 +8,10 @@
                 <div class="main">
                     <div class="Header">
                         <h1><i class="fal fa-search faa2x"></i> Rechercher une Facture & Reglement</h1>
+                        <!--
                         <div class="buttons">
                             <div class="submit-box">
                                 <div class="button-group button">
-                                    <!--<button class="button button-primary" for="check" routerLink="" routerLinkActive="active" >Supprimer</button>-->
                                     <input type="checkbox" id="check">
                                     <label class="button button-primary" for="check">Supprimer</label>
                                     <div class="background"></div>
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                    -->
                     </div>                  
                     <div class="big-container">
                     <!-- ======================= Filters ================== -->
@@ -41,28 +41,12 @@
                                     <div class="filterName">Rechercher</div>
                                     <div class="recherche-option">
                                         <div class="input-box">
-                                            <label>Nº d'emplacment :</label>
-                                            <input type="number" placeholder="Entrer le nº d'emplacment" />
+                                            <label>Nº Facture :</label>
+                                            <input type="number" placeholder="Entrer le nº de la facture" />
                                         </div>
                                         <div class="input-box">
-                                            <label>Nom bateau :</label>
-                                            <input type="text" placeholder="Entrer le nom du bateau" />
-                                        </div>
-                                        <div class="input-box">
-                                            <label>Nº du client : </label>
-                                            <input class="num_client" type="number" placeholder="Entrer le  nº du client" />
-                                        </div>
-                                        <div class="input-box">
-                                            <label>Nom du client : </label>
-                                            <input type="text" placeholder="Entrer le nom du client" />
-                                        </div>
-                                        <div class="input-box">
-                                            <label>Début séjour :</label>
-                                            <input type="date" placeholder="Entrer la date du début" />
-                                        </div>
-                                        <div class="input-box">
-                                            <label>Fin séjour : </label>
-                                            <input type="date" placeholder="Entrer la date du fin" />
+                                            <label>Nº du reglement : </label>
+                                            <input type="number" placeholder="Entrer le  nº du reglement" />
                                         </div>
                                     </div>  
                                 </div>
@@ -78,24 +62,33 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <td>Poste</td>
-                                        <td>Bateau</td>
-                                        <td>Client</td>
-                                        <td>Séjour</td>
-                                        <td>Début</td>
-                                        <td>Fin</td>
-                                        <td>Acompte</td>
+                                        <td>Num. facture</td>
+                                        <td>Date facture</td>
+                                        <td>Montant</td>
+                                        <td>Etat paiement</td>
+                                        <td></td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let reservation of reservations">
-                                        <td>{{ reservation.number }}</td>
-                                        <td>{{ reservation.boatName }}</td>
-                                        <td>{{ reservation.clientName }}</td>
-                                        <td>{{ reservation.stayDetails }}</td>
-                                        <td>{{ reservation.startDate }}</td>
-                                        <td>{{ reservation.endDate }}</td>
-                                        <td>{{ reservation.deposit }}</td>
+                                    <tr *ngFor="let facture of listFacture">
+                                        <td>{{ facture.id_fact }}</td>
+                                        <td>{{ facture.date_fact }}</td>
+                                        <td>{{ facture.montant_ttl }}</td>
+                                        <td [ngClass]="{
+                                            'status-annulee': facture.etat_paiement === 'En cours',
+                                            'status-affectee': facture.etat_paiement === 'Non Payée',
+                                            'status-non-affectee': facture.etat_paiement === 'Payée'
+                                          }">{{ facture.etat_paiement }}</td>
+                                        <td>
+                                            <div class="button-group ">
+                                            <button type="button" class="button btn btn-outline-primary"
+                                                (click)="open(mymodal1,facture)">Modifier
+                                            </button>
+                                            <button type="button" class="button btn btn-outline-danger"
+                                                (click)="deleteFacture(facture.id_cons)">Supprimer
+                                            </button>
+                                            </div>
+                                          </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -103,6 +96,94 @@
                     </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <ng-template #mymodal1 let-modal1>
+                    <div class="modal-body p-4 red-background form-title">
+                      <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
+                      <div>
+                        <section class="container mx-auto">
+                          <form class="space-y-4">
+                            <div class="grid grid-cols-4 gap-4">
+                              <h1 class="col-span-4" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur la facture :</h1>
+                              <div class="col-span-4">
+                                <label class="block text-gray-700">Nº Facture :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="facture.id_fact"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Date :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="facture.date_fact"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Etat paiement :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="facture.etat_paiement"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Montant :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="facture.montant_ttl"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Exonération :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="facture.exo_cli"
+                                [ngModelOptions]="{standalone : true}"/>
+                            
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Libelle exonération</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="facture.lib_exo"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">N Reglement</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="reglement.fact.id_regle"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Montant reglement</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="reglement.mnt_regle"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Type Reglement :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="reglement.mnt_regle"
+                                [ngModelOptions]="{standalone : true}"/>
+                              </div>
+                            </div>
+                          </form>
+                          <div class="mt-4">
+                            <button type="button" class="button transition" (click)="editFacture(facture)" (click)="modal1.close('Save click')">Enregistrer</button>
+                            <button type="button" class="button transition" (click)="modal1.close('Save click')">Annuler</button>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </ng-template>
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </section>
     </div>

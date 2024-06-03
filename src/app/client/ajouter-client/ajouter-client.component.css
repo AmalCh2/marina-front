@@ -80,7 +80,7 @@
 
 .formulaire-boxes{
   position: relative;
-  display: flex;  
+  display: flex;
   width: auto;
   align-items: center;
   justify-content: center;
@@ -225,6 +225,12 @@ label {
   border-color: #d9d9d9;
 }
 
+#dot-3:checked ~ .category label .one,
+#dot-4:checked ~ .category label .two{
+  background: #001A1F;
+  border-color: #d9d9d9;
+}
+
 input[type="radio"]{
   display: none;
 }
@@ -246,10 +252,10 @@ input[type="radio"]{
   text-decoration: none;
   color: #001A1F;
   font-weight: 500;
-  text-transform: uppercase; 
+  text-transform: uppercase;
   font-size: 14px;
-  padding: 12px; 
-  border: 2px solid ; 
+  padding: 12px;
+  border: 2px solid ;
   border-radius: 0px;
   background: transparent;
   transition: 0.25s ease-in-out;
@@ -260,7 +266,7 @@ input[type="radio"]{
 .button-primary {
   background:  #ffffff;
   border: 1px solid #c1c1c1;
-  border-top-left-radius: 100px; 
+  border-top-left-radius: 100px;
   border-bottom-left-radius: 100px;
   width: 200px;
   justify-content: center;
@@ -270,19 +276,19 @@ input[type="radio"]{
   cursor: pointer;
 }
 
-.button-secondary { 
+.button-secondary {
   background: #ffffff;
   border: 1px solid #c1c1c1;
-  border-top-right-radius: 100px; 
-  border-bottom-right-radius: 100px; 
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
   width: 200px;
   /*transform: translateX(15px);*/
   margin-top: 15px;
   cursor: pointer;
 }
 
-.button-secondary:hover, 
-.button-secondary:focus { 
+.button-secondary:hover,
+.button-secondary:focus {
   background:  rgba(33, 26, 61, 0.2);
 }
 

@@ -12,33 +12,123 @@
                 <div class="big-container">
                     <div class="formulaire-boxes">
                         <!-- Formulaire Etape 2 -->
-                        <div *ngIf="currentPage === 1">
+                        <div >
                             <section class="container container-2">
                                 <form action="#" class="form">
                                     <div class="column">
                                         <div class="input-box">
                                             <label>Facture nº :</label>
-                                            <input type="number" placeholder="Entrer le numéro de la facture" required />
+                                            <input type="number" placeholder="Entrer le numéro de la facture" required
+                                            [(ngModel)]="facture.id_fact" [(ngModel)]="reglement.fact.id_fact"
+                                            [ngModelOptions]="{standalone : true}"/>
                                         </div>
                                         <div class="input-box">
-                                            <label>Du :</label>
-                                            <input type="date" />
+                                            <label>Date facture :</label>
+                                            <input type="date"required
+                                            [(ngModel)]="facture.date_fact"
+                                            [ngModelOptions]="{standalone : true}"/>
                                         </div>
                                     </div>
                                     <div class="column">
                                         
                                         <div class="input-box">
-                                            <label>Nº du client :</label>
-                                            <input type="number" placeholder="Entrer le numéro du client"  />
+                                            <label>Etat de Paiement :</label>
+                                            <input type="text" placeholder="Entrer l'état du paiement de la facture" required
+                                            [(ngModel)]="facture.etat_paiement"
+                                            [ngModelOptions]="{standalone : true}"/>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <label>Totale Facture :</label>
+                                            <input type="number" placeholder="Entrer le montant totale de la facture"required
+                                            [(ngModel)]="facture.montant_ttl"
+                                            [ngModelOptions]="{standalone : true}"/>
                                         </div>
                                     </div>
-                                    
-                                    <br>
-                                    <div class="input-box">
-                                        <label>Totale Facture :</label>
-                                        <input type="number" placeholder="Entrer le montant totale de la facture"/>
+
+                                    <div class="column">
+                                        <div class="input-box">
+                                            <label>Timbre fiscale :</label>
+                                            <input type="text" placeholder="Entrer le timbre fiscale" required
+                                            [(ngModel)]="facture.tbre_fiscale"
+                                            [ngModelOptions]="{standalone : true}"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <label>Nº Reglement:</label>
+                                            <input type="number" placeholder="Entrer le numéro du reglement" required
+                                            [(ngModel)]="reglement.id_regle"
+                                            [ngModelOptions]="{standalone : true}"/>
+                                        </div>
                                     </div>
-                                </form>
+                                    <div class="column">
+                                        <div class="input-box">
+                                            <label>Totale Reglement :</label>
+                                            <input type="number" placeholder="Entrer le montant totale du reglement"required
+                                            [(ngModel)]="reglement.mnt_regle"
+                                            [ngModelOptions]="{standalone : true}"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <label>Type du reglement :</label>
+                                            <input type="text" placeholder="Entrer le type" required
+                                            [(ngModel)]="reglement.type_regl"
+                                            [ngModelOptions]="{standalone : true}"/>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="input-box">
+                                            <label>Date reglement :</label>
+                                            <input type="date"required
+                                            [(ngModel)]="reglement.date_regl"
+                                            [ngModelOptions]="{standalone : true}"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <label>Nº de la carte :</label>
+                                            <input type="number" placeholder="Entrer le numéro de la facture" required
+                                            [(ngModel)]="reglement.carte.id_carte" [(ngModel)]="carte.id_carte"
+                                            [ngModelOptions]="{standalone : true}"/>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="column">
+                                        <div class="input-box">
+                                            <label>Libelle carte :</label>
+                                            <input type="text"  placeholder="Entrer la libelle de la cate" required
+                                            [(ngModel)]="carte.lib_carte"
+                                            [ngModelOptions]="{standalone : true}"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <label>Compte carte :</label>
+                                            <input type="text"  placeholder="Entrer le compte de la cate" required
+                                            [(ngModel)]="carte.cpt_carte"
+                                            [ngModelOptions]="{standalone : true}"/>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="option-check-details exo">
+                                        <label class="check-label">Exonération client :</label>
+                                        <input type="radio" name="option-check" id="dot-1">
+                                        <input type="radio" name="option-check" id="dot-2">
+                                        <div class="category exo">
+                                            <label for="dot-1">
+                                                <span class="dot one"></span>
+                                                <span class="option-check">Oui</span>
+                                            </label>
+                                            <label for="dot-2">
+                                                <span class="dot two"></span>
+                                                <span class="option-check">Non</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-box">
+                                        <label>Libelle exoneration Client :</label>
+                                        <input type="bolean" placeholder="Entrer la libelle" required
+                                        [(ngModel)]="facture.lib_exo"
+                                        [ngModelOptions]="{standalone : true}"/>
+                                    </div>
+                                        
+<!--
                                 <div class="details">
                                     <div class="Boats boats1">
                                         
@@ -150,14 +240,11 @@
                                         </table>
                                     </div>
                                 </div>
-                            </section>
-                        </div>
-                        <!-- Formulaire Etape 3 -->
-                        <div *ngIf="currentPage === 2">
-                            <section class="container container-2">
-                                <div class="details">
+                            -->
+                            
+
+                                    <!--
                                     <div class="Boats boats2">
-                                    <!--<app-liste-des-bateaux></app-liste-des-bateaux>-->
                                         <table>
                                             <thead>
                                                 <tr>
@@ -273,74 +360,49 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <form action="#" class="form">
+
+                                -->
                                             
-                                        <div class="column">
-                                            <div class="input-box">
-                                                <label>Totale Reglement :</label>
-                                                <input type="number" placeholder="Entrer le montant totale du reglement"/>
-                                            </div>
-                                            <div class="input-box">
-                                                <label>Montant totale :</label>
-                                                <input type="float" placeholder="Entrer le montant"  />
-                                            </div>
-                                        </div>
-                                        <div class="column">
-                                           
-                                            <div class="input-box">
-                                                <label>Timbre fiscale :</label>
-                                                <input type="text" placeholder="Entrer le timbre fiscale" required id="nom_bat" />
-                                            </div>
-                                        </div>
-                                        <div class="option-check-details exo">
-                                            <label class="check-label">Exonération client :</label>
-                                            <input type="radio" name="option-check" id="dot-1">
-                                            <input type="radio" name="option-check" id="dot-2">
-                                            <div class="category exo">
-                                                <label for="dot-1">
-                                                    <span class="dot one"></span>
-                                                    <span class="option-check">Oui</span>
-                                                </label>
-                                                <label for="dot-2">
-                                                    <span class="dot two"></span>
-                                                    <span class="option-check">Non</span>
-                                                </label>
-                                            </div>
-                                        </div>
+                                       
+                                        
+                                        
                                     </form>
-                                </div>
+                                
+                                    <br>
                                 <div class="submit-box">
                                     <div class="button-group button">
-                                        <button class="button button-primary" [routerLink]="['/rechercher_réservation']" routerbuttonActive="active">Annuler</button>
-                                        <button onclick="message()" id="send" class="button button-secondary">Ajouter</button>
+                                        <button type="button" class="button button-primary" type="button" >Annuler</button>
+                                        <button (click)="addReglementCarteAndFacture()" class="button button-secondary">Ajouter</button>
                                     </div>
-                                </div>
-                                <div class="message">
-                                    <div class="success" id="success">Facture ajoutée avec succès! </div>
-                                    <div class="danger" id="danger">Vérifier les champs obligatoires! </div>
                                 </div>
                             </section>
                         </div>
                     </div>
                     <!-- Boutons de pagination -->
+                    <!--
                     <div class="pagination">
                         <ul class="pagination">
-                            <!-- Bouton Précédent -->
+                            --><!-- Bouton Précédent -->
+                    <!--
                             <li class="btn prev" (click)="changePage(currentPage - 1)" [hidden]="currentPage === 1">
                                 <span><i class="fas fa-angle-left"></i> Précédent</span>
                             </li>
-                            <!-- Affichage des numéros de page -->
+                        --><!-- Affichage des numéros de page -->
+                    <!--
                             <ng-container *ngFor="let plength of getPages()">
                                 <li class="numb" [class.active]="currentPage === plength" (click)="changePage(plength)">
                                     <span>{{ plength }}</span>
                                 </li>
                             </ng-container>
-                            <!-- Bouton Suivant -->
+                        --><!-- Bouton Suivant -->
+                    <!--
                             <li class="btn next" (click)="changePage(currentPage + 1)" [hidden]="currentPage === totalPages">
                                 <span>Suivant <i class="fas fa-angle-right"></i></span>
                             </li>
                         </ul>
                     </div>
+
+                -->
                 </div>
             </div>
         </div>

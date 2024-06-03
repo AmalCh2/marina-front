@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +25,14 @@ export class UtilisateurService {
   deleteUtilisateur(id: any) {
     return this.httpClient.delete(`${this.API_URL}/delete-utilisateur/${id}`);
   }
+
+  verifyuserPassword(id: any, password: string) {
+    return this.httpClient.get<number>(`${this.API_URL}/verifyUserPassword/${id}/${password}`);
+  }
+
+  resetpwd(username: any) {
+    return this.httpClient.put<void>(`${this.API_URL}/resetpassword/${username}`, {});
+
+  }
+
 }

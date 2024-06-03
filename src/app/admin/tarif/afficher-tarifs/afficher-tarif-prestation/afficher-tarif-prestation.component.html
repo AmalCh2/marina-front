@@ -8,10 +8,10 @@
                 <div class="main">
                     <div class="Header">
                         <h1><i class="fal fa-search faa2x"></i> Rechercher Prestation</h1>
+                    <!--
                         <div class="buttons">
                             <div class="submit-box">
                                 <div class="button-group button">
-                                    <!--<button class="button button-primary" for="check" routerLink="" routerLinkActive="active" >Supprimer</button>-->
                                     <input type="checkbox" id="check">
                                     <label class="button button-primary" for="check">Supprimer</label>
                                     <div class="background"></div>
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                    -->
                     </div>                  
                     <div class="big-container">
                     <!-- ======================= Filters ================== -->
@@ -73,20 +73,36 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <td>Libelle tarif</td>
+                                        <td>Libelle Prestation</td>
                                         <td>Prix unitaire</td>
                                         <td>Secteur</td>
-                                        <td>Type</td>
+                                        <td>Rang Prestation</td>
                                         <td>Nature</td>
+                                        <td>Taux TVA</td>
+                                        <td>Type Prestation</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let prestation of prestations">
-                                        <td>{{ prestation.num_prest }}</td>
-                                        <td>{{ prestation.prix }}</td>
-                                        <td>{{ prestation.type }}</td>
-                                        <td>{{ prestation.seteur }}</td>
-                                        <td>{{ prestation.nature }}</td>
+                                    <tr *ngFor="let prestation of listPrestation">
+                                        <td>{{ prestation.lib_prest }}</td>
+                                        <td>{{ prestation.prix_unit_prest }}</td>
+                                        <td>{{ prestation.secteur_prest }}</td>
+                                        <td>{{ prestation.rang_prest }}</td>
+                                        <td>{{ prestation.nature.lib_nature }}</td>
+                                        <td>{{ prestation.tva.taux_tva }}</td>
+                                        <td>{{ prestation.type_prest.lib_type_prest }}</td>
+                                        <td>
+                                          <div class="button-group ">
+                                          <button type="button" class="button btn btn-outline-primary"
+                                              (click)="open(mymodal1,prestation)">Modifier
+                                          </button>
+                                          <button type="button" class="button btn btn-outline-danger"
+                                              (click)="deletePrestation(prestation.id_prest)">Supprimer
+                                          </button>
+                                          
+                                              
+                                          </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -94,6 +110,52 @@
                     </div>
                     </div>
                 </div>
+
+
+
+
+
+
+                <ng-template #mymodal1 let-modal1>
+                    <div class="modal-body p-4 red-background form-title">
+                      <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
+                      <div>
+                        <section class="container mx-auto">
+                          <form class="space-y-4">
+                            <div class="grid grid-cols-4 gap-4">
+                              <h1 class="col-span-4" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur la prestation :</h1>
+                              <div class="col-span-4">
+                                <label class="block text-gray-700">Libelle prestation :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="prestation.lib_prest" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Prix unitaire prestation :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="prestation.prix_unit_prest" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Secteur prestation :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="prestation.secteur_prest" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              <div class="col-span-1">
+                                <label class="block text-gray-700">Rang prestation :</label>
+                                <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="prestation.rang_prest" [ngModelOptions]="{standalone: true}" />
+                              </div>
+                              
+                            </div>
+                          </form>
+                          <div class="mt-4">
+                            <button type="button" class="button transition" (click)="editPrestation(prestation)" (click)="modal1.close('Save click')">Enregistrer</button>
+                            <button type="button" class="button transition" (click)="modal1.close('Save click')">Annuler</button>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </ng-template>
+
+
+
+
+                  
             </div>
         </section>
     </div>

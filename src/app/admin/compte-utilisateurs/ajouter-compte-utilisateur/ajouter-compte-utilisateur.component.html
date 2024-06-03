@@ -2,7 +2,7 @@
     <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
     <div class="body" [ngClass]="getBodyClass()">
       <router-outlet></router-outlet>
-      
+
       <section class="content">
         <div class="left-content">
           <div class="main">
@@ -19,18 +19,30 @@
                       <h1 class="form-title">Informations du compte utilisateur :</h1>
                       <br>
                       <div class="column">
+                          
+                          
+
                         <div class="input-box">
-                          <label>Nº du compte utilisateur :</label>
-                          <input type="number"laceholder="Entrer le numéro du compte" required [(ngModel)]="Utilisateur.id_utilisateur"
-                          [ngModelOptions]="{standalone : true}" />
+                          <label for="id_role">Role</label>
+                          <div class="select-box" >
+                            <select id="id_role" [(ngModel)]="Utilisateur.role" name="id_role">
+                              <option *ngFor="let role of listRoles" [ngValue]="role">{{ role.lib_role}}</option>
+                            </select>
+                          </div>
                         </div>
+
+
                         
 
-                        <div>
+
+                        <div class="input-box">
                           <label for="id_port">Port</label>
-                          <select id="id_port" [(ngModel)]="Utilisateur.port" name="id_port">
-                            <option *ngFor="let port of listPorts" [ngValue]="role">{{ port.id_port}}</option>
-                          </select>
+                          <div class="select-box" >
+                            <select id="id_port" [(ngModel)]="Utilisateur.port" name="id_port">
+                              <option *ngFor="let port of listPorts" [ngValue]="port">{{ port.nom_port}}</option>
+                            </select>
+                          </div>
+
                         </div>
 
 
@@ -38,7 +50,7 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Nom utilisateur :</label>
-                          <input type="text" placeholder="Entrer le nom d'utilisateur" required 
+                          <input type="text" placeholder="Entrer le nom d'utilisateur" required
                           [(ngModel)]="Utilisateur.nom_utilisateur"
                   [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -52,15 +64,10 @@
 
 
 
-                      <div>
-                        <label for="id_role">Role</label>
-                        <select id="id_role" [(ngModel)]="Utilisateur.role" name="id_role">
-                          <option *ngFor="let role of listRoles" [ngValue]="role">{{ role.lib_role}}</option>
-                        </select>
-                      </div>
-
-                     
                       
+
+
+
                     </form>
                     <div class="submit-box">
                         <div class="button-group button">
@@ -81,4 +88,3 @@
       </section>
     </div>
   </div>
-  

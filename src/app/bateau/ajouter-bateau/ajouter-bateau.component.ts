@@ -157,10 +157,11 @@ export class AjouterBateauComponent implements OnInit {
     this.BateauService.getAllBateaux().subscribe(res => this.listBateau = res)
   }
   
-  addBateau(b: any) {
-    this.BateauService.addBateau(b).subscribe(() => {
+  addBateau() {
+    console.log(this.Bateau);
+    this.BateauService.addBateau(this.Bateau).subscribe(() => {
       this.getAllBateaux();
-      this.form = false;
+     // this.form = false;
     });
   }
   

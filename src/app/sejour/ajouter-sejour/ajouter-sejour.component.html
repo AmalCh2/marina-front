@@ -30,7 +30,7 @@
                                   
                                       <div class="input-box">
                                         <div class="input-box">
-                                            <label for="emplacement">Nº Emplacement</label>
+                                            <label for="emplacement">emplacement</label>
                                             <div class="select-box" >
                                                 <select id="id_emp" [(ngModel)]="emplacement.id_emp" name="id_emp">
                                                     <option hidden>Liste emplacement :</option>
@@ -55,7 +55,7 @@
                                             </div>
                                         </div>
                                         <div class="input-box">
-                                            <label for="lib_sej">Type sejour :</label>
+                                            <label for="lib_sej">type sejour :</label>
                                             <div class="select-box" >
                                                 <select id="lib_sej" [(ngModel)]="typeSejour.lib_sej" name="id_type_sej">
                                                     
@@ -75,9 +75,8 @@
                                 <div class="column">
                                     <div class="input-box">
                                         <label>Début :</label>
-                                        <input type="date" placeholder="Entrer l'immatriculation du bateau" required [(ngModel)]="sejour.deb_sej"
-                                        [ngModelOptions]="{standalone : true}"/>
-                                    
+                                        <input type="date" placeholder="Entrer l'immatriculation du bateau" required required  
+                                        />
                                     </div>
                                     <div class="input-box">
                                         <label>Fin :</label>

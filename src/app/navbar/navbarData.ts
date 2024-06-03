@@ -94,10 +94,7 @@ export const navbarData: INavbarData[] = [
                 label: 'Archive des séjours'
             },
 
-            {
-                routerLink: '/annuler_séjour',
-                label: 'Annuler un séjour'
-            },
+
         ]
     },
 
@@ -208,23 +205,19 @@ export const navbarData: INavbarData[] = [
                     },
         
                     {
-                        routerLink: '/',
+                        routerLink: '/jj',
                         label: 'Rechercher les Tarifs',
                         items: [
                             {
-                                routerLink: '/',
+                                routerLink: '/afficher_tarif_prestation',
                                 label: 'Tarif Prestation'
                             },
 
                             {
-                                routerLink: '/Rechercher_tarif_ammarage',
+                                routerLink: '/afficher_tarif_ammarage',
                                 label: 'Tarif Ammarage'
                             },
 
-                            {
-                                routerLink: '/',
-                                label: 'Tarif Forfait'
-                            },
                         ]
                     },
                 ]
@@ -246,16 +239,7 @@ export const navbarData: INavbarData[] = [
                 ]
             },
 
-            {
-                routerLink: '/',
-                label: 'Droits d\'accès',
-                items: [
-                    {
-                        routerLink: '/',
-                        label: 'Modifier les Droits d\'accès'
-                    },
-                ]
-            },
+           
         ]
     },
 

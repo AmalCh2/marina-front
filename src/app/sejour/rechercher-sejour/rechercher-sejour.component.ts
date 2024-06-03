@@ -190,8 +190,8 @@ export class RechercherSejourComponent implements OnInit {
     this.sejourService.editSejour(sejour).subscribe();
   }
 
-  deleteSejour(idSejour: any) {
-    this.sejourService.deleteSejour(idSejour).subscribe(() => this.getAllSejour());
+  deleteSejour(id_sej: any) {
+    this.sejourService.deleteSejour(id_sej).subscribe(() => this.getAllSejour());
   }
 
   archiveSejour(id: number): void {
@@ -234,26 +234,131 @@ export class RechercherSejourComponent implements OnInit {
 
 
   printSejour(sejour: any) {
+    // Mapping for attribute names
+    const attributeNames: { [key: string]: string } = {
+    id_sej: 'N° du séjour',
+    deb_sej: 'Début du séjour',
+    fin_sej: 'Fin du séjour',
+    num_jours: 'Nombre de jours',
+    'tarif.type_tarif': 'Tarif',
+    'typeSejour.lib_sej': 'Type de séjour',
+    'emplacement.id_emp': 'N° de l\'emplacement',
+    'bateau.nom_bat': 'Nom du bateau'
+    };
+  
     let docDefinition: any = {
       content: [
-        { text: 'My Client', style: 'title' }, // Title element
-        { text: '\n' }, // Add some space after the title
-        { text: 'sejour ID: ', bold: true },
-        { text: sejour.id_sej + '\n', bold: true, color: 'blue' },
-        { text: 'sejour Name: ', bold: true },
-        { text: sejour.lib_sej + '\n', bold: true, italic: true },
+        { text: 'Information du sejour', style: 'header' },
+        {
+          columns: [
+            {
+              width: 'auto',
+              text: attributeNames['id_sej'] + ':',
+              style: 'label'
+            },
+            {
+              width: '*',
+              text: sejour.id_sej,
+              style: 'value'
+            }
+          ]
+        },
+  
+        { text: '\n' }, // Add some space before other attributes
+        {
+          table: {
+            headerRows: 1,
+            widths: ['*', '*'],
+            body: [
+              [
+                { text: 'Les autres coordonnées', style: 'tableHeader' },
+                { text: '', style: 'tableHeader' }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['typeSejour.lib_sej'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: sejour.typeSejour?.lib_sej,
+                  style: 'value'
+                }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['emplacement.id_emp'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: sejour.emplacement?.id_emp,
+                  style: 'value'
+                }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['bateau.nom_bat'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: sejour.bateau?.nom_bat,
+                  style: 'value'
+                }
+              ],[
+                {
+                  width: 'auto',
+                  text: attributeNames['tarif.type_tarif'] + ':',
+                  style: 'label'
+                },
+                {
+                  width: '*',
+                  text: sejour.tarif?.type_tarif,
+                  style: 'value'
+                }
+              ],
+              // Dynamically add other attributes
+              ...Object.keys(sejour).filter(key => key !== 'id_sej'  && key !== 'bateau'&& key !== 'emplacement'&& key !== 'typeSejour'&& key !== 'tarif'&& key !== 'archived').map(key => [
+                { text: (attributeNames[key] || key.replace('_', ' ').toUpperCase()), style: 'label' },
+                { text: sejour[key], style: 'value' }
+              ])
+            ]
+          },
+          layout: 'lightHorizontalLines'
+        }
       ],
       styles: {
-        title: { // Define a custom style for the title
+        header: {
+          fontSize: 24,
           bold: true,
-          fontSize: 20, // Larger font size
-          alignment: 'center', // Center alignment
-          color: 'orange', // Orange color
-          margin: [0, 0, 0, 20] // Margin bottom to add space below the title
+          margin: [0, 0, 0, 10],
+          alignment: 'center',
+          color: '#002155'
+        },
+        label: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 5, 0, 5],
+          color: '#333'
+        },
+        value: {
+          fontSize: 14,
+          margin: [0, 5, 0, 5],
+          color: '#002155'
+        },
+        tableHeader: {
+          bold: true,
+          fontSize: 15,
+          color: 'white',
+          fillColor: '#002155'
         }
+      },
+      defaultStyle: {
+        columnGap: 20
       }
     };
-
+  
     pdfMake.createPdf(docDefinition).open();
   }
 
@@ -279,4 +384,3 @@ export class RechercherSejourComponent implements OnInit {
     return styleClass;
   }
 }
-

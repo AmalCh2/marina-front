@@ -8,6 +8,7 @@
                 <div class="main">
                     <div class="Header">
                         <h1><i class="fal fa-search faa2x"></i> Rechercher un Compte</h1>
+<!--
                         <div class="buttons">
                             <div class="submit-box">
                                 <div class="button-group button">
@@ -29,7 +30,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                    -->
                     </div>                  
                     <div class="big-container">
                     <!-- ======================= Filters ================== -->
@@ -62,16 +63,27 @@
                                     <tr>
                                         <td>Nº du compte</td>
                                         <td>Nom</td>
-                                        <td>Mot de passe</td>
-                                        <td>Nº du port</td>
+                                        <td>Role</td>
+                                        <td></td>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let compte of comptes">
-                                        <td>{{ compte.num_compte }}</td>
-                                        <td>{{ compte.nom }}</td>
-                                        <td>{{ compte.mdp }}</td>
-                                        <td>{{ compte.num_port }}</td>
+                                    <tr *ngFor="let utilisateur of listUtilisateurs">
+                                        <td>{{ utilisateur.id_utilisateur }}</td>
+                                        <td>{{ utilisateur.nom_utilisateur }}</td>
+                                        <td>{{ utilisateur.role.lib_role }}</td>
+                                        <td>
+                                            <div class="button-group ">
+                                            <button type="button" class="button btn btn-outline-primary"
+                                                (click)="open(mymodal1,utilisateur)">Modifier
+                                            </button>
+                                            <button type="button" class="button btn btn-outline-danger"
+                                                (click)="deleteUtilisateur(utilisateur.id_utilisateur)" >Supprimer
+                                            </button>
+                                            
+                                            </div>
+                                          </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -79,7 +91,47 @@
                     </div>
                     </div>
                 </div>
+
+
+
+
+                <ng-template #mymodal1 let-modal1>
+  <div class="modal-body p-4 red-background form-title">
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
+    <div>
+      <section class="container mx-auto">
+        <form class="space-y-4">
+          <div class="grid grid-cols-4 gap-4">
+            <h1 class="col-span-4" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur l'utilisateur :</h1>
+            <div class="col-span-4">
+              <label class="block text-gray-700">>Nº du compte utilisateur :</label>
+              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="Utilisateur.id_utilisateur" [ngModelOptions]="{standalone: true}" />
+            </div>
+            <div class="col-span-1">
+              <label class="block text-gray-700">Role :</label>
+              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="Utilisateur.role.lib_role" [ngModelOptions]="{standalone: true}" />
+            </div>
+            <div class="col-span-1">
+              <label class="block text-gray-700">Nom utilisateur :</label>
+              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="Utilisateur.nom_utilisateur" [ngModelOptions]="{standalone: true}" />
+            </div>
+          </div>
+        </form>
+        <div class="mt-4">
+          <button type="button" class="button transition" (click)="editUtilisateur(Utilisateur)" (click)="modal1.close('Save click')">Enregistrer</button>
+          <button type="button" class="button transition" (click)="modal1.close('Save click')">Annuler</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</ng-template>
+                
+
+
+
+                
             </div>
         </section>
     </div>
 </div>
+

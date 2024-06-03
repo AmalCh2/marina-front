@@ -62,18 +62,16 @@
     font-weight: 700;
     color: #001A1F;/**********************************************************/
   }
-  
-  /*buttons*/
+  /* ===================== Buttons ===================== */
   .button-group {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 0px;
     border: none;
-    margin-top: 0;
-    padding-top: 0;
-    background-color: yellow;
-    height: 70px;
+    margin: 0;
+    padding: 0;
+    height: 54px;
   }
   
   .button {
@@ -88,8 +86,8 @@
     background: transparent;
     transition: 0.25s ease-in-out;
     text-align: center;
-    border: none;
-    margin-top: 0;
+    border-radius: 10px;
+    margin-left: 3px;
   }
   
   .button-primary {
@@ -128,7 +126,6 @@
   .button-secondary:focus { 
     background:  rgba(33, 26, 61, 0.2);
   }
-  
   
   
   /* ===================== AlertBox ===================== */
@@ -442,3 +439,27 @@
         display: none;
       }
     
+
+
+       
+.red-background {
+  margin-top: -30px;
+  margin-left: -170px;
+  background-color:  white;
+  position: relative;
+  width: 1000px;
+  padding: 10px 25px 35px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.container {
+  position: relative;
+  width: auto;
+  background: #f4f7fa;
+  padding: 10px 25px 35px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}

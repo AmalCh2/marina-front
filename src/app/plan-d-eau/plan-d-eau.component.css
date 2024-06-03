@@ -1,315 +1,315 @@
 .body{
-    width: calc(100vw - 8.5rem);
-    max-height: 100vh;
-    background: #f4f7fa;/*#8709ca;/////////////////////////////////////////////////*/
-    z-index: 0;
-    position:relative;
-    top: 0;
-    transition: all .5s ease;
-  }
+  width: calc(100vw - 8.5rem);
+  max-height: 100vh;
+  background: #f4f7fa;/*#8709ca;/////////////////////////////////////////////////*/
+  z-index: 0;
+  position:relative;
+  top: 0;
+  transition: all .5s ease;
+}
+
+.body-trimmed{
+  width: calc(100vw - 20rem);
+}
   
-  .body-trimmed{
-    width: calc(100vw - 20rem);
-  }
-    
-  .body-md-screen{
-    width: calc(100vw - 20rem);
-  }
+.body-md-screen{
+  width: calc(100vw - 20rem);
+}
+
+/* ===================== Content ===================== */
+.content {
+  display: block;
+  width: 100%;
+}
+
+/* LEFT CONTENT */
+.left-content {
+  display: block;
+  width: 98.5%;
+  background: rgba(33, 26, 61, 0.1);
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+  height: 97vh;
+  position: relative;
+}
+
+/* ===================== Main ===================== */
+.main {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  transition: 0.5s;
+}
+
+.BigTitle {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.BigTitle {
+  position: relative;
+  width: 300px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5rem;
+  cursor: pointer;
+}
+
+.BigTitle h1 {
+  margin: 0 0 10px;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #001A1F;/**********************************************************/
+}
+
+/* ======================= Filters ====================== */
+.filterBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  background-color: rgba(33, 26, 61, 0.1),/*#de8517;///////////////////////////////////////////*/
+}
+
+.filterBox .filter {
+  position: relative;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  background-color:#f4f7fa;/* #426207;*************************************************************/
+}
+
+.filterBox .filter .filterName {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5rem;
+  color:#001A1F;/* rgb(20, 224, 92);**********************************************/
+}
   
-  /* ===================== Content ===================== */
-  .content {
-    display: block;
-    width: 100%;
-  }
+.filterBox .filter .Menu-options {
+  color: rgb(126, 126, 126);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
   
-  /* LEFT CONTENT */
-  .left-content {
-    display: block;
-    width: 98.5%;
-    background: rgba(33, 26, 61, 0.1);
-    margin: 15px;
-    padding: 20px;
-    border-radius: 15px;
-    height: 97vh;
-    position: relative;
-  }
-  
-  /* ===================== Main ===================== */
-  .main {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    transition: 0.5s;
-  }
-  
-  .BigTitle {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-  }
-  
-  .BigTitle {
-    position: relative;
-    width: 300px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3.5rem;
-    cursor: pointer;
-  }
-  
-  .BigTitle h1 {
-    margin: 0 0 10px;
-    font-size: 2.3rem;
-    font-weight: 700;
-    color: #001A1F;/**********************************************************/
-  }
-  
-  /* ======================= Filters ====================== */
-  .filterBox {
-    position: relative;
-    width: 100%;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
-    background-color: rgba(33, 26, 61, 0.1),/*#de8517;///////////////////////////////////////////*/
-  }
-  
-  .filterBox .filter {
-    position: relative;
-    padding: 30px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    background-color:#f4f7fa;/* #426207;*************************************************************/
-  }
-  
-  .filterBox .filter .filterName {
-    position: relative;
-    font-weight: 500;
-    font-size: 2.5rem;
-    color:#001A1F;/* rgb(20, 224, 92);**********************************************/
-  }
-    
-  .filterBox .filter .Menu-options {
-    color: rgb(126, 126, 126);
-    font-size: 1.1rem;
-    margin-top: 5px;
-  }
-    
-  .filterBox .filter .iconFltr {
-    font-size: 3.5rem;
-    color: #001A1F;
-  }
-  
-  .filterBox .filter:hover {
-    background:  rgba(33, 26, 61, 0.1);
-  }
-  
-  .filterBox .filter:hover .filterName,
-  .filterBox .filter:hover .Menu-options,
-  .filterBox .filter:hover .iconFltr {
-    color: #001A1F;
-  }
-  
-  .Drop-down-menu {
-    display: flex;
-    gap: 2rem;
-  }
-  
-  .Menu, .drop-down li {
-    list-style: none;
-    height: 100%;
-    padding: 0;
-    font-weight: 600;
-    cursor: pointer;
-    width: 109%;
-  }
-  
-  .Menu:hover {
-    background-color: #f4f7fa;
-    color: #001A1F;
-    border-radius: 0.5rem;
-  }
-  
-  .options:hover .drop-down {
-    display: block;
-  }
-  
-  .Menu .select-box i{
-    font-size: 20px;
-    color: rgb(126, 126, 126);
-  }
-  
-  .select-box{
-    border: none;
-    appearance: none;
-    padding: 5px;
-    width: 109%;
-    color:rgb(126, 126, 126);
-    font-weight: 600;
-    background-color: #f4f7fa;
-    background: #f4f7fa;
-    font-size: 20px;
-    border-radius: 8px;
-  }
-  
-  .select-container .icon-container{
-    margin-top: 3px;
-    margin-right: 3px;
-    width: 30px;
-    height: 85%;
-    padding-top: 3px;
-    position: absolute;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f7fa;
-  }
-  
-  .icon-container i{
-    font-size: 20px;
-    color: rgb(126, 126, 126);
-  }
-  
-  /* ================== boats List ============== */
-    .details {
-    position: relative;
-    width: 100%;
-    padding: 20px;
-    display: block;
-  }
-    
-    .details .Boats {
-    position: relative;
-    display: grid;
-    max-height: 540px;
-    overflow-y: scroll;
-    padding: 20px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-    background-color:#f4f7fa;/************************************/
-  }
-  
-  .details .filterFooter {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  
-  .filterFooter h2 {
-    font-weight: 600;
-    color: rgba(33, 26, 61,0.7);
-  }
-  
-  .details table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  .details table thead td {
-    font-weight: 600;
-  }
-  
-  .details .Boats table tr {
-    color: #001A1F;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .details .Boats table tr:last-child {
-    border-bottom: none;
-  }
-  
-  .details .Boats table tbody tr:hover {
-    background: rgba(33, 26, 61,0.15);
-    color: white;
-  }
-  
-  .details .Boats table tr td {
-    padding: 10px;
-  }
-  
-  .details .Boats table tr td:last-child {
-    text-align: end;
-  }
-  
-  .details .Boats table tr td:nth-child(2) {
-    text-align: end;
-  }
-  
-  .details .Boats table tr td:nth-child(3) {
-    text-align: center;
-  }
-  
-  /* ===================== Buttons ===================== */
-.button-group {
+.filterBox .filter .iconFltr {
+  font-size: 3.5rem;
+  color: #001A1F;
+}
+
+.filterBox .filter:hover {
+  background:  rgba(33, 26, 61, 0.1);
+}
+
+.filterBox .filter:hover .filterName,
+.filterBox .filter:hover .Menu-options,
+.filterBox .filter:hover .iconFltr {
+  color: #001A1F;
+}
+
+.Drop-down-menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.Menu, .drop-down li {
+  list-style: none;
+  height: 100%;
+  padding: 0;
+  font-weight: 600;
+  cursor: pointer;
+  width: 109%;
+}
+
+.Menu:hover {
+  background-color: #f4f7fa;
+  color: #001A1F;
+  border-radius: 0.5rem;
+}
+
+.options:hover .drop-down {
+  display: block;
+}
+
+.Menu .select-box i{
+  font-size: 20px;
+  color: rgb(126, 126, 126);
+}
+
+.select-box{
+  border: none;
+  appearance: none;
+  padding: 5px;
+  width: 109%;
+  color:rgb(126, 126, 126);
+  font-weight: 600;
+  background-color: #f4f7fa;
+  background: #f4f7fa;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+.select-container .icon-container{
+  margin-top: 3px;
+  margin-right: 3px;
+  width: 30px;
+  height: 85%;
+  padding-top: 3px;
+  position: absolute;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0px;
-  border: none;
-  margin: 0;
-  padding: 0;
-  height: 54px;
+  background-color: #f4f7fa;
+}
+
+.icon-container i{
+  font-size: 20px;
+  color: rgb(126, 126, 126);
+}
+
+/* ================== boats List ============== */
+  .details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: block;
+}
+  
+  .details .Boats {
+  position: relative;
+  display: grid;
+  max-height: 540px;
+  overflow-y: scroll;
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  background-color:#f4f7fa;/************************************/
+}
+
+.details .filterFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.filterFooter h2 {
+  font-weight: 600;
+  color: rgba(33, 26, 61,0.7);
+}
+
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.details table thead td {
+  font-weight: 600;
+}
+
+.details .Boats table tr {
+  color: #001A1F;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .Boats table tr:last-child {
+  border-bottom: none;
+}
+
+.details .Boats table tbody tr:hover {
+  background: rgba(33, 26, 61,0.15);
+  color: white;
+}
+
+.details .Boats table tr td {
+  padding: 10px;
+}
+
+.details .Boats table tr td:last-child {
+  text-align: end;
+}
+
+.details .Boats table tr td:nth-child(2) {
+  text-align: end;
+}
+
+.details .Boats table tr td:nth-child(3) {
+  text-align: center;
+}
+
+/* ===================== Buttons ===================== */
+.button-group {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0px;
+border: none;
+margin: 0;
+padding: 0;
+height: 54px;
 }
 
 .button {
-  text-decoration: none;
-  color: #001A1F;
-  font-weight: 500;
-  text-transform: uppercase; 
-  font-size: 14px;
-  padding: 12px;
-  border: 2px solid ; 
-  border-radius: 0px;
-  background: transparent;
-  transition: 0.25s ease-in-out;
-  text-align: center;
-  border-radius: 10px;
-  margin-left: 3px;
+text-decoration: none;
+color: #001A1F;
+font-weight: 500;
+text-transform: uppercase; 
+font-size: 14px;
+padding: 12px;
+border: 2px solid ; 
+border-radius: 0px;
+background: transparent;
+transition: 0.25s ease-in-out;
+text-align: center;
+border-radius: 10px;
+margin-left: 3px;
 }
 
 .button-primary {
-  z-index: 1;
-  background:  #ffffff;
-  border: 1px solid #c1c1c1;
-  border-top-left-radius: 100px; 
-  border-bottom-left-radius: 100px;
-  width: 200px;
-  justify-content: center;
-  transform: translateX(-15px);
-  cursor: pointer;
+z-index: 1;
+background:  #ffffff;
+border: 1px solid #c1c1c1;
+border-top-left-radius: 100px; 
+border-bottom-left-radius: 100px;
+width: 200px;
+justify-content: center;
+transform: translateX(-15px);
+cursor: pointer;
 }
 
 .button-secondary { 
-  background: #ffffff;
-  border: 1px solid #c1c1c1;
-  border-top-right-radius: 100px; 
-  border-bottom-right-radius: 100px; 
-  width: 200px;
-  transform: translateX(-15px);
-  cursor: pointer;
+background: #ffffff;
+border: 1px solid #c1c1c1;
+border-top-right-radius: 100px; 
+border-bottom-right-radius: 100px; 
+width: 200px;
+transform: translateX(-15px);
+cursor: pointer;
 }
 
 .button-third { 
-  background: #ffffff;
-  border: 1px solid #c1c1c1;
-  width: 200px;
-  transform: translateX(-15px);
-  cursor: pointer;
+background: #ffffff;
+border: 1px solid #c1c1c1;
+width: 200px;
+transform: translateX(-15px);
+cursor: pointer;
 }
 
 .button-primary:hover,
 .button-primary:focus,
 .button-secondary:hover, 
 .button-secondary:focus { 
-  background:  rgba(33, 26, 61, 0.2);
+background:  rgba(33, 26, 61, 0.2);
 }

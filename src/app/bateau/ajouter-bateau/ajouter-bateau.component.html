@@ -14,18 +14,18 @@
                 <!-- Formulaire Etape 1 -->
                 <div  *ngIf="currentPage === 1">
                   <section class="container container-1">
-                    <form action="#" class="form">
+                    <form  action="#" class="form">
                       <h1 class="form-title">Informations sur le bateau :</h1>
                       <div class="column">
                         <div class="input-box">
                           <label>Nom du bateau :</label>
-                          <input type="text" placeholder="Entrer le nom du bateau" required id="nom_bat"
+                          <input type="text" placeholder="Entrer le nom du bateau" ng-required="true" id="nom_bat"
                           [(ngModel)]="Bateau.nom_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Nº du bateau :</label>
-                          <input type="number" placeholder="Entrer le numéro du bateau" required id="num_bat"
+                          <input type="number" placeholder="Entrer le numéro du bateau" ng-required="true" id="num_bat"
                           [(ngModel)]="Bateau.id_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -34,15 +34,26 @@
                         <div class="input-box">
                           <label for="nom_cli">Nom du client :</label>
                           <div class="select-box" >
-                            <select id="nom_cli" [(ngModel)]="selectedClient" (change)="onNomChange($event)" name="id_cli">
-                              <option *ngFor="let Client of listClient" [ngValue]="Client">{{ Client.nom_cli }}</option>
+                    
+                            <select id="nom_cli" [(ngModel)]="Bateau.client"  name="id_cli">
+                              <option *ngFor="let Client of listClient" [ngValue]="Client">{{ Client.nom_cli }} {{ Client.prenom_cli }}</option>
                             </select>
                           </div>
                         </div>
+
+                        <div class="input-box">
+                          <label for="id_port">port</label>
+                          <div class="select-box" >
+                            <select id="id_port" [(ngModel)]="Bateau.port" name="id_port">
+                              <option *ngFor="let port of listPort" [ngValue]="port">{{ port.id_port}}</option>
+                            </select>
+                          </div>
+                        </div>
+
                         <div class="input-box">
                           <label for="prenom_cli">Prenom du client :</label>
                           <div class="select-box" >
-                            <select id="prenom_cli" [(ngModel)]="client.prenom_cli" name="prenom_cli">
+                            <select id="prenom_cli"  name="prenom_cli">
                               <option *ngFor="let prenom of prenoms">{{ prenom }}</option>
                             </select>
                           </div>
@@ -51,13 +62,13 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Immatriculation du bateau :</label>
-                          <input type="text" placeholder="Entrer l'immatriculation du bateau" required id="immat_bat" 
+                          <input type="text" placeholder="Entrer l'immatriculation du bateau" ng-required="true" id="immat_bat" 
                           [(ngModel)]="Bateau.immatriculation_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Autre nom :</label>
-                          <input type="text" placeholder="Entrer un autre nom du bateau" required id="autre_nom"
+                          <input type="text" placeholder="Entrer un autre nom du bateau" ng-required="true" id="autre_nom"
                           [(ngModel)]="Bateau.autre_ident_nom_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -65,13 +76,13 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Pavillon :</label>
-                          <input type="text" placeholder="Entrer le pavillon du bateau" required id="pavillon"
+                          <input type="text" placeholder="Entrer le pavillon du bateau" ng-required="true" id="pavillon"
                           [(ngModel)]="Bateau.pavillon_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Marque :</label>
-                          <input type="text" placeholder="Entrer la marque du bateau" required id="marque"
+                          <input type="text" placeholder="Entrer la marque du bateau" ng-required="true" id="marque"
                           [(ngModel)]="Bateau.marque_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -79,13 +90,13 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Adresse :</label>
-                          <input type="text" placeholder="Entrer l'adresse du bateau" required id="adresse" 
+                          <input type="text" placeholder="Entrer l'adresse du bateau" ng-required="true" id="adresse" 
                           [(ngModel)]="Bateau.adresse_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Email :</label>
-                          <input type="email" placeholder="Entrer l'email du bateau" required id="email"
+                          <input type="email" placeholder="Entrer l'email du bateau" ng-required="true" id="email"
                           [(ngModel)]="Bateau.email_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -93,19 +104,19 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Ville :</label>
-                          <input type="text" placeholder="Entrer la ville du bateau" required id="ville" 
+                          <input type="text" placeholder="Entrer la ville du bateau" ng-required="true" id="ville" 
                           [(ngModel)]="Bateau.ville_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Pays :</label>
-                          <input type="text" placeholder="Entrer le pays du bateau" required  id="pays"
+                          <input type="text" placeholder="Entrer le pays du bateau" ng-required="true"  id="pays"
                           [(ngModel)]="Bateau.pays"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Code Postale :</label>
-                          <input type="number" placeholder="Entrer le code postale" required id="code_postale"
+                          <input type="number" placeholder="Entrer le code postale" ng-required="true" id="code_postale"
                           [(ngModel)]="Bateau.code_postal_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -113,19 +124,19 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Nº du téléphone :</label>
-                          <input type="text" placeholder="Entrer le numéro du téléphone" required id="num_tel"
+                          <input type="text" placeholder="Entrer le numéro du téléphone" ng-required="true" id="num_tel"
                           [(ngModel)]="Bateau.tel_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Nº fax :</label>
-                          <input type="number" placeholder="Entrer le numéro fax" required id="fax" 
+                          <input type="number" placeholder="Entrer le numéro fax" ng-required="true" id="fax" 
                           [(ngModel)]="Bateau.fax_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Nº mobile :</label>
-                          <input type="number" placeholder="Entrer le numéro mobile" required  id="mobile" 
+                          <input type="number" placeholder="Entrer le numéro mobile" ng-required="true"  id="mobile" 
                           [(ngModel)]="Bateau.mobile_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -140,24 +151,24 @@
                       <label>Dimensions et tonnage :</label>
                       <div class="column">
                         <div class="input-box">
-                          <input type="number" placeholder="Entrer la longueur du bateau" required id="longueur" 
+                          <input type="number" placeholder="Entrer la longueur du bateau" ng-required="true"  id="longueur" 
                           [(ngModel)]="Bateau.longueur_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
-                          <input type="number" placeholder="Entrer la largeur du bateau" required  id="largeur"
+                          <input type="number" placeholder="Entrer la largeur du bateau" ng-required="true"  id="largeur"
                           [(ngModel)]="Bateau.largeur_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
                       <div class="column">
                         <div class="input-box">
-                          <input type="number" placeholder="Entrer le tirant d'eau du bateau" required id="tirant_eau"
+                          <input type="number" placeholder="Entrer le tirant d'eau du bateau" ng-required="true" id="tirant_eau"
                           [(ngModel)]="Bateau.tirant_eau_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
-                          <input type="number" placeholder="Entrer le tonnage du bateau" required id="tonnage"
+                          <input type="number" placeholder="Entrer le tonnage du bateau" ng-required="true" id="tonnage"
                           [(ngModel)]="Bateau.tonnage_bat"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -168,16 +179,16 @@
                         <div class="input-box">
                           <label for="type_bat">Type du bateau :</label>
                           <div class="select-box" >
-                            <select id="type_bat" [(ngModel)]="TypeBateau.type_bat" name="id_type_bat">
-                              <option *ngFor="let TypeBateau of listTypeBateau" [ngValue]="typeBateau">{{ TypeBateau.type_bat}}</option>
+                            <select id="type_bat" [(ngModel)]="Bateau.typeBateau" name="id_type_bat">
+                              <option *ngFor="let TypeBateau of listTypeBateau" [ngValue]="TypeBateau">{{ TypeBateau.type_bat}}</option>
                             </select>
                           </div>
                         </div>
                       </div>
                       <div class="option-check-details">
                         <label>Multicoque :</label>
-                        <input type="radio" name="option-check" id="dot-1">
-                        <input type="radio" name="option-check" id="dot-2">
+                        <input [value]="1" type="radio" name="option-check" id="dot-1">
+                        <input [value]="0" type="radio" name="option-check" id="dot-2">
                         <div class="category">
                             <label for="dot-1">
                             <span class="dot one"></span>
@@ -194,13 +205,13 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Nº d'assurance :</label>
-                          <input type="number" placeholder="Entrer le numéro d'assurance" required id="num_assur"
+                          <input type="number" placeholder="Entrer le numéro d'assurance" ng-required="true" id="num_assur"
                           [(ngModel)]="Bateau.num_assur"
                             [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Nom d'assurance :</label>
-                          <input type="text" placeholder="Entrer le nom d'assurance" required id="nom_assur" 
+                          <input type="text" placeholder="Entrer le nom d'assurance" ng-required="true" id="nom_assur" 
                           [(ngModel)]="Bateau.nom_assur"
                             [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -208,13 +219,13 @@
                       <div class="column">
                         <div class="input-box">
                           <label>Date d'expération :</label>
-                          <input type="date" placeholder="Entrer la date d'expiration d'assurance" required 
+                          <input type="date" placeholder="Entrer la date d'expiration d'assurance" ng-required="true" 
                           [(ngModel)]="Bateau.date_exp"
                           [ngModelOptions]="{standalone : true}"/>
                         </div>
                         <div class="input-box">
                           <label>Observation :</label>
-                          <input type="textarea" placeholder="Ecrire une note" required 
+                          <input type="textarea" placeholder="Ecrire une note" ng-required="true" 
                           [(ngModel)]="Bateau.observation"
                             [ngModelOptions]="{standalone : true}"/>
                         </div>
@@ -222,8 +233,8 @@
                     </form>
                     <div class="submit-box">
                       <div class="button-group button">
-                        <button class="button button-primary" routerLink="/rechercher_bateau"  routerLinkActive="active" >Annuler</button>
-                        <button type="button" class="btn btn-success" (click)="addBateau(Bateau)"
+                        <button class="button button-primary" [routerLink]="['/rechercher_bateau']"  routerLinkActive="active" >Annuler</button>
+                        <button type="button" class="btn btn-success" (click)="addBateau()" id="send"
                         class="button button-secondary">Ajouter</button>
                       </div>
                     </div>

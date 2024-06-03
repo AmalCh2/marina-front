@@ -5,7 +5,10 @@ import { ElementRef, ViewChild } from '@angular/core';
 import { Utilisateur } from 'src/app/shared/Model/Utilisateurs';
 import { UtilisateurService } from 'src/app/shared/Service/Utilisateur.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-
+import { Port } from 'src/app/shared/Model/Port';
+import { PortService } from 'src/app/shared/Service/Port.service';
+import { Role } from 'src/app/shared/Model/Role';
+import { RoleService } from 'src/app/shared/Service/Role.service';
 
 @Component({
   selector: 'app-afficher-comptes-utilisateurs',
@@ -26,7 +29,16 @@ export class AfficherComptesUtilisateursComponent implements OnInit {
   Utilisateur!: Utilisateur;
   closeResult!: string;
 
-  constructor(private axiosService: AxiosService,private UtilisateurService: UtilisateurService, private modalService: NgbModal) {}
+  listPorts: any;
+  port!: Port;
+
+  listRoles: any;
+  role!: Role;
+
+  constructor(private axiosService: AxiosService,private UtilisateurService: UtilisateurService, private modalService: NgbModal,
+    private PortService: PortService,
+    private RoleService: RoleService
+  ) {}
 
   ngOnInit(): void {
     this.axiosService.request(
@@ -43,15 +55,46 @@ export class AfficherComptesUtilisateursComponent implements OnInit {
     nom_utilisateur: null,
     mot_de_passe: null,
     port: null,
-    role: {id_role: 1, lib_role: "admin"}
-  }
-  }
+    role : null
+  };
 
-  getAllUtilisateurs() {
-    this.UtilisateurService.getAllUtilisateurs().subscribe(res => this.listUtilisateurs = res)
-  }
+  this.getAllPorts();
 
-  
+    this.port = {
+      id_port: null,
+      nom_port: null,
+      adr1_port: null,
+      adr2_port: null,
+      adr3_port: null,
+      tel_port: null,
+      fax_port: null,
+      email_port: null,
+      sigle_port: null,
+  };
+
+  this.getAllRoles();
+
+    this.role = {
+      id_role: null,
+      lib_role: null,
+  };
+
+this.getAllRoles();
+}
+
+getAllUtilisateurs() {
+  this.UtilisateurService.getAllUtilisateurs().subscribe(res => this.listUtilisateurs = res)
+}
+
+getAllPorts() {
+  this.PortService.getAllPorts().subscribe(res => this.listPorts = res)
+}
+
+getAllRoles() {
+  this.RoleService.getAllRoles().subscribe((data: Role[]) => {
+    this.listRoles = data;
+  });
+}
 addUtilisateur(p: any) {
     this.UtilisateurService.addUtilisateur(p).subscribe(() => {
       this.getAllUtilisateurs();
@@ -109,40 +152,4 @@ addUtilisateur(p: any) {
     return styleClass;
   }
 
-
-  @ViewChild('section') section!: ElementRef;
-  @ViewChild('overlay') overlay!: ElementRef;
-
-  showModal() {
-    this.section.nativeElement.classList.add('active');
-    this.overlay.nativeElement.classList.add('active');
-  }
-
-  hideModal() {
-    this.section.nativeElement.classList.remove('active');
-    this.overlay.nativeElement.classList.remove('active');
-  }
-
-  closeOverlay() {
-    this.hideModal();
-  }
-
-  comptes: any[] = [
-    { num_compte: 1, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-    { num_compte: 2, nom: 'nom util', mdp: '205786grh', num_port: 1 },
-  ];
-  
 }
