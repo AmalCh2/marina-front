@@ -3,13 +3,13 @@ import { INavbarData } from "./helper";
 export const navbarData: INavbarData[] = [
     {
         routerLink: '/menu_general',
-        icon: 'fal fa-home',
+        icon: 'fas fa-home',
         label: 'Menu Général'
     },
 
     {
         routerLink: '/client',
-        icon: 'fal fa-user',
+        icon: 'fas fa-user',
         label: 'Client',
         items: [
             {
@@ -26,7 +26,7 @@ export const navbarData: INavbarData[] = [
 
     {
         routerLink: '/bateau',
-        icon: 'fal fa-ship',
+        icon: 'fas fa-ship',
         label: 'Bateau',
         items: [
             {
@@ -43,7 +43,7 @@ export const navbarData: INavbarData[] = [
 
     {
         routerLink: '/réservation',
-        icon: 'fal fa-file-invoice',
+        icon: 'fas fa-file-invoice',
         label: 'Réservation',
         items: [
             {
@@ -55,12 +55,12 @@ export const navbarData: INavbarData[] = [
                 routerLink: '/rechercher_réservation',
                 label: 'Rechercher une réservation'
             },
-/*
+            /*
             {
                 routerLink: '/archives_réservations',
                 label: 'Archive des réservations'
             },
-*/
+            */
             {
                 routerLink: '/etat_réservation_arrivées',
                 label: 'Etat des réservations (Arrivées)'
@@ -70,13 +70,13 @@ export const navbarData: INavbarData[] = [
 
     {
         routerLink: '/plan_d_eau',
-        icon: 'fal fa-water',
+        icon: 'fas fa-water',
         label: 'Plan d\'eau'
     },
 
     {
         routerLink: '/séjour',
-        icon: 'fal  fa-anchor',
+        icon: 'fas fa-anchor',
         label: 'Séjour',
         items: [
             {
@@ -93,17 +93,14 @@ export const navbarData: INavbarData[] = [
                 routerLink: '/archives_séjours',
                 label: 'Archive des séjours'
             },
-
-
         ]
     },
 
     {
         routerLink: '/facturation',
-        icon: 'fa fa-credit-card',
+        icon: 'fas fa-credit-card',
         label: 'Facturation',
         items: [
-
             {
                 routerLink: '/consommation',
                 label: 'Consommation',
@@ -112,14 +109,14 @@ export const navbarData: INavbarData[] = [
                         routerLink: '/ajouter_consommation',
                         label: 'Ajouter une Consommation'
                     },
-        
+
                     {
                         routerLink: '/rechercher_consommation',
                         label: 'Rechercher les Consommations'
                     },
                 ]
             },
-            
+
             {
                 routerLink: '/facturation',
                 label: 'Facture',
@@ -128,21 +125,20 @@ export const navbarData: INavbarData[] = [
                         routerLink: '/ajouter_facture',
                         label: 'Ajouter une Facture'
                     },
-        
+
                     {
                         routerLink: '/rechercher_facture',
                         label: 'Rechercher les Factures'
                     },
                 ]
             },
-
         ]
     },
 
     {
         routerLink: '/amodiation',
-        icon:'fal fa-arrows-alt',
-        //icon: 'fal fa-map-marker-alt',
+        icon: 'fas fa-arrows-alt',
+        //icon: 'fas fa-map-marker-alt',
         label: 'Amodiation',
         items: [
             {
@@ -159,10 +155,9 @@ export const navbarData: INavbarData[] = [
 
     {
         routerLink: '/adminn',
-        icon: 'fal fa-user-shield',
+        icon: 'fas fa-user-shield',
         label: 'Admin',
         items: [
-
             {
                 routerLink: '/',
                 label: 'Comptes Utilisateurs',
@@ -171,14 +166,14 @@ export const navbarData: INavbarData[] = [
                         routerLink: '/ajouter_utilisateur',
                         label: 'Ajouter un Compte'
                     },
-        
+
                     {
                         routerLink: '/rechercher_utilisateur',
                         label: 'Rechercher les Comptes'
                     },
                 ]
             },
-            
+
             {
                 routerLink: '/',
                 label: 'Tarifs',
@@ -196,14 +191,15 @@ export const navbarData: INavbarData[] = [
                                 routerLink: '/ajouter_tarif_ammarage',
                                 label: 'Tarif Ammarage'
                             },
-/*
+                            /*
                             {
                                 routerLink: '/ajouter_tarif_forfait',
                                 label: 'Tarif Forfait'
-                            },*/
+                            },
+                            */
                         ]
                     },
-        
+
                     {
                         routerLink: '/jj',
                         label: 'Rechercher les Tarifs',
@@ -231,16 +227,13 @@ export const navbarData: INavbarData[] = [
                         routerLink: '/ajouter_emplacement',
                         label: 'Ajouter un Emplacement'
                     },
-        
+
                     {
                         routerLink: '/rechercher_emplacement',
                         label: 'Rechercher les Emplacements'
                     },
                 ]
             },
-
-           
         ]
     },
-
 ];

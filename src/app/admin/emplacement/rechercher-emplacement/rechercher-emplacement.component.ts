@@ -1,15 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { AxiosService } from 'src/app/axios.service';
 import { SideNavToggle } from '../SideNavToggle.interface';
-import { Client } from 'src/app/shared/Model/Client';
-import { TypeBateau } from 'src/app/shared/Model/TypeBateau';
-import { Bateau } from 'src/app/shared/Model/Bateau';
-import { BateauService } from 'src/app/shared/Service/Bateau.service';
-import { ClientService } from 'src/app/shared/Service/Client.service';
-import { TypeBateauService } from 'src/app/shared/Service/TypeBateau.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import * as pdfMake from 'pdfmake/build/pdfMake'
-import * as pdfFonts from 'pdfmake/build/vfs_fonts'
 import { QuaiService } from 'src/app/shared/Service/Quai.service';
 import { PElectriqueService } from 'src/app/shared/Service/PElectrique.service';
 import { Quai } from 'src/app/shared/Model/Quai';
@@ -45,10 +37,7 @@ export class RechercherEmplacementComponent implements OnInit {
   
     emplacement!: Emplacement;
     listEmplacement: any;
-  
-  
-  
-  
+
     isSideNavCollapsed = false;
     screenWidth = 0;
     data: string[] = [];
@@ -141,16 +130,6 @@ export class RechercherEmplacementComponent implements OnInit {
         return `with: ${reason}`;
       }
     }
-   
-  
-  
-  
-  
-  
-  
-  
-  
-    
   
     onToggleSideNav(data: SideNavToggle): void {
       this.screenWidth = data.screenWidth;
