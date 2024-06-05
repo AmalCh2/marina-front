@@ -34,18 +34,13 @@ export class AjouterFactureComponent implements OnInit {
   facture!: Facture;
   closeResult!: string;
 
-  listReglement: any;
-  reglement!: Reglement;
-
-  listCarte: any;
-  carte!: Carte;
+ 
 
   
 
   constructor(private axiosService: AxiosService,
     private factureService: FactureService, 
-    private reglementService: ReglementService, 
-    private carteService: CarteService,
+  
   ) {}
 
 
@@ -62,79 +57,41 @@ export class AjouterFactureComponent implements OnInit {
     this.facture = {
       id_fact:null,
     date_fact: null,
-    etat_fact: null,
     etat_paiement: null,
     montant_ttl: null,
     exo_cli: null,
     lib_exo: null,
     tbre_fiscale: null,
+    lib_carte: null,
+    cpt_carte: null,
   };
-
-  this.getAllReglements();
-
-    this.reglement = {
-      id_regle:null,
-      mnt_regle: null,
-      type_regl: null,
-      date_regl: null,
-      fact: null,
-      carte: null,
-  };
-
-  this.getAllCartes();
-
-    this.carte = {
-      id_carte:null,
-      lib_carte: null,
-      cpt_carte: null,
-  };
+  
 
   }
   
 
-  getAllReglements() {
-    this.reglementService.getAllReglements().subscribe(res => this.listReglement = res);
-  }
-  
-  getAllCartes() {
-    this.carteService.getAllCartes().subscribe(res => this.listCarte = res);
-  }
+ 
   
   getAllFactures() {
     this.factureService.getAllFactures().subscribe(res => this.listFacture = res);
   }
   
-  addReglementCarteAndFacture() {
-    this.reglementService.addReglement(this.reglement).subscribe(() => {
-      this.getAllReglements();
-    });
-    this.carteService.addCarte(this.carte).subscribe(() => {
-      this.getAllCartes();
-    });
+  addFacture() {
+    console.log(this.facture);   
     this.factureService.addFacture(this.facture).subscribe(() => {
       this.getAllFactures();
     });
   }
   
-  editReglementCarteAndFacture(reglement: Reglement, carte: Carte, facture: Facture) {
-    this.reglementService.editReglement(reglement).subscribe(() => {
-      this.getAllReglements();
-    });
-    this.carteService.editCarte(carte).subscribe(() => {
-      this.getAllCartes();
-    });
+  editReglementCarteAndFacture( facture: Facture) {
+   
     this.factureService.editFacture(facture).subscribe(() => {
       this.getAllFactures();
     });
   }
   
-  deleteReglementCarteAndFacture(id_reglement: number, id_carte: number, id_facture: number) {
-    this.reglementService.deleteReglement(id_reglement).subscribe(() => {
-      this.getAllReglements();
-    });
-    this.carteService.deleteCarte(id_carte).subscribe(() => {
-      this.getAllCartes();
-    });
+  deleteReglementCarteAndFacture( id_facture: number) {
+   
     this.factureService.deleteFacture(id_facture).subscribe(() => {
       this.getAllFactures();
     });

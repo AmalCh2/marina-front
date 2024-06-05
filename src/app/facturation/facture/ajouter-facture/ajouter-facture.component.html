@@ -19,7 +19,7 @@
                                         <div class="input-box">
                                             <label>Facture nº :</label>
                                             <input type="number" placeholder="Entrer le numéro de la facture" required
-                                            [(ngModel)]="facture.id_fact" [(ngModel)]="reglement.fact.id_fact"
+                                            [(ngModel)]="facture.id_fact" [(ngModel)]="facture.id_fact"
                                             [ngModelOptions]="{standalone : true}"/>
                                         </div>
                                         <div class="input-box">
@@ -53,73 +53,47 @@
                                             [(ngModel)]="facture.tbre_fiscale"
                                             [ngModelOptions]="{standalone : true}"/>
                                         </div>
-                                        <div class="input-box">
-                                            <label>Nº Reglement:</label>
-                                            <input type="number" placeholder="Entrer le numéro du reglement" required
-                                            [(ngModel)]="reglement.id_regle"
-                                            [ngModelOptions]="{standalone : true}"/>
-                                        </div>
-                                    </div>
-                                    <div class="column">
-                                        <div class="input-box">
-                                            <label>Totale Reglement :</label>
-                                            <input type="number" placeholder="Entrer le montant totale du reglement"required
-                                            [(ngModel)]="reglement.mnt_regle"
-                                            [ngModelOptions]="{standalone : true}"/>
-                                        </div>
-                                        <div class="input-box">
-                                            <label>Type du reglement :</label>
-                                            <input type="text" placeholder="Entrer le type" required
-                                            [(ngModel)]="reglement.type_regl"
-                                            [ngModelOptions]="{standalone : true}"/>
-                                        </div>
-                                    </div>
-                                    <div class="column">
-                                        <div class="input-box">
-                                            <label>Date reglement :</label>
-                                            <input type="date"required
-                                            [(ngModel)]="reglement.date_regl"
-                                            [ngModelOptions]="{standalone : true}"/>
-                                        </div>
-                                        <div class="input-box">
-                                            <label>Nº de la carte :</label>
-                                            <input type="number" placeholder="Entrer le numéro de la facture" required
-                                            [(ngModel)]="reglement.carte.id_carte" [(ngModel)]="carte.id_carte"
-                                            [ngModelOptions]="{standalone : true}"/>
-                                        </div>
                                         
                                     </div>
+                                    
+                                   
 
                                     <div class="column">
                                         <div class="input-box">
                                             <label>Libelle carte :</label>
                                             <input type="text"  placeholder="Entrer la libelle de la cate" required
-                                            [(ngModel)]="carte.lib_carte"
+                                            [(ngModel)]="facture.lib_carte"
                                             [ngModelOptions]="{standalone : true}"/>
                                         </div>
                                         <div class="input-box">
                                             <label>Compte carte :</label>
-                                            <input type="text"  placeholder="Entrer le compte de la cate" required
-                                            [(ngModel)]="carte.cpt_carte"
+                                            <input type="number"  placeholder="Entrer le compte de la cate" required
+                                            [(ngModel)]="facture.cpt_carte"
                                             [ngModelOptions]="{standalone : true}"/>
                                         </div>
                                         
                                     </div>
-                                    <div class="option-check-details exo">
-                                        <label class="check-label">Exonération client :</label>
-                                        <input type="radio" name="option-check" id="dot-1">
-                                        <input type="radio" name="option-check" id="dot-2">
-                                        <div class="category exo">
-                                            <label for="dot-1">
-                                                <span class="dot one"></span>
-                                                <span class="option-check">Oui</span>
-                                            </label>
-                                            <label for="dot-2">
-                                                <span class="dot two"></span>
-                                                <span class="option-check">Non</span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                   
+
+
+
+                    <div class="option-check-details">
+                      <label>Exonération client :</label>
+                      <div class="radio-buttons">
+                          <input [value]="1" type="radio" name="option-check" id="dot-1" [(ngModel)]="facture.exo_cli" [ngModelOptions]="{standalone: true}">
+                          <label for="dot-1">
+                              <span class="dot one"></span>
+                              <span class="option-check">Oui</span>
+                          </label>
+                          
+                          <input [value]="0" type="radio" name="option-check" id="dot-2" [(ngModel)]="facture.exo_cli" [ngModelOptions]="{standalone: true}">
+                          <label for="dot-2">
+                              <span class="dot two"></span>
+                              <span class="option-check">Non</span>
+                          </label>
+                      </div>
+                  </div>
+                                    
 
                                     <div class="input-box">
                                         <label>Libelle exoneration Client :</label>
@@ -372,7 +346,7 @@
                                 <div class="submit-box">
                                     <div class="button-group button">
                                         <button type="button" class="button button-primary" type="button" >Annuler</button>
-                                        <button (click)="addReglementCarteAndFacture()" class="button button-secondary">Ajouter</button>
+                                        <button (click)="addFacture()" class="button button-secondary">Ajouter</button>
                                     </div>
                                 </div>
                             </section>

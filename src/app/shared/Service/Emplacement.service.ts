@@ -18,7 +18,7 @@ export class EmplacementService {
   }
 
   editEmplacement(emplacement: any) {
-    return this.httpClient.put(`${this.API_URL}/update-emplacement`, emplacement);
+    return this.httpClient.put(`${this.API_URL}/update-emplacement/${emplacement.id_emp}`, emplacement);
   }
 
   deleteEmplacement(id: any) {

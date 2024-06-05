@@ -18,26 +18,38 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <td>Poste</td>
-                                        <td>Bateau</td>
-                                        <td>Client</td>
-                                        <td>Séjour</td>
-                                        <td>Début</td>
+                                        <td>Num.</td>
+                                        <td>Bébut</td>
                                         <td>Fin</td>
-                                        <td>Acompte</td>
-                                        <td>Et</td>
+                                        <td>Nbr. Jour</td>
+                                        <td>Lib. Tarif</td>
+                                        <td>Lib. Type Séjour</td>
+                                        <td>Num. Emplacement</td>
+                                        <td>Nom Bateau</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let reservation of reservations">
-                                        <td>{{ reservation.number }}</td>
-                                        <td>{{ reservation.boatName }}</td>
-                                        <td>{{ reservation.clientName }}</td>
-                                        <td>{{ reservation.startDate }}</td>
-                                        <td>{{ reservation.stayDetails }}</td>
-                                        <td>{{ reservation.endDate }}</td>
-                                        <td>{{ reservation.deposit }}</td>
-                                        <td>{{ reservation.et }}</td>
+                                    <tr *ngFor="let sejour of listSejour">
+                                        <td>{{ sejour.id_sej }}</td>
+                                        <td>{{ sejour.deb_sej }}</td>
+                                        <td>{{ sejour.fin_sej }}</td>
+                                        <td>{{ sejour.num_jours }}</td>
+                                        <td>{{ sejour.tarif.type_tarif }}</td>
+                                        <td>{{ sejour.type_sej.lib_sej }}</td>
+                                        <td>{{ sejour.emp.id_emp }}</td>
+                                        <td>{{ sejour.bat.nom_bat }}</td>
+                                        <!--<td>
+                                            <div class="button-group ">
+                                            <button type="button" class="button btn btn-outline-primary"
+                                                (click)="open(mymodal1,sejour)">Modifier
+                                            </button>
+                                            <button type="button" class="button btn btn-outline-danger"
+                                                (click)="deleteSejour(sejour.id_sej)">Supprimer
+                                            </button>
+                                            <button class="button" (click)="archiveSejour(sejour.id_sej)">Archiver</button>
+                                                <button class="button" (click)="printSejour(sejour)">Imprimer</button>
+                                            </div>
+                                          </td>-->
                                     </tr>
                                 </tbody>
                             </table>

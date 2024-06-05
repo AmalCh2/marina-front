@@ -35,8 +35,8 @@
                       <div class="input-box">
                         <label for="nom_pays">Pays :</label>
                         <div class="select-box" >
-                          <select id="nom_pays" [(ngModel)]="Client.pays" (change)="onNomChange($event)" name="id_pays">
-                            <option *ngFor="let Pays of listPays" [ngValue]="Pays">{{ Pays.nom_pays }}{{ Pays.nationnalite }}</option>
+                          <select id="nom_pays" [(ngModel)]="Client.pays"  name="id_pays">
+                            <option *ngFor="let Pays of listPays" [ngValue]="Pays">{{ Pays.nom_pays }}--{{ Pays.nationnalite }}--{{ Pays.pavillon }}</option>
                           </select>
                         </div>
                       </div>
@@ -54,18 +54,13 @@
                       <div class="input-box">
                         <label>Code Postale :</label>
                         <input type="number" placeholder="Entrer le code postale" required
-                        [(ngModel)]="Client.adresse_cli"
+                        [(ngModel)]="Client.code_postal_cliii"
                           [ngModelOptions]="{standalone : true}"/>
                       </div>
                     </div>
 
                     <div class="column">
-                      <div class="input-box">
-                        <label>Pavillon :</label>
-                        <input type="text" placeholder="Entrer le nom du pavillon" required
-                        [(ngModel)]="Pays.pavillon"
-                        [ngModelOptions]="{standalone : true}"/>
-                      </div>
+      
                       <div class="input-box">
                         <label>Ville :</label>
                         <input type="text" placeholder="Entrer la ville du client" required
@@ -99,11 +94,12 @@
                         [ngModelOptions]="{standalone : true}"/>
                         </div>
                       </div>
-                    <div class="column">
+
+                      <div class="column">
                       <div class="option-check-details">
-                        <label>Etat civil :</label>
-                        <input type="radio" name="option-check" id="dot-1">
-                        <input type="radio" name="option-check" id="dot-2">
+                        <label>Etat civile :</label>
+                        <input value="Marie(e)" type="radio" name="option-check" id="dot-1" [(ngModel)]="Client.etat_civil" [ngModelOptions]="{standalone: true}">
+                        <input value="Celibataire(e)" type="radio" name="option-check" id="dot-2"[(ngModel)]="Client.etat_civil" [ngModelOptions]="{standalone: true}">
                         <div class="category">
                             <label for="dot-1">
                             <span class="dot one"></span>
@@ -115,10 +111,12 @@
                         </label>
                         </div>
                     </div>
+
+
                     <div class="option-check-details exo">
                       <label class="exo-label">Exonération :</label>
-                      <input type="radio" name="option-check-exo" id="dot-3">
-                      <input type="radio" name="option-check-exo" id="dot-4">
+                      <input type="radio" name="option-check-exo" id="dot-3" [value]="1" [(ngModel)]="Client.exo_cli" [ngModelOptions]="{standalone: true}">
+                      <input type="radio" name="option-check-exo" id="dot-4" [value]="0" [(ngModel)]="Client.exo_cli" [ngModelOptions]="{standalone: true}">
                       <div class="category exo">
                           <label for="dot-3">
                           <span class="dot one"></span>
@@ -130,7 +128,19 @@
                       </label>
                       </div>
                   </div>
-                    </div>
+
+
+
+
+                  </div>
+
+
+                
+                      
+                    
+                       
+                   
+                    
                   </form>
                   <div class="submit-box">
                     <div class="button-group button">

@@ -156,3 +156,7 @@ h6 {
         --section-padding: 100px;
     }
 }
+
+.link{
+    color: #fff !important;
+}

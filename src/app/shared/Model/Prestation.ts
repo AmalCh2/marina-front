@@ -4,6 +4,7 @@ export class Prestation {
     prix_unit_prest: any;
     secteur_prest: any;
     rang_prest: any;
+    
     tva: any;
     type_prest: any;
     nature: any;

@@ -9,6 +9,9 @@ import { Reglement } from 'src/app/shared/Model/Reglement';
 import { ReglementService } from 'src/app/shared/Service/Reglement.service';
 import { Carte } from 'src/app/shared/Model/Carte';
 import { CarteService } from 'src/app/shared/Service/Carte.service';
+import * as pdfMake from 'pdfmake/build/pdfMake'
+import * as pdfFonts from 'pdfmake/build/vfs_fonts'
+( pdfMake as any ).vfs= pdfFonts.pdfMake.vfs;
 
 
 @Component({
@@ -38,8 +41,6 @@ export class RechercherFacturesComponent implements OnInit {
 
   constructor(private axiosService: AxiosService,
     private factureService: FactureService, 
-    private reglementService: ReglementService, 
-    private carteService: CarteService,
     private modalService: NgbModal,  
   ) {}
 
@@ -57,85 +58,147 @@ export class RechercherFacturesComponent implements OnInit {
     this.facture = {
       id_fact:null,
     date_fact: null,
-    etat_fact: null,
     etat_paiement: null,
     montant_ttl: null,
     exo_cli: null,
     lib_exo: null,
     tbre_fiscale: null,
+    lib_carte: null,
+    cpt_carte: null,
   };
-
-  this.getAllReglements();
-
-    this.reglement = {
-      id_regle:null,
-      mnt_regle: null,
-      type_regl: null,
-      date_regl: null,
-      fact: null,
-      carte: null,
-  };
-
-  this.getAllCartes();
-
-    this.carte = {
-      id_carte:null,
-      lib_carte: null,
-      cpt_carte: null,
-  };
-
-  }
 
   
-  getAllCartes() {
-    this.carteService.getAllCartes().subscribe(res => this.listCarte = res);
+
+  
+
   }
+
+
 
   getAllFactures() {
     this.factureService.getAllFactures().subscribe(res => this.listFacture = res);
   }
   
-  getAllReglements() {
-    this.reglementService.getAllReglements().subscribe(res => this.listReglement = res);
-  }
   
-  addFactureAndReglement() {
+  
+  addFacture() {
     this.factureService.addFacture(this.facture).subscribe(() => {
       this.getAllFactures();
     });
-    this.reglementService.addReglement(this.reglement).subscribe(() => {
-      this.getAllReglements();
-    });
-    this.carteService.addCarte(this.carte).subscribe(() => {
-      this.getAllCartes();
-    });
+    
   }
   
-  editFactureAndReglement(facture: Facture, reglement: Reglement, carte: Carte) {
+  editFacture(facture: Facture) {
     this.factureService.editFacture(facture).subscribe(() => {
       this.getAllFactures();
     });
-    this.reglementService.editReglement(reglement).subscribe(() => {
-      this.getAllReglements();
-    });
-    this.carteService.editCarte(carte).subscribe(() => {
-      this.getAllCartes();
-    });
+    
   }
   
-  deleteFactureAndReglement(id_facture: number, id_reglement: number , id_carte:number) {
+  deleteFacture(id_facture: number) {
     this.factureService.deleteFacture(id_facture).subscribe(() => {
       this.getAllFactures();
     });
-    this.reglementService.deleteReglement(id_reglement).subscribe(() => {
-      this.getAllReglements();
-    });
-    this.carteService.deleteCarte(id_carte).subscribe(() => {
-      this.getAllCartes();
-    });
+    
   }
 
-
+  printFacture(facture: any) {
+    // Mapping for attribute names
+    const attributeNames: { [key: string]: string } = {
+      id_fact: 'N° du facture',
+      date_fact:'Date de facturation' ,
+      etat_paiement: 'État de paiement',
+      montant_ttl: 'Montant total',
+      exo_cli: 'Exonération du client',
+      lib_exo: 'Libellé exonération',
+      tbre_fiscale: 'imbre fiscal',
+      lib_carte: 'Libellé de la carte',
+      cpt_carte: 'Compte de carte '
+    };
+  
+    let docDefinition: any = {
+      content: [
+        { text: 'Information du facture', style: 'header' },
+        {
+          columns: [
+            {
+              width: 'auto',
+              text: attributeNames['id_fact'] + ':',
+              style: 'label'
+            },
+            {
+              width: '*',
+              text: facture.id_fact,
+              style: 'value'
+            }
+          ]
+        }, {
+          columns: [
+            {
+              width: 'auto',
+              text: attributeNames['lib_carte'] + ':',
+              style: 'label'
+            },
+            {
+              width: '*',
+              text: facture.lib_carte,
+              style: 'value'
+            }
+          ]
+        },
+        { text: '\n' }, // Add some space before other attributes
+        {
+          table: {
+            headerRows: 1,
+            widths: ['*', '*'],
+            body: [
+              [
+                { text: 'Les autres coordonnées', style: 'tableHeader' },
+                { text: '', style: 'tableHeader' }
+              ],
+              // Dynamically add other attributes
+              ...Object.keys(facture).filter(key => key !== 'id_fact' &&  key !== 'lib_carte').map(key => [
+                { text: (attributeNames[key] || key.replace('_', ' ').toUpperCase()), style: 'label' },
+                { text: facture[key], style: 'value' }
+              ])
+            ]
+          },
+          layout: 'lightHorizontalLines'
+        }
+      ],
+      styles: {
+        header: {
+          fontSize: 24,
+          bold: true,
+          margin: [0, 0, 0, 10],
+          alignment: 'center',
+          color: '#002155'
+        },
+        label: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 5, 0, 5],
+          color: '#333'
+        },
+        value: {
+          fontSize: 14,
+          margin: [0, 5, 0, 5],
+          color: '#002155'
+        },
+        tableHeader: {
+          bold: true,
+          fontSize: 15,
+          color: 'white',
+          fillColor: '#002155'
+        }
+      },
+      defaultStyle: {
+        columnGap: 20
+      }
+    };
+  
+    pdfMake.createPdf(docDefinition).open();
+  }
 
 
 

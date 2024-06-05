@@ -83,29 +83,21 @@
                     </div>
                     <div class="column">
                       <div class="input-box">
-                        <label for="desig_quai">Desig</label>
+                        <label for="id_quai">Desig</label>
                         <div class="select-box">
-                          <select id="desig_quai" [(ngModel)]="selectedQuai" (change)="onNomChange($event)" name="id_quai">
-                            <option *ngFor="let Quai of listQuai" [ngValue]="Quai">{{ Quai.desig_quai }}</option>
+                          <select id="id_quai" [(ngModel)]="emplacement.quai"  name="id_quai">
+                            <option *ngFor="let Quai of listQuai" [ngValue]="Quai">{{ Quai.desig_quai }}--{{ Quai.rang_quai }}</option>
                           </select>
                         </div>
                         
                       </div>
                       
-                      <div class="input-box">
-                        <label for="rang_quai">Rang quai</label>
-                        <div class="select-box">
-                          <select id="rang_quai" [(ngModel)]="quai.rang_quai" name="rang_quai">
-                            <option *ngFor="let rang of rangs">{{ rang }}</option>
-                          </select>
-                        </div>
-                        
-                      </div>
+                     
 
                       <div class="input-box">
-                        <label for="designation">Desig p electrique</label>
+                        <label for="id_p_elec">Desig p electrique</label>
                         <div class="select-box">
-                          <select id="designation" [(ngModel)]="pElectrique.designation" name="id_p_elec">
+                          <select id="id_p_elec" [(ngModel)]="emplacement.pelectrique" name="id_p_elec">
                             <option *ngFor="let pElectrique of listPElectrique" [ngValue]="pElectrique">{{ pElectrique.designation}}</option>
                           </select>
                         </div>
@@ -116,28 +108,29 @@
                      
                     </div>
                     
-                    <div class="multicoque-box">
+                    
+                    <div class="option-check-details">
                       <label>Blockage :</label>
-                      <div class="multicoque-option">
-                        <div class="multicoque">
-                          <input type="radio" id="check-yes" name="multicoque" required 
-                          [(ngModel)]="emplacement.blockage"
-                          [ngModelOptions]="{standalone : true}">
-                          <label for="check-yes">Oui</label>
-                        </div>
-                        <div class="multicoque">
-                          <input type="radio" class="check-no" id="check-no" name="multicoque" required 
-                          [(ngModel)]="emplacement.blockage"
-                          [ngModelOptions]="{standalone : true}">
-                          <label for="check-no">Non</label>
-                        </div>
+                      <div class="radio-buttons">
+                          <input [value]="1" type="radio" name="option-check" id="dot-1" [(ngModel)]="emplacement.blockage" [ngModelOptions]="{standalone: true}">
+                          <label for="dot-1">
+                              <span class="dot one"></span>
+                              <span class="option-check">Oui</span>
+                          </label>
+                          
+                          <input [value]="0" type="radio" name="option-check" id="dot-2" [(ngModel)]="emplacement.blockage" [ngModelOptions]="{standalone: true}">
+                          <label for="dot-2">
+                              <span class="dot two"></span>
+                              <span class="option-check">Non</span>
+                          </label>
                       </div>
-                    </div>
+                  </div>
+                  
                   </form>
                   <div class="submit-box">
                     <div class="button-group button">
                       <button class="button button-primary" routerLink="/rechercher_emplacement"  routerLinkActive="active" >Annuler</button>
-                      <button type="button" class="btn btn-success" (click)="addEmplacement(emplacement)"
+                      <button type="button" class="btn btn-success" (click)="addEmplacement()" id="send"
                       class="button button-secondary">Ajouter</button>
                     </div>
                   </div>

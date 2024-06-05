@@ -12,7 +12,11 @@ export class SejourService {
   constructor(private httpClient: HttpClient) { }
 
   getAllSejours()  : Observable<Sejour[]>{
-    return this.httpClient.get<Sejour[]>(`${this.API_URL}/get-all-sejours`);
+    return this.httpClient.get<Sejour[]>(`${this.API_URL}/get-sejours`);
+  }
+
+  getArchivedSejours()  : Observable<Sejour[]>{
+    return this.httpClient.get<Sejour[]>(`${this.API_URL}/get-archieved-sejours`);
   }
 
   addSejour(sejour: any) {

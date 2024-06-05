@@ -1,95 +1,94 @@
 <div class="all-page flex items-center">
-    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
-    <div class="body" [ngClass]="getBodyClass()">
-      <router-outlet></router-outlet>
-      
-      <section class="content">
-        <div class="left-content">
-          <div class="main">
-            <div class="BigTitle">
-              <h1><i class="fas fa-arrows-alt faa2x"></i> Ajouter un Mouvement du Bateau</h1>
-            </div>
-            <div class="big-container">
-              <div class="formulaire-boxes">
-                <!-- Formulaire Etape 1 -->
-                <div>
-                  <section class="container container-1">
-                    <form action="#" class="form">
-                        <br>
-                      <h1 class="form-title">Informations du mouvement du bateau :</h1>
+  <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+  <div class="body" [ngClass]="getBodyClass()">
+    <router-outlet></router-outlet>
+    
+    <section class="content">
+      <div class="left-content">
+        <div class="main">
+          <div class="BigTitle">
+            <h1><i class="fas fa-arrows-alt faa2x"></i> Ajouter un Mouvement du Bateau</h1>
+          </div>
+          <div class="big-container">
+            <div class="formulaire-boxes">
+              <!-- Formulaire Etape 1 -->
+              <div>
+                <section class="container container-1">
+                  <form action="#" class="form">
                       <br>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>MVT au :</label>
-                          <input type="date"required 
-                          [(ngModel)]="Bateau.date_mvt"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
-                        
-                        <div class="input-box">
-                          <label for="id_cli">Client :</label>
-                          <div class="select-box" >
-                              <select id="id_cli" [(ngModel)]="Bateau.client" name="id_cli">
-                                  
-                                  <option *ngFor="let client of listClient" [ngValue]="client">{{ client.id_cli}}</option>
-                                </select>
-                              
-                          </div>
+                    <h1 class="form-title">Informations du mouvement du bateau :</h1>
+                    <br>
+                    <div class="column">
+                      <div class="input-box">
+                        <label>MVT au :</label>
+                        <input type="date"required 
+                        [(ngModel)]="Bateau.date_mvt"
+                        [ngModelOptions]="{standalone : true}"/>
                       </div>
+                      
+                      <div class="input-box">
+                        <label for="id_cli">Client :</label>
+                        <div class="select-box" >
+                            <select id="id_cli" [(ngModel)]="Bateau.client" name="id_cli">
+                                
+                                <option *ngFor="let client of listClient" [ngValue]="client">{{ client.id_cli}}</option>
+                              </select>
+                            
+                        </div>
+                    </div>
 
-                      </div>
-                      <div class="column">
-                        
-                        <div class="input-box">
-                          <label for="nom_bat">nom bateau :</label>
-                          <div class="select-box" >
-                              <select id="nom_bat" [(ngModel)]="Bateau.nom_bat" name="id_bat">
-                                  
-                                  <option *ngFor="let Bateau of listBateau" [ngValue]="Bateau">{{ Bateau.nom_bat}}</option>
-                                </select>
-                              
-                          </div>
-                      </div>
+                    </div>
+                    <div class="column">
+                      
+                      <div class="input-box">
+                        <label for="nom_bat">nom bateau :</label>
+                        <div class="select-box" >
+                            <select id="nom_bat" [(ngModel)]="Bateau.nom_bat" name="id_bat">
+                                
+                                <option *ngFor="let Bateau of listBateau" [ngValue]="Bateau">{{ Bateau.nom_bat}}</option>
+                              </select>
+                            
+                        </div>
+                    </div>
 
-                        <div class="input-box">
-                          <label>Commentaire :</label>
-                          <input type="text" placeholder="Entrer une note" required 
-                          [(ngModel)]="Bateau.commentaire_mvt"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
+                      <div class="input-box">
+                        <label>Commentaire :</label>
+                        <input type="text" placeholder="Entrer une note" required 
+                        [(ngModel)]="Bateau.commentaire_mvt"
+                        [ngModelOptions]="{standalone : true}"/>
                       </div>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>Arrivéé :</label>
-                          <input type="date" required 
-                          [(ngModel)]="Bateau.arrivee_mvt"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
-                        <div class="input-box">
-                          <label>Départ :</label>
-                          <input type="date" required 
-                          [(ngModel)]="Bateau.depart_mvt"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
+                    </div>
+                    <div class="column">
+                      <div class="input-box">
+                        <label>Arrivéé :</label>
+                        <input type="date" required 
+                        [(ngModel)]="Bateau.arrivee_mvt"
+                        [ngModelOptions]="{standalone : true}"/>
                       </div>
-                    </form>
-                    <div class="submit-box">
-                        <div class="button-group button">
-                          <button class="button button-primary" [routerLink]="['/afficher_mvt_bateaux']" routerbuttonActive="active" >Annuler</button>
-                          <button (click)="addBateau()" id="send" class="button button-secondary">Ajouter</button>
-                        </div>
+                      <div class="input-box">
+                        <label>Départ :</label>
+                        <input type="date" required 
+                        [(ngModel)]="Bateau.depart_mvt"
+                        [ngModelOptions]="{standalone : true}"/>
                       </div>
-                      <div class="message">
-                          <div class="success" id="success">Mouvement ajouté avec succès!</div>
-                          <div class="danger" id="danger">Vérifier les champs obligatoires!</div>
+                    </div>
+                  </form>
+                  <div class="submit-box">
+                      <div class="button-group button">
+                        <button class="button button-primary" [routerLink]="['/afficher_mvt_bateaux']" routerbuttonActive="active" >Annuler</button>
+                        <button (click)="addBateau()" id="send" class="button button-secondary">Ajouter</button>
                       </div>
-                  </section>
-                </div>
+                    </div>
+                    <div class="message">
+                        <div class="success" id="success">Mouvement ajouté avec succès!</div>
+                        <div class="danger" id="danger">Vérifier les champs obligatoires!</div>
+                    </div>
+                </section>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
-  
+</div>

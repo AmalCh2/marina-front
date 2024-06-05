@@ -75,12 +75,13 @@ export class RechercherConsommationComponent implements OnInit {
   this.facture = {
     id_fact: null,
     date_fact: null,
-    etat_fact: null,
     etat_paiement: null,
     montant_ttl: null,
     exo_cli: null,
     lib_exo: null,
     tbre_fiscale: null,
+    lib_carte: null,
+    cpt_carte: null,
 }
 
 this.getAllPrestations();

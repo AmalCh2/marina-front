@@ -1,294 +1,280 @@
 <div class="all-page flex items-center">
-    <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
-    <div class="body" [ngClass]="getBodyClass()">
-        <router-outlet></router-outlet>
+  <app-navbar (onToggleSideNav)="onToggleSideNav($event)"></app-navbar>
+  <div class="body" [ngClass]="getBodyClass()">
+      <router-outlet></router-outlet>
 
-        <section class="content">
-            <div class="left-content">
-                <div class="main">
-                    <div class="Header">
-                        <h1><i class="fas fa-search faa2x"></i> Rechercher un Bateau</h1>
-                    </div>                  
-                    <div class="big-container">
-                    <!-- ======================= Filters ================== -->
-                        <div class="filterBox">
-                            <div class="filter">
-                                <div>
-                                    <div class="filterName">Critère</div>
-                                    <div class="Menu-options">
-                                        <ul class="Drop-down-menu">
-                                            <li class="Menu options">
-                                                <select class="select-box">
-                                                    <option hidden>Sélectionner une option:</option>
-                                                    <option>Nom</option>
-                                                    <option>Immatriculation</option>
-                                                    <option>Pavillon</option>
-                                                    <option>Marque</option>
-                                                    <option>Adresse</option>
-                                                    <option>Code Postal</option>
-                                                    <option>Numéro Assurance</option>
-                                                    <option>Nom Assurance</option>
-                                                    <option>Date d'éxpiration</option>
-                                                    <option>Numéro téléphone</option>
-                                                    <option>Mobile</option>
-                                                    <option>Fax</option>
-                                                    <option>Longueur</option>
-                                                    <option>Largueur</option>
-                                                    <option>Tirant d'eau</option>
-                                                    <option>Tonnage</option>
-                                                    <option>Email</option>
-                                                    <option>Autre nom</option>
-                                                </select>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+      <section class="content">
+          <div class="left-content">
+              <div class="main">
+                  <div class="Header">
+                      <h1><i class="fas fa-search faa2x"></i> Rechercher un Bateau</h1>
+                  </div>                  
+                  <div class="big-container">
+                  <!-- ======================= Filters ================== -->
+                      <div class="filterBox">
+                          <div class="filter">
+                              <div>
+                                  <div class="filterName">Critère</div>
+                                  <div class="Menu-options">
+                                      <ul class="Drop-down-menu">
+                                          <li class="Menu options">
+                                              <select class="select-box">
+                                                  <option hidden>Sélectionner une option:</option>
+                                                  <option>Nom</option>
+                                                  <option>Immatriculation</option>
+                                                  <option>Pavillon</option>
+                                                  <option>Marque</option>
+                                                  <option>Adresse</option>
+                                                  <option>Code Postal</option>
+                                                  <option>Numéro Assurance</option>
+                                                  <option>Nom Assurance</option>
+                                                  <option>Date d'éxpiration</option>
+                                                  <option>Numéro téléphone</option>
+                                                  <option>Mobile</option>
+                                                  <option>Fax</option>
+                                                  <option>Longueur</option>
+                                                  <option>Largueur</option>
+                                                  <option>Tirant d'eau</option>
+                                                  <option>Tonnage</option>
+                                                  <option>Email</option>
+                                                  <option>Autre nom</option>
+                                              </select>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
 
-                                <div class="iconFltr">
-                                    <i class="fas fa-check-circle faa2x"></i>
-                                </div>
-                            </div>
-                            <div class="filter filter-2">
-                                <div>
-                                    <div class="filterName">Rechercher</div>
-                                    <div class="recherche-option">
-                                    <div class="option-recherche-details">
-                                        <input type="radio" name="option-recherche" id="dot-1">
-                                        <input type="radio" name="option-recherche" id="dot-2">
-                                        <input type="radio" name="option-recherche" id="dot-3">
-                                        <div class="category">
-                                            <label for="dot-1">
-                                            <span class="dot one"></span>
-                                            <span class="option-recherche"style="font-weight: normal;">Commencant par :</span>
-                                        </label>
-                                        <label for="dot-2">
-                                            <span class="dot two"></span>
-                                            <span class="option-recherche"style="font-weight: normal;">Contenant :</span>
-                                        </label>
-                                        <label for="dot-3">
-                                            <span class="dot three"></span>
-                                            <span class="option-recherche"style="font-weight: normal;">Finissant par :</span>
-                                        </label>
-                                        </div>
-                                    </div>
-                                        <div class="input-box">
-                                            <input type="text" placeholder="Faire une recherche" />
-                                        </div>
-                                    </div>  
-                                </div>
-                                <div class="iconFltr">
-                                    <i class="fas fa-search faa2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    <!-- ================ boats List ================= -->
-                    <div class="details">
-                        <div class="Boats">
-                            <!--<app-liste-des-bateaux></app-liste-des-bateaux>-->
+                              <div class="iconFltr">
+                                  <i class="fas fa-check-circle faa2x"></i>
+                              </div>
+                          </div>
+                          <div class="filter filter-2">
+                              <div>
+                                  <div class="filterName">Rechercher</div>
+                                  <div class="recherche-option">
+                                  <div class="option-recherche-details">
+                                      <input type="radio" name="option-recherche" id="dot-1">
+                                      <input type="radio" name="option-recherche" id="dot-2">
+                                      <input type="radio" name="option-recherche" id="dot-3">
+                                      <div class="category">
+                                          <label for="dot-1">
+                                          <span class="dot one"></span>
+                                          <span class="option-recherche"style="font-weight: normal;">Commencant par :</span>
+                                      </label>
+                                      <label for="dot-2">
+                                          <span class="dot two"></span>
+                                          <span class="option-recherche"style="font-weight: normal;">Contenant :</span>
+                                      </label>
+                                      <label for="dot-3">
+                                          <span class="dot three"></span>
+                                          <span class="option-recherche"style="font-weight: normal;">Finissant par :</span>
+                                      </label>
+                                      </div>
+                                  </div>
+                                      <div class="input-box">
+                                          <input type="text" placeholder="Faire une recherche" />
+                                      </div>
+                                  </div>  
+                              </div>
+                              <div class="iconFltr">
+                                  <i class="fas fa-search faa2x"></i>
+                              </div>
+                          </div>
+                      </div>
+                  <!-- ================ boats List ================= -->
+                  <div class="details">
+                      <div class="Boats">
+                          <!--<app-liste-des-bateaux></app-liste-des-bateaux>-->
 
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>Nom</td>
-                                        <td>Prenom Client</td>
-                                        <td>Nom Client</td>
-                                        <td>Immat.</td>
-                                        <td>Types</td>
-                                        <td>Pavillon</td>
-                                        <td>Marque</td>
-                                        <td>Adresse</td>
-                                        <td>Code postal</td>
-                                        <td>Ville</td>
-                                        <td>Pays</td>
-                                        <td>Longueur</td>
-                                        <td>Largeur</td>
-                                        <td>Tirant d'eau</td>
-                                        <td>Autre Nom</td>
+                          <table>
+                              <thead>
+                                  <tr>
+                                      <td>ID</td>
+                                      <td>Nom</td>
+                                      <td>Prenom Client</td>
+                                      <td>Nom Client</td>
+                                      <td>Immat.</td>
+                                      <td>Types</td>
+                                      <td>Pavillon</td>
+                                      <td>Marque</td>
+                                      <td>Adresse</td>
+                                      <td>Code postal</td>
+                                      <td>Ville</td>
+                                      <td>Pays</td>
+                                      <td>Longueur</td>
+                                      <td>Largeur</td>
+                                      <td>Tirant d'eau</td>
+                                      <td>Autre Nom</td>
+                                  </tr>
+                              </thead>
+
+                              <tbody>
+                                  <tr *ngFor="let bateau of listBateau">
+                                      <td>{{ bateau.id_bat }}</td>
+                                      <td>{{ bateau.nom_bat }}</td>
+                                      <td>{{ bateau.client.prenom_cli }}</td>
+                                      <td>{{ bateau.client.nom_cli }}</td>
+                                      <td>{{ bateau.immatriculation_bat }}</td>
+                                      <td>{{ bateau.typeBateau.type_bat }}</td>
+                                      <td>{{ bateau.pavillon_bat }}</td>
+                                      <td>{{ bateau.marque_bat }}</td>
+                                      <td>{{ bateau.adresse_bat }}</td>
+                                      <td>{{ bateau.code_postal_bat }}</td>
+                                      <td>{{ bateau.ville_bat }}</td>
+                                      <td>{{ bateau.pays }}</td>
+                                      <td>{{ bateau.largeur_bat }}</td>
+                                      <td>{{ bateau.largeur_bat }}</td>
+                                      <td>{{ bateau.tirant_eau_bat }}</td>
+                                      <td>{{ bateau.autre_ident_nom_bat }}</td>
+                                      <td>
+                                          <div class="button-group ">
+                                          <button type="button" class="button btn btn-outline-primary"
+                                              (click)="open(mymodal1,bateau)">Modifier
+                                          </button>
+                                          <button type="button" class="button btn btn-outline-danger"
+                                              (click)="deleteBateau(bateau.id_bat)">Supprimer
+                                          </button>
+                                          
+                                              <button class="button" (click)="printBateau(bateau)">Imprimer</button>
+                                          </div>
+                                        </td>
                                     </tr>
-                                </thead>
+                                </tbody>
+                          </table>
 
-                                <tbody>
-                                    <tr *ngFor="let bateau of listBateau">
-                                        <td>{{ bateau.id_bat }}</td>
-                                        <td>{{ bateau.nom_bat }}</td>
-                                        <td>{{ bateau.client.prenom_cli }}</td>
-                                        <td>{{ bateau.client.nom_cli }}</td>
-                                        <td>{{ bateau.immatriculation_bat }}</td>
-                                        <td>{{ bateau.typeBateau.type_bat }}</td>
-                                        <td>{{ bateau.pavillon_bat }}</td>
-                                        <td>{{ bateau.marque_bat }}</td>
-                                        <td>{{ bateau.adresse_bat }}</td>
-                                        <td>{{ bateau.code_postal_bat }}</td>
-                                        <td>{{ bateau.ville_bat }}</td>
-                                        <td>{{ bateau.pays }}</td>
-                                        <td>{{ bateau.largeur_bat }}</td>
-                                        <td>{{ bateau.largeur_bat }}</td>
-                                        <td>{{ bateau.tirant_eau_bat }}</td>
-                                        <td>{{ bateau.autre_ident_nom_bat }}</td>
-                                        <td>
-                                            <div class="button-group ">
-                                            <button type="button" class="button btn btn-outline-primary"
-                                                (click)="open(mymodal1,bateau)">Modifier
-                                            </button>
-                                            <button type="button" class="button btn btn-outline-danger"
-                                                (click)="deleteBateau(bateau.id_bat)">Supprimer
-                                            </button>
-                                            
-                                                <button class="button" (click)="printBateau(bateau)">Imprimer</button>
-                                            </div>
-                                          </td>
-                                      </tr>
-                                  </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-
-
-
-
-                <ng-template #mymodal1 let-modal1>
-  <div class="modal-body p-4 red-background form-title">
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
-    <div>
-      <section class="container mx-auto">
-        <form class="space-y-4">
-          <div class="grid grid-cols-4 gap-4">
-            <h1 class="col-span-4" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur le bateau :</h1>
-            <div class="col-span-4">
-              <label class="block text-gray-700">Nom Client :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.nom_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Nº du bateau :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.id_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Nom du client :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.client.nom_cli" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Prenom du client :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.client.prenom_cli" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Immatriculation du bateau :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.immatriculation_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Autre nom :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.autre_ident_nom_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Pavillon :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.pavillon_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Marque :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.marque_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Adresse :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.adresse_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Email :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.email_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Ville :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.ville_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Pays :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.pays" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Nº mobile :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.fax_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Code Postale :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.code_postal_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Nº du téléphone :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.tel_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Nº fax :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.fax_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Longueur :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.longueur_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Largeur :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.largeur_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Tirant d'eau :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.tirant_eau_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Tonnage :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.tonnage_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <h1 class="col-span-4 form-title" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur le type du bateau :</h1>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Type du bateau :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.typeBateau.type_bat" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-3 option-check-details">
-              <label>Multicoque :</label>
-              <input type="radio" name="option-check" id="dot-1">
-              <input type="radio" name="option-check" id="dot-2">
-              <div class="category">
-                <label for="dot-1">
-                  <span class="dot one"></span>
-                  <span class="option-check">Oui</span>
-                </label>
-                <label for="dot-2">
-                  <span class="dot two"></span>
-                  <span class="option-check">Non</span>
-                </label>
+                      </div>
+                  </div>
+                  </div>
               </div>
-            </div>
-            <h1 class="col-span-4 form-title" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur l'assurance :</h1>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Nº d'assurance :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.num_assur" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Nom d'assurance :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.nom_assur" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-1">
-              <label class="block text-gray-700">Date d'expération :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.date_exp" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="col-span-4">
-              <label class="block text-gray-700">Observation :</label>
-              <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.observation" [ngModelOptions]="{standalone: true}" />
-            </div>
+
+
+
+
+
+              <ng-template #mymodal1 let-modal1>
+<div class="modal-body p-4 red-background form-title">
+  <button type="button" class="btn-close" aria-label="Close" (click)="modal1.dismiss('Cross click')"></button>
+  <div>
+    <section class="container mx-auto">
+      <form class="space-y-4">
+        <div class="grid grid-cols-4 gap-4">
+          <h1 class="col-span-4" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur le bateau :</h1>
+          <div class="col-span-4">
+            <label class="block text-gray-700">Nom Client :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.nom_bat" [ngModelOptions]="{standalone: true}" />
           </div>
-        </form>
-        <div class="mt-4">
-          <button type="button" class="button transition" (click)="editBateau(bateau)" (click)="modal1.close('Save click')">Enregistrer</button>
-          <button type="button" class="button transition" (click)="modal1.close('Save click')">Annuler</button>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Nº du bateau :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.id_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Nom du client :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.client.nom_cli" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Prenom du client :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.client.prenom_cli" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Immatriculation du bateau :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.immatriculation_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Autre nom :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.autre_ident_nom_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Pavillon :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.pavillon_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Marque :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.marque_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Adresse :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.adresse_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Email :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.email_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Ville :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.ville_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Pays :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.pays" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Nº mobile :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.fax_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Code Postale :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.code_postal_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Nº du téléphone :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.tel_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Nº fax :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.fax_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Longueur :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.longueur_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Largeur :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.largeur_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Tirant d'eau :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.tirant_eau_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Tonnage :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.tonnage_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <h1 class="col-span-4 form-title" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur le type du bateau :</h1>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Type du bateau :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.typeBateau.type_bat" [ngModelOptions]="{standalone: true}" />
+          </div>
+         
+          <h1 class="col-span-4 form-title" style="color:#001A1F;font-size: 1.3rem;font-weight: 700;padding: 5px 20px;">Informations sur l'assurance :</h1>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Nº d'assurance :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.num_assur" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Nom d'assurance :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.nom_assur" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-1">
+            <label class="block text-gray-700">Date d'expération :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.date_exp" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="col-span-4">
+            <label class="block text-gray-700">Observation :</label>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded" [(ngModel)]="bateau.observation" [ngModelOptions]="{standalone: true}" />
+          </div>
         </div>
-      </section>
-    </div>
+      </form>
+      <div class="mt-4">
+        <button type="button" class="button transition" (click)="editBateau(bateau)" (click)="modal1.close('Save click')">Enregistrer</button>
+        <button type="button" class="button transition" (click)="modal1.close('Save click')">Annuler</button>
+      </div>
+    </section>
   </div>
+</div>
 </ng-template>
 
 
-            </div>
-        </section>
-    </div>
+          </div>
+      </section>
+  </div>
 </div>

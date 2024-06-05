@@ -347,7 +347,7 @@ background:  rgba(33, 26, 61, 0.2);
       .details .Boats {
       position: relative;
       display: grid;
-      max-height: 430px;
+      max-height: 540px;
       overflow-y: scroll;
       padding: 20px;
       box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);

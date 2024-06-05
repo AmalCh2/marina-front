@@ -154,6 +154,7 @@ export class RechercherClientComponent implements OnInit {
       'pays.nationnalite': 'Nationnalité',
       code_postal_cliii: 'Code Postal'
     };
+    
   
     let docDefinition: any = {
       content: [

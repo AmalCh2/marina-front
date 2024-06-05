@@ -12,18 +12,18 @@ export class ConsommationService {
   constructor(private httpClient: HttpClient) { }
 
   getAllConsommations() : Observable<Consommation[]>{
-    return this.httpClient.get<Consommation[]>(`${this.API_URL}/get-all-consommations`);
+    return this.httpClient.get<Consommation[]>(`${this.API_URL}/get-all-consommations`)
+  }
+ 
+  addConsommation(consommation : any) {
+    return this.httpClient.post(`${this.API_URL}/add-consommation`, consommation)
   }
 
-  addConsommation(consommation: any) {
-    return this.httpClient.post(`${this.API_URL}/add-consommation`, consommation);
+  editConsommation(consommation : any) {
+    return this.httpClient.put(`${this.API_URL}/update-consommation/${consommation.id_cons}`, consommation)
   }
 
-  editConsommation(consommation: any) {
-    return this.httpClient.put(`${this.API_URL}/update-consommation/${consommation.id_cons}`, consommation);
-  }
-
-  deleteConsommation(id: any) {
-    return this.httpClient.delete(`${this.API_URL}/delete-consommation/${id}`);
+  deleteConsommation(id : any) {
+    return this.httpClient.delete(`${this.API_URL}/delete-consommation/${id}`)
   }
 }

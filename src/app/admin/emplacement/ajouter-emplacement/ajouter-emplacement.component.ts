@@ -95,10 +95,11 @@ export class AjouterEmplacementComponent implements OnInit {
     this.emplacementService.getAllEmplacements().subscribe(res => this.listEmplacement = res)
   }
   
-  addEmplacement(e: any) {
-    this.emplacementService.addEmplacement(e).subscribe(() => {
+  addEmplacement() {
+    console.log(this.emplacement);
+    this.emplacementService.addEmplacement(this.emplacement).subscribe(() => {
       this.getAllEmplacements();
-      this.form = false;
+      //this.form = false;
     });
   }
   

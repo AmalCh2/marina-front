@@ -83,17 +83,17 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr *ngFor="let facture of listConsommation">
-                                        <td>{{ facture.id_cons }}</td>
-                                        <td>{{ facture.prix_unit }}</td>
-                                        <td>{{ facture.qte }}</td>
-                                        <td>{{ facture.deb_cons }}</td>
+                                    <tr *ngFor="let consommation of listConsommation">
+                                        <td>{{ consommation.id_cons }}</td>
+                                        <td>{{ consommation.prix_unit }}</td>
+                                        <td>{{ consommation.qte }}</td>
+                                        <td>{{ consommation.deb_cons }}</td>
 
-                                        <td>{{ facture.fin_cons }}</td>
-                                        <td>{{ facture.offre }}</td>
-                                        <td>{{ facture.facture.id_fact }}</td>
-                                        <td>{{ facture.sejour.id_sej }}</td>
-                                        <td>{{ facture.prestation.lib_prest }}</td>
+                                        <td>{{ consommation.fin_cons }}</td>
+                                        <td>{{ consommation.offre }}</td>
+                                        <td>{{ consommation.fact.id_fact }}</td>
+                                        <td>{{ consommation.sej.id_sej }}</td>
+                                        <td>{{ consommation.prest.lib_prest }}</td>
                                         <td>
                                             <div class="button-group ">
                                             <button type="button" class="button btn btn-outline-primary"

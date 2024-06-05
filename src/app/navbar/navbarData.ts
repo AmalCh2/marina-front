@@ -41,7 +41,7 @@ export const navbarData: INavbarData[] = [
         ]
     },
 
-    {
+   /* {
         routerLink: '/réservation',
         icon: 'fas fa-file-invoice',
         label: 'Réservation',
@@ -61,12 +61,12 @@ export const navbarData: INavbarData[] = [
                 label: 'Archive des réservations'
             },
             */
-            {
+           /* {
                 routerLink: '/etat_réservation_arrivées',
                 label: 'Etat des réservations (Arrivées)'
             },
         ]
-    },
+    },*/
 
     {
         routerLink: '/plan_d_eau',
@@ -141,10 +141,7 @@ export const navbarData: INavbarData[] = [
         //icon: 'fas fa-map-marker-alt',
         label: 'Amodiation',
         items: [
-            {
-                routerLink: '/ajouter_mvt_bateau',
-                label: 'Ajouter les mouvements du bateau'
-            },
+            
 
             {
                 routerLink: '/afficher_mvt_bateaux',

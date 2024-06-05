@@ -78,12 +78,11 @@ export class AjouterTarifAmmarageComponent implements OnInit {
   }
 
   addTarifAndPeriode() {
+    console.log(this.tarif);
     this.tarifService.addTarif(this.tarif).subscribe(() => {
       this.getAllTarifs();
     });
-    this.periodeService.addPeriode(this.periode).subscribe(() => {
-      this.getAllPeriodes();
-    });
+    
   }
 
   editTarifAndPeriode(tarif: Tarif, periode: Periode) {

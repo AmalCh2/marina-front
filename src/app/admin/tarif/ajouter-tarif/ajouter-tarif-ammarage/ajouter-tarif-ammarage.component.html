@@ -100,26 +100,14 @@
                             [ngModelOptions]="{standalone : true}"/>
                           </div>
                       </div>
-                      <div class="column">
-                        <div class="input-box">
-                          <label>Nº période :</label>
-                          <input type="number" placeholder="Entrer le numéro de la periode"required 
-                          [(ngModel)]="periode.id_periode"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
-                        <div class="input-box">
-                          <label>Début :</label>
-                          <input type="date"  required 
-                          [(ngModel)]="periode.deb_periode"
-                          [ngModelOptions]="{standalone : true}"/>
-                        </div>
-                        <div class="input-box">
-                            <label>Fin :</label>
-                            <input type="date" required 
-                            [(ngModel)]="periode.fin_periode"
-                            [ngModelOptions]="{standalone : true}"/>
-                          </div>
+
+                      <div class="input-box">
+                        <label>Tarif annuel :</label>
+                        <input type="number" placeholder="Entrer le tarif annuel"required 
+                        [(ngModel)]="tarif.tarif_annuel"
+                        [ngModelOptions]="{standalone : true}"/>
                       </div>
+                      
                     </form>
                     <div class="submit-box">
                         <div class="button-group button">

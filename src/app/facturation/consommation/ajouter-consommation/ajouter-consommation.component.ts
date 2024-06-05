@@ -76,12 +76,13 @@ export class AjouterConsommationComponent implements OnInit {
   this.facture = {
     id_fact: null,
     date_fact: null,
-    etat_fact: null,
     etat_paiement: null,
     montant_ttl: null,
     exo_cli: null,
     lib_exo: null,
     tbre_fiscale: null,
+    lib_carte: null,
+    cpt_carte: null,
 }
 
 this.getAllPrestations();
@@ -129,8 +130,9 @@ this.getAllPrestations();
     this.consommationService.getAllConsommations().subscribe(res => this.listConsommation = res);
   }
 
-  addConsommation(c: any) {
-    this.consommationService.addConsommation(c).subscribe(() => {
+  addConsommation() {
+    console.log(this.consommation);
+    this.consommationService.addConsommation(this.consommation).subscribe(() => {
       this.getAllConsommation();
       this.form = false;
     });

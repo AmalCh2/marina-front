@@ -86,7 +86,8 @@
                                 <div class="column">
                                     <div class="input-box">
                                         <label>Début :</label>
-                                        <input type="date" placeholder="Entrer l'immatriculation du bateau" required required  
+                                        <input type="date" placeholder="Entrer l'immatriculation du bateau" required [(ngModel)]="sejour.deb_sej"
+                                        [ngModelOptions]="{standalone : true}"  
                                         />
                                     </div>
                                     <div class="input-box">

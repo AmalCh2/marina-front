@@ -18,7 +18,7 @@ export class TarifService {
   }
 
   editTarif(tarif: any) {
-    return this.httpClient.put(`${this.API_URL}/update-tarif`, tarif);
+    return this.httpClient.put(`${this.API_URL}/update-tarif/${tarif.id_tarif }`, tarif);
   }
 
   deleteTarif(id: any) {

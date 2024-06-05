@@ -123,12 +123,11 @@ export class AjouterTarifPrestationComponent implements OnInit {
   }
 
   addPrestationAndTva() {
+    console.log(this.prestation);
     this.prestationService.addPrestation(this.prestation).subscribe(() => {
       this.getAllPrestations();
     });
-    this.tvaService.addTva(this.tva).subscribe(() => {
-      this.getAllTvas();
-    });
+   
   }
 
   editPrestationAndTva(prestation: Prestation, tva: Tva) {

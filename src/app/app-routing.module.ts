@@ -71,10 +71,10 @@ const routes: Routes =[
 
 
   { path: 'pays',  component: PaysComponent },
-  {path:'menu_general', component: MenuGeneralComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Menu générale' },path:'menu_general', component: MenuGeneralComponent},
 
 
-  {path:'ajouter_bateau', component: AjouterBateauComponent},
+  {data: { title: 'Marina Yasmine Hammamet | Ajouter bateau' },path:'ajouter_bateau', component: AjouterBateauComponent},
 
 
 
@@ -139,15 +139,17 @@ const routes: Routes =[
   {/*title:"Marina Yasmine Hammamet | Etat des réservations (Arrivées)",*/path:'etat_réservation_arrivées', component: EtatReservationArriveesComponent},
   {/*title:"Marina Yasmine Hammamet | Archive des réservations",*/path:'archives_réservations', component: ArchiveReservationComponent},
 
-  {/*title:"Marina Yasmine Hammamet | Plan d'eau",*/path:'plan_d_eau', component: PlanDEauComponent},
+  {data: { title: "Marina Yasmine Hammamet | Plan d'eau" },/*title:"Marina Yasmine Hammamet | Plan d'eau",*/path:'plan_d_eau', component: PlanDEauComponent},
 
   {/*title:"Marina Yasmine Hammamet | Séjour",*/path:'séjour', component: SejourComponent},
-  {/*title:"Marina Yasmine Hammamet | Rechercher un séjour",*/path:'rechercher_séjour', component: RechercherSejourComponent},
-  {/*title:"Marina Yasmine Hammamet | Ajouter un séjour",*/path:'ajouter_séjour', component: AjouterSejourComponent},
   {/*title:"Marina Yasmine Hammamet | Imprimer fiche du séjou",*/path:'fiche_séjour', component: FicheSejourComponent},
   {/*title:"Marina Yasmine Hammamet | Modifier une fiche du séjour",*/path:'modifier_fiche_séjour', component: FicheSejourModifierComponent},
   {/*title:"Marina Yasmine Hammamet | Archive des séjours",*/path:'archives_séjours', component: ArchiveSejourComponent},
   {/*title:"Marina Yasmine Hammamet | Annuler un séjour",*/path:'annuler_séjour', component: AnnulerSejourComponent},
+
+  
+  {data: { title: "Marina Yasmine Hammamet | Rechercher un séjour" }/*title:"Marina Yasmine Hammamet | Rechercher un séjour",*/,path:'rechercher_séjour', component: RechercherSejourComponent},
+  {data: { title: "Marina Yasmine Hammamet | Ajouter un séjour" }/*title:"Marina Yasmine Hammamet | Ajouter un séjour",*/,path:'ajouter_séjour', component: AjouterSejourComponent},
 
 ]
 
